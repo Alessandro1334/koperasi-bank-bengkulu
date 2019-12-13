@@ -1,3 +1,0 @@
-<section>
-    {{ 'hello world' }}
-</section>
