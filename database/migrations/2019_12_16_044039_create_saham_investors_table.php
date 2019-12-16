@@ -15,6 +15,7 @@ class CreateSahamInvestorsTable extends Migration
     {
         Schema::create('saham_investors', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('no_sk3s')->length('30');
             $table->unsignedInteger('investor_id');
             $table->string('seri_spmpkop')->length(10);
             $table->unsignedInteger('seri_formulir')->length(11);

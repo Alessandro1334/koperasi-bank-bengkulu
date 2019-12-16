@@ -3,7 +3,7 @@
 @section('location2')
     <i class="fa fa-dashboard"></i>&nbsp;DASHBOARD
 @endsection
-@section('user-login','Administrator')
+@section('user-login','Operator')
 @section('sidebar-menu')
     @include('operator/sidebar-menu')
 @endsection
