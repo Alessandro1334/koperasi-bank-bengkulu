@@ -42,7 +42,7 @@ class CreateInvestorsTable extends Migration
             $table->string('kecamatan_tempat_tinggal')->length('30');
             $table->string('kelurahan_tempat_tinggal')->length('30');
             $table->string('kota_tempat_tinggal')->length('30');
-            $table->string('provnsi_tempat_tinggal')->length('30');
+            $table->string('provinsi_tempat_tinggal')->length('30');
             $table->string('kode_pos_tempat_tinggal')->length('20')->nullable();
             $table->string('telp_rumah')->length('20')->nullable();
             $table->string('ponsel')->length('20')->nullable();
@@ -50,7 +50,7 @@ class CreateInvestorsTable extends Migration
             $table->enum('status_rumah_tinggal',['milik_sendiri','sewa','lainnya']);
             $table->enum('agama',['islam','protestan','katolik','hindu','buddha','konghucu','lainnya']);
             $table->enum('pendidikan_terakhir',['sma','d3','s1','s2','s3','lainnya']);
-            $table->string('nm_gadus_ibu_kandung');
+            $table->string('nm_gadis_ibu_kandung');
             $table->string('emergency_kontak')->nullable();
             $table->string('jumlah_tanggungan')->length('20')->nullable();
             $table->string('alamat_surat_menyurat_ktp')->nullable();
