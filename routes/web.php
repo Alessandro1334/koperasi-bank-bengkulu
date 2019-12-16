@@ -31,4 +31,8 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
 
 });
 
+Route::group(['prefix' => 'operator/manajemen_saham'], function(){
+    Route::get('/', 'Operator\SahamInvestorController@index')->name('operator.manajemen_saham');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
