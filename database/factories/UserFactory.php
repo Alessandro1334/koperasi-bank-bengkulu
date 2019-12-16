@@ -23,3 +23,22 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\SahamInvestor::class, function (Faker $faker) {
+    return [
+        'investor_id' => $faker->randomDigit(),
+        'seri_spmpkop' => $faker->randomNumber(3),
+        'seri_formulir' => $faker->randomNumber(3),
+        'jumlah_saham' => $faker->isbn10(),
+        'terbilang_saham' => $faker->text(),
+        'jenis_mata_uang' => $faker->randomElement(['idr','usd']),
+        'pembayaran_no_rek' => $faker->isbn10(),
+        'pembayaran_nm_rek' => $faker->isbn10(),
+        'pembayaran_nm_bank' => $faker->isbn10(),
+        'no_sk3s_lama' => $faker->isbn10(),
+        'perubahan_ke' => $faker->randomNumber(2),
+        'status_verifikasi' => $faker->randomElement(['0','1']),
+    ];
+});
+
+       
