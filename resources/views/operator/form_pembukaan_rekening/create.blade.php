@@ -8,292 +8,343 @@
     @include('operator/sidebar-menu')
 @endsection
 @section('content')
-    <div class="callout callout-info ">
-        <h4>Perhatian!</h4>
-        <p>
-            Silahkan Tambahkan Data Pembuka Rekening di bawah ini !!
-            <br>
-        </p>
-    </div>
-
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-                <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                <li class="active"><a href="#timeline" data-toggle="tab"><i class="fa fa-user"></i>&nbsp;Form Tambah Data Investor Baru</a></li>
                 </ul>
                 <div class="tab-content">
-                <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                    <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                            <span class="username">
-                            <a href="#">Jonathan Burke Jr.</a>
-                            <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                    </p>
-                    <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                        </li>
-                        <li class="pull-right">
-                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                            (5)</a></li>
-                    </ul>
+                    <form action="{{ route('operator.tambah_investor_post') }}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="active tab-pane" id="timeline">
+                            <ul class="timeline timeline-inverse" id="informasi-pribadi">
+                                <li class="time-label">
+                                        <span class="bg-red">
+                                            Informasi Pribadi
+                                        </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
 
-                    <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <!-- /.post -->
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                    <!-- Post -->
-                    <div class="post clearfix">
-                    <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                            <span class="username">
-                            <a href="#">Sarah Ross</a>
-                            <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                        <span class="description">Sent you a message - 3 days ago</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                    </p>
+                                        <h3 class="timeline-header">Silahkan Lengkapi Informasi Pribadi Investor di Bawah Ini</h3>
 
-                    <form class="form-horizontal">
-                        <div class="form-group margin-bottom-none">
-                        <div class="col-sm-9">
-                            <input class="form-control input-sm" placeholder="Response">
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                        </div>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Nama Lengkap sesuai dengan KTP/Paspor:</label>
+                                                    <input type="text" name="nm_lengkap" class="form-control" placeholder="Masukan nama lengkap">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">No Register</label>
+                                                    <input type="text" name="no_register" class="form-control" id="exampleInputEmail1" placeholder="Masukan nomor register">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Jenis Kelamin</label>
+                                                    <select name="jenis_kelamin" class="form-control">
+                                                        <option value="L">Laki-Laki</option>
+                                                        <option value="P">Perempuan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kode Nasabah</label>
+                                                    <input type="text" name="kode_nasabah" class="form-control" id="exampleInputEmail1" placeholder="Masukan Kode Nasabah">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Staf Pemasaran</label>
+                                                    <select name="jenis_kelamin" class="form-control">
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Nomor KTP/Paspor</label>
+                                                    <input type="text" name="no_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor ktp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Tanggal Kadaluarsa KTP</label>
+                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Nomor NPWP</label>
+                                                    <input type="text" name="no_npwp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Tanggal Registrasi NPWP</label>
+                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Tempat Lahir</label>
+                                                    <input type="text" name="tempat_lahir" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Tanggal Lahir</label>
+                                                    <input type="date" name="tamggal_lahir" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Status Perkawinan</label>
+                                                    <select name="status_pernikahan" id="" class="form-control">
+                                                        <option value="menikah">Menikah</option>
+                                                        <option value="belum_menikah">Belum Menikah</option>
+                                                        <option value="janda/duda">Janda / Duda</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kewarganegaraan</label>
+                                                    <input type="text" name="kewarganegaraan" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="alamatKtp()" class="btn btn-primary "><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="timeline timeline-inverse" id="alamatktp" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Informasi Pribadi
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
+                                    <div class="timeline-item">
+
+                                        <h3 class="timeline-header">Silahkan Lengkapi Data Alamat KTP Investor di Bawah Ini</h3>
+
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Sesuai KTP/KITAS:</label>
+                                                    <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Sesuai KTP</label>
+                                                    <input type="date" name="alamat_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">RT Sesuai KTP</label>
+                                                    <input type="" name="rt_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kelurahan Sesuai KTP</label>
+                                                    <input type="date" name="alamat_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kecamatan Sesuai KTP</label>
+                                                    <input type="date" name="kecamatan_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kota Sesuai KTP</label>
+                                                    <input type="" name="kota_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Provinsi Sesuai KTP</label>
+                                                    <input type="date" name="provinsi_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kode Pos Sesuai KTP</label>
+                                                    <input type="date" name="kode_pos_ktp" class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                        <div class="timeline-footer">
+                                            <a onclick="backToInformasiPribadi()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="alamatTempatTinggal()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="alamattempattinggal" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Informasi Pribadi
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
+                                    <div class="timeline-item">
+
+                                        <h3 class="timeline-header">Silahkan Lengkapi Data Alamat Tempat Tinggal Investor di Bawah Ini</h3>
+
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal:</label>
+                                                    <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">RT Tempat Tinggal</label>
+                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kelurahan Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kecamatan Tempat Tinggal</label>
+                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kota Tempat Tinggal</label>
+                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Provinsi Tempat Tinggal</label>
+                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kode Pos Tempat Tinggal</label>
+                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToAlamatKtp()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="agamaDanPendidikan()" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="agamadanpendidikan" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Informasi Pribadi
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
+                                    <div class="timeline-item">
+
+                                        <h3 class="timeline-header">Silahkan Lengkapi Data Agama dan Pendidikan Investor di Bawah Ini</h3>
+
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal:</label>
+                                                    <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">RT Tempat Tinggal</label>
+                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kelurahan Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kecamatan Tempat Tinggal</label>
+                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kota Tempat Tinggal</label>
+                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Provinsi Tempat Tinggal</label>
+                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="exampleInputEmail1">Kode Pos Tempat Tinggal</label>
+                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToAlamatTempatTinggal()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="agamaDanPendidikan()" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </form>
-                    </div>
-                    <!-- /.post -->
-
-                    <!-- Post -->
-                    <div class="post">
-                    <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
-                            <span class="username">
-                            <a href="#">Adam Jones</a>
-                            <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                        <span class="description">Posted 5 photos - 5 days ago</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <div class="row margin-bottom">
-                        <div class="col-sm-6">
-                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-6">
-                            <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                            <br>
-                            <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-6">
-                            <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                            <br>
-                            <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-
-                    <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                        </li>
-                        <li class="pull-right">
-                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                            (5)</a></li>
-                    </ul>
-
-                    <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <!-- /.post -->
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="timeline">
-                    <!-- The timeline -->
-                    <ul class="timeline timeline-inverse">
-                    <!-- timeline time label -->
-                    <li class="time-label">
-                            <span class="bg-red">
-                            10 Feb. 2014
-                            </span>
-                    </li>
-                    <!-- /.timeline-label -->
-                    <!-- timeline item -->
-                    <li>
-                        <i class="fa fa-envelope bg-blue"></i>
-
-                        <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                        <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
-                        </div>
-                        <div class="timeline-footer">
-                            <a class="btn btn-primary btn-xs">Read more</a>
-                            <a class="btn btn-danger btn-xs">Delete</a>
-                        </div>
-                        </div>
-                    </li>
-                    <!-- END timeline item -->
-                    <!-- timeline item -->
-                    <li>
-                        <i class="fa fa-user bg-aqua"></i>
-
-                        <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                        </h3>
-                        </div>
-                    </li>
-                    <!-- END timeline item -->
-                    <!-- timeline item -->
-                    <li>
-                        <i class="fa fa-comments bg-yellow"></i>
-
-                        <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                        <div class="timeline-body">
-                            Take me to your leader!
-                            Switzerland is small and neutral!
-                            We are more like Germany, ambitious and misunderstood!
-                        </div>
-                        <div class="timeline-footer">
-                            <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                        </div>
-                        </div>
-                    </li>
-                    <!-- END timeline item -->
-                    <!-- timeline time label -->
-                    <li class="time-label">
-                            <span class="bg-green">
-                            3 Jan. 2014
-                            </span>
-                    </li>
-                    <!-- /.timeline-label -->
-                    <!-- timeline item -->
-                    <li>
-                        <i class="fa fa-camera bg-purple"></i>
-
-                        <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                        <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                        <div class="timeline-body">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        </div>
-                        </div>
-                    </li>
-                    <!-- END timeline item -->
-                    <li>
-                        <i class="fa fa-clock-o bg-gray"></i>
-                    </li>
-                    </ul>
-                </div>
-                <!-- /.tab-pane -->
-
-                <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                        <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                        <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                        <div class="col-sm-10">
-                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
             </div>
             <!-- /.nav-tabs-custom -->
             </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function alamatKtp(){
+            $('#alamatktp').show(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToInformasiPribadi(){
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').show(500);
+        }
+
+        function alamatTempatTinggal(){
+            $('#alamattempattinggal').show(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToAlamatKtp(){
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').show(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function agamaDanPendidikan(){
+            $('#agamadanpendidikan').show(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToAlamatTempatTinggal(){
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').show(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+    </script>
+@endpush

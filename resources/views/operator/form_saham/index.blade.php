@@ -25,32 +25,46 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table class="table table-bordered table-hover" id="investor">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Kode Nasabah</th>
-                                <th>No. CIF</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No. KTP</th>
+                                <th>Jumlah Saham</th>
+                                <th>Terbilang Saham</th>
+                                <th>Status Saham</th>
+                                <th>Status Verifikasi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                                 $no=1;
                             @endphp
-                            {{-- @foreach($investors as $investor)
+                            @foreach($sahams as $saham)
                                 <tr>
                                     <td> {{ $no++ }} </td>
-                                    <td> {{ $investor->nm_investor }} </td>
-                                    <td> {{ $investor->kode_nasabah }} </td>
-                                    <td> {{ $investor->no_cif }} </td>
-                                    <td> {{ $investor->jenis_kelamin }} </td>
-                                    <td> {{ $investor->no_ktp }} </td>
+                                    <td> {{ $saham->nm_investor }} </td>
+                                    <td> {{ $saham->jumlah_saham }} </td>
+                                    <td> {{ $saham->terbilang_saham }} </td>
+                                    <td>
+                                        @if($saham->no_sk3s_lama == NULL)
+                                            <span class="label label-success">saham pembelian baru</span>
+                                            @else
+                                                <span class="label label-primary">saham pengalihan</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($saham->status_verifikasi == '0')
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                            @elseif($saham->status_verifikasi == '1')
+                                                <span class="label fa-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
+                                                @else
+                                                    <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                        @endif
+                                    </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

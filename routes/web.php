@@ -28,6 +28,7 @@ Route::group(['prefix' => 'operator'], function(){
 Route::group(['prefix' => 'operator/manajemen_investor'], function(){
     Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
     Route::get('tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('operator.tambah_investor');
+    Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('operator.tambah_investor_post');
 
 });
 

@@ -17,4 +17,9 @@ class FormPembukaanRekening extends Controller
     public function tambahInvestor(){
         return view('operator/form_pembukaan_rekening.create');
     }
+
+    public function tambahInvestorPost(Request $request){
+        $model = $request->all();
+        return $model;
+    }
 }

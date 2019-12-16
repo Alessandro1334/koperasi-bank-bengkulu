@@ -27,7 +27,7 @@ class CreateSahamInvestorsTable extends Migration
             $table->string('pembayaran_nm_bank')->length(100);
             $table->string('no_sk3s_lama')->nullable();
             $table->string('perubahan_ke')->default('0');
-            $table->enum('status_verifikasi',['1','0']);
+            $table->enum('status_verifikasi',['0','1','2']);
             $table->timestamps();
         });
     }

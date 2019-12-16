@@ -19,12 +19,12 @@ class CreateInvestorsTable extends Migration
             $table->string('nm_investor');
             $table->string('kode_nasabah')->length('50');
             $table->string('no_cif')->length('50');
-            $table->string('staf_pemasaran');
+            $table->unsignedInteger('staf_pemasaran_id')->nullable();
             $table->enum('jenis_kelamin',['L','P']);
             $table->string('no_ktp')->length(20);
             $table->string('tgl_kadaluarsa_ktp');
             $table->string('no_npwp')->length('25');
-            $table->date('tgl_kadaluarsa_npwp');
+            $table->date('tgl_registrasi_npwp');
             $table->string('tempat_lahir')->length('30');
             $table->date('tanggal_lahir');
             $table->enum('status_perkawinan',['menikah','belum_menikah','janda/duda']);
