@@ -46,11 +46,11 @@ $factory->define(App\Persetujuan::class, function (Faker $faker) {
         'investor' => $faker->randomDigit(),
         'nm_agen_pemasaran' => $faker->text(),
         'tanda_tangan_agen_pemasaran' => $faker->randomElement(['0','1']),
-        'tanggal_agen_pemasaran' => $faker->date($max='now'),
+        'tanggal_agen_pemasaran' => $faker->dateTimeThisCentury->format('Y:m:d'),
         'nm_pejabat_berwenang' => $faker->text(),
         'status_persetujuan' => $faker->randomElement(['disetujui','tidak_disetujui']),
         'tanda_tangan_pejabat_berwenang' => $faker->randomElement(['0','1']),
-        'tanggal_pejabat_berwenang' => $faker->dateTimeThisCentury->format('H:i:s'),
+        'tanggal_pejabat_berwenang' => $faker->dateTimeThisCentury->format('Y:m:d'),
     ];
 });
 
