@@ -23,7 +23,12 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::group(['prefix' => 'operator'], function(){
     Route::get('/', 'Operator\DashboardController@index')->name('operator.dashboard');
-    Route::get('/form_pembukaan_rekenng', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
+});
+
+Route::group(['prefix' => 'operator/manajemen_investor'], function(){
+    Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
+    Route::get('tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('operator.tambah_investor');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

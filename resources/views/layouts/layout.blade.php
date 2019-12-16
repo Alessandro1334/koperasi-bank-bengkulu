@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.min.css') }}">
@@ -85,7 +87,7 @@
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Login Sebagai @yield('user-login')</a>
+          <a href="#"><i class="fa fa-circle text-success"></i>  @yield('user-login')</a>
         </div>
       </div>
 
@@ -152,6 +154,8 @@
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

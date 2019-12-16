@@ -3,89 +3,56 @@
 @section('location2')
     <i class="fa fa-dashboard"></i>&nbsp;DASHBOARD
 @endsection
-@section('user-login','Administrator')
+@section('user-login','Operator')
 @section('sidebar-menu')
     @include('operator/sidebar-menu')
 @endsection
-@push('styles')
-
-@endpush
 @section('content')
     <div class="callout callout-info ">
-        <h4>SELAMAT DATANG!</h4>
+        <h4>Perhatian!</h4>
         <p>
-            Sistem Informasi Koperasi adalah aplikasi yang digunakan untuk memanajemen data investor pada koperasi Bank Bengkulu,
-            anda dapat menggunakan menu-menu yang sudah disediakan pada aplikasi.
+            Berikut adalah data investor pendaftar pembukaan buku rekening
             <br>
-            <b><i>Catatan:</i></b> Untuk keamanan, jangan lupa keluar setelah menggunakan aplikasi
         </p>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="box">
+        <div class="col-md-12">
+            <div class="box box-primary">
                 <div class="box-header with-border">
-                <h3 class="box-title">Bordered Table</h3>
+                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Investor Pendaftar Pembukaan Rekening</h3>
+                    <div class="box-tools pull-right">
+                        <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Investor</a>
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                <table class="table table-bordered">
-                    <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Task</th>
-                    <th>Progress</th>
-                    <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                    <td>1.</td>
-                    <td>Update software</td>
-                    <td>
-                        <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-red">55%</span></td>
-                    </tr>
-                    <tr>
-                    <td>2.</td>
-                    <td>Clean database</td>
-                    <td>
-                        <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                    <td>3.</td>
-                    <td>Cron job running</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                    <td>4.</td>
-                    <td>Fix and squish bugs</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                    </td>
-                    <td><span class="badge bg-green">90%</span></td>
-                    </tr>
-                </table>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+                    <table class="table table-bordered table-hover" id="investor">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Investor</th>
+                                <th>Kode Nasabah</th>
+                                <th>No. CIF</th>
+                                <th>Jenis Kelamin</th>
+                                <th>No. KTP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $no=1;
+                            @endphp
+                            @foreach($investors as $investor)
+                                <tr>
+                                    <td> {{ $no++ }} </td>
+                                    <td> {{ $investor->nm_investor }} </td>
+                                    <td> {{ $investor->kode_nasabah }} </td>
+                                    <td> {{ $investor->no_cif }} </td>
+                                    <td> {{ $investor->jenis_kelamin }} </td>
+                                    <td> {{ $investor->no_ktp }} </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -93,5 +60,9 @@
 @endsection
 
 @push('scripts')
-
+    <script>
+        $(document).ready( function () {
+            $('#investor').DataTable();
+        } );
+    </script>
 @endpush
