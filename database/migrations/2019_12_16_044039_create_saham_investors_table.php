@@ -16,7 +16,18 @@ class CreateSahamInvestorsTable extends Migration
         Schema::create('saham_investors', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('investor_id');
-            $table->string('no_register')->length(30);
+            $table->string('seri_spmpkop')->length(10);
+            $table->unsignedInteger('seri_formulir')->length(11);
+            $table->string('jumlahh_saham')->length(30);
+            $table->text('terbilang_saham');
+            $table->enum('jenis_mata_uang',['idr','usd']);
+            $table->string('pembayaran_no_rek')->length(40);
+            $table->string('pembayaran_nm_rek')->length(100);
+            $table->string('pembayaran_nm_bank')->length(100);
+            $table->string('no_sk3s_lama')->nullable();
+            $table->string('perubahan_ke')->default('0');
+            $table->enum('status_verifikasi',['1','0']);
+            
             $table->timestamps();
         });
     }
