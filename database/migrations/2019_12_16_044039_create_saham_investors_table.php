@@ -18,7 +18,7 @@ class CreateSahamInvestorsTable extends Migration
             $table->unsignedInteger('investor_id');
             $table->string('seri_spmpkop')->length(10);
             $table->unsignedInteger('seri_formulir')->length(11);
-            $table->string('jumlahh_saham')->length(30);
+            $table->string('jumlah_saham')->length(30);
             $table->text('terbilang_saham');
             $table->enum('jenis_mata_uang',['idr','usd']);
             $table->string('pembayaran_no_rek')->length(40);
@@ -27,7 +27,6 @@ class CreateSahamInvestorsTable extends Migration
             $table->string('no_sk3s_lama')->nullable();
             $table->string('perubahan_ke')->default('0');
             $table->enum('status_verifikasi',['1','0']);
-            
             $table->timestamps();
         });
     }
