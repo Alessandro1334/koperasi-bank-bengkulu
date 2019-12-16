@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRekeningInvestorsTable extends Migration
+class CreateSahamInvestorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateRekeningInvestorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rekening_investors', function (Blueprint $table) {
+        Schema::create('saham_investors', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('investor_id');
+            $table->string('no_register')->length(30);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateRekeningInvestorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rekening_investors');
+        Schema::dropIfExists('saham_investors');
     }
 }

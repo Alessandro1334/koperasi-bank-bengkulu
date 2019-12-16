@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RekeningInvestor extends Model
+class DokumenPendukungInvestor extends Model
 {
     //
 }

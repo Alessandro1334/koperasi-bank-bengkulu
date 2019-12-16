@@ -19,6 +19,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.min.css') }}">
+  @stack('styles')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +61,7 @@
               <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
-          
+
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li style="background:#dc3545;">
@@ -91,28 +92,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header" style="font-weight:bold;">NAVIGASI UTAMA</li>
-        <li class="{{ set_active('admin.dashboard') }}">
-          <a href="{{ route('admin.dashboard') }}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Manajemen Investor</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="../widgets.html" style="color:#dc3545;">
-              <i class="fa fa-power-off"></i> <span>Keluar</span>
-          </a>
-      </li>
+        @yield('sidebar-menu')
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -136,7 +117,7 @@
 
     <!-- Main content -->
     <section class="content">
-        
+
       @yield('content')
 
     </section>
@@ -176,5 +157,6 @@
     $('.sidebar-menu').tree()
   })
 </script>
+@stack('scripts')
 </body>
 </html>
