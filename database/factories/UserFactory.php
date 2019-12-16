@@ -41,6 +41,19 @@ $factory->define(App\SahamInvestor::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Persetujuan::class, function (Faker $faker) {
+    return [
+        'investor' => $faker->randomDigit(),
+        'nm_agen_pemasaran' => $faker->text(),
+        'tanda_tangan_agen_pemasaran' => $faker->randomElement(['0','1']),
+        'tanggal_agen_pemasaran' => $faker->date($max='now'),
+        'nm_pejabat_berwenang' => $faker->text(),
+        'status_persetujuan' => $faker->randomElement(['disetujui','tidak_disetujui']),
+        'tanda_tangan_pejabat_berwenang' => $faker->randomElement(['0','1']),
+        'tanggal_pejabat_berwenang' => $faker->dateTimeThisCentury->format('H:i:s'),
+    ];
+});
+
 $factory->define(App\Investor::class, function (Faker $faker) {
     return [
         'nm_investor' => $faker->name(),
