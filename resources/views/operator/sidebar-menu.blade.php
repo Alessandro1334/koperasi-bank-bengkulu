@@ -15,3 +15,9 @@
         <i class="fa fa-wpforms"></i> <span>Form Saham</span>
     </a>
 </li>
+
+<li class="">
+    <a href="">
+        <i class="fa fa-power-off text-danger"></i> <span class="text-danger">Keluar</span>
+    </a>
+</li>

@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Investor Pendaftar Pembukaan Rekening</h3>
+                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Pembelian dan Pengalihan Saham Seri B</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Investor</a>
+                        <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                     </div>
                 </div>
                 <!-- /.box-header -->

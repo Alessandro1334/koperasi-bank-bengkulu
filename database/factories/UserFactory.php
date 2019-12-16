@@ -16,16 +16,19 @@ use Faker\Generator as Faker;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'nm_user' => $faker->name,
+        'username' => $faker->randomElement(['operator','manajer']),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'level_user' => $faker->randomElement(['operator','manajer']),
         'remember_token' => Str::random(10),
     ];
 });
 
 $factory->define(App\SahamInvestor::class, function (Faker $faker) {
     return [
+        'no_sk3s' => $faker->isbn10(),
         'investor_id' => $faker->randomDigit(),
         'seri_spmpkop' => $faker->randomNumber(3),
         'seri_formulir' => $faker->randomNumber(3),
@@ -56,6 +59,7 @@ $factory->define(App\Persetujuan::class, function (Faker $faker) {
 
 $factory->define(App\Investor::class, function (Faker $faker) {
     return [
+        'no_register' => $faker->randomNumber(2),
         'nm_investor' => $faker->name(),
         'kode_nasabah' => $faker->randomNumber(3),
         'no_cif' => $faker->randomNumber(3),

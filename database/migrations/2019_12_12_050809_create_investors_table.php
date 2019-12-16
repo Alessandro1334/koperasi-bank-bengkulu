@@ -15,6 +15,7 @@ class CreateInvestorsTable extends Migration
     {
         Schema::create('investors', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('no_register')->length('20');
             $table->string('nm_investor');
             $table->string('kode_nasabah')->length('50');
             $table->string('no_cif')->length('50');
