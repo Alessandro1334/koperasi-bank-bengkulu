@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;DASHBOARD
+    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Investor
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut adalah data saham
+            Berikut menu Verifikasi Data Investor
             <br>
         </p>
     </div>
@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Pembelian dan Pengalihan Saham Seri B</h3>
+                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Verifikasi Data Investor</h3>
                     
                 </div>
                 <!-- /.box-header -->
@@ -29,13 +29,22 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Jumlah Saham</th>
-                                <th>Terbilang Saham</th>
-                                <th>Status Saham</th>
-                                <th>Status Verifikasi</th>
+                                <th>Kode Nasabah</th>
+                                <th>No Cif</th>
+                                <th>Jenis Kelamin</th>
+                                <th>No KTP</th>
                             </tr>
                         </thead>
-                        
+                        @foreach($investors as $investor)
+                            <tr>
+                                <td> {{ $loop->count }} </td>
+                                <td> {{ $investor->nm_investor }} </td>
+                                <td> {{ $investor->kode_nasabah }} </td>
+                                <td> {{ $investor->no_cif }} </td>
+                                <td> {{ $investor->jenis_kelamin }} </td>
+                                <td> {{ $investor->no_ktp }} </td>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>

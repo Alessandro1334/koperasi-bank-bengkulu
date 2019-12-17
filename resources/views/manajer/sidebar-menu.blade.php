@@ -10,7 +10,7 @@
     </a>
 </li>
 
-<li class="">
+{{-- <li class="">
     <a href="{{ route('manajer.verifikasi_data_investor') }}">
         <i class="fa fa-wpforms"></i> <span>Verifikasi Rekening Investor</span>
     </a>
@@ -33,4 +33,4 @@
     <a href="{{ route('manajer.verifikasi_data_investor') }}">
         <i class="fa fa-wpforms"></i> <span>Manajemen User</span>
     </a>
-</li>
+</li> --}}
