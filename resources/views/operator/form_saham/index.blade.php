@@ -21,7 +21,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Pembelian dan Pengalihan Saham Seri B</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
+                        <a href="{{ route('operator.tambah_saham') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                     </div>
                 </div>
                 <!-- /.box-header -->

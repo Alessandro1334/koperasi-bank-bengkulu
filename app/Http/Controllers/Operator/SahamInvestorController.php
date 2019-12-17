@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Operator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SahamInvestor;
+use App\Investor;
 
 class SahamInvestorController extends Controller
 {
@@ -14,5 +15,16 @@ class SahamInvestorController extends Controller
                                 ->select('nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','status_verifikasi')
                                 ->get();
         return view('operator/form_saham.index', compact('sahams'));
+    }
+
+    public function tambahSaham()
+    {
+        $investors = Investor::all();
+        return view('operator/form_saham.create');
+    }
+
+    public function tambahSahamPost()
+    {
+
     }
 }
