@@ -25,8 +25,6 @@
                                         </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
@@ -117,8 +115,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Alamat KTP Investor di Bawah Ini</h3>
@@ -182,8 +178,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Alamat Tempat Tinggal Investor di Bawah Ini</h3>
@@ -245,8 +239,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Agama dan Pendidikan Investor di Bawah Ini</h3>
@@ -303,8 +295,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Korespondensi di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -349,8 +339,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Informasi Pekerjaan di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -448,8 +436,6 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Pasangan Atau Orang Tua di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -530,7 +516,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jabatan</label>
-                                                    <select name="jabatan_pasangan_atau_orang_tua" id="">
+                                                    <select name="jabatan_pasangan_atau_orang_tua" id="" class="form-control">
                                                         <option value="komisaris">Komisaris</option>
                                                         <option value="direksi">Direksi</option>
                                                         <option value="manajer">Manajer</option>
@@ -539,6 +525,7 @@
                                                         <option value="pengawas">Pengawas</option>
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Usaha</label>
                                                     <input type="date" name="jenis_usaha_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Jenis Usaha">
@@ -577,7 +564,7 @@
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
-                                            <a onclick="backToPasanganAtauOrangTua()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="backToPekerjaan()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
                                             <a onclick="dokumenPendukung()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
                                         </div>
                                     </div>
@@ -591,52 +578,127 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="fa fa-info-circle bg-blue"></i>
-                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Dokumen Pendukung di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi KTP/Paspor</label>
-                                                    <input type="radio" name="ktp" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="ktp" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Fotokopi KTP/Paspor :</label> <br>
+                                                    <input type="radio" name="ktp" value="1"> Ada
+                                                    <input type="radio" name="ktp" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi NPWP</label>
-                                                    <input type="radio" name="npwp" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="npwp" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Fotokopi NPWP :</label> <br>
+                                                    <input type="radio" name="npwp" value="1"> Ada
+                                                    <input type="radio" name="npwp" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi Form Profil Resiko Pemodal</label>
-                                                    <input type="radio" name="form_profil_resiko_pemodal" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="form_profil_resiko_pemodal" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Fotokopi Form Profil Resiko Pemodal :</label> <br>
+                                                    <input type="radio" name="form_profil_resiko_pemodal" value="1"> Ada
+                                                    <input type="radio" name="form_profil_resiko_pemodal" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi Bukti Setoran Investasi Awal</label>
-                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Fotokopi Bukti Setoran Investasi Awal :</label> <br>
+                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="1"> Ada
+                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Contoh Tanda Tangan</label>
-                                                    <input type="radio" name="contoh_tanda_tangan" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="contoh_tanda_tangan" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Contoh Tanda Tangan :</label> <br>
+                                                    <input type="radio" name="contoh_tanda_tangan" value="1"> Ada
+                                                    <input type="radio" name="contoh_tanda_tangan" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Formulir FATCA - Perorangan (non mandatory)</label>
-                                                    <input type="radio" name="fatca" value="1" class="form-control"> Ada
-                                                    <input type="radio" name="fatca" value="0" class="form-control"> Tidak Ada
+                                                    <label for="">Formulir FATCA - Perorangan (non mandatory) :</label> <br>
+                                                    <input type="radio" name="fatca" value="1"> Ada
+                                                    <input type="radio" name="fatca" value="0"> Tidak Ada
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
-                                            <a onclick="backToPekerjaan()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
-                                            <a onclick="Pernyataan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                            <a onclick="backToPasanganAtauOrangTua()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="persetujuan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
                                         </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="persetujuan" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Persetujuan (* Diisi oleh petugas koperasi jasa mitra usaha)
+                                    </span>
+                                </li>
+                                <li>
+                                        <h3 class="timeline-header">Silahkan Lengkapi Persetujuan di Bawah Ini</h3>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nama Agen Pemasaran :</label> <br>
+                                                    <input type="text" name="nm_agen_pemasaran" class="form-control" id="" placeholder="Masukan Agen Pemasaran">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Tanda Tangan Agen Pemasaran :</label> <br>
+                                                    <input type="text" name="tanda_tangan_agen_pemasaran" class="form-control" id="" placeholder="Tanda Tangan Agen Pemasaran">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Tanggal Agen Pemasaran :</label> <br>
+                                                    <input type="text" name="nm_agen_pemasaran" class="form-control" id="" placeholder="Tanggal Agen Pemasaran">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nama Pejabat Berwenang :</label> <br>
+                                                    <input type="text" name="tanda_tangan_agen_pemasaran" class="form-control" id="" placeholder="Nama Pejabat Berwenang">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Status Persetujuan :</label> <br>
+                                                    <input type="text" name="status_persetujuan" class="form-control" id="" placeholder="Status Persetujuan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Tanda Tangan Pejabat Berwenang :</label> <br>
+                                                    <input type="text" name="tanda_tangan_pejabat_berwenang" class="form-control" id="" placeholder="Tanda Tangan Pejabat Berwenang">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Tanggal Pejabat Berwenang :</label> <br>
+                                                    <input type="text" name="tanggal_pejabat_berwenang" class="form-control" id="" placeholder="Tanggal Pejabat Berwenang">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToDokumenPendukung()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fa fa-check"></i>Selesai
+                                            </button>
+                                        </div>
+                                        <div class="modal fade" id="modal-default">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title"><i class="fa fa-info-circle"></i>Perhatian</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Apakah anda sudah yakin ingin menyimpan data?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Batalkan</button>
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
+                                                </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                            <!-- /.modal -->
                                     </div>
                                 </li>
                             </ul>
@@ -754,6 +816,30 @@
         function backToPasanganAtauOrangTua(){
             $('#dokumen-pendukung').hide(500);
             $('#pasangan-atau-orangtua').show(500);
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function persetujuan(){
+            $('#persetujuan').show(500);
+            $('#dokumen-pendukung').hide(500);
+            $('#pasangan-atau-orangtua').hide(500);
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToDokumenPendukung(){
+            $('#persetujuan').hide(500);
+            $('#dokumen-pendukung').show(500);
+            $('#pasangan-atau-orangtua').hide(500);
             $('#informasi-pekerjaan').hide(500);
             $('#korespondensi').hide(500);
             $('#agamadanpendidikan').hide(500);

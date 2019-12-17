@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;DASHBOARD
+    <i class="fa fa-suitcase"></i>&nbsp;Pembelian/Pengalihan Saham
 @endsection
 @section('user-login','Operator')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut adalah data saham
+            Berikut adalah data pembelian dan pengalihan saham, silahkan tambah data jika ada pembelihan/pengalihan baru
             <br>
         </p>
     </div>

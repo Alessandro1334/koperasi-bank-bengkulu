@@ -15,7 +15,7 @@ class CreatePersetujuansTable extends Migration
     {
         Schema::create('persetujuans', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('investor');
+            $table->unsignedInteger('investor_id');
             $table->string('nm_agen_pemasaran');
             $table->enum('tanda_tangan_agen_pemasaran',['1','0']);
             $table->date('tanggal_agen_pemasaran');

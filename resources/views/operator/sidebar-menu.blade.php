@@ -4,7 +4,7 @@
     </a>
 </li>
 
-<li class="{{ set_active('operator.form_pembukaan_rekening') }}">
+<li class="{{ set_active(['operator.form_pembukaan_rekening','operator.tambah_investor']) }}">
     <a href="{{ route('operator.form_pembukaan_rekening') }}">
         <i class="fa fa-wpforms"></i> <span>Form Pembukaan Rekening</span>
     </a>
@@ -12,7 +12,7 @@
 
 <li class="{{ set_active('operator.manajemen_saham') }}">
     <a href="{{ route('operator.manajemen_saham') }}">
-        <i class="fa fa-wpforms"></i> <span>Form Saham</span>
+        <i class="fa fa-suitcase"></i> <span>Pembelian/Pengalihan Saham</span>
     </a>
 </li>
 
