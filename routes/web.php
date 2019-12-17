@@ -46,5 +46,13 @@ Route::group(['prefix' => 'manajer/verifikasi_data_investor'], function(){
     Route::get('/', 'Manajer\VerifikasiDataInvestorController@index')->name('manajer.verifikasi_data_investor');
 });
 
+Route::group(['prefix' => 'manajer/verifikasi_rekening_Investor'], function(){
+    Route::get('/', 'Manajer\VerifikasiRekeningInvestorController@index')->name('manajer.verifikasi_rekening_investor');
+});
+
+Route::group(['prefix' => 'manajer/manajemen_user'], function(){
+    Route::get('/', 'Manajer\ManajemenUserController@index')->name('manajer.manajemen_user');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
