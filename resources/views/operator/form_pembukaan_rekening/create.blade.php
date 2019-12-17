@@ -25,6 +25,8 @@
                                         </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
@@ -115,6 +117,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Alamat KTP Investor di Bawah Ini</h3>
@@ -178,6 +182,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Alamat Tempat Tinggal Investor di Bawah Ini</h3>
@@ -239,6 +245,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+
                                     <div class="timeline-item">
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Agama dan Pendidikan Investor di Bawah Ini</h3>
@@ -295,6 +303,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Korespondensi di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -339,6 +349,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Informasi Pekerjaan di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -436,6 +448,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Pasangan Atau Orang Tua di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -578,6 +592,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Dokumen Pendukung di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -633,6 +649,8 @@
                                     </span>
                                 </li>
                                 <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
                                         <h3 class="timeline-header">Silahkan Lengkapi Persetujuan di Bawah Ini</h3>
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
@@ -674,35 +692,37 @@
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="backToDokumenPendukung()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                                <i class="fa fa-check"></i>Selesai
+                                                <i class="fa fa-check-circle"></i>&nbsp;Selesai
                                             </button>
                                         </div>
-                                        <div class="modal fade" id="modal-default">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title"><i class="fa fa-info-circle"></i>Perhatian</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h4>Apakah anda sudah yakin ingin menyimpan data?</h4>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Batalkan</button>
-                                                    <button type="button" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
-                                                </div>
-                                                </div>
-                                                <!-- /.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                            <!-- /.modal -->
+
                                     </div>
                                 </li>
                             </ul>
                         </div>
+                        <div class="modal fade" id="modal-default">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title"><i class="fa fa-info-circle"></i>&nbsp;Perhatian</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Apakah anda sudah yakin ingin menyimpan data?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Close</button>&nbsp;
+                                    <button type="button" class="btn btn-primary pull-right"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
+                                </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                            <!-- /.modal -->
                     </form>
                 </div>
             </div>
