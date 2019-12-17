@@ -26,6 +26,17 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Admin::class, function (Faker $faker) {
+    return [
+        'nm_admin' => $faker->name,
+        'username' => $faker->randomElement(['operator','manajer']),
+        'email' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
+        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'remember_token' => Str::random(10),
+    ];
+});
+
 $factory->define(App\SahamInvestor::class, function (Faker $faker) {
     return [
         'no_sk3s' => $faker->isbn10(),
@@ -170,7 +181,7 @@ $factory->define(App\PekerjaanInvestor::class, function (Faker $faker) {
         'lama_bekerja' => $faker->randomNumber(3),
         'sumber_penghasilan_utama' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']),
         'penghasilan_lain' => $faker->randomElement(['1','0']),
-        'sumber_penghasilan_lainnya' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']), 
-        'sumber_dana_investasi' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']), 
+        'sumber_penghasilan_lainnya' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']),
+        'sumber_dana_investasi' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']),
     ];
 });

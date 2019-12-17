@@ -15,5 +15,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SahamInvestorsTableSeeder::class);
         $this->call(InvestorsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(PekerjaanInvestorsTableSeeder::class);
+        $this->call(DataPasanganOrangTuaInvestorsTableSeeder::class);
+        $this->call(AhliWarisInvestorsTableSeeder::class);
+        $this->call(DokumenPendukungInvestorsTableSeeder::class);
+        $this->call(PersetujuansTableSeeder::class);
+        $this->call(AdminsTableSeeder::class);
     }
 }
