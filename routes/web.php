@@ -36,21 +36,12 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
 
 // Route Manajer
 Route::group(['prefix' => 'manajer'], function(){
-    Route::get('/', 'Operator\DashboardController@index')->name('manajer.dashboard');
+    Route::get('/', 'Manajer\DashboardController@index')->name('manajer.dashboard');
 });
 
-Route::group(['prefix' => 'manajer/manajemen_investor'], function(){
-    Route::get('/', 'Operator\FormPembukaanRekening@index')->name('manajer.form_pembukaan_rekening');
-    Route::get('tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('manajer.tambah_investor');
-    Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('manajer.tambah_investor_post');
-
+Route::group(['prefix' => 'manajer/verifikasi_data_investor'], function(){
+    Route::get('/', 'Manajer\VerifikasiDataInvestorController@index')->name('manajer.verifikasi_data_investor');
 });
 
-Route::group(['prefix' => 'operator/manajemen_saham'], function(){
-    Route::get('/', 'Operator\SahamInvestorController@index')->name('operator.manajemen_saham');
-    Route::get('/tambah_saham', 'Operator\SahamInvestorController@tambahSaham')->name('operator.tambah_saham');
-    Route::post('/','Operator\SahamInvestorController@tambahSahamPost')->name('operator.tambah_saham_post');
-
-});
 
 Route::get('/home', 'HomeController@index')->name('home');
