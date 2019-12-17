@@ -57,7 +57,7 @@ $factory->define(App\SahamInvestor::class, function (Faker $faker) {
 
 $factory->define(App\Persetujuan::class, function (Faker $faker) {
     return [
-        'investor' => $faker->randomDigit(),
+        'investor_id' => $faker->randomDigit(),
         'nm_agen_pemasaran' => $faker->text(),
         'tanda_tangan_agen_pemasaran' => $faker->randomElement(['0','1']),
         'tanggal_agen_pemasaran' => $faker->dateTimeThisCentury->format('Y:m:d'),
