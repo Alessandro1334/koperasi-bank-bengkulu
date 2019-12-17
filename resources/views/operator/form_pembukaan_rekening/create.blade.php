@@ -35,62 +35,62 @@
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Nama Lengkap sesuai dengan KTP/Paspor:</label>
+                                                    <label for="">Nama Lengkap sesuai dengan KTP/Paspor:</label>
                                                     <input type="text" name="nm_lengkap" class="form-control" placeholder="Masukan nama lengkap">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">No Register</label>
-                                                    <input type="text" name="no_register" class="form-control" id="exampleInputEmail1" placeholder="Masukan nomor register">
+                                                    <label for="">No Register</label>
+                                                    <input type="text" name="no_register" class="form-control" id="" placeholder="Masukan nomor register">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Jenis Kelamin</label>
+                                                    <label for="">Jenis Kelamin</label>
                                                     <select name="jenis_kelamin" class="form-control">
                                                         <option value="L">Laki-Laki</option>
                                                         <option value="P">Perempuan</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kode Nasabah</label>
-                                                    <input type="text" name="kode_nasabah" class="form-control" id="exampleInputEmail1" placeholder="Masukan Kode Nasabah">
+                                                    <label for="">Kode Nasabah</label>
+                                                    <input type="text" name="kode_nasabah" class="form-control" id="" placeholder="Masukan Kode Nasabah">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Staf Pemasaran</label>
+                                                    <label for="">Staf Pemasaran</label>
                                                     <select name="jenis_kelamin" class="form-control">
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Nomor KTP/Paspor</label>
-                                                    <input type="text" name="no_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor ktp">
+                                                    <label for="">Nomor KTP/Paspor</label>
+                                                    <input type="text" name="no_ktp" class="form-control" id="" placeholder="Masukan Nomor ktp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Tanggal Kadaluarsa KTP</label>
-                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Tanggal Kadaluarsa KTP</label>
+                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Nomor NPWP</label>
-                                                    <input type="text" name="no_npwp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Nomor NPWP</label>
+                                                    <input type="text" name="no_npwp" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Tanggal Registrasi NPWP</label>
-                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Tanggal Registrasi NPWP</label>
+                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Tempat Lahir</label>
-                                                    <input type="text" name="tempat_lahir" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Tempat Lahir</label>
+                                                    <input type="text" name="tempat_lahir" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Tanggal Lahir</label>
-                                                    <input type="date" name="tamggal_lahir" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Tanggal Lahir</label>
+                                                    <input type="date" name="tamggal_lahir" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Status Perkawinan</label>
+                                                    <label for="">Status Perkawinan</label>
                                                     <select name="status_pernikahan" id="" class="form-control">
                                                         <option value="menikah">Menikah</option>
                                                         <option value="belum_menikah">Belum Menikah</option>
@@ -99,8 +99,8 @@
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kewarganegaraan</label>
-                                                    <input type="text" name="kewarganegaraan" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Kewarganegaraan</label>
+                                                    <input type="text" name="kewarganegaraan" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
                                             </div>
                                         </div>
@@ -126,42 +126,42 @@
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Sesuai KTP/KITAS:</label>
+                                                    <label for="">Alamat Sesuai KTP/KITAS:</label>
                                                     <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Sesuai KTP</label>
-                                                    <input type="date" name="alamat_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Alamat Sesuai KTP</label>
+                                                    <input type="date" name="alamat_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">RT Sesuai KTP</label>
-                                                    <input type="" name="rt_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">RT Sesuai KTP</label>
+                                                    <input type="" name="rt_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kelurahan Sesuai KTP</label>
-                                                    <input type="date" name="alamat_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kelurahan Sesuai KTP</label>
+                                                    <input type="date" name="alamat_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kecamatan Sesuai KTP</label>
-                                                    <input type="date" name="kecamatan_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kecamatan Sesuai KTP</label>
+                                                    <input type="date" name="kecamatan_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kota Sesuai KTP</label>
-                                                    <input type="" name="kota_ktp" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Kota Sesuai KTP</label>
+                                                    <input type="" name="kota_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Provinsi Sesuai KTP</label>
-                                                    <input type="date" name="provinsi_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Provinsi Sesuai KTP</label>
+                                                    <input type="date" name="provinsi_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kode Pos Sesuai KTP</label>
-                                                    <input type="date" name="kode_pos_ktp" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kode Pos Sesuai KTP</label>
+                                                    <input type="date" name="kode_pos_ktp" class="form-control" id="">
                                                 </div>
                                             </div>
                                         </div>
@@ -191,48 +191,48 @@
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal:</label>
+                                                    <label for="">Alamat Tempat Tinggal:</label>
                                                     <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Alamat Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">RT Tempat Tinggal</label>
-                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">RT Tempat Tinggal</label>
+                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kelurahan Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kelurahan Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kecamatan Tempat Tinggal</label>
-                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kecamatan Tempat Tinggal</label>
+                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kota Tempat Tinggal</label>
-                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Kota Tempat Tinggal</label>
+                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Provinsi Tempat Tinggal</label>
-                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Provinsi Tempat Tinggal</label>
+                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kode Pos Tempat Tinggal</label>
-                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Kode Pos Tempat Tinggal</label>
+                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="backToAlamatKtp()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
-                                            <a onclick="agamaDanPendidikan()" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Selanjutnya</a>
+                                            <a onclick="agamaDanPendidikan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
                                         </div>
                                     </div>
                                 </li>
@@ -254,48 +254,388 @@
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal:</label>
-                                                    <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <label for="">Agama:</label>
+                                                    <select name="agama" id="" class="form-control">
+                                                        <option value="islam">Islam</option>
+                                                        <option value="protestan">Protestan</option>
+                                                        <option value="katolik">Katolik</option>
+                                                        <option value="hindu">Hindu</option>
+                                                        <option value="buddha">Budha</option>
+                                                        <option value="konghucu">Kong Hu Cu</option>
+                                                        <option value="lainnya">Lainnya</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">RT Tempat Tinggal</label>
-                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kelurahan Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="exampleInputEmail1">
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kecamatan Tempat Tinggal</label>
-                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="exampleInputEmail1">
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kota Tempat Tinggal</label>
-                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor npwp">
+                                                    <label for="">Pendidikan Terakhir</label>
+                                                    <select name="agama" id="" class="form-control">
+                                                        <option value="sma">SMA</option>
+                                                        <option value="d3">D3</option>
+                                                        <option value="s1">S1</option>
+                                                        <option value="s2">S2</option>
+                                                        <option value="s3">S3</option>
+                                                        <option value="lainnya">Lainnya</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Provinsi Tempat Tinggal</label>
-                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Nama Gadis Ibu Kandung</label>
+                                                    <input type="" name="nm_gadis_ibu_kandung" class="form-control" placeholder="Masukan nama gadis ibu kandung">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="exampleInputEmail1">Kode Pos Tempat Tinggal</label>
-                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="exampleInputEmail1">
+                                                    <label for="">Emergency Kontak</label>
+                                                    <input type="date" name="emergency_kontak" class="form-control" id="" placeholder="Masukan emergency kontak">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="backToAlamatTempatTinggal()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
-                                            <a onclick="agamaDanPendidikan()" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Selanjutnya</a>
+                                            <a onclick="korespondensi()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="korespondensi" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Korespondensi
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header">Silahkan Lengkapi Data Korespondensi di Bawah Ini</h3>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Surat Menyurat Sesuai KTP:</label>
+                                                    <input type="" name="alamat_surat_menyurat_ktp" class="form-control" placeholder="Masukan alamat surat menyurat sesuai ktp">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Surat Menyurat Tempat Tinggal</label>
+                                                    <input type="date" name="alamat_surat_menyurat_tempat_tinggal" class="form-control" id="" placeholder="Masukan alamat surat menyurat tempat tinggal">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Surat Menyurat Lainnya:</label>
+                                                    <input type="" name="alamat_surat_menyurat_lainnya" class="form-control" placeholder="Masukan alamat surat menyurat lainnya">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Pengiriman Konfirmasi Melalui Email</label>
+                                                    <input type="date" name="pengiriman_konfirmasi_melalui_email" class="form-control" id="" placeholder="Masukan kofirmasi melalui email">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Pengiriman Konfirmasi Melalui Fax</label>
+                                                    <input type="date" name="pengiriman_konfirmasi_melalui_fax" class="form-control" id="" placeholder="Masukan kofirmasi melalui fax">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToAgamaDanPendidikan()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="informasiPekerjaan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="informasi-pekerjaan" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Informasi Pekerjaan
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header">Silahkan Lengkapi Informasi Pekerjaan di Bawah Ini</h3>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Pekerjaan:</label>
+                                                    <input type="" name="pekerjaan" class="form-control" placeholder="Masukan pekerjaan investor">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nama Perusahaan</label>
+                                                    <input type="date" name="nm_perusahaan" class="form-control" id="" placeholder="Masukan nama perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Perusahaan:</label>
+                                                    <input type="" name="alamat_perusahaan" class="form-control" placeholder="Masukan Alamat Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Kota Perusahaan</label>
+                                                    <input type="date" name="kota_perusahaan" class="form-control" id="" placeholder="Masukan kota perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Provinsi Perusahaan</label>
+                                                    <input type="date" name="provinsi_perusahaan" class="form-control" id="" placeholder="Masukan provinsi perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Kode Pos Perusahaan</label>
+                                                    <input type="date" name="kode_pos_perusahaan" class="form-control" id="" placeholder="Masukan Kode Pos Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Telephone</label>
+                                                    <input type="date" name="telp_perusahaan" class="form-control" id="" placeholder="Masukan Telephone">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Email Perusahaan</label>
+                                                    <input type="date" name="email_perusahaan" class="form-control" id="" placeholder="Masukan Email Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fax Perusahaan</label>
+                                                    <input type="date" name="fax_perusahaan" class="form-control" id="" placeholder="Masukan Fax Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Jabatan</label>
+                                                    <input type="date" name="jabatan" class="form-control" id="" placeholder="Masukan Jabatan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Jenis Usaha</label>
+                                                    <input type="date" name="jenis_usaha" class="form-control" id="" placeholder="Masukan Jenis Usaha">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Lama Bekerja</label>
+                                                    <input type="date" name="lama_bekerja" class="form-control" id="" placeholder="Lama Bekerja">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Sumber Penghasilan Utama</label>
+                                                    <input type="date" name="sumber_penghasilan_utama" class="form-control" id="" placeholder="Masukan Sumber Penghasilan Utama">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nominal Penghasilan Lain</label>
+                                                    <input type="date" name="penghasilan_lain" class="form-control" id="" placeholder="Masukan Nominal Penghasilan Lain">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Sumber Penghasilan Lainnya</label>
+                                                    <input type="date" name="sumber_penghasilan_lain" class="form-control" id="" placeholder="Masukan Sumber Penghasilan Lainnya">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Sumber Dana Investasi</label>
+                                                    <input type="date" name="sumber_dana_investasi" class="form-control" id="" placeholder="Masukan Sumber Dana Investasi">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToKorespondensi()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="pasanganAtauOrangTua()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="pasangan-atau-orangtua" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Data Pasangan Atau Orang Tua
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header">Silahkan Lengkapi Data Pasangan Atau Orang Tua di Bawah Ini</h3>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nama Pasangan Atau Orang Tua:</label>
+                                                    <input type="" name="nm_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Hubungan</label>
+                                                    <select name="hubungan" id="" class="form-control">
+                                                        <option value="suami">Suami</option>
+                                                        <option value="istri">Istri</option>
+                                                        <option value="orang_tua">Orang Tua</option>
+                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="suami">Suami</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Tempat Tinggal:</label>
+                                                    <input type="" name="alamat_tempat_tinggal_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Alamat Tempat Tinggal">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Telephone Rumah</label>
+                                                    <input type="date" name="telp_rumah_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Telephone Rumah Pasangan / Orang Tua">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Ponsel</label>
+                                                    <input type="date" name="ponsel" class="form-control" id="" placeholder="Masukan Ponsel">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Pekerjaan</label>
+                                                    <input type="date" name="pekerjaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Pekerjaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Nama Perusahaan</label>
+                                                    <input type="date" name="nm_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Nama Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Alamat Perusahaan</label>
+                                                    <input type="date" name="alamat_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Alamat Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Kota Perusahaan</label>
+                                                    <input type="date" name="kota_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Kota Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Provinsi Perusahaan</label>
+                                                    <input type="date" name="provinsi_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Provinsi Perusahaan">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Kode Pos </label>
+                                                    <input type="date" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" class="form-control" id="" placeholder="Masukan Kode Pos ">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Telephone</label>
+                                                    <input type="date" name="telp_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Telephone">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Email</label>
+                                                    <input type="date" name="email_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Email">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fax</label>
+                                                    <input type="date" name="fax_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Fax">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Jabatan</label>
+                                                    <select name="jabatan_pasangan_atau_orang_tua" id="">
+                                                        <option value="komisaris">Komisaris</option>
+                                                        <option value="direksi">Direksi</option>
+                                                        <option value="manajer">Manajer</option>
+                                                        <option value="staf">Staf</option>
+                                                        <option value="pemilik">Pemilik</option>
+                                                        <option value="pengawas">Pengawas</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Jenis Usaha</label>
+                                                    <input type="date" name="jenis_usaha_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Jenis Usaha">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Lama Bekerja</label>
+                                                    <input type="date" name="lama_bekerja_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Lama Bekerja">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Pengasilan Kotor Per Tahun</label>
+                                                    <select name="penghasilan_kotor_per_tahun" id="" class="form-control">
+                                                        <option value="<10">< Rp 10 Juta</option>
+                                                        <option value=">10-50">> Rp 10 - 50 Juta</option>
+                                                        <option value=">10-100">> 10 - 100 Juta</option>
+                                                        <option value=">100-500">> 100 - 500 Juta</option>
+                                                        <option value=">500-1m">> 500 - 1 Miliar</option>
+                                                        <option value=">1m">> 1 Miliar</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Sumber Penghasilan utama</label>
+                                                    <select name="sumber_penghasilan_utama_pasangan_atau_orang_tua" id="" class="form-control">
+                                                        <option value="gaji"></option>
+                                                        <option value="hasil_usaha"></option>
+                                                        <option value="warisan"></option>
+                                                        <option value="dari_orang_tua/anak"></option>
+                                                        <option value="hibah"></option>
+                                                        <option value="dari_suami/istri"></option>
+                                                        <option value="hasil_investasi"></option>
+                                                        <option value="lainnya"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToPasanganAtauOrangTua()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="dokumenPendukung()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="timeline timeline-inverse" id="dokumen-pendukung" style="display:none;">
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        Dokumen Pendukung Individu
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-info-circle bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header">Silahkan Lengkapi Dokumen Pendukung di Bawah Ini</h3>
+                                        <div class="timeline-body col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fotokopi KTP/Paspor</label>
+                                                    <input type="radio" name="ktp" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="ktp" value="0" class="form-control"> Tidak Ada
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fotokopi NPWP</label>
+                                                    <input type="radio" name="npwp" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="npwp" value="0" class="form-control"> Tidak Ada
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fotokopi Form Profil Resiko Pemodal</label>
+                                                    <input type="radio" name="form_profil_resiko_pemodal" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="form_profil_resiko_pemodal" value="0" class="form-control"> Tidak Ada
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Fotokopi Bukti Setoran Investasi Awal</label>
+                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="0" class="form-control"> Tidak Ada
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Contoh Tanda Tangan</label>
+                                                    <input type="radio" name="contoh_tanda_tangan" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="contoh_tanda_tangan" value="0" class="form-control"> Tidak Ada
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Formulir FATCA - Perorangan (non mandatory)</label>
+                                                    <input type="radio" name="fatca" value="1" class="form-control"> Ada
+                                                    <input type="radio" name="fatca" value="0" class="form-control"> Tidak Ada
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a onclick="backToPekerjaan()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                                            <a onclick="Pernyataan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
                                         </div>
                                     </div>
                                 </li>
@@ -305,7 +645,7 @@
                 </div>
             </div>
             <!-- /.nav-tabs-custom -->
-            </div>
+        </div>
     </div>
 @endsection
 @push('scripts')
@@ -342,6 +682,82 @@
         function backToAlamatTempatTinggal(){
             $('#agamadanpendidikan').hide(500);
             $('#alamattempattinggal').show(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function korespondensi(){
+            $('#korespondensi').show(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToAgamaDanPendidikan(){
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').show(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function informasiPekerjaan(){
+            $('#informasi-pekerjaan').show(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToKorespondensi(){
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').show(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function pasanganAtauOrangTua(){
+            $('#pasangan-atau-orangtua').show(500);
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToPekerjaan(){
+            $('#pasangan-atau-orangtua').hide(500);
+            $('#informasi-pekerjaan').show(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function dokumenPendukung(){
+            $('#dokumen-pendukung').show(500);
+            $('#pasangan-atau-orangtua').hide(500);
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
+            $('#alamatktp').hide(500);
+            $('#informasi-pribadi').hide(500);
+        }
+
+        function backToPasanganAtauOrangTua(){
+            $('#dokumen-pendukung').hide(500);
+            $('#pasangan-atau-orangtua').show(500);
+            $('#informasi-pekerjaan').hide(500);
+            $('#korespondensi').hide(500);
+            $('#agamadanpendidikan').hide(500);
+            $('#alamattempattinggal').hide(500);
             $('#alamatktp').hide(500);
             $('#informasi-pribadi').hide(500);
         }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
 });
 
+
+//Route Operator
 Route::group(['prefix' => 'operator'], function(){
     Route::get('/', 'Operator\DashboardController@index')->name('operator.dashboard');
 });
@@ -29,6 +31,18 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
     Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
     Route::get('tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('operator.tambah_investor');
     Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('operator.tambah_investor_post');
+
+});
+
+// Route Manajer
+Route::group(['prefix' => 'manajer'], function(){
+    Route::get('/', 'Operator\DashboardController@index')->name('manajer.dashboard');
+});
+
+Route::group(['prefix' => 'manajer/manajemen_investor'], function(){
+    Route::get('/', 'Operator\FormPembukaanRekening@index')->name('manajer.form_pembukaan_rekening');
+    Route::get('tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('manajer.tambah_investor');
+    Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('manajer.tambah_investor_post');
 
 });
 
