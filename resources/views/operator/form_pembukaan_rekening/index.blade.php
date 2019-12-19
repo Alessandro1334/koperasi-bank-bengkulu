@@ -26,6 +26,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Berhasil :</strong> {{ message }}
+                        </div>
+                    @endif
                     <table class="table table-bordered table-hover" id="investor">
                         <thead>
                             <tr>

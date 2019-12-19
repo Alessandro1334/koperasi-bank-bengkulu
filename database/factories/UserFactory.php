@@ -147,7 +147,7 @@ $factory->define(App\DataPasanganOrangTuaInvestor::class, function (Faker $faker
         'jabatan_pasangan_atau_orang_tua' => $faker->randomElement(['komisaris','direksi','manajer','staf','pemilik','pengawas']),
         'jenis_usaha_pasangan_atau_orang_tua' => $faker->name(),
         'lama_bekerja_pasangan_atau_orang_tua' => $faker->randomNumber(3),
-        'penghasilan_kotor_per_tahub' => $faker->name(),
+        'penghasilan_kotor_per_tahun_pasangan_atau_orang_tua' => $faker->name(),
         'sumber_penghasilan_utama_pasangan_atau_orang_tua' => $faker->randomElement(['gaji','hasiL_usaha','warisan','dari_orang_tua/anak','dari_suami/istri','hasil_investasi','lainnya']),
     ];
 });
