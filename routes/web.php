@@ -30,6 +30,9 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
     Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
     Route::get('/tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('operator.tambah_investor');
     Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('operator.tambah_investor_post');
+    Route::get('/{id}/edit','Operator\FormPembukaanRekening@edit')->name('operator.tambah_investor_post.edit');
+    Route::patch('/{id}','Operator\FormPembukaanRekening@update')->name('operator.tambah_investor_update');
+    Route::delete('/{id}','Operator\FormPembukaanRekening@delete')->name('operator.tambah_investor_delete');
 });
 
 Route::group(['prefix' => 'operator/manajemen_pembelian_dan_pengalihan_saham'], function(){

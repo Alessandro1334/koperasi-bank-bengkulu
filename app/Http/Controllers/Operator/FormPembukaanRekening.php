@@ -13,7 +13,7 @@ use App\Persetujuan;
 class FormPembukaanRekening extends Controller
 {
     public function index(){
-        $investors = Investor::select('nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
+        $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
         // return $investors;
         return view('operator/form_pembukaan_rekening.index',compact('investors'));
     }
@@ -76,7 +76,6 @@ class FormPembukaanRekening extends Controller
         $last = Investor::latest()->select('id')->first();
 
         $pekerjaan = new PekerjaanInvestor;
-        $pekerjaan->investor_id = $last->id;
         $pekerjaan->pekerjaan = $request->pekerjaan;
         $pekerjaan->nm_perusahaan = $request->nm_perusahaan;
         $pekerjaan->alamat_perusahaan = $request->alamat_perusahaan;
@@ -98,7 +97,6 @@ class FormPembukaanRekening extends Controller
         $pekerjaan->save();
 
         $pasangan = new DataPasanganOrangTuaInvestor;
-        $pasangan->investor_id = $last->id;
         $pasangan->nm_pasangan_atau_orang_tua = $request->nm_pasangan_atau_orang_tua;
         $pasangan->hubungan = $request->hubungan;
         $pasangan->alamat_tempat_tinggal_pasangan_atau_orang_tua = $request->alamat_tempat_tinggal_pasangan_atau_orang_tua;
@@ -120,7 +118,6 @@ class FormPembukaanRekening extends Controller
         $pasangan->save();
 
         $dokumen = new DokumenPendukungInvestor;
-        $dokumen->investor_id = $last->id;
         $dokumen->ktp = $request->ktp;
         $dokumen->npwp = $request->npwp;
         $dokumen->form_profil_resiko_pemodal = $request->form_profil_resiko_pemodal;
@@ -130,15 +127,152 @@ class FormPembukaanRekening extends Controller
         $dokumen->save();
 
         $persetujuan = new Persetujuan;
-        $dokumen->investor_id = $last->id;
-        $dokumen->nm_agen_pemasaran = $request->nm_agen_pemasaran;
-        $dokumen->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
-        $dokumen->tanggal_agen_pemasaran = $request->tanggal_agen_pemasaran;
-        $dokumen->nm_pejabat_berwenang = $request->nm_pejabat_berwenang;
-        $dokumen->status_persetujuan = $request->status_persetujuan;
-        $dokumen->tanda_tangan_pejabat_berwenang = $request->tanda_tangan_pejabat_berwenang;
-        $dokumen->tanggal_pejabat_berwenang = $request->tanggal_pejabat_berwenang;
+        $persetujuan->nm_agen_pemasaran = $request->nm_agen_pemasaran;
+        $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
+        $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
+        $persetujuan->tanggal_agen_pemasaran = $request->tanggal_agen_pemasaran;
+        $persetujuan->nm_pejabat_berwenang = $request->nm_pejabat_berwenang;
+        $persetujuan->status_persetujuan = $request->status_persetujuan;
+        $persetujuan->tanda_tangan_pejabat_berwenang = $request->tanda_tangan_pejabat_berwenang;
+        $persetujuan->tanggal_pejabat_berwenang = $request->tanggal_pejabat_berwenang;
+        $persetujuan->save();
 
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Formulir Pembukaan Rekening Berhasil Ditambahkan !!']);
+    }
+
+    public function edit($id){
+        $investor = Investor::find($id);
+        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->first();
+        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
+        $persetujuan = Persetujuan::where('investor_id',$id)->first();
+        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
+
+        return view('operator/form_pembukaan_rekening.edit',compact('investor','dokumen','pasangan','persetujuan','pekerjaan'));
+    }
+
+    public function update(Request $request, $id){
+        $investor = Investor::where('id',$id)->update([
+            'no_register'   => $request->no_register,
+            'nm_investor'   => $request->nm_investor,
+            'kode_nasabah'  => $request->kode_nasabah,
+            'no_cif'    => $request->no_cif,
+            'staf_pemasaran_id' => $request->staf_pemasaran_id,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_ktp'    => $request->no_ktp,
+            'tgl_kadaluarsa_ktp'    => $request->tgl_kadaluarsa_ktp,
+            'no_npwp'   => $request->no_npwp,
+            'tgl_registrasi_npwp'   => $request->tgl_registrasi_npwp,
+            'tempat_lahir'  => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'status_perkawinan' => $request->status_perkawinan,
+            'kewarganegaraan'   => $request->kewarganegaraan,
+            'alamat_ktp'    => $request->alamat_ktp,
+            'rt_ktp'    => $request->rt_ktp,
+            'rw_ktp'    => $request->rw_ktp,
+            'kecamatan_ktp' => $request->kecamatan_ktp,
+            'kelurahan_ktp' => $request->kelurahan_ktp,
+            'kota_ktp'  => $request->kota_ktp,
+            'provinsi_ktp'  => $request->provinsi_ktp,
+            'kode_pos_ktp'  => $request->kode_pos_ktp,
+            'alamat_tempat_tinggal' => $request->alamat_tempat_tinggal,
+            'rt_tempat_tinggal' => $request->rt_tempat_tinggal,
+            'rw_tempat_tinggal' => $request->rw_tempat_tinggal,
+            'kecamatan_tempat_tinggal'  => $request->kecamatan_tempat_tinggal,
+            'kelurahan_tempat_tinggal'  => $request->kelurahan_tempat_tinggal,
+            'kota_tempat_tinggal'   => $request->kota_tempat_tinggal,
+            'provinsi_tempat_tinggal'   => $request->provinsi_tempat_tinggal,
+            'kode_pos_tempat_tinggal'   => $request->kode_pos_tempat_tinggal,
+            'telp_rumah'    => $request->telp_rumah,
+            'ponsel'    => $request->ponsel,
+            'lama_menempati'    => $request->lama_menempati,
+            'status_rumah_tinggal'  => $request->status_rumah_tinggal,
+            'agama' => $request->agama,
+            'pendidikan_terakhir'   => $request->pendidikan_terakhir,
+            'nm_gadis_ibu_kandung'  => $request->nm_gadis_ibu_kandung,
+            'emergency_kontak'  => $request->emergency_kontak,
+            'jumlah_tanggungan' => $request->jumlah_tanggungan,
+            'alamat_surat_menyurat_ktp' => $request->alamat_surat_menyurat_ktp,
+            'alamat_surat_menyurat_tempat_tinggal'  => $request->alamat_surat_menyurat_tempat_tinggal,
+            'alamat_surat_menyurat_lainnya' => $request->alamat_surat_menyurat_lainnya,
+            'pengiriman_konfirmasi_melalui_email'   => $request->pengiriman_konfirmasi_melalui_email,
+            'pengiriman_konfirmasi_melalui_fax' => $request->pengiriman_konfirmasi_melalui_fax,
+            'pengiriman_konfirmasi_melalui_alamat_surat_menyurat'   => $request->pengiriman_konfirmasi_melalui_alamat_surat_menyurat,
+            'tujuan_investasi'  => $request->tujuan_investasi,
+        ]);
+
+        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->update([
+            'pekerjaan' =>  $request->pekerjaan,
+            'nm_perusahaan' =>  $request->nm_perusahaan,
+            'alamat_perusahaan' =>  $request->alamat_perusahaan,
+            'kota_perusahaan'   =>  $request->kota_perusahaan,
+            'alamat_perusahaan' =>  $request->alamat_perusahaan,
+            'kota_perusahaan'   =>  $request->kota_perusahaan,
+            'provinsi_perusahaan'   =>  $request->provinsi_perusahaan,
+            'kode_pos_perusahaan'   =>  $request->kode_pos_perusahaan,
+            'telp_perusahaan'   =>  $request->telp_perusahaan,
+            'email_perusahaan'  =>  $request->email_perusahanm,
+            'fax_perusahaan'    =>  $request->fax_perusahaan,
+            'jabatan'   =>  $request->jabatan,
+            'jenis_usaha'   =>  $request->jenis_usaha,
+            'lama_bekerja'  =>  $request->lama_bekerja,
+            'sumber_penghasilan_utama'  =>  $request->sumber_penghasilan_utama,
+            'penghasilan_lain'  =>  $request->penghasilan_lain,
+            'sumber_penghasilan_lainnya'    =>  $request->sumber_penghasilan_lainnya,
+            'sumber_dana_investasi' =>  $request->sumber_dana_investasi,
+        ]);
+
+        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->update([
+            'nm_pasangan_atau_orang_tua' => $request->nm_pasangan_atau_orang_tua,
+            'hubungan' => $request->hubungan,
+            'alamat_tempat_tinggal_pasangan_atau_orang_tua' => $request->alamat_tempat_tinggal_pasangan_atau_orang_tua,
+            'telp_rumah_pasangan_atau_orang_tua' => $request->telp_rumah_pasangan_atau_orang_tua,
+            'ponsel_pasangan_atau_orang_tua' => $request->ponsel_pasangan_atau_orang_tua,
+            'pekerjaan_pasangan_atau_orang_tua' => $request->pekerjaan_pasangan_atau_orang_tua,
+            'alamat_perusahaan_pasangan_atau_orang_tua' => $request->alamat_perusahaan_pasangan_atau_orang_tua,
+            'kota_perusahaan_pasangan_atau_orang_tua' => $request->kota_perusahaan_pasangan_atau_orang_tua,
+            'provinsi_perusahaan_pasangan_atau_orang_tua' => $request->provinsi_perusahaan_pasangan_atau_orang_tua,
+            'kode_pos_perusahaan_pasangan_atau_orang_tua' => $request->kode_pos_perusahaan_pasangan_atau_orang_tua,
+            'telp_perusahaan_pasangan_atau_orang_tua' => $request->telp_perusahaan_pasangan_atau_orang_tua,
+            'email_perusahaan_pasangan_atau_orang_tua' => $request->email_perusahaan_pasangan_atau_orang_tua,
+            'fax_perusahaan_pasangan_atau_orang_tua' => $request->fax_perusahaan_pasangan_atau_orang_tua,
+            'jabatan_pasangan_atau_orang_tua' => $request->jabatan_pasangan_atau_orang_tua,
+            'jenis_usaha_pasangan_atau_orang_tua' => $request->jenis_usaha_pasangan_atau_orang_tua,
+            'lama_bekerja_pasangan_atau_orang_tua' => $request->lama_bekerja_pasangan_atau_orang_tua,
+            'penghasilan_kotor_per_tahun_pasangan_atau_orang_tua' => $request->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua,
+            'sumber_penghasilan_utama_pasangan_atau_orang_tua' => $request->sumber_penghasilan_utama_pasangan_atau_orang_tua,
+        ]);
+
+        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->update([
+            'ktp'   => $request->ktp,
+            'npwp'  => $request->npwp,
+            'form_profil_resiko_pemodal'    => $request->form_profil_resiko_pemodal,
+            'bukti_setoran_investasi_awal'  => $request->bukti_setoran_investasi_awal,
+            'contoh_tanda_tangan'   => $request->contoh_tanda_tangan,
+            'fatca' => $request->fatca,
+        ]);
+
+        $persetujuan = Persetujuan::where('investor_id',$id)->update([
+            'nm_agen_pemasaran' => $request->nm_agen_pemasaran,
+            'tanda_tangan_agen_pemasaran'   => $request->tanda_tangan_agen_pemasaran,
+            'tanda_tangan_agen_pemasaran'   => $request->tanda_tangan_agen_pemasaran,
+            'tanggal_agen_pemasaran'    => $request->tanggal_agen_pemasaran,
+            'nm_pejabat_berwenang'  => $request->nm_pejabat_berwenang,
+            'status_persetujuan'    => $request->status_persetujuan,
+            'tanda_tangan_pejabat_berwenang'    => $request->tanda_tangan_pejabat_berwenang,
+            'tanggal_pejabat_berwenang' => $request->tanggal_pejabat_berwenang,
+        ]);
+
+        return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Update !!']);
+
+    }
+
+    public function delete($id){
+        Investor::destroy($id);
+        PekerjaanInvestor::where('investor_id',$id)->delete();
+        DokumenPendukungInvestor::where('investor_id',$id)->delete();
+        DataPasanganOrangTuaInvestor::where('investor_id',$id)->delete();
+        Persetujuan::where('investor_id',$id)->delete();
+
+        return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Hapus !!']);
     }
 }

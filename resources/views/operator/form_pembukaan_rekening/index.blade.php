@@ -29,7 +29,7 @@
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>Berhasil :</strong> {{ message }}
+                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
                         </div>
                     @endif
                     <table class="table table-bordered table-hover" id="investor">
@@ -41,6 +41,7 @@
                                 <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,13 +49,21 @@
                                 $no=1;
                             @endphp
                             @foreach($investors as $investor)
-                                <tr>
+                                <t>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->kode_nasabah }} </td>
                                     <td> {{ $investor->no_cif }} </td>
                                     <td> {{ $investor->jenis_kelamin }} </td>
                                     <td> {{ $investor->no_ktp }} </td>
+                                    <td>
+                                        <a href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <form method="POST" action="{{ route('operator.tambah_investor_delete', [$investor->id]) }}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

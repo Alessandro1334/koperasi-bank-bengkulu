@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-wpforms"></i>&nbsp;Form Pembuka Rekening
+    <i class="fa fa-wpforms"></i>&nbsp;Form Edit Pembuka Rekening
 @endsection
 @section('user-login','Operator')
 @section('sidebar-menu')
@@ -12,11 +12,11 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                <li class="active"><a href="#timeline" data-toggle="tab"><i class="fa fa-user"></i>&nbsp;Form Tambah Data Investor Baru</a></li>
+                <li class="active"><a href="#timeline" data-toggle="tab"><i class="fa fa-edit"></i>&nbsp;Form Edit Data Investor ({{ $investor->nm_investor }})</a></li>
                 </ul>
                 <div class="tab-content">
-                    <form action="{{ route('operator.tambah_investor_post') }}" method="POST">
-                        {{ csrf_field() }}
+                    <form action="{{ route('operator.tambah_investor_update',[$investor->id]) }}" method="POST">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
                         <div class="active tab-pane" id="timeline">
                             <ul class="timeline timeline-inverse" id="informasi-pribadi">
                                 <li class="time-label">
@@ -30,83 +30,97 @@
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                                        <h3 class="timeline-header">Silahkan Lengkapi Informasi Pribadi Investor di Bawah Ini</h3>
+                                        <h3 class="timeline-header">Silahkan Edit Informasi Pribadi Investor di Bawah Ini</h3>
 
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Lengkap sesuai dengan KTP/Paspor:</label>
-                                                    <input type="text" name="nm_investor" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <input type="text" name="nm_investor" class="form-control" value="{{ $investor->nm_investor }}" placeholder="Masukan nama lengkap">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No Register</label>
-                                                    <input type="text" name="no_register" class="form-control" id="" placeholder="Masukan nomor register">
+                                                    <input type="text" name="no_register" class="form-control" value="{{ $investor->no_register }}" id="" placeholder="Masukan nomor register">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No CIF</label>
-                                                    <input type="text" name="no_cif" class="form-control" id="" placeholder="Masukan nomor cif">
+                                                    <input type="text" name="no_cif" class="form-control" value="{{ $investor->no_cif }}" id="" placeholder="Masukan nomor cif">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin</label>
                                                     <select name="jenis_kelamin" class="form-control">
-                                                        <option value="L">Laki-Laki</option>
-                                                        <option value="P">Perempuan</option>
+                                                        <option value="L"
+                                                            @if($investor->jenis_kelamin == "L") selected @endif
+                                                        >Laki-Laki</option>
+                                                        <option value="P"
+                                                            @if($investor->jenis_kelamin == "L") selected @endif
+                                                        >Perempuan</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Nasabah</label>
-                                                    <input type="text" name="kode_nasabah" class="form-control" id="" placeholder="Masukan Kode Nasabah">
+                                                    <input type="text" name="kode_nasabah" class="form-control" value="{{ $investor->kode_nasabah }}" id="" placeholder="Masukan Kode Nasabah">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Staf Pemasaran</label>
-                                                    <select name="jenis_kelamin" class="form-control">
+                                                    <select name="staf_pemasaran" value="{{ $investor->staf_pemasaran }}" class="form-control">
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nomor KTP/Paspor</label>
-                                                    <input type="text" name="no_ktp" class="form-control" id="" placeholder="Masukan Nomor ktp">
+                                                    <input type="text" name="no_ktp" class="form-control" value="{{ $investor->no_ktp }}" id="" placeholder="Masukan Nomor ktp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa KTP</label>
-                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="">
+                                                    <input type="date" name="tgl_kadaluarsa_ktp" value="{{ $investor->tgl_kadaluarsa_ktp }}" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nomor NPWP</label>
-                                                    <input type="text" name="no_npwp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="no_npwp" class="form-control" value="{{ $investor->no_npwp }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Registrasi NPWP</label>
-                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="">
+                                                    <input type="date" name="tgl_registrasi_npwp" value="{{ $investor->tgl_registrasi_npwp }}" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tempat Lahir</label>
-                                                    <input type="text" name="tempat_lahir" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="tempat_lahir" class="form-control" value="{{ $investor->tempat_lahir }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Lahir</label>
-                                                    <input type="date" name="tanggal_lahir" class="form-control" id="">
+                                                    <input type="date" name="tanggal_lahir" value="{{ $investor->tanggal_lahir }}" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Status Perkawinan</label>
                                                     <select name="status_perkawinan" id="" class="form-control">
-                                                        <option value="menikah">Menikah</option>
-                                                        <option value="belum_menikah">Belum Menikah</option>
-                                                        <option value="janda/duda">Janda / Duda</option>
+                                                        <option value="menikah"
+                                                            @if($investor->status_perkawinan == "menikah") selected @endif
+                                                        >Menikah</option>
+                                                        <option value="belum_menikah"
+                                                            @if($investor->status_perkawinan == "belum_menikah") selected @endif
+                                                        >Belum Menikah</option>
+                                                        <option value="janda/duda"
+                                                            @if($investor->status_perkawinan == "janda/duda") selected @endif
+                                                        >Janda / Duda</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kewarganegaraan</label>
                                                     <select name="kewarganegaraan" id="" class="form-control">
-                                                        <option value="wni">Warga Negara Indonesia</option>
-                                                        <option value="wna">Warga Negara Asing</option>
+                                                        <option value="wni"
+                                                            @if($investor->jenis_kelamin == "wni") selected @endif
+                                                        >Warga Negara Indonesia</option>
+                                                        <option value="wna"
+                                                            @if($investor->jenis_kelamin == "wna") selected @endif
+                                                        >Warga Negara Asing</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -126,51 +140,48 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-info-circle bg-blue"></i>
-
                                     <div class="timeline-item">
-
                                         <h3 class="timeline-header">Silahkan Lengkapi Data Alamat KTP Investor di Bawah Ini</h3>
-
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Sesuai KTP/KITAS:</label>
-                                                    <input type="text" name="alamat_ktp" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <input type="text" name="alamat_ktp" class="form-control" value="{{ $investor->alamat_ktp }}" placeholder="Masukan nama lengkap">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RT Sesuai KTP</label>
-                                                    <input type="text" name="rt_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="rt_ktp" class="form-control" value="{{ $investor->rt_ktp }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RW Sesuai KTP</label>
-                                                    <input type="text" name="rw_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="rw_ktp" class="form-control" value="{{ $investor->rw_ktp }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kelurahan Sesuai KTP</label>
-                                                    <input type="text" name="kelurahan_ktp" class="form-control" id="">
+                                                    <input type="text" name="kelurahan_ktp" class="form-control" value="{{ $investor->kelurahan_ktp }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kecamatan Sesuai KTP</label>
-                                                    <input type="text" name="kecamatan_ktp" class="form-control" id="">
+                                                    <input type="text" name="kecamatan_ktp" class="form-control" value="{{ $investor->kecamatan_ktp }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Sesuai KTP</label>
-                                                    <input type="text" name="kota_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="kota_ktp" class="form-control" value="{{ $investor->kota_ktp }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Sesuai KTP</label>
-                                                    <input type="text" name="provinsi_ktp" class="form-control" id="">
+                                                    <input type="text" name="provinsi_ktp" class="form-control" value="{{ $investor->provinsi_ktp }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos Sesuai KTP</label>
-                                                    <input type="text" name="kode_pos_ktp" class="form-control" id="">
+                                                    <input type="text" name="kode_pos_ktp" class="form-control" value="{{ $investor->kode_pos_ktp }}" id="">
                                                 </div>
                                             </div>
                                         </div>
@@ -201,65 +212,71 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Tempat Tinggal:</label>
-                                                    <input type="text" name="alamat_tempat_tinggal" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <input type="text" name="alamat_tempat_tinggal" class="form-control" value="{{ $investor->alamat_tempat_tinggal }}" placeholder="Masukan nama lengkap">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RT Tempat Tinggal</label>
-                                                    <input type="text" name="rt_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="rt_tempat_tinggal" class="form-control" value="{{ $investor->rt_tempat_tinggal }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RW Tempat Tinggal</label>
-                                                    <input type="text" name="rw_tempat_tinggal" class="form-control" placeholder="Masukan alamat tempat tinggal">
+                                                    <input type="text" name="rw_tempat_tinggal" class="form-control" value="{{ $investor->rw_tempat_tinggal }}" placeholder="Masukan alamat tempat tinggal">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kelurahan Tempat Tinggal</label>
-                                                    <input type="text" name="kelurahan_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kelurahan_tempat_tinggal" class="form-control" value="{{ $investor->kelurahan_tempat_tinggal }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kecamatan Tempat Tinggal</label>
-                                                    <input type="text" name="kecamatan_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kecamatan_tempat_tinggal" class="form-control" value="{{ $investor->kecamatan_tempat_tinggal }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Tempat Tinggal</label>
-                                                    <input type="text" name="kota_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="kota_tempat_tinggal" class="form-control" value="{{ $investor->kota_tempat_tinggal }}" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Tempat Tinggal</label>
-                                                    <input type="text" name="provinsi_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="provinsi_tempat_tinggal" class="form-control" value="{{ $investor->provinsi_tempat_tinggal }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos Tempat Tinggal</label>
-                                                    <input type="text" name="kode_pos_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kode_pos_tempat_tinggal" class="form-control" value="{{ $investor->kode_pos_tempat_tinggal }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telp. Rumah</label>
-                                                    <input type="text" name="telp_rumah" class="form-control" id="">
+                                                    <input type="text" name="telp_rumah" class="form-control" value="{{ $investor->telp_rumah }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Ponsel</label>
-                                                    <input type="text" name="ponsel" class="form-control" id="">
+                                                    <input type="text" name="ponsel" class="form-control" value="{{ $investor->ponsel }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Lama Menempati</label>
-                                                    <input type="text" name="lama_menempati" class="form-control" id="">
+                                                    <input type="text" name="lama_menempati" class="form-control" value="{{ $investor->lama_menempati }}" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Status Rumah Tinggal:</label>
                                                     <select name="status_rumah_tinggal" id="" class="form-control">
-                                                        <option value="milik_sendiri">Milik Pribadi</option>
-                                                        <option value="sewa">Sewa</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="milik_sendiri"
+                                                            @if($investor->status_rumah_tinggal == "milik_sendiri") selected @endif
+                                                        >Milik Pribadi</option>
+                                                        <option value="sewa"
+                                                            @if($investor->status_rumah_tinggal == "sewa") selected @endif
+                                                        >Sewa</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->status_rumah_tinggal == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -290,35 +307,59 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="">Agama:</label>
                                                     <select name="agama" id="" class="form-control">
-                                                        <option value="islam">Islam</option>
-                                                        <option value="protestan">Protestan</option>
-                                                        <option value="katolik">Katolik</option>
-                                                        <option value="hindu">Hindu</option>
-                                                        <option value="buddha">Budha</option>
-                                                        <option value="konghucu">Kong Hu Cu</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="islam"
+                                                            @if($investor->agama == "islam") selected @endif
+                                                        >Islam</option>
+                                                        <option value="protestan"
+                                                            @if($investor->agama == "protestan") selected @endif
+                                                        >Protestan</option>
+                                                        <option value="katolik"
+                                                            @if($investor->agama == "katolik") selected @endif
+                                                        >Katolik</option>
+                                                        <option value="hindu"
+                                                            @if($investor->agama == "hindu") selected @endif
+                                                        >Hindu</option>
+                                                        <option value="buddha"
+                                                            @if($investor->agama == "buddha") selected @endif
+                                                        >Budha</option>
+                                                        <option value="konghucu"
+                                                            @if($investor->agama == "konghucu") selected @endif
+                                                        >Kong Hu Cu</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->agama == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pendidikan Terakhir</label>
                                                     <select name="pendidikan_terakhir" id="" class="form-control">
-                                                        <option value="sma">SMA</option>
-                                                        <option value="d3">D3</option>
-                                                        <option value="s1">S1</option>
-                                                        <option value="s2">S2</option>
-                                                        <option value="s3">S3</option>
+                                                        <option value="sma"
+                                                            @if($investor->pendidikan_terakhir == "sma") selected @endif
+                                                        >SMA</option>
+                                                        <option value="d3"
+                                                            @if($investor->pendidikan_terakhir == "d3") selected @endif
+                                                        >D3</option>
+                                                        <option value="s1"
+                                                            @if($investor->pendidikan_terakhir == "s1") selected @endif
+                                                        >S1</option>
+                                                        <option value="s2"
+                                                            @if($investor->pendidikan_terakhir == "s2") selected @endif
+                                                        >S2</option>
+                                                        <option value="s3"
+                                                            @if($investor->pendidikan_terakhir == "s3") selected @endif
+                                                        >S3</option>
                                                         <option value="lainnya">Lainnya</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Gadis Ibu Kandung</label>
-                                                    <input type="text" name="nm_gadis_ibu_kandung" class="form-control" placeholder="Masukan nama gadis ibu kandung">
+                                                    <input type="text" name="nm_gadis_ibu_kandung" class="form-control" value="{{ $investor->nm_gadis_ibu_kandung }}" placeholder="Masukan nama gadis ibu kandung">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Emergency Kontak</label>
-                                                    <input type="text" name="emergency_kontak" class="form-control" id="" placeholder="Masukan emergency kontak">
+                                                    <input type="text" name="emergency_kontak" class="form-control" value="{{ $investor->emergency_kontak }}" id="" placeholder="Masukan emergency kontak">
                                                 </div>
                                             </div>
                                         </div>
@@ -345,42 +386,52 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Surat Menyurat Sesuai KTP:</label>
-                                                    <input type="text" name="alamat_surat_menyurat_ktp" class="form-control" placeholder="Masukan alamat surat menyurat sesuai ktp">
+                                                    <input type="text" name="alamat_surat_menyurat_ktp" class="form-control" value="{{ $investor->alamat_surat_menyurat_ktp }}" placeholder="Masukan alamat surat menyurat sesuai ktp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Surat Menyurat Tempat Tinggal</label>
-                                                    <input type="text" name="alamat_surat_menyurat_tempat_tinggal" class="form-control" id="" placeholder="Masukan alamat surat menyurat tempat tinggal">
+                                                    <input type="text" name="alamat_surat_menyurat_tempat_tinggal" class="form-control" value="{{ $investor->alamat_surat_menyurat_tempat_tinggal }}" id="" placeholder="Masukan alamat surat menyurat tempat tinggal">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Surat Menyurat Lainnya:</label>
-                                                    <input type="text" name="alamat_surat_menyurat_lainnya" class="form-control" placeholder="Masukan alamat surat menyurat lainnya">
+                                                    <input type="text" name="alamat_surat_menyurat_lainnya" class="form-control" value="{{ $investor->alamat_surat_menyurat_lainnya }}" placeholder="Masukan alamat surat menyurat lainnya">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pengiriman Konfirmasi Melalui Email</label>
-                                                    <input type="text" name="pengiriman_konfirmasi_melalui_email" class="form-control" id="" placeholder="Masukan kofirmasi melalui email">
+                                                    <input type="text" name="pengiriman_konfirmasi_melalui_email" class="form-control" value="{{ $investor->pengiriman_konfirmasi_melalui_email }}" id="" placeholder="Masukan kofirmasi melalui email">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pengiriman Konfirmasi Melalui Fax</label>
-                                                    <input type="text" name="pengiriman_konfirmasi_melalui_fax" class="form-control" id="" placeholder="Masukan kofirmasi melalui fax">
+                                                    <input type="text" name="pengiriman_konfirmasi_melalui_fax" class="form-control" value="{{ $investor->pengiriman_konfirmasi_melalui_fax }}" id="" placeholder="Masukan kofirmasi melalui fax">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Konfirmasi Melalui Alamat Surat Menyurat</label>
-                                                    <input type="text" name="pengiriman_konfirmasi_melalui_alamat_surat_menyurat" class="form-control" id="" placeholder="Masukan kofirmasi melalui fax">
+                                                    <input type="text" name="pengiriman_konfirmasi_melalui_alamat_surat_menyurat" class="form-control" value="{{ $investor->pengiriman_konfirmasi_melalui_alamat_surat_menyurat }}" id="" placeholder="Masukan kofirmasi melalui fax">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tujuan Investarsi</label>
                                                     <select name="tujuan_investasi" id="" class="form-control">
-                                                        <option value="kenaikan_harga">Mendapatkan Kenaikan Harga</option>
-                                                        <option value="penghasilan">Mendapatkan Penghasilan</option>
-                                                        <option value="investasi">Investasi</option>
-                                                        <option value="spekulasi">Spekulasi</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="kenaikan_harga"
+                                                            @if($investor->tujuan_investasi == "kenaikan_harga") selected @endif
+                                                        >Mendapatkan Kenaikan Harga</option>
+                                                        <option value="penghasilan"
+                                                            @if($investor->tujuan_investasi == "penghasilan") selected @endif
+                                                        >Mendapatkan Penghasilan</option>
+                                                        <option value="investasi"
+                                                            @if($investor->tujuan_investasi == "investasi") selected @endif
+                                                        >Investasi</option>
+                                                        <option value="spekulasi"
+                                                            @if($investor->tujuan_investasi == "spekulasi") selected @endif
+                                                        >Spekulasi</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->tujuan_investasi == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -408,113 +459,173 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pekerjaan:</label>
-                                                    <input type="text" name="pekerjaan" class="form-control" placeholder="Masukan pekerjaan investor">
+                                                    <input type="text" name="pekerjaan" class="form-control" value="{{ $pekerjaan->pekerjaan }}" placeholder="Masukan pekerjaan investor">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Perusahaan</label>
-                                                    <input type="text" name="nm_perusahaan" class="form-control" id="" placeholder="Masukan nama perusahaan">
+                                                    <input type="text" name="nm_perusahaan" class="form-control" value="{{ $pekerjaan->nm_perusahaan }}" id="" placeholder="Masukan nama perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Perusahaan:</label>
-                                                    <input type="text" name="alamat_perusahaan" class="form-control" placeholder="Masukan Alamat Perusahaan">
+                                                    <input type="text" name="alamat_perusahaan" class="form-control" value="{{ $pekerjaan->alamat_perusahaan }}" placeholder="Masukan Alamat Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Perusahaan</label>
-                                                    <input type="text" name="kota_perusahaan" class="form-control" id="" placeholder="Masukan kota perusahaan">
+                                                    <input type="text" name="kota_perusahaan" class="form-control" value="{{ $pekerjaan->kota_perusahaan }}" id="" placeholder="Masukan kota perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Perusahaan</label>
-                                                    <input type="text" name="provinsi_perusahaan" class="form-control" id="" placeholder="Masukan provinsi perusahaan">
+                                                    <input type="text" name="provinsi_perusahaan" class="form-control" value="{{ $pekerjaan->provinsi_perusahaan }}" id="" placeholder="Masukan provinsi perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos Perusahaan</label>
-                                                    <input type="text" name="kode_pos_perusahaan" class="form-control" id="" placeholder="Masukan Kode Pos Perusahaan">
+                                                    <input type="text" name="kode_pos_perusahaan" class="form-control" value="{{ $pekerjaan->kode_pos_perusahaan }}" id="" placeholder="Masukan Kode Pos Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telephone</label>
-                                                    <input type="text" name="telp_perusahaan" class="form-control" id="" placeholder="Masukan Telephone">
+                                                    <input type="text" name="telp_perusahaan" class="form-control" value="{{ $pekerjaan->telp_perusahaan }}" id="" placeholder="Masukan Telephone">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Email Perusahaan</label>
-                                                    <input type="text" name="email_perusahaan" class="form-control" id="" placeholder="Masukan Email Perusahaan">
+                                                    <input type="text" name="email_perusahaan" class="form-control" value="{{ $pekerjaan->email_perusahaan }}" id="" placeholder="Masukan Email Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fax Perusahaan</label>
-                                                    <input type="text" name="fax_perusahaan" class="form-control" id="" placeholder="Masukan Fax Perusahaan">
+                                                    <input type="text" name="fax_perusahaan" class="form-control" value="{{ $pekerjaan->fax_perusahaan }}" id="" placeholder="Masukan Fax Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jabatan</label>
                                                     <select name="jabatan" id="" class="form-control">
-                                                        <option value="komisaris">Komisaris</option>
-                                                        <option value="direksi">Direksi</option>
-                                                        <option value="manajer">Manajer</option>
-                                                        <option value="staf">Staf</option>
-                                                        <option value="pemilik">Pemilik</option>
-                                                        <option value="pengawas">Pengawas</option>
+                                                        <option value="komisaris"
+                                                            @if($investor->jabatan == "komisaris") selected @endif
+                                                        >Komisaris</option>
+                                                        <option value="direksi"
+                                                            @if($investor->jabatan == "direksi") selected @endif
+                                                        >Direksi</option>
+                                                        <option value="manajer"
+                                                            @if($investor->jabatan == "manajer") selected @endif
+                                                        >Manajer</option>
+                                                        <option value="staf"
+                                                            @if($investor->jabatan == "staf") selected @endif
+                                                        >Staf</option>
+                                                        <option value="pemilik"
+                                                            @if($investor->jabatan == "pemilik") selected @endif
+                                                        >Pemilik</option>
+                                                        <option value="pengawas"
+                                                            @if($investor->jabatan == "pengawas") selected @endif
+                                                        >Pengawas</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Usaha</label>
-                                                    <input type="text" name="jenis_usaha" class="form-control" id="" placeholder="Masukan Jenis Usaha">
+                                                    <input type="text" name="jenis_usaha" class="form-control" id="" value="{{ $pekerjaan->jenis_usaha }}" placeholder="Masukan Jenis Usaha">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Lama Bekerja</label>
-                                                    <input type="text" name="lama_bekerja" class="form-control" id="" placeholder="Lama Bekerja">
+                                                    <input type="text" name="lama_bekerja" class="form-control" id="" value="{{ $pekerjaan->lama_bekerja }}" placeholder="Lama Bekerja">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Sumber Penghasilan Utama</label>
                                                     <select name="sumber_penghasilan_utama" class="form-control" id="">
-                                                        <option value="gaji">Gaji</option>
-                                                        <option value="hasil_usaha">Hasil Usaha</option>
-                                                        <option value="warisan">Warisan</option>
-                                                        <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                        <option value="hibah">Hibah</option>
-                                                        <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                        <option value="hasil_investasi">Hasil Investasi</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="gaji"
+                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                        >Gaji</option>
+                                                        <option value="hasil_usaha"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                        >Hasil Usaha</option>
+                                                        <option value="warisan"
+                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                        >Warisan</option>
+                                                        <option value="dari_orang_tua/anak"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                        >Dari Orang Tua/Anak</option>
+                                                        <option value="hibah"
+                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                        >Hibah</option>
+                                                        <option value="dari_suami/istri"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                        >Dari Suami/Istri</option>
+                                                        <option value="hasil_investasi"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                        >Hasil Investasi</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nominal Penghasilan Lain</label>
-                                                    <input type="text" name="penghasilan_lain" class="form-control" id="" placeholder="Masukan Nominal Penghasilan Lain">
+                                                    <input type="text" name="penghasilan_lain" class="form-control" id="" value="{{ $pekerjaan->penghasilan_lain }}" placeholder="Masukan Nominal Penghasilan Lain">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Sumber Penghasilan Lainnya</label>
                                                     <select name="sumber_penghasilan_lain" class="form-control" id="">
-                                                        <option value="gaji">Gaji</option>
-                                                        <option value="hasil_usaha">Hasil Usaha</option>
-                                                        <option value="warisan">Warisan</option>
-                                                        <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                        <option value="hibah">Hibah</option>
-                                                        <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                        <option value="hasil_investasi">Hasil Investasi</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="gaji"
+                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                        >Gaji</option>
+                                                        <option value="hasil_usaha"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                        >Hasil Usaha</option>
+                                                        <option value="warisan"
+                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                        >Warisan</option>
+                                                        <option value="dari_orang_tua/anak"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                        >Dari Orang Tua/Anak</option>
+                                                        <option value="hibah"
+                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                        >Hibah</option>
+                                                        <option value="dari_suami/istri"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                        >Dari Suami/Istri</option>
+                                                        <option value="hasil_investasi"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                        >Hasil Investasi</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Sumber Dana Investasi</label>
                                                     <select name="sumber_dana_investasi" class="form-control" id="">
-                                                        <option value="gaji">Gaji</option>
-                                                        <option value="hasil_usaha">Hasil Usaha</option>
-                                                        <option value="warisan">Warisan</option>
-                                                        <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                        <option value="hibah">Hibah</option>
-                                                        <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                        <option value="hasil_investasi">Hasil Investasi</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="gaji"
+                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                        >Gaji</option>
+                                                        <option value="hasil_usaha"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                        >Hasil Usaha</option>
+                                                        <option value="warisan"
+                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                        >Warisan</option>
+                                                        <option value="dari_orang_tua/anak"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                        >Dari Orang Tua/Anak</option>
+                                                        <option value="hibah"
+                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                        >Hibah</option>
+                                                        <option value="dari_suami/istri"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                        >Dari Suami/Istri</option>
+                                                        <option value="hasil_investasi"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                        >Hasil Investasi</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -542,77 +653,84 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Pasangan Atau Orang Tua:</label>
-                                                    <input type="text" name="nm_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua">
+                                                    <input type="text" name="nm_pasangan_atau_orang_tua" value="{{ $pasangan->nm_pasangan_atau_orang_tua }}" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Hubungan</label>
                                                     <select name="hubungan" id="" class="form-control">
-                                                        <option value="suami">Suami</option>
-                                                        <option value="istri">Istri</option>
-                                                        <option value="orang_tua">Orang Tua</option>
-                                                        <option value="lainnya">Lainnya</option>
-                                                        <option value="suami">Suami</option>
+                                                        <option value="suami"
+                                                            @if($investor->hubungan == "suami") selected @endif
+                                                        >Suami</option>
+                                                        <option value="istri"
+                                                            @if($investor->hubungan == "istri") selected @endif
+                                                        >Istri</option>
+                                                        <option value="orang_tua"
+                                                            @if($investor->hubungan == "orang_tua") selected @endif
+                                                        >Orang Tua</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->hubungan == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Tempat Tinggal:</label>
-                                                    <input type="text" name="alamat_tempat_tinggal_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Alamat Tempat Tinggal">
+                                                    <input type="text" name="alamat_tempat_tinggal_pasangan_atau_orang_tua" value="{{ $pasangan->alamat_tempat_tinggal_pasangan_atau_orang_tua }}" class="form-control" placeholder="Masukan Alamat Tempat Tinggal">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telephone Rumah</label>
-                                                    <input type="text" name="telp_rumah_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Telephone Rumah Pasangan / Orang Tua">
+                                                    <input type="text" name="telp_rumah_pasangan_atau_orang_tua" value="{{ $pasangan->telp_rumah_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Telephone Rumah Pasangan / Orang Tua">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Ponsel</label>
-                                                    <input type="text" name="ponsel" class="form-control" id="" placeholder="Masukan Ponsel">
+                                                    <input type="text" name="ponsel" value="{{ $pasangan->ponsel }}" class="form-control" id="" placeholder="Masukan Ponsel">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pekerjaan</label>
-                                                    <input type="text" name="pekerjaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Pekerjaan">
+                                                    <input type="text" name="pekerjaan_pasangan_atau_orang_tua" value="{{ $pasangan->pekerjaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Pekerjaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Perusahaan</label>
-                                                    <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Nama Perusahaan">
+                                                    <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->nm_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Nama Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Perusahaan</label>
-                                                    <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Alamat Perusahaan">
+                                                    <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->alamat_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Alamat Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Perusahaan</label>
-                                                    <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Kota Perusahaan">
+                                                    <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->kota_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Kota Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Perusahaan</label>
-                                                    <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Provinsi Perusahaan">
+                                                    <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->provinsi_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Provinsi Perusahaan">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos </label>
-                                                    <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" class="form-control" id="" placeholder="Masukan Kode Pos ">
+                                                    <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" value="{{ $pasangan->kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha }}" class="form-control" id="" placeholder="Masukan Kode Pos ">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telephone</label>
-                                                    <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Telephone">
+                                                    <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->telp_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Telephone">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Email</label>
-                                                    <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Email">
+                                                    <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->email_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Email">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fax</label>
-                                                    <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Fax">
+                                                    <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->fax_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Fax">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -629,37 +747,65 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Usaha</label>
-                                                    <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Jenis Usaha">
+                                                    <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" value="{{ $pasangan->jenis_usaha_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Jenis Usaha">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Lama Bekerja</label>
-                                                    <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Lama Bekerja">
+                                                    <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" value="{{ $pasangan->lama_bekerja_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Lama Bekerja">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Pengasilan Kotor Per Tahun</label>
                                                     <select name="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" id="" class="form-control">
-                                                        <option value="<10">< Rp 10 Juta</option>
-                                                        <option value=">10-50">> Rp 10 - 50 Juta</option>
-                                                        <option value=">10-100">> 10 - 100 Juta</option>
-                                                        <option value=">100-500">> 100 - 500 Juta</option>
-                                                        <option value=">500-1m">> 500 - 1 Miliar</option>
-                                                        <option value=">1m">> 1 Miliar</option>
+                                                        <option value="<10"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == "<10") selected @endif
+                                                        >< Rp 10 Juta</option>
+                                                        <option value=">10-50"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-50") selected @endif
+                                                            >> Rp 10 - 50 Juta</option>
+                                                        <option value=">10-100"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-100") selected @endif
+                                                            >> 10 - 100 Juta</option>
+                                                        <option value=">100-500"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">100-500") selected @endif
+                                                            >> 100 - 500 Juta</option>
+                                                        <option value=">500-1m"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">500-1m") selected @endif
+                                                            >> 500 - 1 Miliar</option>
+                                                        <option value=">1m"
+                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">1m") selected @endif
+                                                            >> 1 Miliar</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Sumber Penghasilan utama</label>
                                                     <select name="sumber_penghasilan_utama_pasangan_atau_orang_tua" id="" class="form-control">
-                                                        <option value="gaji">Gaji</option>
-                                                        <option value="hasil_usaha">Hasil Usaha</option>
-                                                        <option value="warisan">Warisan</option>
-                                                        <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                        <option value="hibah">Hibah</option>
-                                                        <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                        <option value="hasil_investasi">Hasil Investasi</option>
-                                                        <option value="lainnya">Lainnya</option>
+                                                        <option value="gaji"
+                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                        >Gaji</option>
+                                                        <option value="hasil_usaha"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                        >Hasil Usaha</option>
+                                                        <option value="warisan"
+                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                        >Warisan</option>
+                                                        <option value="dari_orang_tua/anak"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                        >Dari Orang Tua/Anak</option>
+                                                        <option value="hibah"
+                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                        >Hibah</option>
+                                                        <option value="dari_suami/istri"
+                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                        >Dari Suami/Istri</option>
+                                                        <option value="hasil_investasi"
+                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                        >Hasil Investasi</option>
+                                                        <option value="lainnya"
+                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                        >Lainnya</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -686,38 +832,38 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fotokopi KTP/Paspor :</label> <br>
-                                                    <input type="radio" name="ktp" value="1"> Ada
-                                                    <input type="radio" name="ktp" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="ktp" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="ktp" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fotokopi NPWP :</label> <br>
-                                                    <input type="radio" name="npwp" value="1"> Ada
-                                                    <input type="radio" name="npwp" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="npwp" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="npwp" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fotokopi Form Profil Resiko Pemodal :</label> <br>
-                                                    <input type="radio" name="form_profil_resiko_pemodal" value="1"> Ada
-                                                    <input type="radio" name="form_profil_resiko_pemodal" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="form_profil_resiko_pemodal" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="form_profil_resiko_pemodal" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Fotokopi Bukti Setoran Investasi Awal :</label> <br>
-                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="1"> Ada
-                                                    <input type="radio" name="bukti_setoran_investasi_awal" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="bukti_setoran_investasi_awal" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="bukti_setoran_investasi_awal" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Contoh Tanda Tangan :</label> <br>
-                                                    <input type="radio" name="contoh_tanda_tangan" value="1"> Ada
-                                                    <input type="radio" name="contoh_tanda_tangan" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="contoh_tanda_tangan" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="contoh_tanda_tangan" value="0"> Tidak Ada
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Formulir FATCA - Perorangan (non mandatory) :</label> <br>
-                                                    <input type="radio" name="fatca" value="1"> Ada
-                                                    <input type="radio" name="fatca" value="0"> Tidak Ada
+                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="fatca" value="1"> Ada
+                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="fatca" value="0"> Tidak Ada
                                                 </div>
                                             </div>
                                         </div>
@@ -743,46 +889,58 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Agen Pemasaran :</label> <br>
-                                                    <input type="text" name="nm_agen_pemasaran" class="form-control" id="" placeholder="Masukan Agen Pemasaran">
+                                                    <input type="text" name="nm_agen_pemasaran" value="{{ $persetujuan->nm_agen_pemasaran }}" class="form-control" id="" placeholder="Masukan Agen Pemasaran">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanda Tangan Agen Pemasaran :</label> <br>
                                                     <select name="tanda_tangan_agen_pemasaran" class="form-control" id="">
-                                                        <option value="1">Ada</option>
-                                                        <option value="0">Tidak Ada</option>
+                                                        <option value="1"
+                                                            @if($persetujuan->tanda_tangan_agen_pemasaran == "1") selected @endif
+                                                        >Ada</option>
+                                                        <option value="0"
+                                                            @if($persetujuan->tanda_tangan_agen_pemasaran == "0") selected @endif
+                                                        >Tidak Ada</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Agen Pemasaran :</label> <br>
-                                                    <input type="date" name="tanggal_agen_pemasaran" class="form-control" id="" placeholder="Tanggal Agen Pemasaran">
+                                                    <input type="date" name="tanggal_agen_pemasaran" class="form-control" value="{{ $persetujuan->tanggal_agen_pemasaran }}" id="" placeholder="Tanggal Agen Pemasaran">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Pejabat Berwenang :</label> <br>
-                                                    <input type="text" name="nm_pejabat_berwenang" class="form-control" id="" placeholder="Nama Pejabat Berwenang">
+                                                    <input type="text" name="nm_pejabat_berwenang" value="{{ $persetujuan->nm_pejabat_berwenang }}" class="form-control" id="" placeholder="Nama Pejabat Berwenang">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Status Persetujuan :</label> <br>
                                                     <select name="status_persetujuan" class="form-control" id="">
-                                                        <option value="disetujui">Disetujui</option>
-                                                        <option value="tidak_disetujui">Tidak Disetujui</option>
+                                                        <option value="disetujui"
+                                                            @if($persetujuan->status_persetujuan == "1") selected @endif
+                                                        >Disetujui</option>
+                                                        <option value="tidak_disetujui"
+                                                            @if($persetujuan->status_persetujuan == "0") selected @endif
+                                                        >Tidak Disetujui</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanda Tangan Pejabat Berwenang :</label> <br>
                                                     <select name="tanda_tangan_pejabat_berwenang" class="form-control" id="">
-                                                        <option value="1">Ada</option>
-                                                        <option value="0">Tidak Ada</option>
+                                                        <option value="1"
+                                                            @if($persetujuan->tanda_tangan_pejabat_berwenang == "1") selected @endif
+                                                        >Ada</option>
+                                                        <option value="0"
+                                                            @if($persetujuan->tanda_tangan_pejabat_berwenang == "0") selected @endif
+                                                        >Tidak Ada</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Pejabat Berwenang :</label> <br>
-                                                    <input type="date" name="tanggal_pejabat_berwenang" class="form-control" id="" placeholder="Tanggal Pejabat Berwenang">
+                                                    <input type="date" name="tanggal_pejabat_berwenang" class="form-control" value="{{ $persetujuan->tanggal_pejabat_berwenang }}" id="" placeholder="Tanggal Pejabat Berwenang">
                                                 </div>
                                             </div>
                                         </div>
@@ -811,7 +969,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Close</button>
-                                    <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
+                                    <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Perubahan Data</button>
                                 </div>
                                 </div>
                                 <!-- /.modal-content -->
