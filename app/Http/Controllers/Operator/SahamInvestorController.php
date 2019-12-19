@@ -23,8 +23,8 @@ class SahamInvestorController extends Controller
         return view('operator/form_saham.create');
     }
 
-    public function tambahSahamPost()
+    public function tambahSahamPost(Request $request)
     {
-
+        return $request;
     }
 }

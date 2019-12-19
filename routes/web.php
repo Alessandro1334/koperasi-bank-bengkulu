@@ -34,8 +34,11 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
 });
 
 Route::group(['prefix' => 'operator/manajemen_pembelian_dan_pengalihan_saham'], function(){
-    Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.manajemen_saham');
+    Route::get('/', 'Operator\SahamInvestorController@index')->name('operator.manajemen_saham');
+    Route::get('/tambah_saham', 'Operator\SahamInvestorController@tambahSaham')->name('operator.tambah_saham');
+    Route::post('/','Operator\SahamInvestorController@tambahSahamPost')->name('operator.tambah_saham_post');
 });
+
 
 // Route Manajer
 Route::group(['prefix' => 'manajer'], function(){
