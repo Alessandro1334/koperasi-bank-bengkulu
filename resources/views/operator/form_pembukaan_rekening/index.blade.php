@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-wpforms"></i>&nbsp;Form Pembukaan Rekening
+    <i class="fa fa-wpforms"></i>&nbsp;Form Pembuka Rekening
 @endsection
 @section('user-login','Operator')
 @section('sidebar-menu')
