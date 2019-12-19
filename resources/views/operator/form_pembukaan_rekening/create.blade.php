@@ -36,11 +36,15 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Lengkap sesuai dengan KTP/Paspor:</label>
-                                                    <input type="text" name="nm_lengkap" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <input type="text" name="nm_investor" class="form-control" placeholder="Masukan nama lengkap">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No Register</label>
                                                     <input type="text" name="no_register" class="form-control" id="" placeholder="Masukan nomor register">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">No CIF</label>
+                                                    <input type="text" name="no_cif" class="form-control" id="" placeholder="Masukan nomor cif">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin</label>
@@ -86,12 +90,12 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Lahir</label>
-                                                    <input type="date" name="tamggal_lahir" class="form-control" id="">
+                                                    <input type="date" name="tanggal_lahir" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Status Perkawinan</label>
-                                                    <select name="status_pernikahan" id="" class="form-control">
+                                                    <select name="status_perkawinan" id="" class="form-control">
                                                         <option value="menikah">Menikah</option>
                                                         <option value="belum_menikah">Belum Menikah</option>
                                                         <option value="janda/duda">Janda / Duda</option>
@@ -100,12 +104,16 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kewarganegaraan</label>
-                                                    <input type="text" name="kewarganegaraan" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <select name="kewarganegaraan" id="" class="form-control">
+                                                        <option value="wni">Warga Negara Indonesia</option>
+                                                        <option value="wna">Warga Negara Asing</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="alamatKtp()" class="btn btn-primary "><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+
                                         </div>
                                     </div>
                                 </li>
@@ -127,41 +135,37 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Sesuai KTP/KITAS:</label>
-                                                    <input type="text" name="alamat" class="form-control" placeholder="Masukan nama lengkap">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Alamat Sesuai KTP</label>
-                                                    <input type="date" name="alamat_ktp" class="form-control" id="">
+                                                    <input type="text" name="alamat_ktp" class="form-control" placeholder="Masukan nama lengkap">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RT Sesuai KTP</label>
-                                                    <input type="" name="rt_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="rt_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kelurahan Sesuai KTP</label>
-                                                    <input type="date" name="alamat_ktp" class="form-control" id="">
+                                                    <input type="text" name="alamat_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kecamatan Sesuai KTP</label>
-                                                    <input type="date" name="kecamatan_ktp" class="form-control" id="">
+                                                    <input type="text" name="kecamatan_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Sesuai KTP</label>
-                                                    <input type="" name="kota_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="kota_ktp" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Sesuai KTP</label>
-                                                    <input type="date" name="provinsi_ktp" class="form-control" id="">
+                                                    <input type="text" name="provinsi_ktp" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos Sesuai KTP</label>
-                                                    <input type="date" name="kode_pos_ktp" class="form-control" id="">
+                                                    <input type="text" name="kode_pos_ktp" class="form-control" id="">
                                                 </div>
                                             </div>
                                         </div>
@@ -196,37 +200,37 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Alamat Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="alamat_tempat_tinggal" class="form-control" placeholder="Masukan alamat tempat tinggal">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">RT Tempat Tinggal</label>
-                                                    <input type="" name="rt_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="rt_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kelurahan Tempat Tinggal</label>
-                                                    <input type="date" name="alamat_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kelurahan_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kecamatan Tempat Tinggal</label>
-                                                    <input type="date" name="kecamatan_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kecamatan_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kota Tempat Tinggal</label>
-                                                    <input type="" name="kota_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="kota_tempat_tinggal" class="form-control" id="" placeholder="Masukan Nomor npwp">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Provinsi Tempat Tinggal</label>
-                                                    <input type="date" name="provinsi_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="provinsi_tempat_tinggal" class="form-control" id="">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kode Pos Tempat Tinggal</label>
-                                                    <input type="date" name="kode_pos_tempat_tinggal" class="form-control" id="">
+                                                    <input type="text" name="kode_pos_tempat_tinggal" class="form-control" id="">
                                                 </div>
                                             </div>
                                         </div>
@@ -279,18 +283,19 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Gadis Ibu Kandung</label>
-                                                    <input type="" name="nm_gadis_ibu_kandung" class="form-control" placeholder="Masukan nama gadis ibu kandung">
+                                                    <input type="text" name="nm_gadis_ibu_kandung" class="form-control" placeholder="Masukan nama gadis ibu kandung">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Emergency Kontak</label>
-                                                    <input type="date" name="emergency_kontak" class="form-control" id="" placeholder="Masukan emergency kontak">
+                                                    <input type="text" name="emergency_kontak" class="form-control" id="" placeholder="Masukan emergency kontak">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="backToAlamatTempatTinggal()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
                                             <a onclick="korespondensi()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+
                                         </div>
                                     </div>
                                 </li>
@@ -336,13 +341,16 @@
                                         </div>
                                         <div class="timeline-footer">
                                             <a onclick="backToAgamaDanPendidikan()" class="btn btn-default"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
-                                            <a onclick="informasiPekerjaan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                            {{-- <a onclick="informasiPekerjaan()" class="btn btn-primary"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a> --}}
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fa fa-check-circle"></i>&nbsp;Selesai
+                                            </button>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
 
-                            <ul class="timeline timeline-inverse" id="informasi-pekerjaan" style="display:none;">
+                            {{-- <ul class="timeline timeline-inverse" id="informasi-pekerjaan" style="display:none;">
                                 <li class="time-label">
                                     <span class="bg-red">
                                         Informasi Pekerjaan
@@ -701,7 +709,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="modal fade" id="modal-default">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -715,7 +723,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Close</button>
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
+                                    <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan Data</button>
                                 </div>
                                 </div>
                                 <!-- /.modal-content -->

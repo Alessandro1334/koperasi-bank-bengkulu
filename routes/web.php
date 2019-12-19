@@ -21,7 +21,6 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
 });
 
-
 //Route Operator
 Route::group(['prefix' => 'operator'], function(){
     Route::get('/', 'Operator\DashboardController@index')->name('operator.dashboard');

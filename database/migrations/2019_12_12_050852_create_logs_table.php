@@ -19,9 +19,6 @@ class CreateLogsTable extends Migration
             $table->enum('level_user',['operator','manajer']);
             $table->string('aksi');
             $table->string('halaman');
-            $table->string('atribut_data');
-            $table->string('data_lama');
-            $table->string('data_baru');
             $table->timestamps();
         });
     }
