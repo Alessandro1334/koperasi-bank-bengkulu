@@ -9,12 +9,15 @@ use App\PekerjaanInvestor;
 use App\DokumenPendukungInvestor;
 use App\DataPasanganOrangTuaInvestor;
 use App\Persetujuan;
+use App\AhliWarisInvestor;
+use DB;
 
 class FormPembukaanRekening extends Controller
 {
     public function index(){
-        $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
-        // return $investors;
+        $investors = AhliWarisInvestor::leftJoin('investors','investors.id','ahli_waris_investors.investor_id')
+                                        ->select('nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp',DB::raw('group_concat(nm_ahli_waris SEPARATOR ",") as "nm_ahli_waris" '))
+                                        ->get();
         return view('operator/form_pembukaan_rekening.index',compact('investors'));
     }
 
@@ -274,5 +277,23 @@ class FormPembukaanRekening extends Controller
         Persetujuan::where('investor_id',$id)->delete();
 
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Hapus !!']);
+    }
+
+    public function tambahAhliWarisInvestor($id){
+        $investor = Investor::where('id',$id)->select('id','nm_investor')->first();
+        $ahli_waris = Investor::rightJoin('ahli_waris_investors','ahli_waris_investors.investor_id','investors.id')
+                                        ->where('investors.id',$id)
+                                        ->get();
+        return view('operator.form_pembukaan_rekening.tambah_ahli_waris',compact('ahli_waris','investor'));
+    }
+
+    public function tambahAhliWarisInvestorPost(Request $request){
+        $ahli = new AhliWarisInvestor;
+        $ahli->investor_id = $request->investor_id;
+        $ahli->nm_ahli_waris = $request->nm_ahli_waris;
+        $ahli->hubungan_ahli_waris = $request->hubungan_ahli_waris;
+        $ahli->save();
+
+        return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Ahli Waris Berhasil Ditambahkan !!']);
     }
 }

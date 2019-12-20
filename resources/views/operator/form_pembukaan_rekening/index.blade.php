@@ -41,6 +41,7 @@
                                 <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
+                                <th>Ahli Waris</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -57,17 +58,45 @@
                                     <td> {{ $investor->jenis_kelamin }} </td>
                                     <td> {{ $investor->no_ktp }} </td>
                                     <td>
-                                        <a href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                        <form method="POST" action="{{ route('operator.tambah_investor_delete', [$investor->id]) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                        </form>
+                                        {{ $investor->nm_ahli_waris }}
+                                    </td>
+                                    <td>
+                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        <a href="{{ route('operator.tambah_ahli_waris_investor',[$investor->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-users"></i></a>
                                     </td>
                                 </tr>
+                                <div class="modal fade" id="modal-default">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title"><i class="fa fa-info-circle"></i>&nbsp;Perhatian</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Apakah anda yakin ingin menghapus data?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
+                                                <form method="POST" action="{{ route('operator.tambah_investor_delete', [$investor->id]) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Ya, Hapus Data !</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                    <!-- /.modal -->
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
