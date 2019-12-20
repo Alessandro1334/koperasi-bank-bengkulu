@@ -116,6 +116,7 @@ $factory->define(App\Investor::class, function (Faker $faker) {
         'pengiriman_konfirmasi_melalui_fax' => $faker->randomElement(['0','1']),
         'pengiriman_konfirmasi_melalui_alamat_surat_menyurat' => $faker->randomElement(['0','1']),
         'tujuan_investasi' => $faker->randomElement(['0','1']),
+        'status_verifikasi' => $faker->randomElement(['0','1','2']),
     ];
 });
 

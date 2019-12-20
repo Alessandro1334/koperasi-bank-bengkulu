@@ -61,6 +61,7 @@ class CreateInvestorsTable extends Migration
             $table->string('pengiriman_konfirmasi_melalui_fax')->nullable();
             $table->string('pengiriman_konfirmasi_melalui_alamat_surat_menyurat')->nullable();
             $table->string('tujuan_investasi');
+            $table->enum('status_verifikasi',['0','1','2'])->defauled('0');
             $table->timestamps();
         });
     }

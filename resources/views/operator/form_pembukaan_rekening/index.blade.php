@@ -54,7 +54,13 @@
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->kode_nasabah }} </td>
                                     <td> {{ $investor->no_cif }} </td>
-                                    <td> {{ $investor->jenis_kelamin }} </td>
+                                    <td>
+                                        @if($investor->jenis_kelamin == "L")
+                                            <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
+                                            @else
+                                                <span class="label label-warning"><i class="fa fa-female"></i>&nbsp; Perempuan</span>
+                                        @endif
+                                    </td>
                                     <td> {{ $investor->no_ktp }} </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

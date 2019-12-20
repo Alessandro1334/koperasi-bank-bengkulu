@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut menu Verifikasi Data Investor
+            Berikut Adalah Status Verifikasi Data Investor, Silahkan Verifikasi Data Investor Jika Belum di Verifikasi Pada Daftar Dibawah Ini !!
             <br>
         </p>
     </div>
@@ -20,11 +20,17 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Verifikasi Data Investor</h3>
-                    
+
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
-                    <table class="table table-bordered table-hover" id="investor">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
+                        </div>
+                    @endif
+                    <table class="table table-bordered table-hover" id="verifikasi-investor">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -33,17 +39,76 @@
                                 <th>No Cif</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No KTP</th>
+                                <th>Hasil Verifikasi</th>
+                                <th>Status Verifikasi</th>
+                                <th>Ubah Status</th>
                             </tr>
                         </thead>
+                        @php
+                            $no=1;
+                        @endphp
                         @foreach($investors as $investor)
                             <tr>
-                                <td> {{ $loop->count }} </td>
+                                <td> {{ $no++ }} </td>
                                 <td> {{ $investor->nm_investor }} </td>
                                 <td> {{ $investor->kode_nasabah }} </td>
                                 <td> {{ $investor->no_cif }} </td>
-                                <td> {{ $investor->jenis_kelamin }} </td>
+                                <td>
+                                    @if($investor->jenis_kelamin == "L")
+                                        <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
+                                        @else
+                                            <span class="label label-warning"><i class="fa fa-female"></i>&nbsp; Perempuan</span>
+                                    @endif
+                                </td>
                                 <td> {{ $investor->no_ktp }} </td>
+                                <td>
+                                    @if($investor->status_verifikasi == "0")
+                                        <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Verifikasi</span>
+                                        @elseif($investor->status_verifikasi == "1")
+                                            <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Disetujui</span>
+                                            @else
+                                                <span class="label label-danger"><i class="fa fa-close"></i>&nbsp; Tidak Disetujui</span>
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($investor->status_verifikasi == "0")
+                                        <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
+                                        @else
+                                            <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                </td>
                             </tr>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <form method="POST" action="{{ route('manajer.verifikasi_data_investor_update',[$investor->id]) }}">
+                                    {{ csrf_field() }} {{ method_field('PATCH') }}
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Verifikasi Data Investor <b id="nm_investor"></b></h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="hidden" name="investor_id" id="investor_id">
+                                                <label for="recipient-name" class="col-form-label">Verifikasi:</label>
+                                                <select name="status_verifikasi" id="status_verifikasi" class="form-control">
+                                                    <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
+                                                    <option value="1">Setujui</option>
+                                                    <option value="2">Tidak Setuju</option>
+                                                </select>
+                                                <small id="emailHelp" class="form-text text-danger"><i>Data yang terverifikasi tidak dapat diubah kembali !!</i></small>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Verifikasi</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         @endforeach
                     </table>
                 </div>
@@ -55,7 +120,23 @@
 @push('scripts')
     <script>
         $(document).ready( function () {
-            $('#investor').DataTable();
+            $('#verifikasi-investor').DataTable();
         } );
+
+        function verifikasi(id){
+            $.ajax({
+            url: "{{ url('manajer/verifikasi_data_investor') }}"+'/'+ id + "/edit",
+            type: "GET",
+            dataType: "JSON",
+            success: function(data){
+                $('#exampleModal').modal('show');
+                $('#investor_id').val(data.id);
+                $('#nm_investor').text(data.nm_investor);
+            },
+            error:function(){
+                alert("Nothing Data");
+            }
+            });
+        }
     </script>
 @endpush
