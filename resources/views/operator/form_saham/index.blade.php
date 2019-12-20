@@ -26,6 +26,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
+                        </div>
+                    @endif
                     <table class="table table-bordered table-hover" id="investor">
                         <thead>
                             <tr>
@@ -58,7 +64,7 @@
                                         @if($saham->status_verifikasi == '0')
                                             <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
                                             @elseif($saham->status_verifikasi == '1')
-                                                <span class="label fa-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
+                                                <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
                                                 @else
                                                     <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
                                         @endif

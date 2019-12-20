@@ -41,7 +41,6 @@
                                 <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
-                                <th>Ahli Waris</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -50,16 +49,13 @@
                                 $no=1;
                             @endphp
                             @foreach($investors as $investor)
-                                <t>
+                                <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->kode_nasabah }} </td>
                                     <td> {{ $investor->no_cif }} </td>
                                     <td> {{ $investor->jenis_kelamin }} </td>
                                     <td> {{ $investor->no_ktp }} </td>
-                                    <td>
-                                        {{ $investor->nm_ahli_waris }}
-                                    </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">

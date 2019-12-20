@@ -15,9 +15,7 @@ use DB;
 class FormPembukaanRekening extends Controller
 {
     public function index(){
-        $investors = AhliWarisInvestor::leftJoin('investors','investors.id','ahli_waris_investors.investor_id')
-                                        ->select('nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp',DB::raw('group_concat(nm_ahli_waris SEPARATOR ",") as "nm_ahli_waris" '))
-                                        ->get();
+        $investors = Investor::select('nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
         return view('operator/form_pembukaan_rekening.index',compact('investors'));
     }
 
