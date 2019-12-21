@@ -49,8 +49,6 @@
                                 <td>{{ $admin->nm_admin }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->username }}</td>
-
-                                <td><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#pwd_changed"><i class="fa fa-key"></i></button></td>
                                 <td style="text-align: center;"><a class="btn btn-success btn-sm" onclick="change_pass({{ $admin->id }})"><i class="fa fa-key"></i></a></td>
                                 <td >
                                     <a style="float:left;" onclick="edit_data({{ $admin->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
