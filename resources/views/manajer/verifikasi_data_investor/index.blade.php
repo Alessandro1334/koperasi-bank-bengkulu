@@ -79,7 +79,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                    @if($investor->status_verifikasi == "0")
+                                        <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                        @else
+                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                    @endif
                                 </td>
                             </tr>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,5 +142,9 @@
             }
             });
         }
+
+        $('.disabled').click(function(){
+            $(this).prop('disabled',true);
+        });
     </script>
 @endpush
