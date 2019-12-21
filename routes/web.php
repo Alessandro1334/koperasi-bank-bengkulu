@@ -72,12 +72,25 @@ Route::group(['prefix' => 'administrator'], function(){
 
 Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
     Route::get('/', 'Admin\ManajemenAdminController@index')->name('administrator.manajemen_admin');
-    Route::get('/add', 'Admin\ManajemenAdminController@add')->name('administrator.manajemen_admin_tambah');
     Route::post('/', 'Admin\ManajemenAdminController@addPost')->name('administrator.manajemen_admin_tambah_post');
     Route::get('/{id}/edit', 'Admin\ManajemenAdminController@edit')->name('administrator.manajemen_admin_edit');
     Route::patch('/', 'Admin\ManajemenAdminController@update')->name('administrator.manajemen_admin_update');
-    Route::delete('/{id}','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
-    Route::patch('/{id}', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
+    Route::delete('/','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
+    Route::patch('/editPass', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
+});
+
+Route::group(['prefix' => 'administrator/manajemen_operator'], function(){
+    Route::get('/', 'Admin\ManajemenOperatorController@index')->name('administrator.manajemen_operator');
+});
+
+Route::group(['prefix' => 'administrator/manajemen_manajer'], function(){
+    Route::get('/', 'Admin\ManajemenManajerController@index')->name('administrator.manajemen_manajer');
+    Route::post('/add', 'Admin\ManajemenManajerController@addPost')->name('administrator.manajemen_manajer_addpost');
+    Route::get('/{id}/edit', 'Admin\ManajemenManajerController@edit')->name('administrator.manajemen_manajer_edit');
+    Route::patch('/', 'Admin\ManajemenManajerController@update')->name('administrator.manajemen_manajer_update');
+    Route::delete('/', 'Admin\ManajemenManajerController@delete')->name('administrator.manajemen_manajer_delete');
+    Route::patch('/editPass', 'Admin\ManajemenManajerController@ubahPass')->name('administrator.manajemen_manajer_ubahpass');
+
 });
 
 

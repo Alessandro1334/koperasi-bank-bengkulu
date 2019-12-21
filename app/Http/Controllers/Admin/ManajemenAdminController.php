@@ -51,14 +51,19 @@ class ManajemenAdminController extends Controller
         }
     }
 
-    public function delete($id) {
-        $admin = Admin::destroy($id);
+    public function delete(Request $request) {
+        $admin = Admin::destroy($request->id);
         if($admin){
             return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Dihapus !!']);
         }
     }
 
-    public function passUpdate($id){
-        return $id;
+    public function passUpdate(Request $request){
+        $admin = Admin::where('id',$request->id)->update([
+            'password'  => Hash::make($request->password1),
+        ]);
+        if($admin){
+            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Password Berhasil Diubah !!']);
+        }
     }
 }

@@ -10,14 +10,15 @@
     </a>
 </li>
 
-{{-- <li class="{{ set_active('operator.manajemen_saham') }}">
-    <a href="{{ route('operator.manajemen_saham') }}">
-        <i class="fa fa-suitcase"></i> <span>Pembelian/Pengalihan Saham</span>
+<li class="{{ set_active('administrator.manajemen_operator') }}">
+    <a href="{{ route('administrator.manajemen_operator') }}">
+        <i class="fa fa-users"></i> <span>Manajemen Operator</span>
     </a>
 </li>
 
-<li class="">
-    <a href="">
-        <i class="fa fa-power-off text-danger"></i> <span class="text-danger">Keluar</span>
+<li class="{{ set_active('administrator.manajemen_manajer') }}">
+    <a href="{{ route('administrator.manajemen_manajer') }}">
+        <i class="fa fa-users"></i> <span>Manajemen Manajer</span>
     </a>
-</li> --}}
+</li>
+
