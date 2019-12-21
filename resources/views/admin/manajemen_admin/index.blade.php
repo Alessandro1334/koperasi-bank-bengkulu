@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="modal fade" id="pwd_changed">
-                                <form method="POST" action="{{ route('administrator.manajemen_admin_pass') }}">
+                                <form method="POST" action="{{ route('administrator.manajemen_admin_pass',$admin->id) }}">
                                     {{ csrf_field() }} {{ method_field('PATCH') }}
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -90,7 +90,6 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="">Password Baru(*)</label>
-                                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                                 <input type="text" class="form-control" name="password" id="password" placeholder="Masukan Password Baru" required>
                                             </div>
                                             <div class="form-group">
