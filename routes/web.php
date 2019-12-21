@@ -80,6 +80,14 @@ Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
     Route::patch('/{id}', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
 });
 
+Route::group(['prefix' => 'administrator/manajemen_operator'], function(){
+    Route::get('/', 'Admin\ManajemenOperatorController@index')->name('administrator.manajemen_operator');
+});
+
+Route::group(['prefix' => 'administrator/manajemen_manajer'], function(){
+    Route::get('/', 'Admin\ManajemenManajerController@index')->name('administrator.manajemen_manajer');
+});
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
