@@ -213,5 +213,23 @@
                 }
             });
         }
+
+        $(function(){
+			$('.password_baru').keyup(function(e){
+				var pass = $('.password1').val();
+				var confpass = $(this).val();
+				if(pass == confpass){
+					$('.error-mssg').text('');
+					$('.sccs-mssg').text('Password Sama !');
+                    $('.btn_save').attr("disabled",false);
+					allowsubmit = true;
+				}else if(pass != confpass){
+					$('.error-mssg').text('Password Tidak Sama !');
+					$('.sccs-mssg').text('');
+                    $('.btn_save').attr("disabled",true);
+					allowsubmit = false;
+				}
+			});
+        });
     </script>
 @endpush
