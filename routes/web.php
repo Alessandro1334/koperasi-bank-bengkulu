@@ -71,4 +71,21 @@ Route::group(['prefix' => 'manajer/laporan'], function(){
 });
 
 
+// Route Administrator
+Route::group(['prefix' => 'administrator'], function(){
+    Route::get('/', 'Admin\DashboardController@index')->name('administrator.dashboard');
+});
+
+Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
+    Route::get('/', 'Admin\ManajemenAdminController@index')->name('administrator.manajemen_admin');
+    Route::get('/add', 'Admin\ManajemenAdminController@add')->name('administrator.manajemen_admin_tambah');
+    Route::post('/', 'Admin\ManajemenAdminController@addPost')->name('administrator.manajemen_admin_tambah_post');
+    Route::get('/{id}/edit', 'Admin\ManajemenAdminController@edit')->name('administrator.manajemen_admin_edit');
+    Route::patch('/', 'Admin\ManajemenAdminController@update')->name('administrator.manajemen_admin_update');
+    Route::delete('/{id}','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
+    Route::patch('/', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
+});
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
