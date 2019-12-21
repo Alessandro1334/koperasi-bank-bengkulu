@@ -86,7 +86,7 @@
                                                 <form method="POST" action="{{ route('operator.tambah_investor_delete', [$investor->id]) }}">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp; Ya, Hapus Data !</button>
+                                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>&nbsp; Ya, Hapus Data !</button>
                                                 </form>
                                             </div>
                                         </div>

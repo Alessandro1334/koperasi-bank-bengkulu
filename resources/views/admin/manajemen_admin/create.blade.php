@@ -35,13 +35,13 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="{{ route('administrator.manajemen_admin') }}" class="btn btn-danger">Kembali</a>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="{{ route('administrator.manajemen_admin') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i>&nbsp;Kembali</a>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Simpan</button>
             </div>
         </form>
     </div>
 </div>
 @endsection
 @push('scripts')
-   
+
 @endpush
