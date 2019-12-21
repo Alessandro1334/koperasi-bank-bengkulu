@@ -49,11 +49,9 @@
                                 <td>{{ $admin->nm_admin }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->username }}</td>
-<<<<<<< HEAD
+
                                 <td><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#pwd_changed"><i class="fa fa-key"></i></button></td>
-=======
                                 <td style="text-align: center;"><a class="btn btn-success btn-sm" onclick="change_pass({{ $admin->id }})"><i class="fa fa-key"></i></a></td>
->>>>>>> 1b4b1053e207f571ea2e10b23f0eea6ebc44b8f4
                                 <td >
                                     <a style="float:left;" onclick="edit_data({{ $admin->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                     <a onclick="delete_data({{ $admin->id }})" class="btn btn-danger btn-sm">
@@ -61,13 +59,6 @@
                                     </a>
                                 </td>
                             </tr>
-<<<<<<< HEAD
-                            @include('admin/manajemen_admin.form_hapus_data')
-                            @include('admin/manajemen_admin.form_ubah_password')
-                        @endforeach
-                    </table>
-                    @include('admin/manajemen_admin.form_tambah_dan_ubah_data')
-=======
                             @endforeach
                         </table>
                     <div class="modal fade" id="delete_data">
@@ -121,7 +112,6 @@
                             </div>
                         </form>
                     </div>
->>>>>>> 1b4b1053e207f571ea2e10b23f0eea6ebc44b8f4
                 </div>
                 <div class="modal fade" id="add_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <form method="POST" action="{{ route('administrator.manajemen_admin_tambah_post') }}">
@@ -159,9 +149,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
-=======
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form method="POST" action="{{ route('administrator.manajemen_admin_update') }}">
             {{ csrf_field() }} {{ method_field('PATCH') }}
@@ -192,7 +180,6 @@
             </div>
         </form>
     </div>
->>>>>>> 1b4b1053e207f571ea2e10b23f0eea6ebc44b8f4
 @endsection
 
 @push('scripts')
@@ -204,7 +191,7 @@
         function delete_data(id) {
             $('#delete_data').modal('show');
             $('#id_del').val(id);
-               
+
         }
 
         function edit_data(id){
