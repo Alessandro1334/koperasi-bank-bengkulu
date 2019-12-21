@@ -58,7 +58,7 @@ class ManajemenAdminController extends Controller
         }
     }
 
-    public function passUpdate(Request $request){
-        return $request;
+    public function passUpdate($id){
+        return $id;
     }
 }

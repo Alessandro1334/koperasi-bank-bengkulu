@@ -77,7 +77,7 @@ Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
     Route::get('/{id}/edit', 'Admin\ManajemenAdminController@edit')->name('administrator.manajemen_admin_edit');
     Route::patch('/', 'Admin\ManajemenAdminController@update')->name('administrator.manajemen_admin_update');
     Route::delete('/{id}','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
-    Route::patch('/', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
+    Route::patch('/{id}', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
 });
 
 
