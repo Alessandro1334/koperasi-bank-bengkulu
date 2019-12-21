@@ -20,13 +20,9 @@ class VerifikasiDataInvestorController extends Controller
     }
 
     public function verifikasi(Request $request){
-        // return $request->all();
-        $investor = Investor::where('id',$request->investor_id)->first();
-        // return $investor;
-        $investor->status_verifikasi = $request->status_verifikasi;
-        $investor->update();
-        if($investor){
-            return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
-        }
+        $investor = Investor::where('id',$request->investor_id)->update([
+            'status_verifikasi' => $request->status_verifikasi
+        ]);
+        return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }
 }

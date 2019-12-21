@@ -15,7 +15,7 @@ use DB;
 class FormPembukaanRekening extends Controller
 {
     public function index(){
-        $investors = Investor::select('nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
+        $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
         return view('operator/form_pembukaan_rekening.index',compact('investors'));
     }
 
@@ -24,7 +24,6 @@ class FormPembukaanRekening extends Controller
     }
 
     public function tambahInvestorPost(Request $request){
-        // return $request->all();
         $investor = new Investor;
         $investor->no_register = $request->no_register;
         $investor->nm_investor = $request->nm_investor;
@@ -74,9 +73,10 @@ class FormPembukaanRekening extends Controller
         $investor->tujuan_investasi = $request->tujuan_investasi;
         $investor->save();
 
-        $last = Investor::latest()->select('id')->first();
+        $last = Investor::latest('id')->select('id')->first();
 
         $pekerjaan = new PekerjaanInvestor;
+        $pekerjaan->investor_id =   $last->id;
         $pekerjaan->pekerjaan = $request->pekerjaan;
         $pekerjaan->nm_perusahaan = $request->nm_perusahaan;
         $pekerjaan->alamat_perusahaan = $request->alamat_perusahaan;
@@ -98,6 +98,7 @@ class FormPembukaanRekening extends Controller
         $pekerjaan->save();
 
         $pasangan = new DataPasanganOrangTuaInvestor;
+        $pasangan->investor_id =   $last->id;
         $pasangan->nm_pasangan_atau_orang_tua = $request->nm_pasangan_atau_orang_tua;
         $pasangan->hubungan = $request->hubungan;
         $pasangan->alamat_tempat_tinggal_pasangan_atau_orang_tua = $request->alamat_tempat_tinggal_pasangan_atau_orang_tua;
@@ -119,6 +120,7 @@ class FormPembukaanRekening extends Controller
         $pasangan->save();
 
         $dokumen = new DokumenPendukungInvestor;
+        $dokumen->investor_id =   $last->id;
         $dokumen->ktp = $request->ktp;
         $dokumen->npwp = $request->npwp;
         $dokumen->form_profil_resiko_pemodal = $request->form_profil_resiko_pemodal;
@@ -128,6 +130,7 @@ class FormPembukaanRekening extends Controller
         $dokumen->save();
 
         $persetujuan = new Persetujuan;
+        $persetujuan->investor_id =   $last->id;
         $persetujuan->nm_agen_pemasaran = $request->nm_agen_pemasaran;
         $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
         $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
@@ -147,7 +150,6 @@ class FormPembukaanRekening extends Controller
         $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
         $persetujuan = Persetujuan::where('investor_id',$id)->first();
         $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
-
         return view('operator/form_pembukaan_rekening.edit',compact('investor','dokumen','pasangan','persetujuan','pekerjaan'));
     }
 

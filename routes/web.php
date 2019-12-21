@@ -56,11 +56,17 @@ Route::group(['prefix' => 'manajer/verifikasi_data_investor'], function(){
     Route::get('/{id}/edit', 'Manajer\VerifikasiDataInvestorController@edit')->name('manajer/verifikasi_data_investor_edit');
     Route::patch('/', 'Manajer\VerifikasiDataInvestorController@verifikasi')->name('manajer.verifikasi_data_investor_update');
 });
-Route::group(['prefix' => 'manajer/verifikasi_rekening_Investor'], function(){
+Route::group(['prefix' => 'manajer/verifikasi_rekening_investor'], function(){
     Route::get('/', 'Manajer\VerifikasiRekeningInvestorController@index')->name('manajer.verifikasi_rekening_investor');
+    Route::get('/{id}/edit', 'Manajer\VerifikasiRekeningInvestorController@edit')->name('manajer.verifikasi_data_saham_edit');
+    Route::patch('/', 'Manajer\VerifikasiRekeningInvestorController@verifikasi')->name('manajer.verifikasi_data_saham_update');
 });
 
-Route::group(['prefix' => 'manajer/manajemen_user'], function(){
+Route::group(['prefix' => 'manajer/laporan'], function(){
+    Route::get('/laporan_data_nasabah', 'LaporanController@laporanNasabah')->name('manajer.laporan_nasabah');
+});
+
+Route::group(['prefix' => 'manajer/laporan'], function(){
     Route::get('/', 'Manajer\ManajemenUserController@index')->name('manajer.manajemen_user');
 });
 

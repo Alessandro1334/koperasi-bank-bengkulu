@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <input type="hidden" name="investor_id" id="investor_id">
+                                                <input type="text" name="investor_id" id="investor_id">
                                                 <label for="recipient-name" class="col-form-label">Verifikasi:</label>
                                                 <select name="status_verifikasi" id="status_verifikasi" class="form-control">
                                                     <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>

@@ -686,7 +686,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Ponsel</label>
-                                                    <input type="text" name="ponsel" value="{{ $pasangan->ponsel }}" class="form-control" id="" placeholder="Masukan Ponsel">
+                                                    <input type="text" name="ponsel_pasangan_atau_orang_tua" value="{{ $pasangan->ponsel_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Ponsel">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -831,39 +831,51 @@
                                         <div class="timeline-body col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi KTP/Paspor :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="ktp" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="ktp" value="0"> Tidak Ada
+                                                    <label for="">Fotokopi KTP/Paspor :</label>
+                                                    <select name="ktp" class="form-control" id="ktp">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi NPWP :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="npwp" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="npwp" value="0"> Tidak Ada
+                                                    <label for="">Fotokopi NPWP :</label>
+                                                    <select name="npwp" class="form-control" id="npwp">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi Form Profil Resiko Pemodal :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="form_profil_resiko_pemodal" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="form_profil_resiko_pemodal" value="0"> Tidak Ada
+                                                    <label for="">Fotokopi Form Profil Resiko Pemodal :</label>
+                                                    <select name="form_profil_resiko_pemodal" class="form-control" id="form_profil_resiko_pemodal">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Fotokopi Bukti Setoran Investasi Awal :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="bukti_setoran_investasi_awal" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="bukti_setoran_investasi_awal" value="0"> Tidak Ada
+                                                    <label for="">Fotokopi Bukti Setoran Investasi Awal :</label>
+                                                    <select name="bukti_setoran_investasi_awal" class="form-control" id="bukti_setoran_investasi_awal">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Contoh Tanda Tangan :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="contoh_tanda_tangan" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="contoh_tanda_tangan" value="0"> Tidak Ada
+                                                    <label for="">Contoh Tanda Tangan :</label>
+                                                    <select name="contoh_tanda_tangan" class="form-control" id="contoh_tanda_tangan">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Formulir FATCA - Perorangan (non mandatory) :</label> <br>
-                                                    <input type="radio" @if($dokumen == "1") checked="checked" @endif name="fatca" value="1"> Ada
-                                                    <input type="radio" @if($dokumen == "0") checked="checked" @endif name="fatca" value="0"> Tidak Ada
+                                                    <label for="">Formulir FATCA - Perorangan (non mandatory) :</label>
+                                                    <select name="fatca" class="form-control" id="fatca">
+                                                        <option value="1">Ada</option>
+                                                        <option value="0">Tidak Ada</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
