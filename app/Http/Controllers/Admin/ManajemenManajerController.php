@@ -48,9 +48,9 @@ class ManajemenManajerController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $user = User::destroy($id);
+        $user = User::destroy($request->id);
         if($user){
             return redirect()->route('administrator.manajemen_manajer')->with(['success'   =>  'Data Admin Berhasil Dihapus !!']);
         }

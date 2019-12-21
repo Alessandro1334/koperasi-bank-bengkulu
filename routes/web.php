@@ -75,7 +75,7 @@ Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
     Route::post('/', 'Admin\ManajemenAdminController@addPost')->name('administrator.manajemen_admin_tambah_post');
     Route::get('/{id}/edit', 'Admin\ManajemenAdminController@edit')->name('administrator.manajemen_admin_edit');
     Route::patch('/', 'Admin\ManajemenAdminController@update')->name('administrator.manajemen_admin_update');
-    Route::delete('/{id}','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
+    Route::delete('/','Admin\ManajemenAdminController@delete')->name('administrator.manajemen_admin_delete');
     Route::patch('/editPass', 'Admin\ManajemenAdminController@passUpdate')->name('administrator.manajemen_admin_pass');
 });
 
@@ -88,7 +88,7 @@ Route::group(['prefix' => 'administrator/manajemen_manajer'], function(){
     Route::post('/add', 'Admin\ManajemenManajerController@addPost')->name('administrator.manajemen_manajer_addpost');
     Route::get('/{id}/edit', 'Admin\ManajemenManajerController@edit')->name('administrator.manajemen_manajer_edit');
     Route::patch('/', 'Admin\ManajemenManajerController@update')->name('administrator.manajemen_manajer_update');
-    Route::delete('/{id}', 'Admin\ManajemenManajerController@delete')->name('administrator.manajemen_manajer_delete');
+    Route::delete('/', 'Admin\ManajemenManajerController@delete')->name('administrator.manajemen_manajer_delete');
     Route::patch('/editPass', 'Admin\ManajemenManajerController@ubahPass')->name('administrator.manajemen_manajer_ubahpass');
 
 });
