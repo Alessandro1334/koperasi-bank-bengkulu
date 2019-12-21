@@ -4,6 +4,9 @@
     <i class="fa fa-dashboard"></i>&nbsp;DASHBOARD
 @endsection
 @section('user-login','Administrator')
+@section('sidebar-menu')
+    @include('admin/sidebar-menu')
+@endsection
 @section('content')
     <div class="callout callout-info ">
         <h4>SELAMAT DATANG!</h4>
