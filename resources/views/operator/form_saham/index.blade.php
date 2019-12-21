@@ -41,6 +41,7 @@
                                 <th>Terbilang Saham</th>
                                 <th>Status Saham</th>
                                 <th>Status Verifikasi</th>
+                                <th>Hasil Verifikasi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +63,14 @@
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == '0')
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                                @else
+                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($saham->status_verifikasi == '0')
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
                                                 @else

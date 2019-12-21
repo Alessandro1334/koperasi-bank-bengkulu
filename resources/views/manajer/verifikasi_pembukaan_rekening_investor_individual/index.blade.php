@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Rekening Investor 
+    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Rekening Investor
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -20,7 +20,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Verifikasi Data Investor</h3>
-                    
+
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
@@ -35,9 +35,12 @@
                                 <th>Mata Uang</th>
                             </tr>
                         </thead>
+                        @php
+                            $no=1;
+                        @endphp
                         @foreach($sahams as $saham)
                             <tr>
-                                <td> {{ $loop->count }} </td>
+                                <td> {{ $no++ }} </td>
                                 <td> {{ $saham->seri_spmpkop }} </td>
                                 <td> {{ $saham->seri_formulir }} </td>
                                 <td> {{ $saham->jumlah_saham }} </td>

@@ -73,7 +73,7 @@
 
                                 <td>
                                     @if($investor->status_verifikasi == "0")
-                                        <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
+                                        <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
                                         @else
                                             <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
                                     @endif
