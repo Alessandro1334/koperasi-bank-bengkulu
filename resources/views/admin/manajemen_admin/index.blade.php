@@ -49,99 +49,100 @@
                                 <td>{{ $admin->nm_admin }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->username }}</td>
-                                <td style="text-align: center;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#pwd_changed"><i class="fa fa-key"></i></button></td>
+                                <td style="text-align: center;"><a class="btn btn-success btn-sm" onclick="change_pass({{ $admin->id }})"><i class="fa fa-key"></i></a></td>
                                 <td >
                                     <a style="float:left;" onclick="edit_data({{ $admin->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default1">
+                                    <a onclick="delete_data({{ $admin->id }})" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
-                                    </button>
+                                    </a>
                                 </td>
-                                <div class="modal fade" id="modal-default1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title"><i class="fa fa-info-circle"></i>&nbsp;Perhatian</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>Apakah anda yakin ingin menghapus data?</h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                                <form method="POST" action="{{ route('administrator.manajemen_admin_delete',$admin->id) }}">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus Data</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="pwd_changed">
-                                    <form method="POST" action="{{ route('administrator.manajemen_admin_pass') }}">
-                                        {{ csrf_field() }} {{ method_field('PATCH') }}
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Ubah Data Administrator<b id="nm_investor"></b></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="">Password Baru(*)</label>
-                                                    <input type="hidden" name="id" value="{{ $admin->id }}">
-                                                    <input type="text" class="form-control password1" name="password1" placeholder="Masukan Password Baru" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="examplenputPassword1">Password Baru(**) </label>
-                                                    <input type="text" class="form-control password_baru" name="password_baru" placeholder="Masukan Password Baru Lagi" required>
-                                                    <span id="error-mssg" class="error-mssg text-danger" style="font-size:12px;"></span>
-                                                    <span id="sccs-mssg" class="sccs-mssg text-success" style="font-size:12px;"></span>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                                <button type="submit" class="btn btn-primary btn_save"><i class="fa fa-check-circle"></i>&nbsp;Ubah</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </tr>
                             @endforeach
                         </table>
-                    <div class="modal fade" id="add_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <form method="POST" action="{{ route('administrator.manajemen_admin_tambah_post') }}">
-                            {{ csrf_field() }} {{ method_field('POST') }}
+                    <div class="modal fade" id="delete_data">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title"><i class="fa fa-info-circle"></i>&nbsp;Perhatian</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Apakah anda yakin ingin menghapus data?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
+                                    <form method="POST" action="{{ route('administrator.manajemen_admin_delete') }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <input type="hidden" name="id" id="id_del">
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus Data</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="pwd_changed">
+                        <form method="POST" action="{{ route('administrator.manajemen_admin_pass') }}">
+                            {{ csrf_field() }} {{ method_field('PATCH') }}
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Tambah Data Administrator<b id="nm_investor"></b></h5>
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Ubah Data Administrator<b id="nm_investor"></b></h5>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="nm_admin" placeholder="Masukan Nama" required>
+                                        <label for="">Password Baru(*)</label>
+                                        <input type="hidden" name="id" id="id_delete">
+                                        <input type="text" class="form-control password1" name="password1" placeholder="Masukan Password Baru" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Masukan Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Masukan Username" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="text" class="form-control" name="password" placeholder="Masukan Password" required>
+                                        <label for="examplenputPassword1">Password Baru(**) </label>
+                                        <input type="text" class="form-control password_baru" name="password_baru" placeholder="Masukan Password Baru Lagi" required>
+                                        <span id="error-mssg" class="error-mssg text-danger" style="font-size:12px;"></span>
+                                        <span id="sccs-mssg" class="sccs-mssg text-success" style="font-size:12px;"></span>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
+                                    <button type="submit" class="btn btn-primary btn_save"><i class="fa fa-check-circle"></i>&nbsp;Ubah</button>
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
+                <div class="modal fade" id="add_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <form method="POST" action="{{ route('administrator.manajemen_admin_tambah_post') }}">
+                        {{ csrf_field() }} {{ method_field('POST') }}
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Tambah Data Administrator<b id="nm_investor"></b></h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" class="form-control" name="nm_admin" placeholder="Masukan Nama" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Masukan Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="username" placeholder="Masukan Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="text" class="form-control" name="password" placeholder="Masukan Password" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -184,6 +185,12 @@
             $('#administrator').DataTable();
         } );
 
+        function delete_data(id) {
+            $('#delete_data').modal('show');
+            $('#id_del').val(id);
+               
+        }
+
         function edit_data(id){
             $.ajax({
                 url: "{{ url('administrator/manajemen_admin') }}"+'/'+ id + "/edit",
@@ -200,6 +207,11 @@
                     alert("Nothing Data");
                 }
             });
+        }
+
+        function change_pass(id) {
+            $('#pwd_changed').modal('show');
+            $('#id_delete').val(id);
         }
 
         $(function(){
