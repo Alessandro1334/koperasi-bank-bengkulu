@@ -42,6 +42,7 @@
                                 <th>Status Saham</th>
                                 <th>Status Verifikasi</th>
                                 <th>Hasil Verifikasi</th>
+                                <th>SK3S</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,6 +77,9 @@
                                                 @else
                                                     <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
                                         @endif
+                                    </td>
+                                    <td>
+
                                     </td>
                                 </tr>
                             @endforeach

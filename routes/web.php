@@ -68,7 +68,28 @@ Route::group(['prefix' => 'manajer/manajemen_agen_pemasaran'], function(){
     Route::get('/{id}/edit', 'Manajer\ManajemenAgenPemasaranController@edit')->name('manajer.manajemen_agen_pemasaran_edit');
     Route::patch('/', 'Manajer\ManajemenAgenPemasaranController@update')->name('manajer.manajemen_agen_pemasaran_update');
     Route::delete('/','Manajer\ManajemenAgenPemasaranController@delete')->name('manajer.manajemen_agen_pemasaran_delete');
+    Route::patch('/aktifkan_status/{id}','Manajer\ManajemenAgenPemasaranController@aktifkanStatus')->name('manajer.manajemen_agen_pemasaran_aktifkan_status');
+    Route::patch('/nonaktifkan_status/{id}','Manajer\ManajemenAgenPemasaranController@nonAktifkanStatus')->name('manajer.manajemen_agen_pemasaran_nonaktifkan_status');
+});
 
+Route::group(['prefix' => 'manajer/manajemen_pejabat_berwenang'], function(){
+    Route::get('/', 'Manajer\ManajemenPejabatBerwenangController@index')->name('manajer.manajemen_pejabat_berwenang');
+    Route::post('/','Manajer\ManajemenPejabatBerwenangController@post')->name('manajer.manajemen_pejabat_berwenang_post');
+    Route::get('/{id}/edit', 'Manajer\ManajemenPejabatBerwenangController@edit')->name('manajer.manajemen_pejabat_berwenang_edit');
+    Route::patch('/', 'Manajer\ManajemenPejabatBerwenangController@update')->name('manajer.manajemen_pejabat_berwenang_update');
+    Route::delete('/','Manajer\ManajemenPejabatBerwenangController@delete')->name('manajer.manajemen_pejabat_berwenang_delete');
+    Route::patch('/aktifkan_status/{id}','Manajer\ManajemenPejabatBerwenangController@aktifkanStatus')->name('manajer.manajemen_pejabat_berwenang_aktifkan_status');
+    Route::patch('/nonaktifkan_status/{id}','Manajer\ManajemenPejabatBerwenangController@nonAktifkanStatus')->name('manajer.manajemen_pejabat_berwenang_nonaktifkan_status');
+});
+
+Route::group(['prefix' => 'manajer/manajemen_ketua_koperasi'], function(){
+    Route::get('/', 'Manajer\ManajemenKetuaKoperasiController@index')->name('manajer.manajemen_ketua_koperasi');
+    Route::post('/','Manajer\ManajemenKetuaKoperasiController@post')->name('manajer.manajemen_ketua_koperasi_post');
+    Route::get('/{id}/edit', 'Manajer\ManajemenKetuaKoperasiController@edit')->name('manajer.manajemen_ketua_koperasi_edit');
+    Route::patch('/', 'Manajer\ManajemenKetuaKoperasiController@update')->name('manajer.manajemen_ketua_koperasi_update');
+    Route::delete('/','Manajer\ManajemenKetuaKoperasiController@delete')->name('manajer.manajemen_ketua_koperasi_delete');
+    Route::patch('/aktifkan_status/{id}','Manajer\ManajemenKetuaKoperasiController@aktifkanStatus')->name('manajer.manajemen_ketua_koperasi_aktifkan_status');
+    Route::patch('/nonaktifkan_status/{id}','Manajer\ManajemenKetuaKoperasiController@nonAktifkanStatus')->name('manajer.manajemen_ketua_koperasi_nonaktifkan_status');
 });
 
 Route::group(['prefix' => 'manajer/laporan'], function(){

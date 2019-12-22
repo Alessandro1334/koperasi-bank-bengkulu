@@ -36,15 +36,27 @@ class ManajemenAgenPemasaranController extends Controller
             'telephone'   => $request->telephone,
             'email'  => $request->email,
         ]);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Diubah !!']);
-        }
+        return redirect()->route('manajer.manajemen_agen_pemasaran')->with(['success'   =>  'Data Agen Pemasaran Berhasil Diubah !!']);
     }
 
     public function delete(Request $request) {
         $agen = AgenPemasaran::destroy($request->id);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Dihapus !!']);
-        }
+        return redirect()->route('manajer.manajemen_agen_pemasaran')->with(['success'   =>  'Data Agen Pemasaran Berhasil Dihapus !!']);
+    }
+
+    public function aktifkanStatus($id){
+        $agen = AgenPemasaran::where('id',$id)->update([
+            'status'    =>  '1',
+        ]);
+
+        return $agen;
+    }
+
+    public function nonAktifkanStatus($id){
+        $agen = AgenPemasaran::where('id',$id)->update([
+            'status'    =>  '0',
+        ]);
+
+        return $agen;
     }
 }

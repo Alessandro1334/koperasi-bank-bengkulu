@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePejabatBerwenangsTable extends Migration
+class CreateKetuaKoperasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePejabatBerwenangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pejabat_berwenangs', function (Blueprint $table) {
+        Schema::create('ketua_koperasis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nm_pejabat_berwenang');
+            $table->string('nm_ketua_koperasi');
             $table->string('email');
             $table->string('telephone');
             $table->enum('status',['1','0'])->default('1');
@@ -30,6 +30,6 @@ class CreatePejabatBerwenangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pejabat_berwenangs');
+        Schema::dropIfExists('ketua_koperasis');
     }
 }

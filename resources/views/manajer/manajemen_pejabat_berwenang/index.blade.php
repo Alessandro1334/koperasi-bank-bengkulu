@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-user"></i>&nbsp;Manajemen Agen Pemasaran
+    <i class="fa fa-user"></i>&nbsp;Manajemen Pejabat Berwenang
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut adalah data agen pemasaran, silahkan tambahkan jika ada agen pemasaran baru
+            Berikut adalah data pejabat Berwenang, silahkan tambahkan jika ada pejabat Berwenang baru
             <br>
         </p>
     </div>
@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Agen Pemasaran</h3>
+                    <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Pejabat Berwenang</h3>
                     <div class="box-tools pull-right">
                         <a data-target="#add_data" data-toggle="modal" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                     </div>
@@ -32,6 +32,16 @@
                             <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
                         </div>
                     @endif
+                    <div class="alert alert-success alert-block" style="display:none;" id="berhasil">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> Status user telah diubah !!
+                    </div>
+
+                    <div class="alert alert-danger alert-block" style="display:none;" id="gagal">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <i class="fa fa-success-circle"></i><strong>Gagal :</strong> Status user gagal diubah !!
+                    </div>
+
                     <table class="table table-bordered table-hover" id="investor">
                         <thead>
                             <tr>
@@ -48,29 +58,29 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach($agens as $agen)
+                            @foreach($pejabats as $pejabat)
                                 <tr>
                                     <td> {{ $no++ }} </td>
-                                    <td> {{ $agen->nm_agen_pemasaran }} </td>
-                                    <td> {{ $agen->email }} </td>
-                                    <td> {{ $agen->telephone }} </td>
+                                    <td> {{ $pejabat->nm_pejabat_berwenang }} </td>
+                                    <td> {{ $pejabat->email }} </td>
+                                    <td> {{ $pejabat->telephone }} </td>
                                     <td>
-                                        @if ($agen->status == "1")
+                                        @if ($pejabat->status == "1")
                                             <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
                                             @else
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp; Tidak Aktif</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($agen->status == "0")
-                                            <a onclick="aktifkanStatus({{ $agen->id }})" class="btn btn-primary btn-sm"><i class="fa fa-thumbs-up"></i></a>
+                                        @if ($pejabat->status == "0")
+                                            <a onclick="aktifkanStatus({{ $pejabat->id }})" class="btn btn-primary btn-sm"><i class="fa fa-thumbs-up"></i></a>
                                             @else
-                                                <a onclick="nonAktifkanStatus({{ $agen->id }})" class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i></a>
+                                                <a onclick="nonAktifkanStatus({{ $pejabat->id }})" class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i></a>
                                         @endif
                                     </td>
                                     <td>
-                                        <a style="float:left;" onclick="edit_data({{ $agen->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a onclick="delete_data({{ $agen->id }})" class="btn btn-danger btn-sm">
+                                        <a style="float:left;" onclick="edit_data({{ $pejabat->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a onclick="delete_data({{ $pejabat->id }})" class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -91,7 +101,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                    <form method="POST" action="{{ route('manajer.manajemen_agen_pemasaran_delete') }}">
+                                    <form method="POST" action="{{ route('manajer.manajemen_pejabat_berwenang_delete') }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <input type="hidden" name="id" id="id_del">
@@ -103,17 +113,17 @@
                     </div>
                  </div>
                  <div class="modal fade" id="add_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <form method="POST" action="{{ route('manajer.manajemen_agen_pemasaran_post') }}">
+                    <form method="POST" action="{{ route('manajer.manajemen_pejabat_berwenang_post') }}">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Tambah Data Administrator<b id="nm_investor"></b></h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Tambah Data Pejabat Berwenang<b id="nm_investor"></b></h5>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="nama">Nama Agen Pemasaran</label>
-                                    <input type="text" class="form-control" name="nm_agen_pemasaran" placeholder="Masukan Nama" required>
+                                    <input type="text" class="form-control" name="nm_pejabat_berwenang" placeholder="Masukan Nama" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
@@ -135,7 +145,7 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="POST" action="{{ route('manajer.manajemen_agen_pemasaran_update') }}">
+        <form method="POST" action="{{ route('manajer.manajemen_pejabat_berwenang_update') }}">
             {{ csrf_field() }} {{ method_field('PATCH') }}
             <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -146,7 +156,7 @@
                     <div class="form-group">
                         <label for="">Nama</label>
                         <input type="hidden" name="id" id="id">
-                        <input type="text" class="form-control" name="nm_agen_pemasaran" id="nm_agen_pemasaran" placeholder="Masukan Nama" required>
+                        <input type="text" class="form-control" name="nm_pejabat_berwenang" id="nm_pejabat_berwenang" placeholder="Masukan Nama" required>
                     </div>
                     <div class="form-group">
                         <label for="examplenputPassword1">Email</label>
@@ -179,13 +189,13 @@
 
         function edit_data(id){
             $.ajax({
-                url: "{{ url('manajer/manajemen_agen_pemasaran') }}"+'/'+ id + "/edit",
+                url: "{{ url('manajer/manajemen_pejabat_berwenang') }}"+'/'+ id + "/edit",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data){
                     $('#exampleModal').modal('show');
                     $('#id').val(data.id);
-                    $('#nm_agen_pemasaran').val(data.nm_agen_pemasaran);
+                    $('#nm_pejabat_berwenang').val(data.nm_pejabat_berwenang);
                     $('#email').val(data.email);
                     $('#telephone').val(data.telephone);
                 },
@@ -201,7 +211,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            url = "{{ url('manajer/manajemen_agen_pemasaran/aktifkan_status').'/' }}"+id;
+            url = "{{ url('manajer/manajemen_pejabat_berwenang/aktifkan_status').'/' }}"+id;
             $.ajax({
                 url : url,
                 type : 'PATCH',
@@ -222,7 +232,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            url = "{{ url('manajer/manajemen_agen_pemasaran/nonaktifkan_status').'/' }}"+id;
+            url = "{{ url('manajer/manajemen_pejabat_berwenang/nonaktifkan_status').'/' }}"+id;
             $.ajax({
                 url : url,
                 type : 'PATCH',

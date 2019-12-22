@@ -57,6 +57,15 @@ $factory->define(App\PejabatBerwenang::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\KetuaKoperasi::class, function (Faker $faker) {
+    return [
+        'nm_ketua_koperasi' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'telephone' => $faker->phoneNumber(),
+        'status' => $faker->randomElement(['1','0']),
+    ];
+});
+
 $factory->define(App\SahamInvestor::class, function (Faker $faker) {
     return [
         'no_sk3s' => $faker->isbn10(),
