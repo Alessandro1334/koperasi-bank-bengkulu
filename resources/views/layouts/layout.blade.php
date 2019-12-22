@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{ route('admin.dashboard') }}" class="logo">
+    <a class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><i class="fa fa-home"></i></span>
       <!-- logo for regular state and mobile devices -->
@@ -68,7 +68,14 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li style="background:#dc3545;">
-            <a href="#" data-toggle="control-sidebar" ><i class="fa fa-power-off"></i>&nbsp; Keluar</a>
+            <a data-toggle="control-sidebar" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                <i class="fa fa-power-off"></i>&nbsp; {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </li>
         </ul>
       </div>

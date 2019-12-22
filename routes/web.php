@@ -16,10 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/user/logout','Auth\LoginController@logoutUser')->name('user.logout');
 
-Route::group(['prefix' => 'admin'], function(){
-    Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
-});
+// Route::group(['prefix' => 'admin'], function(){
+//     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
+// });
 
 //Route Operator
 Route::group(['prefix' => 'operator'], function(){
@@ -105,7 +106,10 @@ Route::group(['prefix' => 'manajer/laporan'], function(){
 
 // Route Administrator
 Route::group(['prefix' => 'administrator'], function(){
+    Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login','AuthAdmin\LoginController@login')->name('admin.login.submit');
     Route::get('/', 'Admin\DashboardController@index')->name('administrator.dashboard');
+    Route::get('/logout','Auth\LoginController@logout')->name('admin.logout');
 });
 
 Route::group(['prefix' => 'administrator/manajemen_admin'], function(){

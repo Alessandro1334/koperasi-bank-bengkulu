@@ -9,10 +9,10 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+            <form class="login100-form validate-form" method="POST" action="{{ route('admin.login.submit') }}">
                 @csrf
                 <span class="login100-form-title p-b-43">
-                    Login Koperasi Bank Bengkulu
+                   Login Administrator Koperasi Bank Bengkulu
                 </span>
 
 

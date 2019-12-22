@@ -28,3 +28,9 @@
     </a>
 </li>
 
+<li class="">
+    <a href="{{ route('admin.logout') }}">
+        <i class="fa fa-power-off text-danger"></i> <span class="text-danger">Keluar</span>
+    </a>
+</li>
+
