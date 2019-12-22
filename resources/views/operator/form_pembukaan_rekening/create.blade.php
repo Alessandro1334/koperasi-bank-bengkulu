@@ -57,11 +57,6 @@
                                                     <label for="">Kode Nasabah</label>
                                                     <input type="text" name="kode_nasabah" class="form-control" id="" placeholder="Masukan Kode Nasabah">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Staf Pemasaran</label>
-                                                    <select name="jenis_kelamin" class="form-control">
-                                                    </select>
-                                                </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nomor KTP/Paspor</label>
@@ -755,7 +750,12 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Agen Pemasaran :</label> <br>
-                                                    <input type="text" name="nm_agen_pemasaran" class="form-control" id="" placeholder="Masukan Agen Pemasaran">
+                                                    <select name="agen_pemasaran_id" id="" class="form-control">
+                                                        <option value="" disabled selected>-- pilih agen pemasaran --</option>
+                                                        @foreach ($agens as $agen)
+                                                            <option value="{{ $agen->id }}">{{ $agen->nm_agen_pemasaran }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -773,7 +773,12 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Pejabat Berwenang :</label> <br>
-                                                    <input type="text" name="nm_pejabat_berwenang" class="form-control" id="" placeholder="Nama Pejabat Berwenang">
+                                                    <select name="pejabat_berwenang_id" id="" class="form-control">
+                                                        <option value="" disabled selected>-- pilih pejabat berwenang --</option>
+                                                        @foreach ($pejabats as $pejabat)
+                                                            <option value="{{ $pejabat->id }}">{{ $pejabat->nm_pejabat_berwenang }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">

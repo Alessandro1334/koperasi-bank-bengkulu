@@ -10,6 +10,8 @@ use App\DokumenPendukungInvestor;
 use App\DataPasanganOrangTuaInvestor;
 use App\Persetujuan;
 use App\AhliWarisInvestor;
+use App\AgenPemasaran;
+use App\PejabatBerwenang;
 use DB;
 
 class FormPembukaanRekening extends Controller
@@ -20,7 +22,9 @@ class FormPembukaanRekening extends Controller
     }
 
     public function tambahInvestor(){
-        return view('operator/form_pembukaan_rekening.create');
+        $agens = AgenPemasaran::all();
+        $pejabats = PejabatBerwenang::all();
+        return view('operator/form_pembukaan_rekening.create',compact('agens','pejabats'));
     }
 
     public function tambahInvestorPost(Request $request){
@@ -29,7 +33,7 @@ class FormPembukaanRekening extends Controller
         $investor->nm_investor = $request->nm_investor;
         $investor->kode_nasabah = $request->kode_nasabah;
         $investor->no_cif = $request->no_cif;
-        $investor->staf_pemasaran_id = $request->staf_pemasaran_id;
+        $investor->staf_pemasaran_id = $request->agen_pemasaran_id;
         $investor->jenis_kelamin = $request->jenis_kelamin;
         $investor->no_ktp = $request->no_ktp;
         $investor->tgl_kadaluarsa_ktp = $request->tgl_kadaluarsa_ktp;
@@ -131,11 +135,11 @@ class FormPembukaanRekening extends Controller
 
         $persetujuan = new Persetujuan;
         $persetujuan->investor_id =   $last->id;
-        $persetujuan->nm_agen_pemasaran = $request->nm_agen_pemasaran;
+        $persetujuan->agen_pemasaran_id = $request->agen_pemasaran_id;
         $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
         $persetujuan->tanda_tangan_agen_pemasaran = $request->tanda_tangan_agen_pemasaran;
         $persetujuan->tanggal_agen_pemasaran = $request->tanggal_agen_pemasaran;
-        $persetujuan->nm_pejabat_berwenang = $request->nm_pejabat_berwenang;
+        $persetujuan->pejabat_berwenang_id = $request->pejabat_berwenang_id;
         $persetujuan->status_persetujuan = $request->status_persetujuan;
         $persetujuan->tanda_tangan_pejabat_berwenang = $request->tanda_tangan_pejabat_berwenang;
         $persetujuan->tanggal_pejabat_berwenang = $request->tanggal_pejabat_berwenang;
@@ -159,7 +163,7 @@ class FormPembukaanRekening extends Controller
             'nm_investor'   => $request->nm_investor,
             'kode_nasabah'  => $request->kode_nasabah,
             'no_cif'    => $request->no_cif,
-            'staf_pemasaran_id' => $request->staf_pemasaran_id,
+            'staf_pemasaran_id' => $request->agen_pemasaran_id,
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_ktp'    => $request->no_ktp,
             'tgl_kadaluarsa_ktp'    => $request->tgl_kadaluarsa_ktp,
@@ -255,11 +259,11 @@ class FormPembukaanRekening extends Controller
         ]);
 
         $persetujuan = Persetujuan::where('investor_id',$id)->update([
-            'nm_agen_pemasaran' => $request->nm_agen_pemasaran,
+            'agen_pemasaran_id' => $request->agen_pemasaran_id,
             'tanda_tangan_agen_pemasaran'   => $request->tanda_tangan_agen_pemasaran,
             'tanda_tangan_agen_pemasaran'   => $request->tanda_tangan_agen_pemasaran,
             'tanggal_agen_pemasaran'    => $request->tanggal_agen_pemasaran,
-            'nm_pejabat_berwenang'  => $request->nm_pejabat_berwenang,
+            'pejabat_berwenang_id'  => $request->pejabat_berwenang_id,
             'status_persetujuan'    => $request->status_persetujuan,
             'tanda_tangan_pejabat_berwenang'    => $request->tanda_tangan_pejabat_berwenang,
             'tanggal_pejabat_berwenang' => $request->tanggal_pejabat_berwenang,

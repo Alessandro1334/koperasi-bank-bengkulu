@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PersetujuansTableSeeder::class);
         $this->call(AdminsTableSeeder::class);
         $this->call(AgenPemasaransTableSeeder::class);
+        $this->call(PejabatBerwenangsTableSeeder::class);
     }
 }
