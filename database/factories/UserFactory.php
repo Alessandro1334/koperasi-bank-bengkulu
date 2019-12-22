@@ -37,6 +37,14 @@ $factory->define(App\Admin::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\AgenPemasaran::class, function (Faker $faker) {
+    return [
+        'nm_agen_pemasaran' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'telephone' => $faker->phoneNumber(),
+    ];
+});
+
 $factory->define(App\SahamInvestor::class, function (Faker $faker) {
     return [
         'no_sk3s' => $faker->isbn10(),
