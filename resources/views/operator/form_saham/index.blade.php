@@ -79,7 +79,7 @@
                                         @endif
                                     </td>
                                     <td>
-
+                                        <a href="{{ route('operator.sk3s',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -216,11 +216,11 @@
                 url : url,
                 type : 'PATCH',
                 success : function($data){
-                    $('#berhasil').show(300);
+                    $('#berhasil').show(100);
                     location.reload();
                 },
                 error:function(){
-                    $('#gagal').show(300);
+                    $('#gagal').show(100);
                 }
             });
             return false;

@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SahamInvestor;
 use App\Investor;
+use App\Barcodes;
+use App\KetuaKoperasi;
+use PDF;
 
 class SahamInvestorController extends Controller
 {
     public function index()
     {
         $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
-                                ->select('nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
+                                ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
                                 ->get();
         return view('operator/form_saham.index', compact('sahams'));
     }
@@ -53,5 +56,17 @@ class SahamInvestorController extends Controller
         $saham->save();
 
         return redirect()->route('operator.manajemen_saham')->with(['success'   =>  'Pembelian / Penglihan Saham Berhasil Dilakukan !!']);
+    }
+
+    public function sk3s($id){
+        $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
+        $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
+        $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
+                                ->get();
+        $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s'));
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream();
     }
 }
