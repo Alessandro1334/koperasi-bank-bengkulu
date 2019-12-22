@@ -88,6 +88,11 @@ Route::group(['prefix' => 'administrator/manajemen_admin'], function(){
 
 Route::group(['prefix' => 'administrator/manajemen_operator'], function(){
     Route::get('/', 'Admin\ManajemenOperatorController@index')->name('administrator.manajemen_operator');
+    Route::post('/add', 'Admin\ManajemenOperatorController@addPost')->name('administrator.manajemen_operator_addpost');
+    Route::get('/{id}/edit', 'Admin\ManajemenOperatorController@edit')->name('administrator.manajemen_operator_edit');
+    Route::patch('/', 'Admin\ManajemenOperatorController@update')->name('administrator.manajemen_operator_update');
+    Route::delete('/', 'Admin\ManajemenOperatorController@delete')->name('administrator.manajemen_operator_delete');
+    Route::patch('/editPass', 'Admin\ManajemenOperatorController@ubahPass')->name('administrator.manajemen_operator_ubahpass');
 });
 
 Route::group(['prefix' => 'administrator/manajemen_manajer'], function(){
