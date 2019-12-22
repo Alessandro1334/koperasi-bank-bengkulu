@@ -36,7 +36,7 @@
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
                     <div class="row" style="margin-bottom:10px;">
-                        <form action="{{ route('manajer.laporan_nasabah_filter') }}" method="GET">
+                        <form action="{{ route('manajer.data_saham_nasabah') }}" method="GET">
                             <div class="form-group col-md-6">
                                 <label for="">Pilih Metode Filter Laporan</label>
                                 <select name="metode" id="metode" class="form-control">

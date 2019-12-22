@@ -16,6 +16,12 @@
     </a>
 </li>
 
+<li class="{{ set_active('manajer.manajemen_agen_pemasaran') }}">
+    <a href="{{ route('manajer.manajemen_agen_pemasaran') }}">
+        <i class="fa fa-users"></i> <span>Manajemen Agen Pemasaran</span>
+    </a>
+</li>
+
 <li class="treeview {{ set_active(['manajer.laporan_nasabah','manajer.laporan_nasabah_filter','manajer.data_saham_nasabah','manajer.laporan_saham_filter']) }}">
     <a href="#">
         <i class="fa fa-bar-chart"></i> <span>Laporan</span>
@@ -30,8 +36,4 @@
     </ul>
 </li>
 
-<li class="">
-    <a href="{{ route('manajer.manajemen_user') }}">
-        <i class="fa fa-users"></i> <span>Manajemen User</span>
-    </a>
-</li>
+
