@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Investor;
+use App\SahamInvestor;
 use App\AgenPemasaran;
 use Carbon;
 use DB;
@@ -45,6 +46,43 @@ class LaporanController extends Controller
                                     ->where('agen_pemasarans.id',$_GET['agen_id'])
                                     ->get();
                 return view('manajer/laporan.data_nasabah',compact('nasabahs','agens'));
+            }
+        }
+    }
+
+    public function laporanSahamNasabah(){
+        $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                            ->get();
+        $agens = AgenPemasaran::all();
+        return view('manajer/laporan.data_saham',compact('sahams','agens'));
+    }
+
+    public function laporanSahamNasabahFilter(Request $request){
+        if(isset($_GET['metode'])){
+            $agens = AgenPemasaran::all();
+            if($_GET['metode']  ==  "semua"){
+                $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                    ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                                    ->get();
+                return view('manajer/laporan.data_saham',compact('sahams','agens'));
+            }
+            elseif($_GET['metode']  ==  "date"){
+                $from = $_GET['date'];
+                $mytime = Carbon\Carbon::now();
+                $to = $mytime->toDateString();
+                $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                    ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                                    ->whereBetween(DB::raw('DATE(saham_investors.created_at)'), array($from, $to))
+                                    ->get();
+                return view('manajer/laporan.data_saham',compact('sahams','agens'));
+
+            }
+            elseif($_GET['metode']   ==  "agen"){
+                $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                    ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                                    ->where('agen_pemasarans.id',$_GET['agen_id'])
+                                    ->get();
+                return view('manajer/laporan.data_saham',compact('sahams','agens'));
             }
         }
     }

@@ -18,6 +18,7 @@ class CreatePejabatBerwenangsTable extends Migration
             $table->string('nm_pejabat_berwenang');
             $table->string('email');
             $table->string('telephone');
+            $table->enum('status',['1','0']);
             $table->timestamps();
         });
     }
