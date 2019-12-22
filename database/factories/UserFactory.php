@@ -43,6 +43,8 @@ $factory->define(App\AgenPemasaran::class, function (Faker $faker) {
         'nm_agen_pemasaran' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'telephone' => $faker->phoneNumber(),
+        'status' => $faker->randomElement(['1','0']),
+
     ];
 });
 
@@ -51,6 +53,7 @@ $factory->define(App\PejabatBerwenang::class, function (Faker $faker) {
         'nm_pejabat_berwenang' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'telephone' => $faker->phoneNumber(),
+        'status' => $faker->randomElement(['1','0']),
     ];
 });
 
@@ -79,6 +82,7 @@ $factory->define(App\Persetujuan::class, function (Faker $faker) {
         'tanda_tangan_agen_pemasaran' => $faker->randomElement(['0','1']),
         'tanggal_agen_pemasaran' => $faker->dateTimeThisCentury->format('Y:m:d'),
         'pejabat_berwenang_id' => $faker->randomDigit(),
+
         'status_persetujuan' => $faker->randomElement(['disetujui','tidak_disetujui']),
         'tanda_tangan_pejabat_berwenang' => $faker->randomElement(['0','1']),
         'tanggal_pejabat_berwenang' => $faker->dateTimeThisCentury->format('Y:m:d'),

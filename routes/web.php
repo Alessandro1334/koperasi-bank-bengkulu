@@ -65,6 +65,8 @@ Route::group(['prefix' => 'manajer/verifikasi_rekening_investor'], function(){
 Route::group(['prefix' => 'manajer/laporan'], function(){
     Route::get('/laporan_data_nasabah', 'LaporanController@laporanNasabah')->name('manajer.laporan_nasabah');
     Route::get('/laporan_data_nasabah/filter', 'LaporanController@laporanNasabahFilter')->name('manajer.laporan_nasabah_filter');
+    Route::get('/laporan_saham_nasabah', 'LaporanController@laporanSahamNasabah')->name('manajer.data_saham_nasabah');
+    Route::get('/laporan_saham_nasabah/filter', 'LaporanController@laporanSahamNasabahFilter')->name('manajer.laporan_saham_filter');
 });
 
 Route::group(['prefix' => 'manajer/laporan'], function(){

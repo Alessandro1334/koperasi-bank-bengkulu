@@ -18,6 +18,7 @@ class CreateAgenPemasaransTable extends Migration
             $table->string('nm_agen_pemasaran');
             $table->string('email');
             $table->string('telephone');
+            $table->enum('status',['1','0']);
             $table->timestamps();
         });
     }
