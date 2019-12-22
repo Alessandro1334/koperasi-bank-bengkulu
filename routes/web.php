@@ -135,6 +135,13 @@ Route::group(['prefix' => 'administrator/manajemen_manajer'], function(){
 
 });
 
+Route::group(['prefix'  =>  'administrator/manajemen_barcode'], function(){
+    Route::get('/', 'Admin\ManajemenBarcodeController@index')->name('administrator.manajemen_barcode');
+    Route::post('/add', 'Admin\ManajemenBarcodeController@addPost')->name('administrator.manajemen_barcode_addpost');
+    Route::get('/{id}/edit', 'Admin\ManajemenBarcodeController@edit')->name('administrator.manajemen_barcode_edit');
+
+});
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

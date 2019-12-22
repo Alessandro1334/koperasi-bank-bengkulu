@@ -22,3 +22,9 @@
     </a>
 </li>
 
+<li class="{{ route('administrator.manajemen_barcode') }}">
+    <a href="{{ route('administrator.manajemen_barcode') }}">
+        <i class="fa fa-barcode"></i> <span>Manajemen Barcode</span>
+    </a>
+</li>
+
