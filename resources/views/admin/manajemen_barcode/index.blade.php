@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                    <form method="POST" action="{{ route('administrator.manajemen_manajer_delete') }}">
+                                    <form method="POST" action="{{ route('administrator.manajemen_barcode_delete') }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <input type="hidden" name="id" id="id_delete">
@@ -85,34 +85,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal fade" id="pwd_changed">
-                        <form method="POST" action="{{ route('administrator.manajemen_manajer_ubahpass') }}">
-                            {{ csrf_field() }} {{ method_field('PATCH') }}
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Ubah Data Administrator<b id="nm_investor"></b></h5>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="">Password Baru(*)</label>
-                                        <input type="hidden" name="id" id="id_del">
-                                        <input type="text" class="form-control password1" name="password1" placeholder="Masukan Password Baru" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="examplenputPassword1">Password Baru(**) </label>
-                                        <input type="text" class="form-control password_baru" name="password_baru" placeholder="Masukan Password Baru Lagi" required>
-                                        <span id="error-mssg" class="error-mssg text-danger" style="font-size:12px;"></span>
-                                        <span id="sccs-mssg" class="sccs-mssg text-success" style="font-size:12px;"></span>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                    <button type="submit" class="btn btn-primary btn_save"><i class="fa fa-check-circle"></i>&nbsp;Ubah</button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
                 <div class="modal fade" id="add_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -151,7 +123,7 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="POST" action="{{ route('administrator.manajemen_manajer_update') }}">
+        <form method="POST" action="{{ route('administrator.manajemen_barcode_update') }}" enctype="multipart/form-data">
             {{ csrf_field() }} {{ method_field('PATCH') }}
             <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -162,15 +134,15 @@
                     <div class="form-group">
                         <label for="nama">File</label>
                         <input type="hidden" name="id" id="id">
-                        <input type="file" class="form-control" name="nm_file" placeholder="Masukan Barcode" required>
+                        <input type="file" class="form-control" name="nm_file" placeholder="Masukan Barcode">
                     </div>
                     <div class="form-group">
                         <label for="email">Keterangan</label>
-                        <input type="text" class="form-control" name="keterangan" placeholder="Masukan Keterangan" required>
+                        <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select type="text" class="form-control" name="status" required> 
+                        <select type="text" class="form-control" name="status" id="status" required> 
                             <option value="aktif">Aktif</option>
                             <option value="tdk_aktif">Tidak Aktif</option>
                         </select>
@@ -209,12 +181,11 @@
                 dataType: "JSON",
                 success: function(data){
                     console.log(data);
-                    // $('#exampleModal').modal('show');
-                    // $('#id').val(data.id);
-                    // $('#nm_barcode').val(data.nm_barcode);
-                    // $('#email').val(data.email);
-                    // $('#barcodename').val(data.barcodename);
-                    // $('#status').val(data.status);
+                    $('#exampleModal').modal('show');
+                    $('#id').val(data.id);
+                    $('#nm_file').val(data.nm_file);
+                    $('#keterangan').val(data.keterangan);
+                    $('#status').val(data.status);
                 },
                 error:function(){
                     alert("Nothing Data");
