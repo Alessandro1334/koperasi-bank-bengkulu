@@ -22,6 +22,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'level_user' => $faker->randomElement(['operator','manajer']),
+        'status' => $faker->randomElement(['aktif','tdk_aktif']),
         'remember_token' => Str::random(10),
     ];
 });
@@ -77,10 +78,11 @@ $factory->define(App\SahamInvestor::class, function (Faker $faker) {
 $factory->define(App\Persetujuan::class, function (Faker $faker) {
     return [
         'investor_id' => $faker->randomDigit(),
-        'agen_pemasaran_id' => $faker->text(),
+        'agen_pemasaran_id' => $faker->randomDigit(),
         'tanda_tangan_agen_pemasaran' => $faker->randomElement(['0','1']),
         'tanggal_agen_pemasaran' => $faker->dateTimeThisCentury->format('Y:m:d'),
-        'pejabat_berwenang_id' => $faker->text(),
+        'pejabat_berwenang_id' => $faker->randomDigit(),
+
         'status_persetujuan' => $faker->randomElement(['disetujui','tidak_disetujui']),
         'tanda_tangan_pejabat_berwenang' => $faker->randomElement(['0','1']),
         'tanggal_pejabat_berwenang' => $faker->dateTimeThisCentury->format('Y:m:d'),

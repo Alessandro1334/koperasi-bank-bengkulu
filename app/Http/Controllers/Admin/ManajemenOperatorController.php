@@ -21,6 +21,7 @@ class ManajemenOperatorController extends Controller
             'nm_user'   =>  $request->nm_user,
             'username'  =>  $request->username,
             'email'     =>  $request->email,
+            'status'    =>  $request->status,
             'level_user'=>  'operator',
             'password'  =>  Hash::make($request->password)
         ]);
@@ -31,7 +32,7 @@ class ManajemenOperatorController extends Controller
 
     public function edit($id)
     {
-        $user = User::where('id',$id)->select('id','nm_user','email','username')->first();
+        $user = User::where('id',$id)->select('id','nm_user','email','username','status')->first();
         return $user;
     }
 
@@ -41,6 +42,7 @@ class ManajemenOperatorController extends Controller
             'nm_user'       => $request->nm_user,
             'username'      => $request->username,
             'email'         => $request->email,
+            'status'        => $request->status,
             'level_user'=>  'operator',
         ]);
         if($user){

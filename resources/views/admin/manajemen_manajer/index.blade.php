@@ -40,6 +40,7 @@
                                 <th>Email</th>
                                 <th>Username</th>
                                 <th style="text-align: center;">Password</th>
+                                <th style="text-align: center;">Status</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -50,6 +51,13 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td style="text-align: center;"><a class="btn btn-success btn-sm" onclick="change_pass({{ $user->id }})"><i class="fa fa-key"></i></a></td>
+                                <td>
+                                    @if ($user->status == 'aktif')
+                                        <span class="label label-success">Aktif</span>
+                                    @else
+                                        <span class="label label-danger">Tidak Aktif</span>  
+                                    @endif
+                                </td>
                                 <td>
                                     <a style="float:left;" onclick="edit_data({{ $user->id }})"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                     <a onclick="delete_data({{ $user->id }})" class="btn btn-danger btn-sm">
@@ -136,6 +144,13 @@
                                     <label for="password">Password</label>
                                     <input type="text" class="form-control" name="password" placeholder="Masukan Password" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select type="text" class="form-control" name="status" required> 
+                                        <option value="aktif">Aktif</option>
+                                        <option value="tdk_aktif">Tidak Aktif</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
@@ -168,6 +183,13 @@
                     <div class="form-group">
                         <label for="exampleInputFile">Username</label>
                         <input type="text" class="form-control" name="username" id="username" placeholder="Masukan Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select type="text" class="form-control" name="status" id="status"required> 
+                            <option value="aktif">Aktif</option>
+                            <option value="tdk_aktif">Tidak Aktif</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -207,6 +229,7 @@
                     $('#nm_user').val(data.nm_user);
                     $('#email').val(data.email);
                     $('#username').val(data.username);
+                    $('#status').val(data.status);
                 },
                 error:function(){
                     alert("Nothing Data");

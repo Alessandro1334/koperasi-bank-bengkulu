@@ -21,6 +21,7 @@ class ManajemenManajerController extends Controller
             'nm_user'   =>  $request->nm_user,
             'username'  =>  $request->username,
             'email'     =>  $request->email,
+            'status'    =>  $request->status,
             'level_user'=>  'manajer',
             'password'  =>  Hash::make($request->password)
         ]);
@@ -31,7 +32,7 @@ class ManajemenManajerController extends Controller
 
     public function edit($id)
     {
-        $user = User::where('id',$id)->select('id','nm_user','email','username')->first();
+        $user = User::where('id',$id)->select('id','nm_user','email','username','status')->first();
         return $user;
     }
 
@@ -41,7 +42,8 @@ class ManajemenManajerController extends Controller
             'nm_user'       => $request->nm_user,
             'username'      => $request->username,
             'email'         => $request->email,
-            'level_user'=>  'manajer',
+            'status'        => $request->status,
+            'level_user'    => 'manajer',
         ]);
         if($user){
             return redirect()->route('administrator.manajemen_manajer')->with(['success'   =>  'Data Admin Berhasil Diubah !!']);
