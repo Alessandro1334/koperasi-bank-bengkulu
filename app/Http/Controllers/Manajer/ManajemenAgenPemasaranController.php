@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AgenPemasaran;
+use Gate;
 
 class ManajemenAgenPemasaranController extends Controller
 {
     public function index(){
+        if(!Gate::allows('isManajer')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $agens = AgenPemasaran::all();
         return view('manajer/manajemen_agen_pemasaran.index',compact('agens'));
     }

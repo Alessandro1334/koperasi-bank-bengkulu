@@ -13,10 +13,15 @@ use App\AhliWarisInvestor;
 use App\AgenPemasaran;
 use App\PejabatBerwenang;
 use DB;
+use Gate;
 
 class FormPembukaanRekening extends Controller
 {
     public function index(){
+        if(!Gate::allows('isOperator')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
         return view('operator/form_pembukaan_rekening.index',compact('investors'));
     }

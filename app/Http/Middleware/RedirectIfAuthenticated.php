@@ -24,8 +24,32 @@ class RedirectIfAuthenticated
                 }
                 break;
             default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('home');
+                if(Auth::check() && Auth::user()->status == 'aktif' && Auth::user()->level_user =="manajer"){
+                    // return 'a';
+                    // Auth::logout();
+                    // return "berhasil";
+                    return redirect()->route('manajer.dashboard');
+                    // return redirect('/staf_tu/dashboard');
+
+                }
+                elseif(Auth::check() && Auth::user()->status == 'aktif' && Auth::user()->level_user =="operator"){
+                    // Auth::logout();
+                    return redirect()->route('operator.dashboard');
+                }
+                elseif(Auth::check() && Auth::user()->status == 'tdk_aktif' && Auth::user()->level_user =="manajer"){
+                    Auth::logout();
+                    // return "gagal";
+                    return redirect()->route('login')->with(['error'    =>  'Akun Anda Sudah Tidak Aktif !!']);
+                    // return redirect('/staf_tu/dashboard');
+                }
+                elseif(Auth::check() && Auth::user()->status == 'tdk_aktif' && Auth::user()->level_user =="operator"){
+                    Auth::logout();
+                    // return redirect('/pimpinan/dashboard');
+                    return redirect()->route('login')->with(['error'    =>  'Akun Anda Sudah Tidak Aktif !!']);
+
+                }
+                else{
+                    Auth::logout();
                 }
                 break;
         }

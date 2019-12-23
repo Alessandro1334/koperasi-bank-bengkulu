@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\KetuaKoperasi;
+use Gate;
 
 class ManajemenKetuaKoperasiController extends Controller
 {
     public function index(){
+        if(!Gate::allows('isManajer')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $ketuas = KetuaKoperasi::all();
         return view('manajer/manajemen_ketua_koperasi.index',compact('ketuas'));
     }

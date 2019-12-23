@@ -9,11 +9,16 @@ use App\Investor;
 use App\Barcodes;
 use App\KetuaKoperasi;
 use PDF;
+use Gate;
 
 class SahamInvestorController extends Controller
 {
     public function index()
     {
+        if(!Gate::allows('isOperator')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
                                 ->get();

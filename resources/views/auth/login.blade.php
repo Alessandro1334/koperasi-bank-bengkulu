@@ -11,6 +11,12 @@
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                 @csrf
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Gagal:</strong> {{ $message }}
+                    </div>
+                @endif
                 <span class="login100-form-title p-b-43">
                     Login Koperasi Bank Bengkulu
                 </span>

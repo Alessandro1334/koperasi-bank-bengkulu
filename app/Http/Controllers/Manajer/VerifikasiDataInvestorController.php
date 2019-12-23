@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Investor;
+use Gate;
+
 class VerifikasiDataInvestorController extends Controller
 {
     public function index()
     {
+        if(!Gate::allows('isManajer')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp','status_verifikasi')->get();
         return view('manajer/verifikasi_data_investor.index', compact('investors'));
         // return $investors;

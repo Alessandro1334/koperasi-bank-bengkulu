@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SahamInvestor;
+use Gate;
 
 class VerifikasiRekeningInvestorController extends Controller
 {
     public function index()
     {
+        if(!Gate::allows('isManajer')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama',
                                         'saham_investors.status_verifikasi')

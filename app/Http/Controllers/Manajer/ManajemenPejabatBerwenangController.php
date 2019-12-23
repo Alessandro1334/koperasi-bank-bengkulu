@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PejabatBerwenang;
+use Gate;
 
 class ManajemenPejabatBerwenangController extends Controller
 {
     public function index(){
+        if(!Gate::allows('isManajer')){
+            abort(404, "Sorry, you can't do this actions");
+        }
+
         $pejabats = PejabatBerwenang::all();
         return view('manajer/manajemen_pejabat_berwenang.index',compact('pejabats'));
     }
