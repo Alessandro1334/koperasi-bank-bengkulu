@@ -22,8 +22,9 @@ class FormPembukaanRekening extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
+        $investors_acc = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
         $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
-        return view('operator/form_pembukaan_rekening.index',compact('investors'));
+        return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors']));
     }
 
     public function tambahInvestor(){
