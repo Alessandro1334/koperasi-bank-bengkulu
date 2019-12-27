@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Investor extends Model
 {
-    protected $fillable = ['nm_investor','kode_nasabah','no_cif',
+    protected $fillable = ['nm_investor','jenis_rekening','no_cif',
     'staf_pemasaran','staf_pemasaran','jenis_kelamin','no_ktp',
     'tgl_kadaluarsa_ktp','no_npwp','tgl_kadaluarsa_npwp','tempat_lahir',
     'tanggal_lahir','status_perkawinan','kewarganegaraan','alamat_ktp',

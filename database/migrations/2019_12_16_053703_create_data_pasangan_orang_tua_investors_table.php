@@ -30,10 +30,10 @@ class CreateDataPasanganOrangTuaInvestorsTable extends Migration
             $table->string('telp_perusahaan_pasangan_atau_orang_tua')->nullable();
             $table->string('email_perusahaan_pasangan_atau_orang_tua')->nullable();
             $table->string('fax_perusahaan_pasangan_atau_orang_tua')->nullable();
-            $table->enum('jabatan_pasangan_atau_orang_tua',['komisaris','direksi','manajer','staf','pemilik','pengawas']);
-            $table->string('jenis_usaha_pasangan_atau_orang_tua');
-            $table->string('lama_bekerja_pasangan_atau_orang_tua')->length('10');
-            $table->string('penghasilan_kotor_per_tahun_pasangan_atau_orang_tua');
+            $table->enum('jabatan_pasangan_atau_orang_tua',['komisaris','direksi','manajer','staf','pemilik','pengawas'])->nullable();
+            $table->string('jenis_usaha_pasangan_atau_orang_tua')->nullable();
+            $table->string('lama_bekerja_pasangan_atau_orang_tua')->length('10')->nullable();
+            $table->string('penghasilan_kotor_per_tahun_pasangan_atau_orang_tua')->nullable();
             $table->enum('sumber_penghasilan_utama_pasangan_atau_orang_tua',['gaji','hasil_usaha','warisan','dari_orang_tua/anak','hibah','dari_suami/istri','hasil_investasi','lainnya'])->nullable();
             $table->timestamps();
         });

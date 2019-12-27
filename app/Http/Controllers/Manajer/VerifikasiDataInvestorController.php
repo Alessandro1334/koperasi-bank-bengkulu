@@ -15,7 +15,7 @@ class VerifikasiDataInvestorController extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp','status_verifikasi')->get();
+        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')->get();
         return view('manajer/verifikasi_data_investor.index', compact('investors'));
         // return $investors;
     }

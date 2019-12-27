@@ -35,7 +35,7 @@
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="a">
-                    
+
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -47,7 +47,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Kode Nasabah</th>
+                                <th>Jenis Rekening</th>
                                 <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
@@ -62,7 +62,7 @@
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
-                                    <td> {{ $investor->kode_nasabah }} </td>
+                                    <td> {{ $investor->jenis_rekening }} </td>
                                     <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
@@ -113,7 +113,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Kode Nasabah</th>
+                                <th>Jenis Rekening</th>
                                 <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
@@ -128,7 +128,7 @@
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
-                                    <td> {{ $investor->kode_nasabah }} </td>
+                                    <td> {{ $investor->jenis_rekening }} </td>
                                     <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
@@ -176,7 +176,7 @@
         </div>
     </div>
 </div>
-   
+
 @endsection
 
 @push('scripts')

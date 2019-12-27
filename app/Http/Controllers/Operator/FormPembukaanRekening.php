@@ -22,8 +22,8 @@ class FormPembukaanRekening extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $investors_acc = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
-        $investors = Investor::select('id','nm_investor','kode_nasabah','no_cif','jenis_kelamin','no_ktp')->get();
+        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
+        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->get();
         return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors']));
     }
 
@@ -34,11 +34,33 @@ class FormPembukaanRekening extends Controller
     }
 
     public function tambahInvestorPost(Request $request){
+        $request->validate([
+            'no_register'   => 'required',
+            'nm_investor'   => 'required',
+            'jenis_rekening'    => 'required',
+            'staf_pemasaran_id' => 'required',
+            'jenis_kelamin' => 'required',
+            'no_ktp'    => 'required',
+            'tgl_kadaluarsa_ktp'    => 'required',
+            'no_npwp'   => 'required',
+            'tgl_registrasi_npwp'   => 'required',
+            'tempat_lahir'  => 'required',
+            'tanggal_lahir' => 'required',
+            'status_perkawinan' => 'required',
+            'kewarganegaraan'   => 'required',
+
+
+
+
+
+
+
+        ]);
+
         $investor = new Investor;
         $investor->no_register = $request->no_register;
         $investor->nm_investor = $request->nm_investor;
-        $investor->kode_nasabah = $request->kode_nasabah;
-        $investor->no_cif = $request->no_cif;
+        $investor->jenis_rekening = $request->jenis_rekening;
         $investor->staf_pemasaran_id = $request->agen_pemasaran_id;
         $investor->jenis_kelamin = $request->jenis_kelamin;
         $investor->no_ktp = $request->no_ktp;
@@ -167,8 +189,7 @@ class FormPembukaanRekening extends Controller
         $investor = Investor::where('id',$id)->update([
             'no_register'   => $request->no_register,
             'nm_investor'   => $request->nm_investor,
-            'kode_nasabah'  => $request->kode_nasabah,
-            'no_cif'    => $request->no_cif,
+            'jenis_rekening'  => $request->jenis_rekening,
             'staf_pemasaran_id' => $request->agen_pemasaran_id,
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_ktp'    => $request->no_ktp,

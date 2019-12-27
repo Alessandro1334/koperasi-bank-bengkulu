@@ -36,61 +36,60 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nama Lengkap sesuai dengan KTP/Paspor:</label>
-                                                    <input type="text" name="nm_investor" class="form-control" placeholder="Masukan nama lengkap">
+                                                    <input type="text" name="nm_investor" class="form-control" placeholder="Masukan nama lengkap" required>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No Register</label>
-                                                    <input type="text" name="no_register" class="form-control" id="" placeholder="Masukan nomor register">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="">No CIF</label>
-                                                    <input type="text" name="no_cif" class="form-control" id="" placeholder="Masukan nomor cif">
+                                                    <input type="text" name="no_register" class="form-control" id="" placeholder="Masukan nomor register" required>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin</label>
-                                                    <select name="jenis_kelamin" class="form-control">
+                                                    <select name="jenis_kelamin" class="form-control" required>
                                                         <option value="L">Laki-Laki</option>
                                                         <option value="P">Perempuan</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Kode Nasabah</label>
-                                                    <input type="text" name="kode_nasabah" class="form-control" id="" placeholder="Masukan Kode Nasabah">
+                                                    <label for="">Jenis Individual</label>
+                                                    <select name="jenis_rekening" class="form-control" id="jenis_rekening">
+                                                        <option value="perorangan">Perorangan</option>
+                                                        <option value="nonperorangan">Non Perorangan</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nomor KTP/Paspor</label>
-                                                    <input type="text" name="no_ktp" class="form-control" id="" placeholder="Masukan Nomor ktp">
+                                                    <input type="text" name="no_ktp" class="form-control" id="" placeholder="Masukan Nomor ktp" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa KTP</label>
-                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="">
+                                                    <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Nomor NPWP</label>
-                                                    <input type="text" name="no_npwp" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="no_npwp" class="form-control" id="" placeholder="Masukan Nomor npwp" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Registrasi NPWP</label>
-                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="">
+                                                    <input type="date" name="tgl_registrasi_npwp" class="form-control" id="" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tempat Lahir</label>
-                                                    <input type="text" name="tempat_lahir" class="form-control" id="" placeholder="Masukan Nomor npwp">
+                                                    <input type="text" name="tempat_lahir" class="form-control" id="" placeholder="Masukan Nomor npwp" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Lahir</label>
-                                                    <input type="date" name="tanggal_lahir" class="form-control" id="">
+                                                    <input type="date" name="tanggal_lahir" class="form-control" id="" required>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Status Perkawinan</label>
-                                                    <select name="status_perkawinan" id="" class="form-control">
+                                                    <select name="status_perkawinan" id="" class="form-control" required>
                                                         <option value="menikah">Menikah</option>
                                                         <option value="belum_menikah">Belum Menikah</option>
                                                         <option value="janda/duda">Janda / Duda</option>
@@ -99,7 +98,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Kewarganegaraan</label>
-                                                    <select name="kewarganegaraan" id="" class="form-control">
+                                                    <select name="kewarganegaraan" id="" class="form-control" required>
                                                         <option value="wni">Warga Negara Indonesia</option>
                                                         <option value="wna">Warga Negara Asing</option>
                                                     </select>
@@ -108,7 +107,7 @@
                                         </div>
                                         <div class="timeline-footer">
                                             <a href="{{ route('operator.form_pembukaan_rekening') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i>&nbsp;Batalkan</a>
-                                            <a onclick="alamatKtp()" class="btn btn-primary "><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
+                                            <a onclick="alamatKtp()" class="btn btn-primary" id="langkah1"><i class="fa fa-arrow-right"></i>&nbsp;Selanjutnya</a>
                                         </div>
                                     </div>
                                 </li>
@@ -980,6 +979,21 @@
             $('#alamatktp').hide(500);
             $('#informasi-pribadi').hide(500);
         }
+
+        $(document).ready(function(){
+            $("#lama_pemakaian, #daya_per_satuan, #jumlah_alat_listrik").keyup(function(){
+                var lama = $("#lama_pemakaian").val();
+                var daya = $("#daya_per_satuan").val();
+                var jumlah = $("#jumlah_alat_listrik").val();
+                if(!lama.match(/^[0-9]*$/) || !daya.match(/^[0-9]*$/) || !jumlah.match(/^[0-9]*$/)){
+                    $('#submit-form-alat-listrik').prop('disabled',true);
+                }
+                else{
+                    $('#submit-form-alat-listrik').prop('disabled',false);
+
+                }
+            });
+        });
 
     </script>
 @endpush

@@ -43,10 +43,6 @@
                                                     <input type="text" name="no_register" class="form-control" value="{{ $investor->no_register }}" id="" placeholder="Masukan nomor register">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="">No CIF</label>
-                                                    <input type="text" name="no_cif" class="form-control" value="{{ $investor->no_cif }}" id="" placeholder="Masukan nomor cif">
-                                                </div>
-                                                <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin</label>
                                                     <select name="jenis_kelamin" class="form-control">
                                                         <option value="L"
@@ -58,8 +54,11 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Kode Nasabah</label>
-                                                    <input type="text" name="kode_nasabah" class="form-control" value="{{ $investor->kode_nasabah }}" id="" placeholder="Masukan Kode Nasabah">
+                                                    <label for="">Jenis Individual</label>
+                                                    <select name="jenis_rekening" class="form-control" id="jenis_rekening">
+                                                        <option value="perorangan">Perorangan</option>
+                                                        <option value="nonperorangan">Non Perorangan</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Staf Pemasaran</label>

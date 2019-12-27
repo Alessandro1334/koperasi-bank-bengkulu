@@ -35,7 +35,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Kode Nasabah</th>
+                                <th>Jenis Rekening</th>
                                 <th>No Cif</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No KTP</th>
@@ -51,7 +51,7 @@
                             <tr>
                                 <td> {{ $no++ }} </td>
                                 <td> {{ $investor->nm_investor }} </td>
-                                <td> {{ $investor->kode_nasabah }} </td>
+                                <td> {{ $investor->jenis_rekening }} </td>
                                 <td> {{ $investor->no_cif }} </td>
                                 <td>
                                     @if($investor->jenis_kelamin == "L")

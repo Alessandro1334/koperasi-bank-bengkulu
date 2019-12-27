@@ -82,7 +82,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nasabah/Investor</th>
-                                <th>Kode Nasabah</th>
+                                <th>Jenis Rekening</th>
                                 <th>No. CIF</th>
                                 <th>Staf/Agen Pemasaran</th>
                                 <th>Jenis Kelamin</th>
@@ -107,7 +107,7 @@
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $nasabah->nm_investor }}</td>
-                                    <td>{{ $nasabah->kode_nasabah }}</td>
+                                    <td>{{ $nasabah->jenis_rekening }}</td>
                                     <td>{{ $nasabah->no_cif }}</td>
                                     <td>{{ $nasabah->nm_agen_pemasaran }}</td>
                                     <td>
