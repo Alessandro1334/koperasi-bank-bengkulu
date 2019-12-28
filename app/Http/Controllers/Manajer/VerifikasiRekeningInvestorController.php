@@ -15,11 +15,18 @@ class VerifikasiRekeningInvestorController extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
-                                ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama',
-                                        'saham_investors.status_verifikasi')
+        $sahams_acc = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
+                                ->where('saham_investors.status_verifikasi','1')
                                 ->get();
-        return view('manajer/verifikasi_pembukaan_rekening_investor_individual.index', compact('sahams'));
+        $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
+                                ->where('saham_investors.status_verifikasi','1')
+                                ->orWhere('saham_investors.status_verifikasi','0','2')
+                                ->get();
+
+
+        return view('manajer/verifikasi_pembukaan_rekening_investor_individual.index', compact(['sahams_acc','sahams']));
     }
 
     public function edit($id){
