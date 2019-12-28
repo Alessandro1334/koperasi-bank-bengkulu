@@ -34,33 +34,11 @@ class FormPembukaanRekening extends Controller
     }
 
     public function tambahInvestorPost(Request $request){
-        $request->validate([
-            'no_register'   => 'required',
-            'nm_investor'   => 'required',
-            'jenis_rekening'    => 'required',
-            'staf_pemasaran_id' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_ktp'    => 'required',
-            'tgl_kadaluarsa_ktp'    => 'required',
-            'no_npwp'   => 'required',
-            'tgl_registrasi_npwp'   => 'required',
-            'tempat_lahir'  => 'required',
-            'tanggal_lahir' => 'required',
-            'status_perkawinan' => 'required',
-            'kewarganegaraan'   => 'required',
-
-
-
-
-
-
-
-        ]);
-
         $investor = new Investor;
         $investor->no_register = $request->no_register;
         $investor->nm_investor = $request->nm_investor;
         $investor->jenis_rekening = $request->jenis_rekening;
+        $investor->profil_resiko_nasabah = $request->profil_resiko_nasabah;
         $investor->staf_pemasaran_id = $request->agen_pemasaran_id;
         $investor->jenis_kelamin = $request->jenis_kelamin;
         $investor->no_ktp = $request->no_ktp;
@@ -182,7 +160,9 @@ class FormPembukaanRekening extends Controller
         $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
         $persetujuan = Persetujuan::where('investor_id',$id)->first();
         $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
-        return view('operator/form_pembukaan_rekening.edit',compact('investor','dokumen','pasangan','persetujuan','pekerjaan'));
+        $agens = AgenPemasaran::where('status','1')->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
+        return view('operator/form_pembukaan_rekening.edit',compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats'));
     }
 
     public function update(Request $request, $id){
@@ -190,6 +170,7 @@ class FormPembukaanRekening extends Controller
             'no_register'   => $request->no_register,
             'nm_investor'   => $request->nm_investor,
             'jenis_rekening'  => $request->jenis_rekening,
+            'profil_resiko_nasabah'  => $request->profil_resiko_nasabah,
             'staf_pemasaran_id' => $request->agen_pemasaran_id,
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_ktp'    => $request->no_ktp,
@@ -307,6 +288,7 @@ class FormPembukaanRekening extends Controller
         DataPasanganOrangTuaInvestor::where('investor_id',$id)->delete();
         Persetujuan::where('investor_id',$id)->delete();
 
+
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Hapus !!']);
     }
 
@@ -326,5 +308,13 @@ class FormPembukaanRekening extends Controller
         $ahli->save();
 
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Ahli Waris Berhasil Ditambahkan !!']);
+    }
+
+    public function cariNoreg(Request $request){
+        $data = Investor::select('no_register')->where('no_register',$request->no_register)->get();
+
+        $datas = count($data);
+
+        return response()->json($datas);
     }
 }

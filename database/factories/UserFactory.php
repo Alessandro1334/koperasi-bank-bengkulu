@@ -103,6 +103,7 @@ $factory->define(App\Investor::class, function (Faker $faker) {
         'no_register' => $faker->randomNumber(2),
         'nm_investor' => $faker->name(),
         'jenis_rekening' => $faker->randomElement(['perorangan','nonperorangan']),
+        'profil_resiko_nasabah' => $faker->randomElement(['perorangan','nonperorangan']),
         'no_cif' => $faker->randomNumber(3),
         'staf_pemasaran_id' => $faker->randomNumber(1),
         'jenis_kelamin' => $faker->randomElement(['L','P']),

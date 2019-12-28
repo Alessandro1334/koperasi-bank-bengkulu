@@ -18,6 +18,7 @@ class CreateInvestorsTable extends Migration
             $table->string('no_register')->length('20');
             $table->string('nm_investor');
             $table->enum('jenis_rekening',['perorangan','nonperorangan']);
+            $table->string('profil_resiko_nasabah')->nullable();
             $table->string('no_cif')->length('50');
             $table->unsignedInteger('staf_pemasaran_id')->nullable();
             $table->enum('jenis_kelamin',['L','P']);

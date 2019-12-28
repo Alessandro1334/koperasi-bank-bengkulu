@@ -30,6 +30,7 @@ Route::group(['prefix' => 'operator'], function(){
 Route::group(['prefix' => 'operator/manajemen_investor'], function(){
     Route::get('/', 'Operator\FormPembukaanRekening@index')->name('operator.form_pembukaan_rekening');
     Route::get('/tambah_investor','Operator\FormPembukaanRekening@tambahInvestor')->name('operator.tambah_investor');
+    Route::post('/tambah_investor/cari_noreg','Operator\FormPembukaanRekening@cariNoreg')->name('admin.manajemen_investor.cari_noreg');
     Route::post('/','Operator\FormPembukaanRekening@tambahInvestorPost')->name('operator.tambah_investor_post');
     Route::get('/{id}/edit','Operator\FormPembukaanRekening@edit')->name('operator.tambah_investor_post.edit');
     Route::patch('/{id}','Operator\FormPembukaanRekening@update')->name('operator.tambah_investor_update');
