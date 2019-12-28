@@ -12,6 +12,7 @@
         .btn-tambah {
             float: right;
             margin: 5px 5px 5px 5px;
+            display: none;
         }
     </style>
 @endpush
@@ -27,8 +28,8 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#a" data-toggle="tab">Data Rekening Terverifikasi</a></li>
-                <li><a href="#b" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
+                <li class="active a"><a href="#a" data-toggle="tab">Data Rekening Terverifikasi</a></li>
+                <li class="b"><a href="#b" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
                 <div class="btn-tambah">
                     <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                </div>
@@ -183,6 +184,14 @@
     <script>
         $(document).ready( function () {
             $('.investor').DataTable();
+
+            $(".a").click( function () { 
+                $(".btn-tambah").fadeOut(200);
+            });
+
+            $(".b").click( function () { 
+                $(".btn-tambah").fadeIn(200);
+            });
         } );
     </script>
 @endpush
