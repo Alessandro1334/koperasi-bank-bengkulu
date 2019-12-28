@@ -87,33 +87,6 @@
                                         @endif
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <form method="POST" action="{{ route('manajer.verifikasi_data_investor_update',[$investor->id]) }}">
-                                        {{ csrf_field() }} {{ method_field('PATCH') }}
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Verifikasi Data Investor <b id="nm_investor"></b></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="investor_id" id="investor_id">
-                                                    <label for="recipient-name" class="col-form-label">Verifikasi:</label>
-                                                    <select name="status_verifikasi" id="status_verifikasi" class="form-control">
-                                                        <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
-                                                        <option value="1">Setujui</option>
-                                                        <option value="2">Tidak Setuju</option>
-                                                    </select>
-                                                    <small id="emailHelp" class="form-text text-danger"><i>Data yang terverifikasi tidak dapat diubah kembali !!</i></small>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Verifikasi</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             @endforeach
                         </table>
                     </div>
