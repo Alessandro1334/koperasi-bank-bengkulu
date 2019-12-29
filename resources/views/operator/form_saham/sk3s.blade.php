@@ -12,7 +12,11 @@
             /* border: 0.5px solid black; */
         }
 
+<<<<<<< HEAD
         .img-top {
+=======
+        img {
+>>>>>>> 62ba5a58070e7979130221cb0d409de8c3110a3e
             opacity: 0.6;
         }
     </style>
@@ -22,8 +26,13 @@
                 <font style=font-size:12pt face="Times New Roman" color=#000000>Seri SPMPKOP    :   {{ $sk3s[0]->seri_spmpkop }}</font><br>
                 <font style=font-size:12pt face="Times New Roman" color=#000000>Seri FORMULIR    :   {{ $sk3s[0]->seri_formulir }}</font>
             </td>
+<<<<<<< HEAD
             <td rowspan="2" align="" width="60"><img class="img-top" src="{{ asset('img/Koperasi.png') }}" width="80"></td>
             <td rowspan="2" align="" width="60"><img class="img-top" src="{{ asset('img/BankBengkulu.png') }}" width="80"></td>
+=======
+            <td rowspan="2" align="" width="60"><img src="{{ asset('img/Koperasi.png') }}" width="80"></td>
+            <td rowspan="2" align="" width="60"><img src="{{ asset('img/BankBengkulu.png') }}" width="80"></td>
+>>>>>>> 62ba5a58070e7979130221cb0d409de8c3110a3e
             <td rowspan="2" align="center">Seri SK3S : R182206/IX/2019</td>
         </tr>
     </table>
