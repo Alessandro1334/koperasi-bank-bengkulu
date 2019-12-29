@@ -40,7 +40,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No Register: <a style="color:red">(*)</a></label>
-                                                    <input type="number" name="no_register" id="no_register" class="form-control" required value="{{ $investor->no_register }}" id="" placeholder="Masukan nomor register">
+                                                    <input type="number" name="no_register" id="no_register" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" class="form-control" required value="{{ $investor->no_register }}" id="" placeholder="Masukan nomor register">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin: <a style="color:red">(*)</a></label>
@@ -132,10 +132,10 @@
                                                     <label for="">Kewarganegaraan: <a style="color:red">(*)</a></label>
                                                     <select name="kewarganegaraan" id="kewarganegaraan" class="form-control" required>
                                                         <option value="wni"
-                                                            @if($investor->jenis_kelamin == "wni") selected @endif
+                                                            @if($investor->kewarganegaraan == "wni") selected @endif
                                                         >Warga Negara Indonesia</option>
                                                         <option value="wna"
-                                                            @if($investor->jenis_kelamin == "wna") selected @endif
+                                                            @if($investor->kewarganegaraan == "wna") selected @endif
                                                         >Warga Negara Asing</option>
                                                     </select>
                                                 </div>
@@ -476,40 +476,40 @@
                                                     <select name="pekerjaan" id="pekerjaan" class="form-control">
                                                         <option value="" selected disabled>-- pilih pekerjaan --</option>
                                                         <option value="tidak_bekerja"
-                                                            @if($investor->pekerjaan == "tidak_bekerja") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "tidak_bekerja") selected @endif
                                                         >Tidak Bekerja</option>
                                                         <option value="advokat"
-                                                            @if($investor->pekerjaan == "advokat") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "advokat") selected @endif
                                                         >Advokat</option>
                                                         <option value="akuntan"
-                                                            @if($investor->pekerjaan == "akuntan") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "akuntan") selected @endif
                                                         >Akuntan</option>
                                                         <option value="apoteker"
-                                                            @if($investor->pekerjaan == "apoteker") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "apoteker") selected @endif
                                                         >Apoteker</option>
                                                         <option value="arsitek"
-                                                            @if($investor->pekerjaan == "arsitek") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "arsitek") selected @endif
                                                         >Arsitek</option>
                                                         <option value="atlet"
-                                                            @if($investor->pekerjaan == "atlet") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "atlet") selected @endif
                                                         >Atlet</option>
                                                         <option value="dokter"
-                                                            @if($investor->pekerjaan == "dokter") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "dokter") selected @endif
                                                         >Dokter</option>
                                                         <option value="ilmuwan"
-                                                            @if($investor->pekerjaan == "ilmuwan") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "ilmuwan") selected @endif
                                                         >Ilmuwan</option>
                                                         <option value="pengusaha"
-                                                            @if($investor->pekerjaan == "pengusaha") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "pengusaha") selected @endif
                                                         >Pengusaha</option>
                                                         <option value="karyawan"
-                                                            @if($investor->pekerjaan == "karyawan") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "karyawan") selected @endif
                                                         >Karyawan</option>
                                                         <option value="manajer"
-                                                            @if($investor->pekerjaan == "manajer") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "manajer") selected @endif
                                                         >Manajer</option>
                                                         <option value="lainnya"
-                                                            @if($investor->pekerjaan == "lainnya") selected @endif
+                                                            @if($pekerjaan->pekerjaan == "lainnya") selected @endif
                                                         >Lainnya</option>
                                                     </select>
                                                 </div>
@@ -559,22 +559,22 @@
                                                         <label for="">Jabatan</label>
                                                         <select name="jabatan" id="" class="form-control">
                                                             <option value="komisaris"
-                                                                @if($investor->jabatan == "komisaris") selected @endif
+                                                                @if($pekerjaan->jabatan == "komisaris") selected @endif
                                                             >Komisaris</option>
                                                             <option value="direksi"
-                                                                @if($investor->jabatan == "direksi") selected @endif
+                                                                @if($pekerjaan->jabatan == "direksi") selected @endif
                                                             >Direksi</option>
                                                             <option value="manajer"
-                                                                @if($investor->jabatan == "manajer") selected @endif
+                                                                @if($pekerjaan->jabatan == "manajer") selected @endif
                                                             >Manajer</option>
                                                             <option value="staf"
-                                                                @if($investor->jabatan == "staf") selected @endif
+                                                                @if($pekerjaan->jabatan == "staf") selected @endif
                                                             >Staf</option>
                                                             <option value="pemilik"
-                                                                @if($investor->jabatan == "pemilik") selected @endif
+                                                                @if($pekerjaan->jabatan == "pemilik") selected @endif
                                                             >Pemilik</option>
                                                             <option value="pengawas"
-                                                                @if($investor->jabatan == "pengawas") selected @endif
+                                                                @if($pekerjaan->jabatan == "pengawas") selected @endif
                                                             >Pengawas</option>
                                                         </select>
                                                     </div>
@@ -597,28 +597,28 @@
                                                         <label for="">Sumber Penghasilan Lainnya</label>
                                                         <select name="sumber_penghasilan_lain" class="form-control" id="">
                                                             <option value="gaji"
-                                                                @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "gaji") selected @endif
                                                             >Gaji</option>
                                                             <option value="hasil_usaha"
-                                                                @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "hasil_usaha") selected @endif
                                                             >Hasil Usaha</option>
                                                             <option value="warisan"
-                                                                @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "warisan") selected @endif
                                                             >Warisan</option>
                                                             <option value="dari_orang_tua/anak"
-                                                                @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "dari_orang_tua/anak") selected @endif
                                                             >Dari Orang Tua/Anak</option>
                                                             <option value="hibah"
-                                                                @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "hibah") selected @endif
                                                             >Hibah</option>
                                                             <option value="dari_suami/istri"
-                                                                @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "dari_suami/istri") selected @endif
                                                             >Dari Suami/Istri</option>
                                                             <option value="hasil_investasi"
-                                                                @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "hasil_investasi") selected @endif
                                                             >Hasil Investasi</option>
                                                             <option value="lainnya"
-                                                                @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                                @if($pekerjaan->sumber_penghasilan_lainnya == "lainnya") selected @endif
                                                             >Lainnya</option>
                                                         </select>
                                                     </div>
@@ -631,25 +631,25 @@
                                                             @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
                                                         >Gaji</option>
                                                         <option value="hasil_usaha"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "hasil_usaha") selected @endif
                                                         >Hasil Usaha</option>
                                                         <option value="warisan"
-                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "warisan") selected @endif
                                                         >Warisan</option>
                                                         <option value="dari_orang_tua/anak"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
                                                         >Dari Orang Tua/Anak</option>
                                                         <option value="hibah"
-                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "hibah") selected @endif
                                                         >Hibah</option>
                                                         <option value="dari_suami/istri"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
                                                         >Dari Suami/Istri</option>
                                                         <option value="hasil_investasi"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "hasil_investasi") selected @endif
                                                         >Hasil Investasi</option>
                                                         <option value="lainnya"
-                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                            @if($pekerjaan->sumber_penghasilan_utama == "lainnya") selected @endif
                                                         >Lainnya</option>
                                                     </select>
                                                 </div>
@@ -658,28 +658,28 @@
                                                     <label for="">Sumber Dana Investasi: <a style="color:red">(*)</a></label>
                                                     <select name="sumber_dana_investasi" class="form-control" id="sumber_dana_investasi" required>
                                                         <option value="gaji"
-                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "gaji") selected @endif
                                                         >Gaji</option>
                                                         <option value="hasil_usaha"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "hasil_usaha") selected @endif
                                                         >Hasil Usaha</option>
                                                         <option value="warisan"
-                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "warisan") selected @endif
                                                         >Warisan</option>
                                                         <option value="dari_orang_tua/anak"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "dari_orang_tua/anak") selected @endif
                                                         >Dari Orang Tua/Anak</option>
                                                         <option value="hibah"
-                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "hibah") selected @endif
                                                         >Hibah</option>
                                                         <option value="dari_suami/istri"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "dari_suami/istri") selected @endif
                                                         >Dari Suami/Istri</option>
                                                         <option value="hasil_investasi"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "hasil_investasi") selected @endif
                                                         >Hasil Investasi</option>
                                                         <option value="lainnya"
-                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                            @if($pekerjaan->sumber_dana_investasi == "lainnya") selected @endif
                                                         >Lainnya</option>
                                                     </select>
                                                 </div>
@@ -714,16 +714,16 @@
                                                     <label for="">Hubungan: <a style="color:red">(*)</a></label>
                                                     <select name="hubungan" id="" class="form-control">
                                                         <option value="suami"
-                                                            @if($investor->hubungan == "suami") selected @endif
+                                                            @if($pasangan->hubungan == "suami") selected @endif
                                                         >Suami</option>
                                                         <option value="istri"
-                                                            @if($investor->hubungan == "istri") selected @endif
+                                                            @if($pasangan->hubungan == "istri") selected @endif
                                                         >Istri</option>
                                                         <option value="orang_tua"
-                                                            @if($investor->hubungan == "orang_tua") selected @endif
+                                                            @if($pasangan->hubungan == "orang_tua") selected @endif
                                                         >Orang Tua</option>
                                                         <option value="lainnya"
-                                                            @if($investor->hubungan == "lainnya") selected @endif
+                                                            @if($pasangan->hubungan == "lainnya") selected @endif
                                                         >Lainnya</option>
                                                     </select>
                                                 </div>
@@ -743,175 +743,177 @@
                                                     <input type="text" name="ponsel_pasangan_atau_orang_tua" value="{{ $pasangan->ponsel_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Ponsel">
                                                 </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Pekerjaan: <a style="color:red">(*)</a></label>
-                                                    <select name="pekerjaan_pasangan_atau_orang_tua" novalidate  id="pekerjaan_pasangan_atau_orang_tua" class="form-control">
-                                                        <option value="" selected disabled>-- pilih pekerjaan --</option>
-                                                        <option value="tidak_bekerja"
-                                                            @if($investor->pekerjaan == "tidak_bekerja") selected @endif
-                                                        >Tidak Bekerja</option>
-                                                        <option value="advokat"
-                                                            @if($investor->pekerjaan == "advokat") selected @endif
-                                                        >Advokat</option>
-                                                        <option value="akuntan"
-                                                            @if($investor->pekerjaan == "akuntan") selected @endif
-                                                        >Akuntan</option>
-                                                        <option value="apoteker"
-                                                            @if($investor->pekerjaan == "apoteker") selected @endif
-                                                        >Apoteker</option>
-                                                        <option value="arsitek"
-                                                            @if($investor->pekerjaan == "arsitek") selected @endif
-                                                        >Arsitek</option>
-                                                        <option value="atlet"
-                                                            @if($investor->pekerjaan == "atlet") selected @endif
-                                                        >Atlet</option>
-                                                        <option value="dokter"
-                                                            @if($investor->pekerjaan == "dokter") selected @endif
-                                                        >Dokter</option>
-                                                        <option value="ilmuwan"
-                                                            @if($investor->pekerjaan == "ilmuwan") selected @endif
-                                                        >Ilmuwan</option>
-                                                        <option value="pengusaha"
-                                                            @if($investor->pekerjaan == "pengusaha") selected @endif
-                                                        >Pengusaha</option>
-                                                        <option value="karyawan"
-                                                            @if($investor->pekerjaan == "karyawan") selected @endif
-                                                        >Karyawan</option>
-                                                        <option value="manajer"
-                                                            @if($investor->pekerjaan == "manajer") selected @endif
-                                                        >Manajer</option>
-                                                        <option value="lainnya"
-                                                            @if($investor->pekerjaan == "lainnya") selected @endif
-                                                        >Lainnya</option>
-                                                    </select>
-                                                </div>
+                                                <div id="pekerjaan-pasangan">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Pekerjaan: <a style="color:red">(*)</a></label>
+                                                        <select name="pekerjaan_pasangan_atau_orang_tua" novalidate  id="pekerjaan_pasangan_atau_orang_tua" class="form-control">
+                                                            <option value="" selected disabled>-- pilih pekerjaan --</option>
+                                                            <option value="tidak_bekerja"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "tidak_bekerja") selected @endif
+                                                            >Tidak Bekerja</option>
+                                                            <option value="advokat"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "advokat") selected @endif
+                                                            >Advokat</option>
+                                                            <option value="akuntan"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "akuntan") selected @endif
+                                                            >Akuntan</option>
+                                                            <option value="apoteker"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "apoteker") selected @endif
+                                                            >Apoteker</option>
+                                                            <option value="arsitek"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "arsitek") selected @endif
+                                                            >Arsitek</option>
+                                                            <option value="atlet"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "atlet") selected @endif
+                                                            >Atlet</option>
+                                                            <option value="dokter"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "dokter") selected @endif
+                                                            >Dokter</option>
+                                                            <option value="ilmuwan"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "ilmuwan") selected @endif
+                                                            >Ilmuwan</option>
+                                                            <option value="pengusaha"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "pengusaha") selected @endif
+                                                            >Pengusaha</option>
+                                                            <option value="karyawan"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "karyawan") selected @endif
+                                                            >Karyawan</option>
+                                                            <option value="manajer"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "manajer") selected @endif
+                                                            >Manajer</option>
+                                                            <option value="lainnya"
+                                                                @if($pasangan->pekerjaan_pasangan_atau_orang_tua == "lainnya") selected @endif
+                                                            >Lainnya</option>
+                                                        </select>
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Nama Perusahaan</label>
-                                                    <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->nm_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Nama Perusahaan">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Nama Perusahaan</label>
+                                                        <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->nm_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Nama Perusahaan">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Alamat Perusahaan</label>
-                                                    <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->alamat_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Alamat Perusahaan">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Alamat Perusahaan</label>
+                                                        <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->alamat_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Alamat Perusahaan">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Kota Perusahaan</label>
-                                                    <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->kota_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Kota Perusahaan">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Kota Perusahaan</label>
+                                                        <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->kota_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Kota Perusahaan">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Provinsi Perusahaan</label>
-                                                    <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->provinsi_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Provinsi Perusahaan">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Provinsi Perusahaan</label>
+                                                        <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->provinsi_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Provinsi Perusahaan">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Kode Pos: <a style="color:red;">hanya angka</a> </label>
-                                                    <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" value="{{ $pasangan->kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha }}" class="form-control" id="" placeholder="Masukan Kode Pos ">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Telephone: <a style="color:red;">hanya angka</a></label>
-                                                    <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->telp_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Telephone">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Kode Pos: <a style="color:red;">hanya angka</a> </label>
+                                                        <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" value="{{ $pasangan->kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha }}" class="form-control" id="" placeholder="Masukan Kode Pos ">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Telephone: <a style="color:red;">hanya angka</a></label>
+                                                        <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->telp_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Telephone">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Email</label>
-                                                    <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->email_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Email">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Email</label>
+                                                        <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->email_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Email">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Fax</label>
-                                                    <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->fax_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Fax">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Fax</label>
+                                                        <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" value="{{ $pasangan->fax_perusahaan_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Fax">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Jabatan</label>
-                                                    <select name="jabatan_pasangan_atau_orang_tua" id="" class="form-control">
-                                                        <option value="komisaris"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "komisaris") selected @endif
-                                                        >Komisaris</option>
-                                                        <option value="direksi"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "direksi") selected @endif
-                                                        >Direksi</option>
-                                                        <option value="manajer"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "manajer") selected @endif
-                                                        >Manajer</option>
-                                                        <option value="staf"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "staf") selected @endif
-                                                        >Staf</option>
-                                                        <option value="pemilik"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "pemilik") selected @endif
-                                                        >Pemilik</option>
-                                                        <option value="pengawas"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "pengawas") selected @endif
-                                                        >Pengawas</option>
-                                                        <option value="lainnya"
-                                                            @if($investor->jabatan_pasangan_atau_orang_tua == "lainnya") selected @endif
-                                                        >Lainnya</option>
-                                                    </select>
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Jabatan</label>
+                                                        <select name="jabatan_pasangan_atau_orang_tua" id="" class="form-control">
+                                                            <option value="komisaris"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "komisaris") selected @endif
+                                                            >Komisaris</option>
+                                                            <option value="direksi"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "direksi") selected @endif
+                                                            >Direksi</option>
+                                                            <option value="manajer"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "manajer") selected @endif
+                                                            >Manajer</option>
+                                                            <option value="staf"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "staf") selected @endif
+                                                            >Staf</option>
+                                                            <option value="pemilik"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "pemilik") selected @endif
+                                                            >Pemilik</option>
+                                                            <option value="pengawas"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "pengawas") selected @endif
+                                                            >Pengawas</option>
+                                                            <option value="lainnya"
+                                                                @if($pasangan->jabatan_pasangan_atau_orang_tua == "lainnya") selected @endif
+                                                            >Lainnya</option>
+                                                        </select>
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Jenis Usaha</label>
-                                                    <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" value="{{ $pasangan->jenis_usaha_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Jenis Usaha">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Jenis Usaha</label>
+                                                        <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" value="{{ $pasangan->jenis_usaha_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Jenis Usaha">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Lama Bekerja</label>
-                                                    <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" value="{{ $pasangan->lama_bekerja_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Lama Bekerja">
-                                                </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Lama Bekerja</label>
+                                                        <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" value="{{ $pasangan->lama_bekerja_pasangan_atau_orang_tua }}" class="form-control" id="" placeholder="Masukan Lama Bekerja">
+                                                    </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Pengasilan Kotor Per Tahun</label>
-                                                    <select name="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" id="" class="form-control">
-                                                        <option value="<10"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == "<10") selected @endif
-                                                        >< Rp 10 Juta</option>
-                                                        <option value=">10-50"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-50") selected @endif
-                                                            >> Rp 10 - 50 Juta</option>
-                                                        <option value=">10-100"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-100") selected @endif
-                                                            >> 10 - 100 Juta</option>
-                                                        <option value=">100-500"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">100-500") selected @endif
-                                                            >> 100 - 500 Juta</option>
-                                                        <option value=">500-1m"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">500-1m") selected @endif
-                                                            >> 500 - 1 Miliar</option>
-                                                        <option value=">1m"
-                                                            @if($investor->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">1m") selected @endif
-                                                            >> 1 Miliar</option>
-                                                    </select>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="">Pengasilan Kotor Per Tahun</label>
+                                                        <select name="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" id="" class="form-control">
+                                                            <option value="<10"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == "<10") selected @endif
+                                                            >< Rp 10 Juta</option>
+                                                            <option value=">10-50"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-50") selected @endif
+                                                                >> Rp 10 - 50 Juta</option>
+                                                            <option value=">10-100"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">10-100") selected @endif
+                                                                >> 10 - 100 Juta</option>
+                                                            <option value=">100-500"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">100-500") selected @endif
+                                                                >> 100 - 500 Juta</option>
+                                                            <option value=">500-1m"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">500-1m") selected @endif
+                                                                >> 500 - 1 Miliar</option>
+                                                            <option value=">1m"
+                                                                @if($pasangan->penghasilan_kotor_per_tahun_pasangan_atau_orang_tua == ">1m") selected @endif
+                                                                >> 1 Miliar</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Sumber Penghasilan utama: <a style="color:red">(*)</a></label>
                                                     <select name="sumber_penghasilan_utama_pasangan_atau_orang_tua" id="sumber_penghasilan_utama_pasangan_atau_orang_tua" required class="form-control">
                                                         <option value="gaji"
-                                                            @if($investor->sumber_penghasilan_utama == "gaji") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "gaji") selected @endif
                                                         >Gaji</option>
                                                         <option value="hasil_usaha"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_usaha") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "hasil_usaha") selected @endif
                                                         >Hasil Usaha</option>
                                                         <option value="warisan"
-                                                            @if($investor->sumber_penghasilan_utama == "warisan") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "warisan") selected @endif
                                                         >Warisan</option>
                                                         <option value="dari_orang_tua/anak"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_orang_tua/anak") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "dari_orang_tua/anak") selected @endif
                                                         >Dari Orang Tua/Anak</option>
                                                         <option value="hibah"
-                                                            @if($investor->sumber_penghasilan_utama == "hibah") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "hibah") selected @endif
                                                         >Hibah</option>
                                                         <option value="dari_suami/istri"
-                                                            @if($investor->sumber_penghasilan_utama == "dari_suami/istri") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "dari_suami/istri") selected @endif
                                                         >Dari Suami/Istri</option>
                                                         <option value="hasil_investasi"
-                                                            @if($investor->sumber_penghasilan_utama == "hasil_investasi") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "hasil_investasi") selected @endif
                                                         >Hasil Investasi</option>
                                                         <option value="lainnya"
-                                                            @if($investor->sumber_penghasilan_utama == "lainnya") selected @endif
+                                                            @if($pasangan->sumber_penghasilan_utama_pasangan_atau_orang_tua == "lainnya") selected @endif
                                                         >Lainnya</option>
                                                     </select>
                                                 </div>

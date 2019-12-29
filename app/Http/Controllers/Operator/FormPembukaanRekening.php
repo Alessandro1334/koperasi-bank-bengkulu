@@ -166,6 +166,7 @@ class FormPembukaanRekening extends Controller
     }
 
     public function update(Request $request, $id){
+        // return $request->all();
         $investor = Investor::where('id',$id)->update([
             'no_register'   => $request->no_register,
             'nm_investor'   => $request->nm_investor,
@@ -225,7 +226,7 @@ class FormPembukaanRekening extends Controller
             'provinsi_perusahaan'   =>  $request->provinsi_perusahaan,
             'kode_pos_perusahaan'   =>  $request->kode_pos_perusahaan,
             'telp_perusahaan'   =>  $request->telp_perusahaan,
-            'email_perusahaan'  =>  $request->email_perusahanm,
+            'email_perusahaan'  =>  $request->email_perusahann,
             'fax_perusahaan'    =>  $request->fax_perusahaan,
             'jabatan'   =>  $request->jabatan,
             'jenis_usaha'   =>  $request->jenis_usaha,
