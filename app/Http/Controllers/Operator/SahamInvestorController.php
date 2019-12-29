@@ -29,7 +29,10 @@ class SahamInvestorController extends Controller
                                 ->where('saham_investors.status_verifikasi','0')
                                 ->orWhere('saham_investors.status_verifikasi','1')
                                 ->get();        
-        return view('operator/form_saham.index', compact(['sahams_acc','sahams']));
+                               
+        $investors = Investor::select('id','nm_investor')->get();
+        $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('investor_id','nm_investor')->get();
+        return view('operator/form_saham.index', compact(['sahams_acc','sahams','investors','investor_pengalihans']));
     }
 
     public function tambahSaham()
@@ -80,5 +83,10 @@ class SahamInvestorController extends Controller
         $pdf->setPaper('a4', 'portrait');
 
         return $pdf->stream();
+    }
+
+    public function detail($id){
+        $sahams = SahamInvestor::find($id);
+        return compact('sahams');
     }
 }
