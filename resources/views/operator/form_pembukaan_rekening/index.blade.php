@@ -895,8 +895,6 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>&nbsp;SK3S</button>
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>&nbsp;SPMPKOP</button>
                             </div>
                         </div>
                     </div>
