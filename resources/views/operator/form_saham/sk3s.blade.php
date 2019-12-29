@@ -11,6 +11,10 @@
         table, th, td {
             /* border: 0.5px solid black; */
         }
+
+        img {
+            opacity: 0.6;
+        }
     </style>
     <table style="width:100%">
         <tr>
