@@ -45,6 +45,7 @@
                                     <th>Status Saham</th>
                                     <th>Status Verifikasi</th>
                                     <th>Hasil Verifikasi</th>
+                                    <th>Detail</th>
                                     <th>SK3S</th>
                                 </tr>
                             </thead>
@@ -80,6 +81,11 @@
                                             @elseif($saham->status_verifikasi == '2')
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" onclick="get_data_sahams({{ $saham->id }})" data-toggle="modal" data-target=".modal-detail">
+                                                <i class="fa fa-search"></i>
+                                            </a>
                                         </td>
                                         <td>
                                             <a href="{{ route('operator.sk3s',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
@@ -146,7 +152,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" onclick="get_data({{ $saham->id }})" data-toggle="modal" data-target="#modal-detail">
+                                            <a class="btn btn-info btn-sm" onclick="get_data_sahams({{ $saham->id }})" data-toggle="modal" data-target=".modal-detail">
                                                 <i class="fa fa-search"></i>
                                             </a>
                                         </td>
@@ -158,7 +164,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal fade" id="modal-detail">
+                    <div class="modal fade modal-detail">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -176,8 +182,8 @@
                                         <div id="pengalihan">
                                             <div class="form-group col-md-4">
                                                 <label for="exampleInputEmail1">Pilih Investor Pengalihan</label>
-                                                <select name="investor_pengalihan_id" id="investor_pengalihan_id" class="form-control" disabled>
-                                                    <option value="" disabled selected>-- pilih investor --</option>
+                                                <select name="investor_pengalihan_id" class="form-control" id="investor_pengalihan_id" >
+                                                    <option value="">-- pilih investor --</option>
                                                     @foreach ($investor_pengalihans as $investor)
                                                         <option value="{{ $investor->investor_id }}">{{ $investor->nm_investor }}</option>
                                                     @endforeach
@@ -186,7 +192,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="exampleInputEmail1">Nomor SK3S Lama</label>
-                                                <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama" disabled>
+                                                <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama"  disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -197,7 +203,7 @@
                                             <div class="form-group col-md-4">
                                                 <label for="exampleInputEmail1">Pilih Investor Pembeli</label>
                                                 <select name="investor_id" id="investor_id" class="form-control" disabled>
-                                                    <option value="" disabled selected>-- pilih investor --</option>
+                                                    <option value="">-- pilih investor --</option>
                                                     @foreach ($investors as $investor)
                                                         <option value="{{ $investor->id }}">{{ $investor->nm_investor }}</option>
                                                     @endforeach
@@ -277,26 +283,26 @@
             
         } );
 
-        function get_data(id)
+        function get_data_sahams(id)
         {
             $.ajax({
                 url: "{{ url('operator/manajemen_pembelian_dan_pengalihan_saham') }}"+'/'+ id + "/detail",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-                    console.log(data.sahams.id);
-                    // ('#investor_pengalihan_id').val(data.sahams.investor_id);
-                    // ('#no_sk3s_lama').val(data.sahams.no_sk3s);
-                    // ('#investor_id').val(data.sahams.investor_id);
-                    // ('#no_sk3s').val(data.sahams.no_sk3s);
-                    // ('#seri_spmpkop').val(data.sahams.seri_spmpkop);
-                    // ('#seri_formulir').val(data.sahams.seri_formulir);
-                    // ('#jumlah_saham').val(data.sahams.jumlah_saham);
-                    // ('#terbilang_saham').val(data.sahams.terbilang_saham);
-                    // ('#jenis_mata_uang').val(data.sahams.jenis_mata_uang);
-                    // ('#pembayaran_no_rek').val(data.sahams.pembayaran_no_rek);
-                    // ('#pembayaran_nm_rek').val(data.sahams.pembayaran_nm_rek);
-                    // ('#pembayaran_nm_bank').val(data.sahams.pembayaran_nm_bank);
+                    console.log(data.sahams.investor_id);
+                    $('#investor_pengalihan_id').val(data.sahams.investor_id);
+                    $('#no_sk3s_lama').val(data.sahams.no_sk3s);
+                    $('#investor_id').val(data.sahams.investor_id);
+                    $('#no_sk3s').val(data.sahams.no_sk3s);
+                    $('#seri_spmpkop').val(data.sahams.seri_spmpkop);
+                    $('#seri_formulir').val(data.sahams.seri_formulir);
+                    $('#jumlah_saham').val(data.sahams.jumlah_saham);
+                    $('#terbilang_saham').val(data.sahams.terbilang_saham);
+                    $('#jenis_mata_uang').val(data.sahams.jenis_mata_uang);
+                    $('#pembayaran_no_rek').val(data.sahams.pembayaran_no_rek);
+                    $('#pembayaran_nm_rek').val(data.sahams.pembayaran_nm_rek);
+                    $('#pembayaran_nm_bank').val(data.sahams.pembayaran_nm_bank);
 
                 }
             });
