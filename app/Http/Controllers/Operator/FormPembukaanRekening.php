@@ -22,9 +22,16 @@ class FormPembukaanRekening extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
-        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->get();
-        return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors']));
+        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')
+                        ->where('status_verifikasi','1')
+                        ->get();
+        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')
+                        ->where('status_verifikasi','0')
+                        ->orWhere('status_verifikasi','2')
+                        ->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
+        $agens = AgenPemasaran::where('status','1')->get();
+        return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors','pejabats','agens']));
     }
 
     public function tambahInvestor(){
@@ -316,5 +323,16 @@ class FormPembukaanRekening extends Controller
         $datas = count($data);
 
         return response()->json($datas);
+    }
+    
+    public function detail($id){
+        $investor = Investor::find($id);
+        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->first();
+        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
+        $persetujuan = Persetujuan::where('investor_id',$id)->first();
+        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
+        $agens = AgenPemasaran::where('status','1')->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
+        return compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats');
     }
 }
