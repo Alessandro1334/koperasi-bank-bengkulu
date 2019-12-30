@@ -59,7 +59,7 @@ Route::group(['prefix' => 'operator/manajemen_pembelian_dan_pengalihan_saham'], 
     Route::get('/sk3s/{id}','Operator\SahamInvestorController@sk3s')->name('operator.sk3s');
     Route::get('/spmpkop/{id}','Operator\SahamInvestorController@spmpkop')->name('operator.spmpkop');
     Route::get('/detail','Operator\SahamInvestorController@detail')->name('operator.detail_saham');
-    
+
 });
 
 Route::group(['prefix' => 'operator/pembelian_saham_institusi'], function(){
@@ -72,6 +72,11 @@ Route::group(['prefix' => 'operator/pembelian_saham_institusi'], function(){
 
 Route::group(['prefix' => 'operator/backup_data'], function(){
     Route::get('/', 'Operator\BackupDataController@index')->name('operator.backup_data');
+    Route::get('/eksport','Operator\BackupDataController@eksport')->name('operator.eksport');
+    Route::get('/eksport_saham_perorangan','Operator\BackupDataController@eksportSahamPerorangan')->name('operator.eksport_saham_perorangan');
+    Route::get('/eksport_saham_nonperorangan','Operator\BackupDataController@eksportSahamNonperorangan')->name('operator.eksport_saham_nonperorangan');
+    Route::get('/eksport_institusi','Operator\BackupDataController@EksportInstitusi')->name('operator.eksport_institusi');
+    Route::post('/import','Operator\BackupDataController@import')->name('operator.import');
 });
 
 

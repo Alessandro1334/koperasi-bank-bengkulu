@@ -29,7 +29,8 @@ class FormPembukaanRekening extends Controller
     }
 
     public function tambahInvestor(){
-        
+        $agens = AgenPemasaran::where('status','1')->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
         return view('operator/form_pembukaan_rekening.create',compact('agens','pejabats'));
     }
 
