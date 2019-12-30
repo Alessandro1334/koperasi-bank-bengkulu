@@ -1,6 +1,6 @@
 <style>
     .side_bg {
-        filter: brightness(70%);
+        filter: brightness(75%);
     }
 </style>
 @extends('layouts.auth')

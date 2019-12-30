@@ -8,15 +8,7 @@
 </head>
 <body background: -moz-repeating-linear-gradient(red, blue 20px, red 40px)>
     <style>
-        table, th, td {
-            /* border: 0.5px solid black; */
-        }
-
-<<<<<<< HEAD
         .img-top {
-=======
-        img {
->>>>>>> 62ba5a58070e7979130221cb0d409de8c3110a3e
             opacity: 0.6;
         }
     </style>
@@ -26,13 +18,8 @@
                 <font style=font-size:12pt face="Times New Roman" color=#000000>Seri SPMPKOP    :   {{ $sk3s[0]->seri_spmpkop }}</font><br>
                 <font style=font-size:12pt face="Times New Roman" color=#000000>Seri FORMULIR    :   {{ $sk3s[0]->seri_formulir }}</font>
             </td>
-<<<<<<< HEAD
             <td rowspan="2" align="" width="60"><img class="img-top" src="{{ asset('img/Koperasi.png') }}" width="80"></td>
             <td rowspan="2" align="" width="60"><img class="img-top" src="{{ asset('img/BankBengkulu.png') }}" width="80"></td>
-=======
-            <td rowspan="2" align="" width="60"><img src="{{ asset('img/Koperasi.png') }}" width="80"></td>
-            <td rowspan="2" align="" width="60"><img src="{{ asset('img/BankBengkulu.png') }}" width="80"></td>
->>>>>>> 62ba5a58070e7979130221cb0d409de8c3110a3e
             <td rowspan="2" align="center">Seri SK3S : R182206/IX/2019</td>
         </tr>
     </table>
@@ -49,7 +36,7 @@
     <table style="width:100%">
         <tr>
             <td rowspan="5" align="left" width="300"><img src="{{ asset('img/qrcode.png') }}" style="margin-left:50px" width="120"></td>
-            <td align="left">Ditetapkan tanggal : 14 November 2019 <br>
+            <td align="left">Ditetapkan tanggal : {{}} <br>
                 Perubahan Ke-
             </td>
         </tr>
@@ -57,7 +44,7 @@
             <td rowspan="4" align="center">
                 <p style="font-size: 13pt; margin:0 0 35 0;">Ketua Koperasi</p> 
                 <br>
-                <h3 style="font-size: 13pt">M. Mukti Husni</h3>
+                <h3 style="font-size: 13pt">{{ $ketua->nm_ketua_koperasi }}</h3>
             </td>
         </tr>
     </table>
