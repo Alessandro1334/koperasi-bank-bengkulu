@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\RekeningInstitusi;
 use App\SahamInstitusi;
+use App\Barcodes;
+use App\KetuaKoperasi;
+use App\SahamInvestor;
 use Carbon\Carbon;
 use Gate;
+use PDF;
 
 class PembelianSahamInstitusiController extends Controller
 {
@@ -79,6 +83,18 @@ class PembelianSahamInstitusiController extends Controller
         $saham->save();
 
         return redirect()->route('operator.pembelian_saham_institusi')->with(['success'   =>  'Pembelian / Penglihan Saham Berhasil Dilakukan !!']);
+    }
+
+    public function sk3s($id){
+        $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
+        $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
+        $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
+                                ->get();
+        $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s'));
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream();
     }
 
 }

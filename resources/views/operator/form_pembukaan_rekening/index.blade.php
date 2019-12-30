@@ -12,7 +12,10 @@
         .btn-tambah {
             float: right;
             margin: 5px 5px 5px 5px;
-            display: none;
+        }
+        .modal-body {
+            max-height: calc(100vh - 212px) !important;
+            overflow-y: auto !important;
         }
     </style>
 @endpush
@@ -28,29 +31,24 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active a"><a href="#a" data-toggle="tab">Data Rekening Terverifikasi</a></li>
-                <li class="b"><a href="#b" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
+                <li class="a active"><a href="#a" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
+                <li class="b"><a href="#b" data-toggle="tab">Data Rekening Terverifikasi</a></li>
                 <div class="btn-tambah">
                     <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                </div>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="a">
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
-                        </div>
-                    @endif
                     <table class="table table-bordered table-hover investor">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
                                 <th>Jenis Rekening</th>
+                                <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
+                                <th>Detail</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -58,11 +56,12 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach($investors_acc as $investor)
+                            @foreach($investors as $investor)
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->jenis_rekening }} </td>
+                                    <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
                                             <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
@@ -71,6 +70,11 @@
                                         @endif
                                     </td>
                                     <td> {{ $investor->no_ktp }} </td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -107,14 +111,23 @@
                 </div>
 
                 <div class="tab-pane" id="b">
+
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
+                        </div>
+                    @endif
                     <table class="table table-bordered table-hover investor">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
                                 <th>Jenis Rekening</th>
+                                <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
+                                <th>Detail</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -122,11 +135,12 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach($investors as $investor)
+                            @foreach($investors_acc as $investor)
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->jenis_rekening }} </td>
+                                    <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
                                             <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
@@ -135,6 +149,11 @@
                                         @endif
                                     </td>
                                     <td> {{ $investor->no_ktp }} </td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -889,15 +908,122 @@
 @push('scripts')
     <script>
         $(document).ready( function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $('.investor').DataTable();
-
-            $(".a").click( function () {
-                $(".btn-tambah").fadeOut(200);
-            });
-
-            $(".b").click( function () {
-                $(".btn-tambah").fadeIn(200);
-            });
         } );
+        function get_data(id)
+        {
+            $.ajax({
+                url: "{{ url('operator/manajemen_investor') }}"+'/'+ id + "/detail",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    //Informasi Diri
+                    $('#nm_investor').val(data.investor.nm_investor);
+                    $('#no_register').val(data.investor.no_register);
+                    $('#jenis_kelamin').val(data.investor.jenis_kelamin);
+                    $('#jenis_rekening').val(data.investor.jenis_rekening);
+                    $('#profil_resiko_nasabah').val(data.investor.profil_resiko_nasabah);
+                    $('#no_ktp').val(data.investor.no_ktp);
+                    $('#tgl_kadaluarsa_ktp').val(data.investor.tgl_kadaluarsa_ktp);
+                    $('#no_npwp').val(data.investor.no_npwp);
+                    $('#tgl_registrasi_npwp').val(data.investor.tgl_registrasi_npwp);
+                    $('#tempat_lahir').val(data.investor.tempat_lahir);
+                    $('#tanggal_lahir').val(data.investor.tanggal_lahir);
+                    $('#status_perkawinan').val(data.investor.status_perkawinan);
+                    $('#kewarganegaraan').val(data.investor.kewarganegaraan);
+                    $('#alamat_ktp').val(data.investor.alamat_ktp);
+                    $('#rt_ktp').val(data.investor.rt_ktp);
+                    $('#rw_ktp').val(data.investor.rw_ktp);
+                    $('#kelurahan_ktp').val(data.investor.kelurahan_ktp);
+                    $('#kecamatan_ktp').val(data.investor.kecamatan_ktp);
+                    $('#kota_ktp').val(data.investor.kota_ktp);
+                    $('#provinsi_ktp').val(data.investor.provinsi_ktp);
+                    $('#kode_pos_ktp').val(data.investor.kode_pos_ktp);
+                    
+                    $('#alamat_tempat_tinggal').val(data.investor.alamat_tempat_tinggal);
+                    $('#rt_tempat_tinggal').val(data.investor.rt_tempat_tinggal);
+                    $('#rw_tempat_tinggal').val(data.investor.rw_tempat_tinggal);
+                    $('#kelurahan_tempat_tinggal').val(data.investor.kelurahan_tempat_tinggal);
+                    $('#kecamatan_tempat_tinggal').val(data.investor.kecamatan_tempat_tinggal);
+                    $('#kota_tempat_tinggal').val(data.investor.kota_tempat_tinggal);
+                    $('#provinsi_tempat_tinggal').val(data.investor.provinsi_tempat_tinggal);
+                    $('#kode_pos_tempat_tinggal').val(data.investor.kode_pos_tempat_tinggal);
+                    $('#telp_rumah').val(data.investor.telp_rumah);
+                    $('#ponsel').val(data.investor.ponsel);
+                    $('#lama_menempati').val(data.investor.lama_menempati);
+                    $('#status_rumah_tinggal').val(data.investor.status_rumah_tinggal);
+                    $('#agama').val(data.investor.agama);
+                    $('#pendidikan_terakhir').val(data.investor.pendidikan_terakhir);
+                    $('#nm_gadis_ibu_kandung').val(data.investor.nm_gadis_ibu_kandung);
+                    $('#emergency_kontak').val(data.investor.emergency_kontak);
+                    
+                    //Korespondensi
+                    $('#alamat_surat_menyurat_ktp').val(data.investor.alamat_surat_menyurat_ktp);
+                    $('#alamat_surat_menyurat_tempat_tinggal').val(data.investor.alamat_surat_menyurat_tempat_tinggal);
+                    $('#alamat_surat_menyurat_lainnya').val(data.investor.alamat_surat_menyurat_lainnya);
+                    $('#pengiriman_konfirmasi_melalui_email').val(data.investor.pengiriman_konfirmasi_melalui_email);
+                    $('#pengiriman_konfirmasi_melalui_fax').val(data.investor.pengiriman_konfirmasi_melalui_fax);
+                    $('#pengiriman_konfirmasi_melalui_alamat_surat_menyurat').val(data.investor.pengiriman_konfirmasi_melalui_alamat_surat_menyurat);
+                    $('#tujuan_investasi').val(data.investor.tujuan_investasi);
+                    //Pekerjaan
+                    $('#pekerjaan').val(data.pekerjaan.pekerjaan);
+                    $('#nm_perusahaan').val(data.pekerjaan.nm_perusahaan);
+                    $('#alamat_perusahaan').val(data.pekerjaan.alamat_perusahaan);
+                    $('#kota_perusahaan').val(data.pekerjaan.kota_perusahaan);
+                    $('#provinsi_perusahaan').val(data.pekerjaan.provinsi_perusahaan);
+                    $('#kode_pos_perusahaan').val(data.pekerjaan.kode_pos_perusahaan);
+                    $('#telp_perusahaan').val(data.pekerjaan.telp_perusahaan);
+                    $('#email_perusahaan').val(data.pekerjaan.email_perusahaan);
+                    $('#fax_perusahaan').val(data.pekerjaan.fax_perusahaan);
+                    $('#jabatan').val(data.pekerjaan.jabatan);
+                    $('#jenis_usaha').val(data.pekerjaan.jenis_usaha);
+                    $('#lama_bekerja').val(data.pekerjaan.lama_bekerja);
+                    $('#penghasilan_lain').val(data.pekerjaan.penghasilan_lain);
+                    $('#sumber_penghasilan_lainnya').val(data.pekerjaan.sumber_penghasilan_lainnya);
+                    $('#sumber_penghasilan_utama').val(data.pekerjaan.sumber_penghasilan_utama);
+                    $('#sumber_dana_investasi').val(data.pekerjaan.sumber_dana_investasi);
+                    //Pasangan atau Orang Tua 
+                    $('#nm_pasangan_atau_orang_tua').val(data.pasangan.nm_pasangan_atau_orang_tua);
+                    $('#hubungan').val(data.pasangan.hubungan);
+                    $('#alamat_tempat_tinggal_pasangan_atau_orang_tua').val(data.pasangan.alamat_tempat_tinggal_pasangan_atau_orang_tua);
+                    $('#telp_rumah_pasangan_atau_orang_tua').val(data.pasangan.telp_rumah_pasangan_atau_orang_tua);
+                    $('#ponsel_pasangan_atau_orang_tua').val(data.pasangan.ponsel_pasangan_atau_orang_tua);
+                    $('#pekerjaan_pasangan_atau_orang_tua').val(data.pasangan.pekerjaan_pasangan_atau_orang_tua);
+                    $('#nm_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.nm_perusahaan_pasangan_atau_orang_tua);
+                    $('#alamat_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.alamat_perusahaan_pasangan_atau_orang_tua);
+                    $('#kota_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.kota_perusahaan_pasangan_atau_orang_tua);
+                    $('#provinsi_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.provinsi_perusahaan_pasangan_atau_orang_tua);
+                    $('#kode_pos_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.kode_pos_perusahaan_pasangan_atau_orang_tua);
+                    $('#telp_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.telp_perusahaan_pasangan_atau_orang_tua);
+                    $('#email_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.email_perusahaan_pasangan_atau_orang_tua);
+                    $('#fax_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.fax_perusahaan_pasangan_atau_orang_tua);
+                    $('#jabatan_pasangan_atau_orang_tua').val(data.pasangan.jabatan_pasangan_atau_orang_tua);
+                    $('#jenis_usaha_pasangan_atau_orang_tua').val(data.pasangan.jenis_usaha_pasangan_atau_orang_tua);
+                    $('#lama_bekerja_pasangan_atau_orang_tua').val(data.pasangan.lama_bekerja_pasangan_atau_orang_tua);
+                    $('#sumber_penghasilan_utama_pasangan_atau_orang_tua').val(data.pasangan.sumber_penghasilan_utama_pasangan_atau_orang_tua);
+                    //Dokumen Pendukung
+                    $('#ktp').val(data.dokumen.ktp);
+                    $('#npwp').val(data.dokumen.npwp);
+                    $('#form_profil_resiko_pemodal').val(data.dokumen.form_profil_resiko_pemodal);
+                    $('#bukti_setoran_investasi_awal').val(data.dokumen.bukti_setoran_investasi_awal);
+                    $('#contoh_tanda_tangan').val(data.dokumen.contoh_tanda_tangan);
+                    $('#fatca').val(data.dokumen.fatca);
+                    //persetujuan
+                    $('#agen_pemasaran_id').val(data.persetujuan.agen_pemasaran_id);
+                    $('#tanda_tangan_agen_pemasaran').val(data.persetujuan.tanda_tangan_agen_pemasaran);
+                    $('#tanggal_agen_pemasaran').val(data.persetujuan.tanggal_agen_pemasaran);
+                    $('#pejabat_berwenang_id').val(data.persetujuan.pejabat_berwenang_id);
+                    $('#status_persetujuan').val(data.persetujuan.status_persetujuan);
+                    $('#tanggal_pejabat_berwenang').val(data.persetujuan.tanggal_pejabat_berwenang);
+                    $('#tanda_tangan_pejabat_berwenang').val(data.persetujuan.tanda_tangan_pejabat_berwenang);
+                }
+                
+            });
+        }
     </script>
 @endpush
