@@ -21,8 +21,7 @@ class VerifikasiRekeningInvestorController extends Controller
                                 ->get();
         $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('saham_investors.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
-                                ->where('saham_investors.status_verifikasi','1')
-                                ->orWhere('saham_investors.status_verifikasi','0','2')
+                                ->where('saham_investors.status_verifikasi','!=','1')
                                 ->get();
 
 

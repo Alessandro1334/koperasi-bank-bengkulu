@@ -31,9 +31,21 @@ class VerifikasiDataInstitusiController extends Controller
     }
 
     public function verifikasi(Request $request){
-        $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
-            'status_verifikasi' => $request->status_verifikasi
-        ]);
+        $last = RekeningInstitusi::max('no_cif');
+        if($last == NULL || $last == ""){
+            $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    =>  '00000',
+           ]);
+        }
+        else{
+            $no_urut = substr($last,0,5);
+            $no_urut++;
+            $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    => sprintf('%05s',$no_urut),
+           ]);
+        }
         return redirect()->route('manajer.verifikasi_data_institusi')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }
 }

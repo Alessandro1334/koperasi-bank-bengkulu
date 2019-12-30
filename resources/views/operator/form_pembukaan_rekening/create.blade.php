@@ -251,12 +251,12 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telp. Rumah: <a style="color:red">(*)</a></label>
-                                                    <input type="number" name="telp_rumah" class="form-control" id="telp_rumah" required placeholder="telephone rumah">
+                                                    <input type="text" name="telp_rumah" class="form-control" id="telp_rumah" required placeholder="telephone rumah">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Ponsel: <a style="color:red">(*)</a></label>
-                                                    <input type="number" name="ponsel" class="form-control" id="ponsel" required placeholder="ponsel">
+                                                    <input type="text" name="ponsel" class="form-control" id="ponsel" required placeholder="ponsel">
                                                 </div>
 
                                                 <div class="form-group col-md-4">

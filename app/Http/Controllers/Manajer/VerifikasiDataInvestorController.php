@@ -16,11 +16,10 @@ class VerifikasiDataInvestorController extends Controller
         }
 
         $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
-                            ->where('status_verifikasi','1')     
+                            ->where('status_verifikasi','!=','0')
                             ->get();
         $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
                             ->where('status_verifikasi','0')
-                            ->orWhere('status_verifikasi','2') 
                             ->get();
         return view('manajer/verifikasi_data_investor.index', compact(['investors_acc','investors']));
         // return $investors;
@@ -32,9 +31,22 @@ class VerifikasiDataInvestorController extends Controller
     }
 
     public function verifikasi(Request $request){
-        $investor = Investor::where('id',$request->investor_id)->update([
-            'status_verifikasi' => $request->status_verifikasi
-        ]);
+        $last = Investor::max('no_cif');
+        // return $last;
+        if($last == NULL || $last == ""){
+            $investor = Investor::where('id',$request->investor_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    =>  '00000',
+           ]);
+        }
+        else{
+            $no_urut = substr($last,0,5);
+            $no_urut++;
+            $investor = Investor::where('id',$request->investor_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    => sprintf('%05s',$no_urut),
+           ]);
+        }
         return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }
 }

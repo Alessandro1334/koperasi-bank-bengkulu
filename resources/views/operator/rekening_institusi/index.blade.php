@@ -53,7 +53,6 @@
                                 <th>Bidang Usaha</th>
                                 <th>Tipe Perusahaan</th>
                                 <th>Status Verifikasi</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

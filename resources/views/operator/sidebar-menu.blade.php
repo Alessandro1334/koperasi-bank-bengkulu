@@ -19,7 +19,7 @@
         </ul>
     </li>
 
-    <li class="treeview {{ set_active(['operator.pembukaan_rekening_institusi','operator.tambah_institusi','operator.pembelian_saham_institusi']) }}">
+    <li class="treeview {{ set_active(['operator.pembukaan_rekening_institusi','operator.tambah_saham_institusi','operator.pembelian_saham_institusi']) }}">
         <a href="#">
             <i class="fa fa-university"></i> <span>Rekening Non Individual</span>
             <span class="pull-right-container">
@@ -28,9 +28,15 @@
         </a>
         <ul class="treeview-menu ">
             <li class="{{ set_active(['operator.pembukaan_rekening_institusi','operator.tambah_investor']) }}"><a href="{{ route('operator.pembukaan_rekening_institusi') }}"><i class="fa fa-wpforms"></i>Form Pembukaan Rekening</a></li>
-            <li class="{{ set_active(['operator.pembelian_saham_institusi']) }}"><a href="{{ route('operator.pembelian_saham_institusi') }}"><i class="fa fa-circle-o"></i>Pembelian/Pengalihan Saham</a></li>
+            <li class="{{ set_active(['operator.pembelian_saham_institusi','operator.tambah_saham_institusi']) }}"><a href="{{ route('operator.pembelian_saham_institusi') }}"><i class="fa fa-circle-o"></i>Pembelian/Pengalihan Saham</a></li>
             {{-- <li class=""><a href="{{ route('operator.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Data Agen Penjualan Aktif</a></li> --}}
         </ul>
+    </li>
+
+    <li class="{{ set_active('operator.backup_data') }}">
+        <a href="{{ route('operator.backup_data') }}">
+            <i class="fa fa-cloud"></i> <span>Backup Data</span>
+        </a>
     </li>
 
     <li class="">
