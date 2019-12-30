@@ -28,10 +28,10 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active a"><a href="#a" data-toggle="tab">Data Rekening Terverifikasi</a></li>
-                <li class="b"><a href="#b" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
+                <li class="active a"><a href="#a" data-toggle="tab">Rekening Institusi Terverifikasi</a></li>
+                <li class="b"><a href="#b" data-toggle="tab">Rekening Institusi Belum Terverifikasi</a></li>
                 <div class="btn-tambah">
-                    <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
+                    <a href="{{ route('operator.tambah_institusi') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                </div>
             </ul>
             <div class="tab-content">
@@ -48,10 +48,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Jenis Rekening</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No. KTP</th>
-                                <th>Aksi</th>
+                                <th>Nama Institusi</th>
+                                <th>Karakteristik</th>
+                                <th>Bidang Usaha</th>
+                                <th>Tipe Perusahaan</th>
+                                <th>Status Verifikasi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,21 +63,18 @@
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
-                                    <td> {{ $investor->jenis_rekening }} </td>
+                                    <td> {{ $investor->nm_institusi }} </td>
+                                    <td> {{ $investor->karakteristik }} </td>
+                                    <td> {{ $investor->bidang_usaha }} </td>
+                                    <td> {{ $investor->tipe_perusahaan }} </td>
                                     <td>
-                                        @if($investor->jenis_kelamin == "L")
-                                            <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
+                                        @if ($investor->status_verifikasi == '1')
+                                            <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
                                             @else
-                                                <span class="label label-warning"><i class="fa fa-female"></i>&nbsp; Perempuan</span>
+                                                <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
                                         @endif
                                     </td>
-                                    <td> {{ $investor->no_ktp }} </td>
                                     <td>
-                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                        <a href="{{ route('operator.tambah_ahli_waris_investor',[$investor->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-users"></i></a>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="modal-default">
@@ -112,9 +110,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Investor</th>
-                                <th>Jenis Rekening</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No. KTP</th>
+                                <th>Nama Institusi</th>
+                                <th>Karakteristik</th>
+                                <th>Bidang Usaha</th>
+                                <th>Tipe Perusahaan</th>
+                                <th>Status Verifikasi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -126,21 +126,22 @@
                                 <tr>
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
-                                    <td> {{ $investor->jenis_rekening }} </td>
+                                    <td> {{ $investor->nm_institusi }} </td>
+                                    <td> {{ $investor->karakteristik }} </td>
+                                    <td> {{ $investor->bidang_usaha }} </td>
+                                    <td> {{ $investor->tipe_perusahaan }} </td>
                                     <td>
-                                        @if($investor->jenis_kelamin == "L")
-                                            <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
+                                        @if ($investor->status_verifikasi == '1')
+                                            <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
                                             @else
-                                                <span class="label label-warning"><i class="fa fa-female"></i>&nbsp; Perempuan</span>
+                                                <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
                                         @endif
                                     </td>
-                                    <td> {{ $investor->no_ktp }} </td>
                                     <td>
-                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a style="float:left;" href="{{ route('operator.tambah_institusi_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                        <a href="{{ route('operator.tambah_ahli_waris_investor',[$investor->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-users"></i></a>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="modal-default">
@@ -156,7 +157,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                                <form method="POST" action="{{ route('operator.tambah_investor_delete', [$investor->id]) }}">
+                                                <form method="POST" action="{{ route('operator.tambah_institusi_delete', [$investor->id]) }}">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>&nbsp; Ya, Hapus Data !</button>

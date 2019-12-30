@@ -24,7 +24,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="a">
-    
+
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -87,7 +87,7 @@
                             @endforeach
                         </table>
                     </div>
-    
+
                     <div class="tab-pane" id="b">
                         <table class="table table-bordered table-hover saham">
                             <thead>
@@ -143,7 +143,7 @@
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <form method="POST" action="{{ route('manajer.verifikasi_data_saham_update',[$saham->id]) }}">
+                                    <form method="POST" action="{{ route('manajer.verifikasi_rekening_institusi_update',[$saham->id]) }}">
                                         {{ csrf_field() }} {{ method_field('PATCH') }}
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <input type="hidden" name="saham_id" id="saham_id">
+                                                    <input type="hidden" name="saham_institusi_id" id="saham_institusi_id">
                                                     <label for="recipient-name" class="col-form-label">Verifikasi:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
                                                         <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
@@ -186,12 +186,12 @@
 
         function verifikasi(id){
             $.ajax({
-            url: "{{ url('manajer/verifikasi_rekening_investor') }}"+'/'+ id + "/edit",
+            url: "{{ url('manajer/verifikasi_rekening_institusi') }}"+'/'+ id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function(data){
                 $('#exampleModal').modal('show');
-                $('#saham_id').val(data.id);
+                $('#saham_institusi_id').val(data.id);
                 $('#nm_investor').text(data.nm_investor);
             },
             error:function(){

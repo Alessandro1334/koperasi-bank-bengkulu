@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Manajer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Investor;
+use App\RekeningInstitusi;
 use Gate;
 
-class VerifikasiDataInvestorController extends Controller
+class VerifikasiDataInstitusiController extends Controller
 {
     public function index()
     {
@@ -15,26 +15,25 @@ class VerifikasiDataInvestorController extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
+        $investors_acc = RekeningInstitusi::select('id','nm_investor','no_register','nm_institusi','tipe_perusahaan','karakteristik','bidang_usaha','status_verifikasi')
                             ->where('status_verifikasi','!=','0')
                             ->get();
-        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
+        $investors = RekeningInstitusi::select('id','nm_investor','no_register','nm_institusi','tipe_perusahaan','karakteristik','bidang_usaha','status_verifikasi')
                             ->where('status_verifikasi','0')
                             ->get();
-        return view('manajer/verifikasi_data_investor.index', compact(['investors_acc','investors']));
+        return view('manajer/verifikasi_data_institusi.index', compact(['investors_acc','investors']));
         // return $investors;
     }
 
     public function edit($id){
-        $investor = Investor::where('id',$id)->select('id','nm_investor')->first();
+        $investor = RekeningInstitusi::where('id',$id)->select('id','nm_investor')->first();
         return $investor;
     }
 
     public function verifikasi(Request $request){
-        $last = Investor::max('no_cif');
-        // return $last;
+        $last = RekeningInstitusi::max('no_cif');
         if($last == NULL || $last == ""){
-            $investor = Investor::where('id',$request->investor_id)->update([
+            $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
                 'status_verifikasi' => $request->status_verifikasi,
                 'no_cif'    =>  '00000',
            ]);
@@ -42,11 +41,11 @@ class VerifikasiDataInvestorController extends Controller
         else{
             $no_urut = substr($last,0,5);
             $no_urut++;
-            $investor = Investor::where('id',$request->investor_id)->update([
+            $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
                 'status_verifikasi' => $request->status_verifikasi,
                 'no_cif'    => sprintf('%05s',$no_urut),
            ]);
         }
-        return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
+        return redirect()->route('manajer.verifikasi_data_institusi')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }
 }

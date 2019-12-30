@@ -35,21 +35,42 @@ Route::group(['prefix' => 'operator/manajemen_investor'], function(){
     Route::get('/{id}/edit','Operator\FormPembukaanRekening@edit')->name('operator.tambah_investor_post.edit');
     Route::patch('/{id}','Operator\FormPembukaanRekening@update')->name('operator.tambah_investor_update');
     Route::delete('/{id}','Operator\FormPembukaanRekening@delete')->name('operator.tambah_investor_delete');
-    Route::get('/{id}/detail','Operator\FormPembukaanRekening@detail')->name('operator.tambah_investor_post.detail');
 
     Route::get('/tambah_ahli_waris_investor/{id}','Operator\FormPembukaanRekening@tambahAhliWarisInvestor')->name('operator.tambah_ahli_waris_investor');
     Route::post('/tambah_ahli_waris_investor_post','Operator\FormPembukaanRekening@tambahAhliWarisInvestorPost')->name('operator.tambah_ahli_waris_investor_post');
 });
 
+Route::group(['prefix' => 'operator/pembukaan_rekening_institusi'], function(){
+    Route::get('/', 'Operator\FormPembukaanRekeningInstitusi@index')->name('operator.pembukaan_rekening_institusi');
+    Route::get('/tambah_institusi','Operator\FormPembukaanRekeningInstitusi@tambahInstitusi')->name('operator.tambah_institusi');
+    Route::post('/tambah_institusi/cari_noreg','Operator\FormPembukaanRekeningInstitusi@cariNoreg')->name('admin.manajemen_institusi.cari_noreg');
+    Route::post('/','Operator\FormPembukaanRekeningInstitusi@tambahInstitusiPost')->name('operator.tambah_institusi_post');
+    Route::get('/{id}/edit','Operator\FormPembukaanRekeningInstitusi@edit')->name('operator.tambah_institusi_post.edit');
+    Route::patch('/{id}','Operator\FormPembukaanRekeningInstitusi@update')->name('operator.tambah_institusi_update');
+    Route::delete('/{id}','Operator\FormPembukaanRekeningInstitusi@delete')->name('operator.tambah_institusi_delete');
+
+});
+
 Route::group(['prefix' => 'operator/manajemen_pembelian_dan_pengalihan_saham'], function(){
     Route::get('/', 'Operator\SahamInvestorController@index')->name('operator.manajemen_saham');
-    Route::get('/tambah_saham', 'Operator\SahamInvestorController@tambahSaham')->name('operator.tambah_saham');
+    Route::get('/tambah_saham_institusi', 'Operator\SahamInvestorController@tambahSaham')->name('operator.tambah_saham');
     Route::get('/investor_pengalih','Operator\SahamInvestorController@investorPengalih')->name('operator.investor_pengalih');
     Route::post('/','Operator\SahamInvestorController@tambahSahamPost')->name('operator.tambah_saham_post');
     Route::get('/sk3s/{id}','Operator\SahamInvestorController@sk3s')->name('operator.sk3s');
-    Route::get('/detail','Operator\SahamInvestorController@detail')->name('operator.detail_saham');
-    
 });
+
+Route::group(['prefix' => 'operator/pembelian_saham_institusi'], function(){
+    Route::get('/', 'Operator\PembelianSahamInstitusiController@index')->name('operator.pembelian_saham_institusi');
+    Route::get('/tambah_saham', 'Operator\PembelianSahamInstitusiController@tambahSaham')->name('operator.tambah_saham_institusi');
+    Route::get('/investor_pengalih','Operator\PembelianSahamInstitusiController@investorPengalih')->name('operator.investor_pengalih');
+    Route::post('/','Operator\PembelianSahamInstitusiController@tambahSahamPost')->name('operator.tambah_saham_institusi_post');
+    Route::get('/sk3s/{id}','Operator\PembelianSahamInstitusiController@sk3s')->name('operator.sk3s');
+});
+
+Route::group(['prefix' => 'operator/backup_data'], function(){
+    Route::get('/', 'Operator\BackupDataController@index')->name('operator.backup_data');
+});
+
 
 
 // Route Manajer
@@ -61,12 +82,22 @@ Route::group(['prefix' => 'manajer/verifikasi_data_investor'], function(){
     Route::get('/', 'Manajer\VerifikasiDataInvestorController@index')->name('manajer.verifikasi_data_investor');
     Route::get('/{id}/edit', 'Manajer\VerifikasiDataInvestorController@edit')->name('manajer/verifikasi_data_investor_edit');
     Route::patch('/', 'Manajer\VerifikasiDataInvestorController@verifikasi')->name('manajer.verifikasi_data_investor_update');
-    Route::get('/detail','Manajer\VerifikasiDataInvestorController@detail')->name('manajer.verifikasi_data_investor_detail');
 });
 Route::group(['prefix' => 'manajer/verifikasi_rekening_investor'], function(){
     Route::get('/', 'Manajer\VerifikasiRekeningInvestorController@index')->name('manajer.verifikasi_rekening_investor');
     Route::get('/{id}/edit', 'Manajer\VerifikasiRekeningInvestorController@edit')->name('manajer.verifikasi_data_saham_edit');
     Route::patch('/', 'Manajer\VerifikasiRekeningInvestorController@verifikasi')->name('manajer.verifikasi_data_saham_update');
+});
+
+Route::group(['prefix' => 'manajer/verifikasi_data_institusi'], function(){
+    Route::get('/', 'Manajer\VerifikasiDataInstitusiController@index')->name('manajer.verifikasi_data_institusi');
+    Route::get('/{id}/edit', 'Manajer\VerifikasiDataInstitusiController@edit')->name('manajer.verifikasi_data_institusi_edit');
+    Route::patch('/', 'Manajer\VerifikasiDataInstitusiController@verifikasi')->name('manajer.verifikasi_data_institusi_update');
+});
+Route::group(['prefix' => 'manajer/verifikasi_rekening_institusi'], function(){
+    Route::get('/', 'Manajer\VerifikasiRekeningInstitusiController@index')->name('manajer.verifikasi_rekening_institusi');
+    Route::get('/{id}/edit', 'Manajer\VerifikasiRekeningInstitusiController@edit')->name('manajer.verifikasi_rekening_institusi_edit');
+    Route::patch('/', 'Manajer\VerifikasiRekeningInstitusiController@verifikasi')->name('manajer.verifikasi_rekening_institusi_update');
 });
 
 Route::group(['prefix' => 'manajer/manajemen_agen_pemasaran'], function(){
