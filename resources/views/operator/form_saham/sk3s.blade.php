@@ -36,7 +36,7 @@
     <table style="width:100%">
         <tr>
             <td rowspan="5" align="left" width="300"><img src="{{ asset('img/qrcode.png') }}" style="margin-left:50px" width="120"></td>
-            <td align="left">Ditetapkan tanggal :  <br>
+            <td align="left">Ditetapkan tanggal : {{ Carbon::now() }} <br>
                 Perubahan Ke-
             </td>
         </tr>

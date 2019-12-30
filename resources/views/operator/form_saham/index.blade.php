@@ -957,9 +957,12 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                    <a class="btn btn-info btn-sm spmpkop">
-                                        <i class="fa fa-print">&nbsp;SPMPKOP</i>
-                                    </a>
+                                    <form action="{{ route('operator.spmpkop') }}" method="get">
+                                        <input type="hidden" name="id_spmpkop" id="id_spmpkop">
+                                        <button type="submit" class="btn btn-info btn-sm spmpkop">
+                                            <i class="fa fa-print">&nbsp;SPMPKOP</i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1099,6 +1102,7 @@
                     $('#pembayaran_no_rek').val(data.sahams.pembayaran_no_rek);
                     $('#pembayaran_nm_rek').val(data.sahams.pembayaran_nm_rek);
                     $('#pembayaran_nm_bank').val(data.sahams.pembayaran_nm_bank);
+                    $('#id_spmpkop').val(data.sahams.id);
                 }
             });
         } );
