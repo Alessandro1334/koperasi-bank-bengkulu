@@ -40,7 +40,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">No Register:  <a style="color:red">(*)</a><a id="noreg_error" style="display:none;color:red;"><i>sudah digunakan</i></a></label>
-                                                    <input type="number" name="no_register" id="no_register" class="form-control" placeholder="Masukan nomor register" required>
+                                                    <input type="number" name="no_register" id="no_register" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" class="form-control" placeholder="Masukan nomor register" required>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="">Jenis Kelamin:  <a style="color:red">(*)</a></label>
@@ -251,12 +251,12 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Telp. Rumah: <a style="color:red">(*)</a></label>
-                                                    <input type="number" name="telp_rumah" class="form-control" id="telp_rumah" required placeholder="telephone rumah">
+                                                    <input type="text" name="telp_rumah" class="form-control" id="telp_rumah" required placeholder="telephone rumah">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Ponsel: <a style="color:red">(*)</a></label>
-                                                    <input type="number" name="ponsel" class="form-control" id="ponsel" required placeholder="ponsel">
+                                                    <input type="text" name="ponsel" class="form-control" id="ponsel" required placeholder="ponsel">
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -917,6 +917,11 @@
 @endsection
 @push('scripts')
     <script>
+
+        // $(document).ready(function() {
+        //     $('form').attr(',');
+        // });
+
         $(document).ready(function(){
             $("#status_perkawinan, #kewarganegaraan").change(function(){
                 var stt = $("#status_perkawinan").val();

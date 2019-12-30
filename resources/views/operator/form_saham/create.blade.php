@@ -21,13 +21,17 @@
                             <ul class="timeline timeline-inverse" id="informasi-pribadi">
                                 <li class="time-label">
                                     <span class="bg-red">
-                                        Informasi Pribadi
+                                        Form Pembelian Saham
                                     </span>
                                 </li>
                                 <li>
                                     <i class="fa fa-info-circle bg-blue"></i>
 
                                     <div class="timeline-item">
+                                        <div class="alert alert-danger alert-block" id="gagal" style="display:none;">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            <i class="fa fa-success-circle"></i><strong>Gagal:</strong> Mohon Maaf, Investor Institusi Pengalihan Kurang Dari 12 Bulan (360 Hari), Anda Belum Dapat Melakukan Pengalihan Saham !!
+                                        </div>
                                         <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
                                         <h3 class="timeline-header">Silahkan Lengkapi Informasi Saham di Bawah Ini</h3>
@@ -37,7 +41,7 @@
                                                 <input type="hidden" name="investor_id_lama" id="investor_id_lama">
                                                 <div class="form-group col-md-4">
                                                     <label for="exampleInputEmail1">Pilih Jenis Formulir Saham</label>
-                                                    <select name="jenis_formulir" id="jenis_formulir" class="form-control">
+                                                    <select name="jenis_formulir" id="jenis_formulir" class="form-control" required>
                                                         <option value="" selected disabled>-- pilih jenis formulir --</option>
                                                         <option value="baru">Formulir Pembelian Saham</option>
                                                         <option value="pengalihan">Formulir Pengalihan Saham</option>
@@ -47,7 +51,7 @@
                                                 <div id="pengalihan" style="display:none;">
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Pilih Investor Pengalihan</label>
-                                                        <select name="investor_pengalihan_id" id="investor_pengalihan_id" class="form-control">
+                                                        <select name="investor_pengalihan_id" id="investor_pengalihan_id" class="form-control" required>
                                                             <option value="" disabled selected>-- pilih investor --</option>
                                                             @foreach ($investor_pengalihans as $investor)
                                                                 <option value="{{ $investor->investor_id }}">{{ $investor->nm_investor }}</option>
@@ -57,13 +61,13 @@
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Nomor SK3S Lama</label>
-                                                        <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama">
+                                                        <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" required placeholder="Masukan Nomor SK3S Lama">
                                                     </div>
                                                 </div>
                                                 <div id="baru" style="display:none;">
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Pilih Investor Pembeli</label>
-                                                        <select name="investor_id" id="" class="form-control">
+                                                        <select name="investor_id" id="" class="form-control" required>
                                                             <option value="" disabled selected>-- pilih investor --</option>
                                                             @foreach ($investors as $investor)
                                                                 <option value="{{ $investor->id }}">{{ $investor->nm_investor }}</option>
@@ -72,30 +76,30 @@
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Nomor SK3S Baru:</label>
-                                                        <input type="text" name="no_sk3s" class="form-control" id="no_sk3s" placeholder="Masukan Nomor SK3S">
+                                                        <input type="text" name="no_sk3s" class="form-control" id="no_sk3s" required placeholder="Masukan Nomor SK3S">
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Seri SPMPKOP</label>
-                                                        <input type="text" name="seri_spmpkop" class="form-control" id="seri_spmpkop" placeholder="Masukan nomor register">
+                                                        <input type="text" name="seri_spmpkop" class="form-control" id="seri_spmpkop" required placeholder="Masukan nomor register">
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Seri Formulir</label>
-                                                        <input type="text" name="seri_formulir" class="form-control" id="seri_formulir" placeholder="Masukan nomor register">
+                                                        <input type="text" name="seri_formulir" class="form-control" id="seri_formulir" required placeholder="Masukan nomor register">
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Jumlah Saham</label>
-                                                        <input type="text" name="jumlah_saham" class="form-control" id="jumlah_saham" placeholder="Masukan Jumlah Saham">
+                                                        <input type="text" name="jumlah_saham" class="form-control" id="jumlah_saham" required placeholder="Masukan Jumlah Saham">
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Terbilang Saham</label>
-                                                        <input type="text" name="terbilang_saham" class="form-control" id="terbilang_saham" placeholder="Masukan Terbilang Saham">
+                                                        <input type="text" name="terbilang_saham" class="form-control" id="terbilang_saham" required placeholder="Masukan Terbilang Saham">
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Jenis Mata Uang</label>
-                                                        <select name="jenis_mata_uang" class="form-control" id="jenis_mata_uang">
+                                                        <select name="jenis_mata_uang" class="form-control" id="jenis_mata_uang" required>
                                                             <option value="" selected disabled>-- pilih mata uang --</option>
                                                             <option value="idr">IDR</option>
                                                             <option value="usd">USD</option>
@@ -104,17 +108,17 @@
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Nomor Rekening</label>
-                                                        <input type="text" name="pembayaran_no_rek" class="form-control" id="pembayaran_no_rek" placeholder="Masukan Nomor Rekening">
+                                                        <input type="text" name="pembayaran_no_rek" class="form-control" id="pembayaran_no_rek" required placeholder="Masukan Nomor Rekening">
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Nama Rekening</label>
-                                                        <input type="text" name="pembayaran_nm_rek" class="form-control" id="pembayaran_nm_rek" placeholder="Masukan Nama Pemilik Rekening">
+                                                        <input type="text" name="pembayaran_nm_rek" class="form-control" id="pembayaran_nm_rek" required placeholder="Masukan Nama Pemilik Rekening">
                                                     </div>
 
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Nama Bank</label>
-                                                        <input type="text" name="pembayaran_nm_bank" class="form-control" id="pembayaran_nm_bank" placeholder="Masukan Nama Bank">
+                                                        <input type="text" name="pembayaran_nm_bank" class="form-control" id="pembayaran_nm_bank" required placeholder="Masukan Nama Bank">
                                                     </div>
                                                 </div>
 
@@ -163,18 +167,26 @@
               url: "{{ url('operator/manajemen_pembelian_dan_pengalihan_saham/investor_pengalih') }}",
               data:{'investor_pengalihan_id':investor_pengalihan_id},
               success:function(data){
-                $('#no_sk3s_lama').val(data[0].no_sk3s);
-                $('#seri_spmpkop').val(data[0].seri_spmpkop);
-                $('#seri_formulir').val(data[0].seri_formulir);
-                $('#jumlah_saham').val(data[0].jumlah_saham);
-                $('#terbilang_saham').val(data[0].terbilang_saham);
-                $('#jenis_mata_uang').val(data[0].jenis_mata_uang).trigger('change');
-                $('#pembayaran_no_rek').val(data[0].pembayaran_no_rek);
-                $('#pembayaran_nm_rek').val(data[0].pembayaran_nm_rek);
-                $('#pembayaran_nm_bank').val(data[0].pembayaran_nm_bank);
-                $('#investor_id_lama').val(data[0].investor_id);
-
+                if(data.status == "0"){
+                    $('#gagal').show(300);
+                    $("#gagal2 :input").prop("disabled", true);
+                    $("#gagal3 :input").prop("disabled", true);
+                    $("#submit").prop("disabled", true);
+                }
+                else{
+                    $('#no_sk3s_lama').val(data.datas[0].no_sk3s);
+                    $('#seri_spmpkop').val(data.datas[0].seri_spmpkop);
+                    $('#seri_formulir').val(data.datas[0].seri_formulir);
+                    $('#jumlah_saham').val(data.datas[0].jumlah_saham);
+                    $('#terbilang_saham').val(data.datas[0].terbilang_saham);
+                    $('#jenis_mata_uang').val(data.datas[0].jenis_mata_uang).trigger('change');
+                    $('#pembayaran_no_rek').val(data.datas[0].pembayaran_no_rek);
+                    $('#pembayaran_nm_rek').val(data.datas[0].pembayaran_nm_rek);
+                    $('#pembayaran_nm_bank').val(data.datas[0].pembayaran_nm_bank);
+                    $('#institusi_id_lama').val(data.datas[0].institusi_id);
+                }
               },
+
               error:function(){
 
               }

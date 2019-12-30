@@ -16,6 +16,7 @@ use App\PekerjaanInvestor;
 use App\AgenPemasaran;
 use PDF;
 use Gate;
+use Carbon\Carbon;
 
 class SahamInvestorController extends Controller
 {
@@ -52,12 +53,28 @@ class SahamInvestorController extends Controller
 
     public function investorPengalih(Request $request){
         $investor_id = $request->investor_pengalihan_id;
-        $datas = SahamInvestor::where('investor_id',$investor_id)
+        $datas = SahamInvestor::where('id',$investor_id)
                                 ->select('investor_id','no_sk3s','seri_spmpkop','seri_formulir','jumlah_saham','terbilang_saham',
                                         'jenis_mata_uang','pembayaran_no_rek','pembayaran_nm_rek','pembayaran_nm_bank',
-                                        'investor_id_lama','no_sk3s_lama')
+                                        'investor_id_lama','no_sk3s_lama','created_at')
                                 ->get();
-                                // return $datas;
+        $from = $datas[0]->created_at;
+        $time = Carbon::now();
+        $to = $time->toDateString();
+        $total_days = $from->diffInDays($time);
+        if($total_days >= 360){
+            $message = [
+                'status'    =>  "1",
+                'datas'     =>  $datas,
+            ];
+            return response()->json($message);
+        }
+        else{
+            $message = [
+                'status'    =>  "0",
+            ];
+            return response()->json($message);
+        }
         return response()->json($datas);
     }
 

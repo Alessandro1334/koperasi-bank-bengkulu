@@ -42,9 +42,22 @@ class VerifikasiDataInvestorController extends Controller
     }
 
     public function verifikasi(Request $request){
-        $investor = Investor::where('id',$request->investor_id)->update([
-            'status_verifikasi' => $request->status_verifikasi
-        ]);
+        $last = Investor::max('no_cif');
+        // return $last;
+        if($last == NULL || $last == ""){
+            $investor = Investor::where('id',$request->investor_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    =>  '00000',
+           ]);
+        }
+        else{
+            $no_urut = substr($last,0,5);
+            $no_urut++;
+            $investor = Investor::where('id',$request->investor_id)->update([
+                'status_verifikasi' => $request->status_verifikasi,
+                'no_cif'    => sprintf('%05s',$no_urut),
+           ]);
+        }
         return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }
 
