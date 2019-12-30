@@ -109,7 +109,18 @@ class SahamInvestorController extends Controller
 
         return $pdf->stream();
     }
+    
+    public function spmpkop($id){
+        $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
+        $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
+        $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                                ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
+                                ->get();
+        $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s'));
+        $pdf->setPaper('a4', 'portrait');
 
+        return $pdf->stream();
+    }
     public function detail(Request $request){
         $sahams = SahamInvestor::find($request->id_saham);
         $investor = Investor::find($request->id_investor);

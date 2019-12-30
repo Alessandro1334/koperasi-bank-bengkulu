@@ -957,8 +957,9 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>&nbsp;SK3S</button>
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-print"></i>&nbsp;SPMPKOP</button>
+                                    <a class="btn btn-info btn-sm spmpkop">
+                                        <i class="fa fa-print">&nbsp;SPMPKOP</i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -972,10 +973,6 @@
 
 @push('scripts')
     <script>
-        $(document).ready( function () {
-            $('.investor').DataTable();
-            
-        });
         $('.investor').on('click','.detail',function() { 
             var id_saham = $(this).data("id_saham");
             var id_investor = $(this).data("id_investor");
