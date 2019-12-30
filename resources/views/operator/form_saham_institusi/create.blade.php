@@ -51,7 +51,7 @@
                                                     <div id="pengalihan" style="display:none;">
                                                         <div class="form-group col-md-4">
                                                             <label for="exampleInputEmail1">Pilih Investor Pengalihan</label>
-                                                            <select name="institusi_pengalihan_id" id="institusi_pengalihan_id" class="form-control" required>
+                                                            <select name="institusi_pengalihan_id" id="institusi_pengalihan_id" class="form-control">
                                                                 <option value="" disabled selected>-- pilih investor --</option>
                                                                 @foreach ($investor_pengalihans as $investor)
                                                                     <option value="{{ $investor->institusi_id }}">{{ $investor->nm_investor }}</option>
@@ -61,7 +61,7 @@
 
                                                         <div class="form-group col-md-4">
                                                             <label for="exampleInputEmail1">Nomor SK3S Lama</label>
-                                                            <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama" required>
+                                                            <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Operator;
+namespace App\Http\Controllers\Manajer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,7 +24,7 @@ use Excel;
 class BackupDataController extends Controller
 {
     public function index(){
-        return view('operator/backup_data.index');
+        return view('manajer/backup_data.index');
     }
 
     public function eksport(){
@@ -54,7 +54,7 @@ class BackupDataController extends Controller
                 $sheet->fromArray($data_investor);
             });
         })->download('xls');
-        return redirect('operator.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
+        return redirect('manajer.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
     }
 
     public function eksportSahamPerorangan(){
@@ -65,7 +65,7 @@ class BackupDataController extends Controller
                 $sheet->fromArray($data_saham_perorangan);
             });
         })->download('xls');
-        return redirect('operator.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
+        return redirect('manajer.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
     }
 
     public function eksportSahamNonperorangan(){
@@ -76,7 +76,7 @@ class BackupDataController extends Controller
                 $sheet->fromArray($data_saham_nonperorangan);
             });
         })->download('xls');
-        return redirect('operator.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
+        return redirect('manajer.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
     }
 
     public function eksportInstitusi(){
@@ -94,7 +94,7 @@ class BackupDataController extends Controller
                 $sheet->fromArray($institusi);
             });
         })->download('xls');
-        return redirect('operator.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
+        return redirect('manajer.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
     }
 
     public function import(Request $request){
@@ -372,6 +372,6 @@ class BackupDataController extends Controller
                 }
             }
         }
-        return redirect()->route('operator.backup_data')->with(['success'   =>  'Data Berhasil Di Import !!']);
+        return redirect()->route('manajer.backup_data')->with(['success'   =>  'Data Berhasil Di Import !!']);
     }
 }

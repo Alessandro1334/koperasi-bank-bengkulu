@@ -146,6 +146,21 @@ Route::group(['prefix' => 'manajer/laporan'], function(){
     Route::get('/laporan_saham_nasabah/filter', 'LaporanController@laporanSahamNasabahFilter')->name('manajer.laporan_saham_filter');
 });
 
+Route::group(['prefix' => 'manajer/laporan'], function(){
+    Route::get('/laporan_data_institusi', 'LaporanInstitusiController@laporanInstitusi')->name('manajer.laporan_institusi');
+    Route::get('/laporan_data_institusi/filter', 'LaporanInstitusiController@laporanInstitusiFilter')->name('manajer.laporan_institusi_filter');
+    Route::get('/laporan_saham_institusi', 'LaporanInstitusiController@laporanSahamInstitusi')->name('manajer.data_saham_institusi');
+    Route::get('/laporan_saham_institusi/filter', 'LaporanInstitusiController@laporanSahamInstitusiFilter')->name('manajer.laporan_saham_institusi_filter');
+});
+
+Route::group(['prefix' => 'manajer/backup_data'], function(){
+    Route::get('/', 'Manajer\BackupDataController@index')->name('manajer.backup_data');
+    Route::get('/eksport','Manajer\BackupDataController@eksport')->name('manajer.eksport');
+    Route::get('/eksport_saham_perorangan','Manajer\BackupDataController@eksportSahamPerorangan')->name('manajer.eksport_saham_perorangan');
+    Route::get('/eksport_saham_nonperorangan','Manajer\BackupDataController@eksportSahamNonperorangan')->name('manajer.eksport_saham_nonperorangan');
+    Route::get('/eksport_institusi','Manajer\BackupDataController@EksportInstitusi')->name('manajer.eksport_institusi');
+    Route::post('/import','Manajer\BackupDataController@import')->name('manajer.import');
+});
 
 
 

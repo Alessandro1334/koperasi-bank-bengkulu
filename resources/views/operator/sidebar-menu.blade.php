@@ -33,6 +33,7 @@
         </ul>
     </li>
 
+    <li class="header" style="font-weight:bold;">BACKUP DATA</li>
     <li class="{{ set_active('operator.backup_data') }}">
         <a href="{{ route('operator.backup_data') }}">
             <i class="fa fa-cloud"></i> <span>Backup Data</span>

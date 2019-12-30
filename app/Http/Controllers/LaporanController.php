@@ -14,6 +14,7 @@ class LaporanController extends Controller
     public function laporanNasabah(){
         $nasabahs = Investor::join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
                             ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                            ->where('status_verifikasi','1')
                             ->get();
         $agens = AgenPemasaran::all();
         return view('manajer/laporan.data_nasabah',compact('nasabahs','agens'));
@@ -25,6 +26,7 @@ class LaporanController extends Controller
             if($_GET['metode']  ==  "semua"){
                 $nasabahs = Investor::join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                                    ->where('status_verifikasi','1')
                                     ->get();
                 return view('manajer/laporan.data_nasabah',compact('nasabahs','agens'));
             }
@@ -35,6 +37,7 @@ class LaporanController extends Controller
                 $nasabahs = Investor::join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
                                     ->whereBetween(DB::raw('DATE(investors.created_at)'), array($from, $to))
+                                    ->where('status_verifikasi','1')
                                     ->get();
                                     // return $nasabahs;
                 return view('manajer/laporan.data_nasabah',compact('nasabahs','agens'));
@@ -44,6 +47,7 @@ class LaporanController extends Controller
                 $nasabahs = Investor::join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
                                     ->where('agen_pemasarans.id',$_GET['agen_id'])
+                                    ->where('status_verifikasi','1')
                                     ->get();
                 return view('manajer/laporan.data_nasabah',compact('nasabahs','agens'));
             }
@@ -63,6 +67,7 @@ class LaporanController extends Controller
             if($_GET['metode']  ==  "semua"){
                 $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
+                                    ->where('status_verifikasi','1')
                                     ->get();
                 return view('manajer/laporan.data_saham',compact('sahams','agens'));
             }
@@ -73,6 +78,7 @@ class LaporanController extends Controller
                 $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
                                     ->whereBetween(DB::raw('DATE(saham_investors.created_at)'), array($from, $to))
+                                    ->where('status_verifikasi','1')
                                     ->get();
                 return view('manajer/laporan.data_saham',compact('sahams','agens'));
 
@@ -81,6 +87,7 @@ class LaporanController extends Controller
                 $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                     ->join('agen_pemasarans','agen_pemasarans.id','investors.staf_pemasaran_id')
                                     ->where('agen_pemasarans.id',$_GET['agen_id'])
+                                    ->where('status_verifikasi','1')
                                     ->get();
                 return view('manajer/laporan.data_saham',compact('sahams','agens'));
             }
