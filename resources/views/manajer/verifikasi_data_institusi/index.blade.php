@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Saham Investor
+    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Institusi
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut menu Verifikasi Data Saham Investor
+            Berikut Adalah Status Verifikasi Data Institusi, Silahkan Verifikasi Data Institusi Jika Belum di Verifikasi Pada Daftar Dibawah Ini !!
             <br>
         </p>
     </div>
@@ -24,126 +24,105 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="a">
-    
+
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                                 <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
                             </div>
                         @endif
-                        <table class="table table-bordered table-hover saham" >
+                        <table class="table table-bordered table-hover verifikasi-investor">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Investor</th>
-                                    <th>Jumlah Saham</th>
-                                    <th>Terbilang Saham</th>
-                                    <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
+                                    <th>No Register</th>
+                                    <th>Nama Institusi</th>
+                                    <th>Tipe Perusahaan</th>
+                                    <th>Karakteristik</th>
+                                    <th>Bidang Usaha</th>
                                     <th>Hasil Verifikasi</th>
-                                    <th>Verifikasi</th>
+                                    <th>Status Verifikasi</th>
                                 </tr>
                             </thead>
                             @php
                                 $no=1;
                             @endphp
-                            @foreach($sahams_acc as $saham)
+                            @foreach($investors_acc as $investor)
                                 <tr>
                                     <td> {{ $no++ }} </td>
-                                    <td> {{ $saham->nm_investor }} </td>
-                                    <td> {{ $saham->jumlah_saham }} </td>
-                                    <td> {{ $saham->terbilang_saham }} </td>
+                                    <td> {{ $investor->nm_investor }} </td>
+                                    <td> {{ $investor->no_register }} </td>
+                                    <td> {{ $investor->nm_institusi }} </td>
+                                    <td> {{ $investor->tipe_perusahaan }} </td>
+                                    <td> {{ $investor->karakteristik }} </td>
+                                    <td> {{ $investor->bidang_usaha }} </td>
                                     <td>
-                                        @if($saham->no_sk3s_lama == NULL)
-                                            <span class="label label-success">saham pembelian baru</span>
-                                            @else
-                                                <span class="label label-primary">saham pengalihan</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                        @if($investor->status_verifikasi == "0")
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Verifikasi</span>
+                                            @elseif($investor->status_verifikasi == "1")
+                                                <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Disetujui</span>
                                                 @else
-                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
+                                                    <span class="label label-danger"><i class="fa fa-close"></i>&nbsp; Tidak Disetujui</span>
                                         @endif
                                     </td>
+
                                     <td>
-                                        @if($saham->status_verifikasi == '0')
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
-                                            @elseif($saham->status_verifikasi == '1')
-                                                <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                                @else
-                                                    <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($saham->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                        @if($investor->status_verifikasi == "0")
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
                                             @else
-                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
                     </div>
-    
+
                     <div class="tab-pane" id="b">
-                        <table class="table table-bordered table-hover saham">
+                        <table class="table table-bordered table-hover verifikasi-investor">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Investor</th>
-                                    <th>Jumlah Saham</th>
-                                    <th>Terbilang Saham</th>
-                                    <th>Status Saham</th>
+                                    <th>No Register</th>
+                                    <th>Nama Institusi</th>
+                                    <th>Tipe Perusahaan</th>
+                                    <th>Karakteristik</th>
+                                    <th>Bidang Usaha</th>
                                     <th>Status Verifikasi</th>
-                                    <th>Hasil Verifikasi</th>
-                                    <th>Verifikasi</th>
+                                    <th>Ubah Status</th>
                                 </tr>
                             </thead>
                             @php
                                 $no=1;
                             @endphp
-                            @foreach($sahams as $saham)
+                            @foreach($investors as $investor)
                                 <tr>
                                     <td> {{ $no++ }} </td>
-                                    <td> {{ $saham->nm_investor }} </td>
-                                    <td> {{ $saham->jumlah_saham }} </td>
-                                    <td> {{ $saham->terbilang_saham }} </td>
+                                    <td> {{ $investor->nm_investor }} </td>
+                                    <td> {{ $investor->no_register }} </td>
+                                    <td> {{ $investor->nm_institusi }} </td>
+                                    <td> {{ $investor->tipe_perusahaan }} </td>
+                                    <td> {{ $investor->karakteristik }} </td>
+                                    <td> {{ $investor->bidang_usaha }} </td>
                                     <td>
-                                        @if($saham->no_sk3s_lama == NULL)
-                                            <span class="label label-success">saham pembelian baru</span>
+                                        @if($investor->status_verifikasi == "0")
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
                                             @else
-                                                <span class="label label-primary">saham pengalihan</span>
+                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
-                                                @else
-                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($saham->status_verifikasi == '0')
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
-                                            @elseif($saham->status_verifikasi == '1')
-                                                <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                                @else
-                                                    <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($saham->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                        @if($investor->status_verifikasi == "0")
+                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
                                             @else
-                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
                                         @endif
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <form method="POST" action="{{ route('manajer.verifikasi_data_saham_update',[$saham->id]) }}">
+                                    <form method="POST" action="{{ route('manajer.verifikasi_data_institusi_update',[$investor->id]) }}">
                                         {{ csrf_field() }} {{ method_field('PATCH') }}
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -152,7 +131,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <input type="hidden" name="saham_id" id="saham_id">
+                                                    <input type="hidden" name="institusi_id" id="institusi_id">
                                                     <label for="recipient-name" class="col-form-label">Verifikasi:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
                                                         <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
@@ -181,17 +160,17 @@
 @push('scripts')
     <script>
         $(document).ready( function () {
-            $('.saham').DataTable();
+            $('.verifikasi-investor').DataTable();
         } );
 
         function verifikasi(id){
             $.ajax({
-            url: "{{ url('manajer/verifikasi_rekening_investor') }}"+'/'+ id + "/edit",
+            url: "{{ url('manajer/verifikasi_data_institusi') }}"+'/'+ id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function(data){
                 $('#exampleModal').modal('show');
-                $('#saham_id').val(data.id);
+                $('#institusi_id').val(data.id);
                 $('#nm_investor').text(data.nm_investor);
             },
             error:function(){

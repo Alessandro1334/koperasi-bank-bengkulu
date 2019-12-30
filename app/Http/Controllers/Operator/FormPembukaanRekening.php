@@ -22,16 +22,9 @@ class FormPembukaanRekening extends Controller
             abort(404, "Sorry, you can't do this actions");
         }
 
-        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')
-                        ->where('status_verifikasi','1')
-                        ->get();
-        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')
-                        ->where('status_verifikasi','0')
-                        ->orWhere('status_verifikasi','2')
-                        ->get();
-        $pejabats = PejabatBerwenang::where('status','1')->get();
-        $agens = AgenPemasaran::where('status','1')->get();
-        return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors','pejabats','agens']));
+        $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
+        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->get();
+        return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors']));
     }
 
     public function tambahInvestor(){
@@ -173,6 +166,7 @@ class FormPembukaanRekening extends Controller
     }
 
     public function update(Request $request, $id){
+        // return $request->all();
         $investor = Investor::where('id',$id)->update([
             'no_register'   => $request->no_register,
             'nm_investor'   => $request->nm_investor,
@@ -232,7 +226,7 @@ class FormPembukaanRekening extends Controller
             'provinsi_perusahaan'   =>  $request->provinsi_perusahaan,
             'kode_pos_perusahaan'   =>  $request->kode_pos_perusahaan,
             'telp_perusahaan'   =>  $request->telp_perusahaan,
-            'email_perusahaan'  =>  $request->email_perusahanm,
+            'email_perusahaan'  =>  $request->email_perusahann,
             'fax_perusahaan'    =>  $request->fax_perusahaan,
             'jabatan'   =>  $request->jabatan,
             'jenis_usaha'   =>  $request->jenis_usaha,
@@ -323,16 +317,5 @@ class FormPembukaanRekening extends Controller
         $datas = count($data);
 
         return response()->json($datas);
-    }
-    
-    public function detail($id){
-        $investor = Investor::find($id);
-        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->first();
-        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
-        $persetujuan = Persetujuan::where('investor_id',$id)->first();
-        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
-        $agens = AgenPemasaran::where('status','1')->get();
-        $pejabats = PejabatBerwenang::where('status','1')->get();
-        return compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats');
     }
 }

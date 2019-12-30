@@ -31,7 +31,7 @@
                     <li class="active a"><a href="#a" data-toggle="tab">Data Terverifikasi</a></li>
                     <li class="b"><a href="#b" data-toggle="tab">Data Belum Terverifikasi</a></li>
                     <div class="btn-tambah">
-                        <a href="{{ route('operator.tambah_saham') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
+                        <a href="{{ route('operator.tambah_saham_institusi') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                    </div>
                 </ul>
                 <div class="tab-content">
@@ -88,7 +88,6 @@
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
                                             @endif
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -105,7 +104,6 @@
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
                                     <th>Status Verifikasi</th>
-                                    <th>Hasil Verifikasi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -127,13 +125,6 @@
                                         </td>
                                         <td>
                                             @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
-                                            @else
-                                                <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($saham->status_verifikasi == '0')
                                                 <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
@@ -141,7 +132,6 @@
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
                                             @endif
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -157,7 +147,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>&nbsp;Data Pembelian dan Pengalihan Saham Seri B</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ route('operator.tambah_saham') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
+                        <a href="{{ route('operator.tambah_saham_institusi') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                     </div>
                 </div>
                 <!-- /.box-header -->
