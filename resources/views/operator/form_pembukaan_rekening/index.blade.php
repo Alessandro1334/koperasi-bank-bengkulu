@@ -13,6 +13,7 @@
             float: right;
             margin: 5px 5px 5px 5px;
         }
+
         .modal-body {
             max-height: calc(100vh - 212px) !important;
             overflow-y: auto !important;
@@ -913,8 +914,10 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             $('.investor').DataTable();
         } );
+
         function get_data(id)
         {
             $.ajax({
@@ -936,6 +939,7 @@
                     $('#tanggal_lahir').val(data.investor.tanggal_lahir);
                     $('#status_perkawinan').val(data.investor.status_perkawinan);
                     $('#kewarganegaraan').val(data.investor.kewarganegaraan);
+
                     $('#alamat_ktp').val(data.investor.alamat_ktp);
                     $('#rt_ktp').val(data.investor.rt_ktp);
                     $('#rw_ktp').val(data.investor.rw_ktp);
@@ -957,6 +961,7 @@
                     $('#ponsel').val(data.investor.ponsel);
                     $('#lama_menempati').val(data.investor.lama_menempati);
                     $('#status_rumah_tinggal').val(data.investor.status_rumah_tinggal);
+
                     $('#agama').val(data.investor.agama);
                     $('#pendidikan_terakhir').val(data.investor.pendidikan_terakhir);
                     $('#nm_gadis_ibu_kandung').val(data.investor.nm_gadis_ibu_kandung);
@@ -970,6 +975,7 @@
                     $('#pengiriman_konfirmasi_melalui_fax').val(data.investor.pengiriman_konfirmasi_melalui_fax);
                     $('#pengiriman_konfirmasi_melalui_alamat_surat_menyurat').val(data.investor.pengiriman_konfirmasi_melalui_alamat_surat_menyurat);
                     $('#tujuan_investasi').val(data.investor.tujuan_investasi);
+
                     //Pekerjaan
                     $('#pekerjaan').val(data.pekerjaan.pekerjaan);
                     $('#nm_perusahaan').val(data.pekerjaan.nm_perusahaan);
@@ -987,6 +993,7 @@
                     $('#sumber_penghasilan_lainnya').val(data.pekerjaan.sumber_penghasilan_lainnya);
                     $('#sumber_penghasilan_utama').val(data.pekerjaan.sumber_penghasilan_utama);
                     $('#sumber_dana_investasi').val(data.pekerjaan.sumber_dana_investasi);
+
                     //Pasangan atau Orang Tua 
                     $('#nm_pasangan_atau_orang_tua').val(data.pasangan.nm_pasangan_atau_orang_tua);
                     $('#hubungan').val(data.pasangan.hubungan);
@@ -1006,6 +1013,7 @@
                     $('#jenis_usaha_pasangan_atau_orang_tua').val(data.pasangan.jenis_usaha_pasangan_atau_orang_tua);
                     $('#lama_bekerja_pasangan_atau_orang_tua').val(data.pasangan.lama_bekerja_pasangan_atau_orang_tua);
                     $('#sumber_penghasilan_utama_pasangan_atau_orang_tua').val(data.pasangan.sumber_penghasilan_utama_pasangan_atau_orang_tua);
+
                     //Dokumen Pendukung
                     $('#ktp').val(data.dokumen.ktp);
                     $('#npwp').val(data.dokumen.npwp);
@@ -1013,6 +1021,7 @@
                     $('#bukti_setoran_investasi_awal').val(data.dokumen.bukti_setoran_investasi_awal);
                     $('#contoh_tanda_tangan').val(data.dokumen.contoh_tanda_tangan);
                     $('#fatca').val(data.dokumen.fatca);
+
                     //persetujuan
                     $('#agen_pemasaran_id').val(data.persetujuan.agen_pemasaran_id);
                     $('#tanda_tangan_agen_pemasaran').val(data.persetujuan.tanda_tangan_agen_pemasaran);
@@ -1021,6 +1030,8 @@
                     $('#status_persetujuan').val(data.persetujuan.status_persetujuan);
                     $('#tanggal_pejabat_berwenang').val(data.persetujuan.tanggal_pejabat_berwenang);
                     $('#tanda_tangan_pejabat_berwenang').val(data.persetujuan.tanda_tangan_pejabat_berwenang);
+
+
                 }
                 
             });

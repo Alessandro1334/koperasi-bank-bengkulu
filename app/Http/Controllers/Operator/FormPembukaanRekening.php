@@ -319,4 +319,15 @@ class FormPembukaanRekening extends Controller
 
         return response()->json($datas);
     }
+
+    public function detail($id){
+        $investor = Investor::find($id);
+        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->first();
+        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
+        $persetujuan = Persetujuan::where('investor_id',$id)->first();
+        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
+        $agens = AgenPemasaran::where('status','1')->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
+        return compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats');
+    }
 }
