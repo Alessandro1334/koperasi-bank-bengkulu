@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cetak SK3S</title>
 </head>
-<body background: -moz-repeating-linear-gradient(red, blue 20px, red 40px)>
+<body>
     <style>
         .img-top {
             opacity: 0.6;
@@ -23,21 +23,21 @@
             <td rowspan="2" align="center">Seri SK3S : R182206/IX/2019</td>
         </tr>
     </table>
-    <p align="center" style="font-size: 13pt; margin:50 0 60 0;">KOPERASI KARYAWAN JASA MITRA UTAMA BANK BENGKULU</p>
-    <h2 align="center" style="font-size: 16pt; margin:0 0 80 0;"><b>SURAT KETERANGAN KEPESERTAAN KEPEMILIKAN SAHAM (S3K3S)</b></h2>
-    <h1 align="center" style="font-size: 20pt;">{{ strtoupper('EMPAT MILIYAR RUPIAH')  }}</h1>
-    <h2 align="center" style="font-size: 16pt; margin:0 0 60 0;"> Rp. 4.000.000.000  </h2>
+    <p align="center" style="margin:50 0 60 0;">KOPERASI KARYAWAN JASA MITRA UTAMA BANK BENGKULU</p>
+    <h3 align="center" style="margin:0 0 80 0;"><b>SURAT KETERANGAN KEPESERTAAN KEPEMILIKAN SAHAM (S3K3S)</b></h3>
+    <h3 align="center">{{ strtoupper($sk3s[0]->terbilang_saham)  }}</h3>
+    <h3 align="center" style="margin:0 0 40 0;"> @currency($sk3s[0]->jumlah_saham) </h3>
 
     <div align="center" style="margin:0 0 80 0;">
-        <h1><b><u>Novita Novita Wulandari</u></b></h1>
-        <h3>Register : P30072019291088</h3>
+        <h3><b><u>{{ $sk3s[0]->nm_investor }}</u></b></h3>
+        <h3>Register : {{ $sk3s[0]->no_register }}</h3>
     </div>
 
     <table style="width:100%">
         <tr>
-            <td rowspan="5" align="left" width="300"><img src="{{ asset('img/qrcode.png') }}" style="margin-left:50px" width="120"></td>
-            <td align="left">Ditetapkan tanggal : {{ Carbon::now() }} <br>
-                Perubahan Ke-
+            <td rowspan="5" align="left" width="280"><img src="{{ asset('img/qrcode.png') }}" style="margin-left:50px" width="120"></td>
+            <td align="left">Ditetapkan tanggal : {{ $time_indo }} <br>
+                Perubahan Ke- {{ $sk3s[0]->perubahan_ke }}
             </td>
         </tr>
         <tr>

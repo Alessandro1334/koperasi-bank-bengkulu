@@ -118,7 +118,7 @@ class SahamInvestorController extends Controller
                                 ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
                                 ->where('saham_investors.id',$request->id_spmpkop)
                                 ->get();
-        $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s'));
+        $pdf = PDF::loadView('operator/form_saham.spmpkop',compact('barcode','ketua','sk3s'));
         $pdf->setPaper('a4', 'portrait');
 
         return $pdf->stream();
