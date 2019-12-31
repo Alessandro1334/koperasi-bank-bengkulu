@@ -34,7 +34,7 @@ class PembelianSahamInstitusiController extends Controller
                                     ->where('saham_institusis.status_verifikasi','!=','0')
                                     ->get();
         $sahams = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')
-                                    ->select('saham_institusis.id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_institusis.status_verifikasi')
+                                    ->select('saham_institusis.id','institusi_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_institusis.status_verifikasi')
                                     ->where('saham_institusis.status_verifikasi','0')
                                     ->get();
         $agens = AgenPemasaran::where('status','1')->get();
