@@ -103,10 +103,10 @@ class PembelianSahamInstitusiController extends Controller
         $time_indo = Carbon::now()->formatLocalized("%A, %d %B %Y");
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
-        $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
-                                ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham','perubahan_ke')
-                                ->get();
-        $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s','time_indo'));
+        $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
+                            ->where('saham_institusis.institusi_id',$id)
+                            ->get();
+        $pdf = PDF::loadView('operator/form_saham_institusi.sk3s',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
 
         return $pdf->stream();
@@ -121,9 +121,24 @@ class PembelianSahamInstitusiController extends Controller
         $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$request->institusi_id)->first();
         $direksi = SusunanDireksiInstitusi::where('institusi_id',$request->institusi_id)->first();
         $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$request->institusi_id)->first();
+        $saham_institusi = SahamInstitusi::where('institusi_id',$request->institusi_id)->first();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
-        return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats');
+        return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats','saham_institusi');
+    }
+    
+    public function spmpkop(Request $request){
+        setlocale (LC_TIME, 'id_ID');
+        $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
+        $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
+        $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
+        $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
+                ->where('saham_institusis.institusi_id',$request->id_institusi)
+                ->get();
+        $pdf = PDF::loadView('operator/form_saham_institusi.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream();
     }
 
     public function cetak($id){
