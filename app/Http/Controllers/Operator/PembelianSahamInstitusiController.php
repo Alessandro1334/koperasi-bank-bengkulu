@@ -108,7 +108,6 @@ class PembelianSahamInstitusiController extends Controller
                             ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.sk3s',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
-
         return $pdf->stream();
     }
 
@@ -137,7 +136,6 @@ class PembelianSahamInstitusiController extends Controller
                 ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
-
         return $pdf->stream();
     }
 

@@ -95,6 +95,7 @@
                                 <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
                             </div>
                         @endif
+                        
                         <table class="table table-bordered table-hover investor">
                             <thead>
                                 <tr>
