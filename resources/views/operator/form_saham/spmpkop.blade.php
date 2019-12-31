@@ -34,10 +34,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+            <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>1</b> dari <b>6</b></td>
@@ -46,7 +46,7 @@
     <table style="width:100%; margin-top:110px;">
         <tr>
             <td style="width:50%">Koperasi</td>
-            <td>:</td>
+            <td>: Koperasi Jasa Mitra Utama Bank Bengkulu</td>
         </tr>
         <tr>
             <td>Nomor Badan Hukum</td>
@@ -54,7 +54,7 @@
         </tr>
         <tr>
             <td>Tanggal</td>
-            <td>:</td>
+            <td>: {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Nomor Induk Koperasi (NIK)</td>
@@ -69,7 +69,7 @@
         </tr>
         <tr>
             <td>Ketua</td>
-            <td>:</td>
+            <td>: {{ $ketua->nm_ketua_koperasi}}</td>
         </tr>
         <tr>
             <td>Sekretaris</td>
@@ -83,7 +83,7 @@
 
     <table style="width:100%; margin-top:110px; margin-bottom:20px;" class="top">
         <tr>
-            <td align="center"><b>Pengalihan Ke :</b></td>
+            <td align="center"><b>Pengalihan Ke : {{ $sk3s[0]->perubahan_ke }}</b></td>
         </tr>
         <tr>
             <td align="center">Seri Formulir Pengalihan :</td>
@@ -122,10 +122,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>2</b> dari <b>6</b></td>
@@ -135,11 +135,11 @@
         <p style="width:100%; text-align:justify;">Pada hari ini …………………….. tanggal ………………………… bulan ………………….. tahun ……………………….. kami yang bertanda tangan dibawah ini :</p>
         <table style="width:100%">
             <tr>
-                <td style="width:200px;">1. H.A. Mukti Husni</td>
+                <td style="width:200px;">1. {{ $ketua->nm_ketua_koperasi}}</td>
                 <td>Ketua Koperasi Jasa Mitra Utama Bank Bengkulu yang berkedudukan di Jalan Fatmawati Ruko Gading Regency No.10 Kota Bengkulu, dalam hal ini Bertindak untuk dan atas nama Koperasi Jasa Mitra Utama Bank Bengkulu, yang selanjutnya disebut PIHAK PERTAMA</p></td>
             </tr>
             <tr>
-                <td style="width:200px;">2. H.A. Mukti Husni</td>
+                <td style="width:200px;">2. {{ $ketua->nm_ketua_koperasi}}</td>
                 <td><p>berkedudukan dijalan ………………………………………… dalam hal ini Bertindak untuk dan atas nama diri sendiri yang selanjutnya Sebut PIHAK KEDUA.</p></td>
             </tr>
         </table>
@@ -174,10 +174,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>3</b> dari <b>6</b></td>
@@ -243,10 +243,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>4</b> dari <b>6</b></td>
@@ -314,10 +314,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>5</b> dari <b>6</b></td>
@@ -396,10 +396,10 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri</td>
+           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
         </tr>
         <tr>
-            <td>Tanggal</td>
+            <td>Tanggal : {{ $time_indo }}</td>
         </tr>
         <tr>
             <td>Halaman <b>6</b> dari <b>6</b></td>
@@ -412,15 +412,16 @@
             <td style="width:50%;" align="center"><b>PIHAK KEDUA<br>Investor / Pemodal</b></td>
         </tr>
         <tr>
-            <td style="height:150px;"></td>
-            <td style="height:150px;"></td>
+            <td style="height:120px;"></td>
+            <td style="height:120px;"></td>
         </tr>
         <tr>
-            <td align="center"><b><u>( H.A. Mukti Husni )</u></b></td>
-            <td align="center"><b><u>(                  )</u></b></td>
+            <td align="center"><b><u>( {{ $ketua->nm_ketua_koperasi}} )</u></b></td>
+            <td align="center"><b><u>({{ $sk3s[0]->nm_investor }})</u></b></td>
         </tr>
         <tr>
             <td align="center"><b>Ketua</b></td>
+            <td align="center"><b>Investor</b></td>
         </tr>
     </table>
 
