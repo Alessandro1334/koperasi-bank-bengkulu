@@ -74,7 +74,8 @@ Route::group(['prefix' => 'operator/pembelian_saham_institusi'], function(){
     Route::get('/tambah_saham', 'Operator\PembelianSahamInstitusiController@tambahSaham')->name('operator.tambah_saham_institusi');
     Route::get('/investor_pengalih','Operator\PembelianSahamInstitusiController@investorPengalih')->name('operator.investor_pengalih');
     Route::post('/','Operator\PembelianSahamInstitusiController@tambahSahamPost')->name('operator.tambah_saham_institusi_post');
-    Route::get('/sk3s/{id}','Operator\PembelianSahamInstitusiController@sk3s')->name('operator.sk3s');
+    Route::get('/sk3s/{id}','Operator\PembelianSahamInstitusiController@sk3s')->name('operator.sk3s_institusi');
+    Route::get('/spmpkop','Operator\PembelianSahamInstitusiController@spmpkop')->name('operator.spmpkop_institusi');
     Route::get('/detail','Operator\PembelianSahamInstitusiController@detail')->name('operator.detail_pembelian_saham');
 
 });
