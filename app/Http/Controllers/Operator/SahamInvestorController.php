@@ -35,8 +35,8 @@ class SahamInvestorController extends Controller
                                 ->select('saham_investors.id','investor_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
                                 ->where('saham_investors.status_verifikasi','0')
                                 ->orWhere('saham_investors.status_verifikasi','1')
-                                ->get();        
-                               
+                                ->get();
+
         $investors = Investor::select('id','nm_investor')->get();
         $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('investor_id','nm_investor')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
@@ -110,7 +110,7 @@ class SahamInvestorController extends Controller
 
         return $pdf->stream();
     }
-    
+
     public function spmpkop(Request $request){
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
@@ -135,5 +135,14 @@ class SahamInvestorController extends Controller
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
         return compact('sahams','investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats');
+    }
+
+    public function cetak($id){
+        $investor = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
+                            ->where('saham_investors.id',$id)
+                            ->first();
+        $pdf = PDF::loadView('operator/form_saham.cetak',compact('investor'));
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream();
     }
 }

@@ -122,7 +122,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="nama">Nama Agen Pemasaran</label>
+                                    <label for="nama">Nama Ketua Koperasi</label>
                                     <input type="text" class="form-control" name="nm_ketua_koperasi" placeholder="Masukan Nama" required>
                                 </div>
                                 <div class="form-group">

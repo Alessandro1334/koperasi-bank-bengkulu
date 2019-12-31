@@ -36,7 +36,7 @@
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
                     <div class="row" style="margin-bottom:10px;">
-                        <form action="{{ route('manajer.data_saham_nasabah') }}" method="GET">
+                        <form action="{{ route('manajer.data_saham_institusi') }}" method="GET">
                             <div class="form-group col-md-6">
                                 <label for="">Pilih Metode Filter Laporan</label>
                                 <select name="metode" id="metode" class="form-control">
@@ -49,6 +49,13 @@
                                 <div class="form-group col-md-6">
                                     <label for="">Mulai Dari Tanggal</label>
                                     <input type="date" name="date" class="form-control" id="date1">
+                                </div>
+                            </div>
+
+                            <div id="date3" style="display:none;">
+                                <div class="form-group col-md-6">
+                                    <label for="">Sampai Tanggal</label>
+                                    <input type="date" name="date1" class="form-control" id="date4">
                                 </div>
                             </div>
 
@@ -165,10 +172,12 @@
             var jenis = $(this).val();
             if(jenis   == "date"){
                 $('#date').show(300);
+                $('#date3').show(300);
                 $('#agen').hide(300);
             }
             else{
                 $('#date').hide(300);
+                $('#date3').hide(300);
                 $('#agen').show(300);
             }
           })

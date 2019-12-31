@@ -52,6 +52,7 @@
                                 <th>Tipe Perusahaan</th>
                                 <th>Status Verifikasi</th>
                                 <th>Detail</th>
+                                <th>Cetak Data</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,6 +79,9 @@
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_institusi_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
@@ -122,8 +126,9 @@
                                 <th>Karakteristik</th>
                                 <th>Bidang Usaha</th>
                                 <th>Tipe Perusahaan</th>
-                                <th>Detail</th>
                                 <th>Status Verifikasi</th>
+                                <th>Detail</th>
+                                <th>Cetak Data</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,11 +143,7 @@
                                     <td> {{ $investor->karakteristik }} </td>
                                     <td> {{ $investor->bidang_usaha }} </td>
                                     <td> {{ $investor->tipe_perusahaan }} </td>
-                                    <td>
-                                        <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                    </td>
+
                                     <td>
                                         @if ($investor->status_verifikasi == '1')
                                             <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
@@ -150,7 +151,15 @@
                                             <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
                                         @endif
                                     </td>
-                                    
+                                    <td>
+                                        <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                    </td>
+
                                 </tr>
                                 <div class="modal fade" id="modal-default">
                                     <div class="modal-dialog">
@@ -427,7 +436,7 @@
                                     <div class="form-group col-md-4">
                                         <label for="">Nomor Identitas: <a style="color:red">(* hanya angka)</a></label>
                                         <input type="number" name="no_identitas_direksi" class="form-control" id="no_identitas_direksi" disabled placeholder="Masukan Nomor identitas">
-                                    </div>                          
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">

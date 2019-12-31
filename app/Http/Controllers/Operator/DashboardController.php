@@ -5,6 +5,14 @@ namespace App\Http\Controllers\Operator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Gate;
+use App\Investor;
+use App\KetuaKoperasi;
+use App\SahamInvestor;
+use App\RekeningInstitusi;
+use App\SahamInstitusi;
+use App\User;
+use App\AgenPemasaran;
+
 
 class DashboardController extends Controller
 {
@@ -12,7 +20,15 @@ class DashboardController extends Controller
         if(!Gate::allows('isOperator')){
             abort(404, "Sorry, you can't do this actions");
         }
-
-        return view('operator.dashboard');
+        $investor = Investor::count();
+        $saham_investor = SahamInvestor::count();
+        $institusi = RekeningInstitusi::count();
+        $saham_institusi = SahamInstitusi::count();
+        $ketua = KetuaKoperasi::count();
+        $ketua_aktif = KetuaKoperasi::where('status','1')->count();
+        $operator = User::where('level_user','operator')->count();
+        $manajer = User::where('level_user','manajer')->count();
+        $agen = AgenPemasaran::count();
+        return view('operator.dashboard',compact('investor','saham_investor','ketua_aktif','institusi','saham_institusi','ketua','operator','manajer','agen'));
     }
 }
