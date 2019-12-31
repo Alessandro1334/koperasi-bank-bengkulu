@@ -151,6 +151,9 @@
                                         <td>
                                             <a href="{{ route('operator.cetak_saham_institusi',[$saham->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                         </td>
+                                        <td>
+                                            <a href="{{ route('operator.sk3s_institusi',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
