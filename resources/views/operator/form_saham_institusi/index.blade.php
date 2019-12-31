@@ -148,11 +148,7 @@
                                             </a>
                                         </td>
                                         <td>
-<<<<<<< HEAD
                                             <a href="{{ route('operator.cetak_saham_institusi',[$saham->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
-=======
-                                            <a href="{{ route('operator.sk3s_institusi',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         </td>
                                     </tr>
                                 @endforeach
@@ -360,10 +356,6 @@
                                             <h5><b>Data Kepemilikan & Pengurus (Pemegang Saham)</b></h5>
                                             <hr>
                                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Pemegang Saham: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_pemegang_saham" id="nm_pemegang_saham" class="form-control" disabled placeholder="Masukan nama pemegang saham">
@@ -395,7 +387,6 @@
                                         </div>
 
                                         <div class="form-group col-md-4">
-<<<<<<< HEAD
                                             <label for="">Nama Gadis Ibu Kandung: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_gadis_ibu_kandung" class="form-control" id="nm_gadis_ibu_kandung" disabled placeholder="Masukan nama gadis ibu kandung">
                                         </div>
@@ -403,10 +394,12 @@
                                         <div class="form-group col-md-4">
                                             <label for="">Emergency Kontak: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="emergency_kontak" class="form-control" id="emergency_kontak" disabled placeholder="Masukan emergency kontak">
-=======
+
+                                        </div>
+
+                                        <div class="form-group col-md4-4">
                                             <label for="">Nomor Identitas: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_identitas" class="form-control" id="no_identitas" disabled placeholder="Masukan Nomor identitas">
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         </div>
                                     </div>
                                     <div class="row">
@@ -429,10 +422,7 @@
                                             <h5><b> Penerima Kuasa Untuk Bertransaksi</b></h5>
                                             <hr>
                                         </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Penerima Kuasa: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_kuasa" id="nm_kuasa"  class="form-control" disabled placeholder="Masukan nama kuasa" disabled>
@@ -474,7 +464,6 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-<<<<<<< HEAD
 
                                         <div id="info-pekerjaan">
                                             <div class="form-group col-md-4">
@@ -570,7 +559,6 @@
                                                 <option value="dari_suami/istri">Dari Suami/Istri</option>
                                                 <option value="hasil_investasi">Hasil Investasi</option>
                                                 <option value="lainnya">Lainnya</option>
-=======
 
                                         <div class="form-group col-md-4">
                                             <label for="">Aset Keuangan Tahun 2: <a style="color:red">(*)</a></label> <br>
@@ -581,7 +569,6 @@
                                                 <option value=">_idr_5_10_m">> IDR 5 - 10 Miliar</option>
                                                 <option value=">_idr_10_50_m">> IDR 10 - 50 Miliar</option>
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                             </select>
                                         </div>
 
@@ -596,7 +583,6 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-<<<<<<< HEAD
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -608,9 +594,7 @@
                                             <input type="text" name="nm_pasangan_atau_orang_tua" id="nm_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua" disabled>
                                         </div>
 
-=======
 
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="">Laba Keuangan Tahun 1: <a style="color:red">(*)</a></label> <br>
                                             <select name="laba_keuangan_tahun_1" id="laba_keuangan_tahun_1" class="form-control" disabled>
@@ -670,8 +654,6 @@
                                                 <option value="lainnya">> Lainnya</option>
                                             </select>
                                         </div>
-<<<<<<< HEAD
-
                                         <div id="pekerjaan-pasangan">
                                             <div class="form-group col-md-4">
                                                 <label for="">Nama Perusahaan</label>
@@ -747,7 +729,6 @@
                                                     <option value=">1m">> 1 Miliar</option>
                                                 </select>
                                             </div>
-=======
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -762,7 +743,6 @@
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Bank: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_bank" class="form-control" id="nm_bank" disabled placeholder="Masukan nama bank">
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         </div>
 
                                         <div class="form-group col-md-4">
@@ -843,8 +823,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-<<<<<<< HEAD
-
                                         <div class="form-group col-md-4">
                                             <label for="">Tanda Tangan Agen Pemasaran: <a style="color:red">(*)</a></label> <br>
                                             <select name="tanda_tangan_agen_pemasaran" class="form-control" id="tanda_tangan_agen_pemasaran" disabled>
@@ -853,16 +831,10 @@
                                             </select>
                                         </div>
 
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Nomor SK3S Lama</label>
                                             <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama" disabled>
                                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Pilih Investor Pembeli</label>
                                             <select name="institusi_id" id="institusi_id" class="form-control" disabled>
@@ -872,10 +844,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                         <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Nomor SK3S Baru:</label>
                                             <input type="text" name="no_sk3s" class="form-control" id="no_sk3s" placeholder="Masukan Nomor SK3S" disabled>
@@ -923,11 +891,6 @@
                                             <input type="text" name="pembayaran_nm_bank" class="form-control" id="pembayaran_nm_bank" disabled placeholder="Masukan Nama Bank">
                                         </div>
                                     </div>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
@@ -941,10 +904,7 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                 </div>
             </div>
         </div>
@@ -971,7 +931,6 @@
                 success: function(data) {
                     console.log(data);
                     //Informasi Diri
-<<<<<<< HEAD
                     $('#nm_investor').val(data.investor.nm_investor);
                     $('#no_register').val(data.investor.no_register);
                     $('#jenis_kelamin').val(data.investor.jenis_kelamin);
@@ -1085,7 +1044,6 @@
                     $('#pembayaran_nm_rek').val(data.sahams.pembayaran_nm_rek);
                     $('#pembayaran_nm_bank').val(data.sahams.pembayaran_nm_bank);
                     $('#id_spmpkop').val(data.sahams.id);
-=======
                     $('#nm_investor').val(data.rekening.nm_investor);
                     $('#no_register').val(data.rekening.no_register);
                     $('#agen_pemasaran_id').val(data.rekening.agen_pemasaran_id);
@@ -1169,7 +1127,6 @@
                     $('#pembayaran_nm_bank').val(data.saham_institusi.pembayaran_nm_bank);
                     $('#id_institusi').val(data.saham_institusi.institusi_id);
 
->>>>>>> 40a39ebcba5d1613871be7192f85a429e3be4250
                 }
             });
         } );
