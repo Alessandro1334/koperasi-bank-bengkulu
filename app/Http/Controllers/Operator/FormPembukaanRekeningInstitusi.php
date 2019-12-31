@@ -27,8 +27,7 @@ class FormPembukaanRekeningInstitusi extends Controller
         $investors = RekeningInstitusi::select('id','nm_investor','nm_institusi','karakteristik','bidang_usaha','tipe_perusahaan','status_verifikasi')->where('status_verifikasi','0')->get();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
-        return $investors_acc;
-        // return view('operator/rekening_institusi.index',compact(['investors_acc','investors','agens','pejabats']));
+        return view('operator/rekening_institusi.index',compact(['investors_acc','investors','agens','pejabats']));
     }
 
     public function tambahInstitusi(){
