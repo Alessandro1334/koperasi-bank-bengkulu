@@ -24,11 +24,12 @@ class FormPembukaanRekeningInstitusi extends Controller
         if(!Gate::allows('isOperator')){
             abort(404, "Sorry, you can't do this actions");
         }
-        $investors_acc = RekeningInstitusi::select('id','nm_investor','nm_institusi','karakteristik','bidang_usaha','tipe_perusahaan')->where('status_verifikasi','1')->get();
-        $investors = RekeningInstitusi::select('id','nm_investor','nm_institusi','karakteristik','bidang_usaha','tipe_perusahaan')->get();
+        $investors_acc = RekeningInstitusi::select('id','nm_investor','nm_institusi','karakteristik','bidang_usaha','tipe_perusahaan','status_verifikasi')->where('status_verifikasi','!=','0')->get();
+        $investors = RekeningInstitusi::select('id','nm_investor','nm_institusi','karakteristik','bidang_usaha','tipe_perusahaan','status_verifikasi')->where('status_verifikasi','0')->get();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
-        return view('operator/rekening_institusi.index',compact(['investors_acc','investors','agens','pejabats']));
+        return $investors_acc;
+        // return view('operator/rekening_institusi.index',compact(['investors_acc','investors','agens','pejabats']));
     }
 
     public function tambahInstitusi(){
@@ -271,4 +272,17 @@ class FormPembukaanRekeningInstitusi extends Controller
         return $pdf->stream();
     }
 
+    public function detail($id){
+        $rekening = RekeningInstitusi::find($id);
+        $dokumen = DokumenPendukungInstitusi::where('institusi_id',$id)->first();
+        $keuangan = DataKeuanganiInstitusi::where('institusi_id',$id)->first();
+        $instruksi = InstruksiPembayaraniInstitusi::where('institusi_id',$id)->first();
+        $saham = PemegangSahamInstitusi::where('institusi_id',$id)->first();
+        $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$id)->first();
+        $direksi = SusunanDireksiInstitusi::where('institusi_id',$id)->first();
+        $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$id)->first();
+        $agens = AgenPemasaran::where('status','1')->get();
+        $pejabats = PejabatBerwenang::where('status','1')->get();
+        return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats');
+    }
 }

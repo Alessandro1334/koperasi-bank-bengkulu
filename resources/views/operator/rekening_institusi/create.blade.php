@@ -395,7 +395,7 @@
                             <ul class="timeline timeline-inverse" id="datakeuangan" style="display:none;">
                                 <li class="time-label">
                                     <span class="bg-red">
-                                        Data Keuangan Institusi 3 Tahun Terakhie
+                                        Data Keuangan Institusi 3 Tahun Terakhir
                                     </span>
                                 </li>
                                 <li>
