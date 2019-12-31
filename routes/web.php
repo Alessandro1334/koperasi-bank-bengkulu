@@ -52,8 +52,6 @@ Route::group(['prefix' => 'operator/pembukaan_rekening_institusi'], function(){
     Route::delete('/{id}','Operator\FormPembukaanRekeningInstitusi@delete')->name('operator.tambah_institusi_delete');
     Route::get('/cetak/{id}','Operator\FormPembukaanRekeningInstitusi@cetak')->name('operator.cetak_data_institusi');
     Route::get('/{id}/detail','Operator\FormPembukaanRekeningInstitusi@detail')->name('operator.tambah_investor_detail');
-
-
 });
 
 Route::group(['prefix' => 'operator/manajemen_pembelian_dan_pengalihan_saham'], function(){
@@ -76,6 +74,7 @@ Route::group(['prefix' => 'operator/pembelian_saham_institusi'], function(){
     Route::post('/','Operator\PembelianSahamInstitusiController@tambahSahamPost')->name('operator.tambah_saham_institusi_post');
     Route::get('/sk3s/{id}','Operator\PembelianSahamInstitusiController@sk3s')->name('operator.sk3s');
     Route::get('/detail','Operator\PembelianSahamInstitusiController@detail')->name('operator.detail_pembelian_saham');
+    Route::get('/cetak/{id}','Operator\PembelianSahamInstitusiController@cetak')->name('operator.cetak_saham_institusi');
 
 });
 

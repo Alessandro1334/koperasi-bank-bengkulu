@@ -143,6 +143,14 @@
                                     <td> {{ $investor->karakteristik }} </td>
                                     <td> {{ $investor->bidang_usaha }} </td>
                                     <td> {{ $investor->tipe_perusahaan }} </td>
+
+                                    <td>
+                                        @if ($investor->status_verifikasi == '1')
+                                            <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
+                                        @else
+                                            <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
@@ -150,12 +158,6 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
-                                    </td>
-                                        @if ($investor->status_verifikasi == '1')
-                                            <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
-                                        @else
-                                            <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
-                                        @endif
                                     </td>
 
                                 </tr>

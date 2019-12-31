@@ -126,4 +126,14 @@ class PembelianSahamInstitusiController extends Controller
         return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats');
     }
 
+    public function cetak($id){
+        $investor = SahamInstitusi::leftJoin('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')
+                            ->where('saham_institusis.id',$id)
+                            ->first();
+                            // return $investor;
+        $pdf = PDF::loadView('operator/form_saham_institusi.cetak',compact('investor'));
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream();
+    }
+
 }

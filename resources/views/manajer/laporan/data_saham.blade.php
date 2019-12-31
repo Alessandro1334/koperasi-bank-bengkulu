@@ -51,6 +51,12 @@
                                     <input type="date" name="date" class="form-control" id="date1">
                                 </div>
                             </div>
+                            <div id="date3" style="display:none;">
+                                <div class="form-group col-md-6">
+                                    <label for="">Sampai Tanggal</label>
+                                    <input type="date" name="date1" class="form-control" id="date4">
+                                </div>
+                            </div>
 
                             <div id="agen" style="display:none;">
                                 <div class="form-group col-md-6">
@@ -165,10 +171,12 @@
             var jenis = $(this).val();
             if(jenis   == "date"){
                 $('#date').show(300);
-                $('#agen').hide(300);
+                $('#date3').show(300);
+                $('#date3').show(300);
             }
             else{
                 $('#date').hide(300);
+                $('#date3').hide(300);
                 $('#agen').show(300);
             }
           })
