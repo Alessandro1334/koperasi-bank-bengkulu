@@ -663,7 +663,7 @@
                                             <input type="text" name="terbilang_saham" class="form-control" id="terbilang_saham" required placeholder="Masukan Terbilang Saham" disabled>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Jenis Mata Uang</label>
+                                            <label for="exampleInputEmail1 F">Jenis Mata Uang</label>
                                             <select name="jenis_mata_uang" class="form-control" id="jenis_mata_uang" disabled>
                                                 <option value="" selected disabled>-- pilih mata uang --</option>
                                                 <option value="idr">IDR</option>
