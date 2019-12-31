@@ -52,6 +52,7 @@
                                 <th>Tipe Perusahaan</th>
                                 <th>Status Verifikasi</th>
                                 <th>Detail</th>
+                                <th>Cetak Data</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,6 +79,9 @@
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_institusi_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
@@ -122,8 +126,9 @@
                                 <th>Karakteristik</th>
                                 <th>Bidang Usaha</th>
                                 <th>Tipe Perusahaan</th>
-                                <th>Detail</th>
                                 <th>Status Verifikasi</th>
+                                <th>Detail</th>
+                                <th>Cetak Data</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,6 +154,9 @@
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="modal-default">

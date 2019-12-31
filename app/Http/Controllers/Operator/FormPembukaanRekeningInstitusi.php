@@ -16,6 +16,7 @@ use App\DokumenPendukungInstitusi;
 use App\DokumenPendukungInvestor;
 use App\InstruksiPembayaraniInstitusi;
 use Gate;
+use PDF;
 
 class FormPembukaanRekeningInstitusi extends Controller
 {
@@ -252,4 +253,22 @@ class FormPembukaanRekeningInstitusi extends Controller
         $datas = count($data);
         return response()->json($datas);
     }
+
+    public function cetak($id){
+        $investor = RekeningInstitusi::join('agen_pemasarans','agen_pemasarans.id','rekening_institusis.agen_pemasaran_id')
+                            ->join('pejabat_berwenangs as a1','a1.id','rekening_institusis.pejabat_berwenang_1')
+                            ->join('pejabat_berwenangs as a2','a2.id','rekening_institusis.pejabat_berwenang_2')
+                            ->join('susunan_direksi_institusis as direksi','direksi.institusi_id','rekening_institusis.id')
+                            ->join('susunan_komisaris_institusis as komisaris','komisaris.institusi_id','rekening_institusis.id')
+                            ->join('penerima_kuasa_transaksi_institusis as kuasa','kuasa.institusi_id','rekening_institusis.id')
+                            ->join('data_keuangani_institusis as keuangan','keuangan.institusi_id','rekening_institusis.id')
+                            ->join('instruksi_pembayarani_institusis as instruksi','instruksi.institusi_id','rekening_institusis.id')
+                            ->join('pemegang_saham_institusis as saham','saham.institusi_id','rekening_institusis.id')
+                            ->where('rekening_institusis.id',$id)
+                            ->first();
+        $pdf = PDF::loadView('operator/rekening_institusi.cetak',compact('investor'));
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream();
+    }
+
 }

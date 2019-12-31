@@ -14,6 +14,7 @@ use App\AgenPemasaran;
 use App\PejabatBerwenang;
 use DB;
 use Gate;
+use PDF;
 
 class FormPembukaanRekening extends Controller
 {
@@ -329,5 +330,19 @@ class FormPembukaanRekening extends Controller
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
         return compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats');
+    }
+
+    public function cetak($id){
+        $investor = Investor::join('dokumen_pendukung_investors','dokumen_pendukung_investors.investor_id','investors.id')
+                            ->join('data_pasangan_orang_tua_investors','data_pasangan_orang_tua_investors.investor_id','investors.id')
+                            ->join('persetujuans','persetujuans.investor_id','investors.id')
+                            ->join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
+                            ->join('agen_pemasarans','agen_pemasarans.id','agen_pemasaran_id')
+                            ->join('pejabat_berwenangs','pejabat_berwenangs.id','pejabat_berwenang_id')
+                            ->where('investors.id',$id)
+                            ->first();
+        $pdf = PDF::loadView('operator/form_pembukaan_rekening.cetak',compact('investor'));
+        $pdf->setPaper('a4', 'portrait');
+        return $pdf->stream();
     }
 }

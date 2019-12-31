@@ -50,6 +50,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
                                 <th>Detail</th>
+                                <th>Cetak Data</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -75,6 +76,9 @@
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_investor_perorangan',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
@@ -129,6 +133,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
                                 <th>Detail</th>
+                                <th>Cetak Data</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -154,6 +159,9 @@
                                         <a class="btn btn-info btn-sm" onclick="get_data({{ $investor->id }})" data-toggle="modal" data-target=".modal-detail">
                                             <i class="fa fa-search"></i>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('operator.cetak_investor_perorangan',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
                                         <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
@@ -948,7 +956,7 @@
                     $('#kota_ktp').val(data.investor.kota_ktp);
                     $('#provinsi_ktp').val(data.investor.provinsi_ktp);
                     $('#kode_pos_ktp').val(data.investor.kode_pos_ktp);
-                    
+
                     $('#alamat_tempat_tinggal').val(data.investor.alamat_tempat_tinggal);
                     $('#rt_tempat_tinggal').val(data.investor.rt_tempat_tinggal);
                     $('#rw_tempat_tinggal').val(data.investor.rw_tempat_tinggal);
@@ -966,7 +974,7 @@
                     $('#pendidikan_terakhir').val(data.investor.pendidikan_terakhir);
                     $('#nm_gadis_ibu_kandung').val(data.investor.nm_gadis_ibu_kandung);
                     $('#emergency_kontak').val(data.investor.emergency_kontak);
-                    
+
                     //Korespondensi
                     $('#alamat_surat_menyurat_ktp').val(data.investor.alamat_surat_menyurat_ktp);
                     $('#alamat_surat_menyurat_tempat_tinggal').val(data.investor.alamat_surat_menyurat_tempat_tinggal);
@@ -994,7 +1002,7 @@
                     $('#sumber_penghasilan_utama').val(data.pekerjaan.sumber_penghasilan_utama);
                     $('#sumber_dana_investasi').val(data.pekerjaan.sumber_dana_investasi);
 
-                    //Pasangan atau Orang Tua 
+                    //Pasangan atau Orang Tua
                     $('#nm_pasangan_atau_orang_tua').val(data.pasangan.nm_pasangan_atau_orang_tua);
                     $('#hubungan').val(data.pasangan.hubungan);
                     $('#alamat_tempat_tinggal_pasangan_atau_orang_tua').val(data.pasangan.alamat_tempat_tinggal_pasangan_atau_orang_tua);
@@ -1033,7 +1041,7 @@
 
 
                 }
-                
+
             });
         }
     </script>
