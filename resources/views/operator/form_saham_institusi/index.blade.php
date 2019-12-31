@@ -186,7 +186,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Pejabat Berwenang 1: <a style="color:red">(*)</a></label> <br>
                                             <select name="pejabat_berwenang_id1" id="pejabat_berwenang_id1" class="form-control" disabled>
@@ -196,7 +196,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Pejabat Berwenang 2:</a></label> <br>
                                             <select name="pejabat_berwenang_id2" id="pejabat_berwenang_id2" class="form-control" disabled>
@@ -206,42 +206,42 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Institusi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_institusi" class="form-control" id="nm_institusi" placeholder="Masukan Nama Institusi" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Kota Institusi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kota_institusi" class="form-control" id="kota_institusi" placeholder="Masukan Kota Institusi" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Provinsi Institusi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="provinsi_institusi" class="form-control" id="provinsi_institusi" placeholder="Masukan Provinsi Institusi" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Negara Institusi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="negara_institusi" class="form-control" id="negara_institusi" placeholder="Masukan Negara Institusi" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Kode Pos Institusi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kode_pos_institusi" class="form-control" id="kode_pos_institusi" placeholder="Masukan Kode Pos Institusi" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Email Kantor: <a style="color:red">(*)</a></label>
                                             <input type="text" name="email_kantor" class="form-control" id="email_kantor" placeholder="Masukan Email Kantor" disabled placeholder="masukan email kantor">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Telephone Kantor: <a style="color:red">(*)</a></label>
                                             <input type="text" name="telephone_kantor" class="form-control" id="telephone_kantor" placeholder="Masukan Telephone Kantor" disabled placeholder="masukan email kantor">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for=""> Domisili: <a style="color:red">(*)</a></label>
                                             <select name="domisili" id="domisili" class="form-control" disabled>
@@ -250,7 +250,7 @@
                                                 <option value="asing">Asing</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for=""> Karakteristik Perusahaan: <a style="color:red">(*)</a></label>
                                             <select name="karakteristik" id="karakteristik" class="form-control" disabled>
@@ -265,7 +265,7 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for=""> Tipe Perusahaan: <a style="color:red">(*)</a></label>
                                             <select name="tipe_perusahaan" id="tipe_perusahaan" class="form-control" disabled>
@@ -280,72 +280,72 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Bidang Usaha: <a style="color:red">(*)</a></label>
                                             <input type="text" name="bidang_usaha" class="form-control" id="bidang_usaha"  disabled placeholder="Masukan Bidang Usaha">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nomor Akta Pendirian: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_akta_pendirian" class="form-control" id="no_akta_pendirian" placeholder="Masukan Nomor Akta Pendirian" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Akta Pendirian: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tanggal_akta_pendirian" class="form-control" id="tanggal_akta_pendirian" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Akta Perubahan Terakhir: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tanggal_akta_perubahan_terakhir" class="form-control" id="tanggal_akta_perubahan_terakhir" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No Perubahan Terakhir: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_akta_perubahan_terakhir" class="form-control" id="no_akta_perubahan_terakhir" disabled placeholder="Masukan No Akta Prbh Terakhir">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No NPWP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="no_npwp" class="form-control" id="no_npwp" placeholder="Masukan No NPWP" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Registrasi NPWP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_registrasi_npwp" class="form-control" id="tgl_registrasi_npwp" disabled >
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No SIUP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="no_siup" class="form-control" id="no_siup" placeholder="Masukan No SIUP" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Kadaluarsa SIUP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_Kadaluarsa_siup" class="form-control" id="tgl_Kadaluarsa_siup" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No SKDP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="no_skdp" class="form-control" id="no_skdp" placeholder="Masukan No SKDP" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Kadaluarsa SKDP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_Kadaluarsa_skdp" class="form-control" id="tgl_Kadaluarsa_skdp" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No TDP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="no_tdp" class="form-control" id="no_tdp" placeholder="Masukan No TDP" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Kadaluarsa TDP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_Kadaluarsa_tdp" class="form-control" id="tgl_Kadaluarsa_tdp" disabled >
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No Izin PMA: <a style="color:red">(*)</a></label>
                                             <input type="date" name="no_izin_pma" class="form-control" id="no_izin_pma" disabled placeholder="Masukan No Izin PMA">
@@ -360,17 +360,17 @@
                                             <label for="">Nama Pemegang Saham: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_pemegang_saham" id="nm_pemegang_saham" class="form-control" disabled placeholder="Masukan nama pemegang saham">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Komposisi Pemegang Saham (%): <a style="color:red">(* angka)</a></label>
                                             <input type="number" name="komposisi_pemegang_saham" class="form-control" id="komposisi_pemegang_saham" disabled placeholder="Masukan komposisi pemegang saham">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Pernyataan: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tanggal_pernyataan" class="form-control" id="tanggal_pernyataan" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Yang Menyatakan: <a style="color:red">(*)</a></label>
                                             <input type="text" name="yang_menyatakan" class="form-control" id="yang_menyatakan" disabled placeholder="masukan yang menyatakan">
@@ -385,19 +385,8 @@
                                             <label for="">Nama Komisaris: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_komisaris" id="nm_komisaris" class="form-control" disabled placeholder="Masukan nama komisaris">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
-                                            <label for="">Nama Gadis Ibu Kandung: <a style="color:red">(*)</a></label>
-                                            <input type="text" name="nm_gadis_ibu_kandung" class="form-control" id="nm_gadis_ibu_kandung" disabled placeholder="Masukan nama gadis ibu kandung">
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label for="">Emergency Kontak: <a style="color:red">(* hanya angka)</a></label>
-                                            <input type="number" name="emergency_kontak" class="form-control" id="emergency_kontak" disabled placeholder="Masukan emergency kontak">
-
-                                        </div>
-
-                                        <div class="form-group col-md4-4">
                                             <label for="">Nomor Identitas: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_identitas" class="form-control" id="no_identitas" disabled placeholder="Masukan Nomor identitas">
                                         </div>
@@ -411,38 +400,37 @@
                                             <label for="">Nama Direksi: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_direksi" id="nm_direksi" class="form-control" disabled placeholder="Masukan nama direksi">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nomor Identitas: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_identitas_direksi" class="form-control" id="no_identitas_direksi" disabled placeholder="Masukan Nomor identitas">
-                                        </div>
+                                        </div>                          
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h5><b> Penerima Kuasa Untuk Bertransaksi</b></h5>
                                             <hr>
                                         </div>
-
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Penerima Kuasa: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_kuasa" id="nm_kuasa"  class="form-control" disabled placeholder="Masukan nama kuasa" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nomor Identitas: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="no_identitas_kuasa" id="no_identitas_kuasa"  class="form-control" placeholder="Masukan no identitas" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Kadaluarsa Identitas: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_kadaluarsa_identitas_kuasa" id="tgl_kadaluarsa_identitas_kuasa"  class="form-control" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Jabatan: <a style="color:red">(*)</a></label>
                                             <input type="text" name="jabatan_kuasa" id="jabatan_kuasa"  class="form-control" placeholder="Masukan jabatan" disabled>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No Telephone: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="telephone_kuasa" id="telephone_kuasa"  class="form-control" placeholder="Masukan no telephone" disabled>
@@ -464,102 +452,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-
-                                        <div id="info-pekerjaan">
-                                            <div class="form-group col-md-4">
-                                                <label for="">Nama Perusahaan:</label>
-                                                <input type="text" name="nm_perusahaan" class="form-control" id="nm_perusahaan" placeholder="Masukan nama perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Alamat Perusahaan:</label>
-                                                <input type="text" name="alamat_perusahaan" class="form-control" id="alamat_perusahaan" placeholder="Masukan Alamat Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Kota Perusahaan</label>
-                                                <input type="text" name="kota_perusahaan" class="form-control" id="kota_perusahaan" placeholder="Masukan kota perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Provinsi Perusahaan</label>
-                                                <input type="text" name="provinsi_perusahaan" class="form-control" id="provinsi_perusahaan" placeholder="Masukan provinsi perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Kode Pos Perusahaan</label>
-                                                <input type="text" name="kode_pos_perusahaan" class="form-control" id="kode_pos_perusahaan" placeholder="Masukan Kode Pos Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Telephone</label>
-                                                <input type="text" name="telp_perusahaan" class="form-control" id="telp_perusahaan" placeholder="Masukan Telephone" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Email Perusahaan</label>
-                                                <input type="text" name="email_perusahaan" class="form-control" id="email_perusahaan" placeholder="Masukan Email Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Fax Perusahaan</label>
-                                                <input type="text" name="fax_perusahaan" class="form-control" id="fax_perusahaan" placeholder="Masukan Fax Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Jabatan</label>
-                                                <select name="jabatan" id="jabatan" class="form-control" disabled>
-                                                    <option value="komisaris">Komisaris</option>
-                                                    <option value="direksi">Direksi</option>
-                                                    <option value="manajer">Manajer</option>
-                                                    <option value="staf">Staf</option>
-                                                    <option value="pemilik">Pemilik</option>
-                                                    <option value="pengawas">Pengawas</option>
-                                                    <option value="lainnya">Lainnya</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Jenis Usaha</label>
-                                                <input type="text" name="jenis_usaha" class="form-control" id="jenis_usaha" placeholder="Masukan Jenis Usaha" disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="">Lama Bekerja: dalam tahun <a style="color:red;">hanya angka</a></label>
-                                                <input type="text" name="lama_bekerja" class="form-control" id="lama_bekerja" placeholder="Lama Bekerja" disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="">Nominal Penghasilan Lain: <a style="color:red;">hanya angka</a></label>
-                                                <input type="text" name="penghasilan_lain" class="form-control" id="penghasilan_lain" placeholder="Masukan Nominal Penghasilan Lain" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Sumber Penghasilan Lainnya:</label>
-                                                <select name="sumber_penghasilan_lain" class="form-control" id="sumber_penghasilan_lainnya" disabled>
-                                                    <option value="">-- pilih sumber penghasilan lainnya --</option>
-                                                    <option value="gaji">Gaji</option>
-                                                    <option value="hasil_usaha">Hasil Usaha</option>
-                                                    <option value="warisan">Warisan</option>
-                                                    <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                    <option value="hibah">Hibah</option>
-                                                    <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                    <option value="hasil_investasi">Hasil Investasi</option>
-                                                    <option value="lainnya">Lainnya</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Sumber Penghasilan Utama: <a style="color:red">(*)</a></label>
-                                            <select name="sumber_penghasilan_utama" class="form-control" id="sumber_penghasilan_utama" disabled>
-                                                <option value="" selected disabled>-- pilih sumber penghasilan utama --</option>
-                                                <option value="gaji">Gaji</option>
-                                                <option value="hasil_usaha">Hasil Usaha</option>
-                                                <option value="warisan">Warisan</option>
-                                                <option value="dari_orang_tua/anak">Dari Orang Tua/Anak</option>
-                                                <option value="hibah">Hibah</option>
-                                                <option value="dari_suami/istri">Dari Suami/Istri</option>
-                                                <option value="hasil_investasi">Hasil Investasi</option>
-                                                <option value="lainnya">Lainnya</option>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Aset Keuangan Tahun 2: <a style="color:red">(*)</a></label> <br>
                                             <select name="aset_keuangan_tahun_2" id="aset_keuangan_tahun_2" class="form-control" disabled>
@@ -571,7 +464,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Aset Keuangan Tahun 3: <a style="color:red">(*)</a></label> <br>
                                             <select name="aset_keuangan_tahun_3" id="aset_keuangan_tahun_3" class="form-control" disabled>
@@ -583,18 +476,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h5><b>Pasangan atau Orang Tua</b></h5>
-                                            <hr>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="">Nama Pasangan Atau Orang Tua: <a style="color:red">(*)</a></label>
-                                            <input type="text" name="nm_pasangan_atau_orang_tua" id="nm_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua" disabled>
-                                        </div>
-
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Laba Keuangan Tahun 1: <a style="color:red">(*)</a></label> <br>
                                             <select name="laba_keuangan_tahun_1" id="laba_keuangan_tahun_1" class="form-control" disabled>
@@ -606,7 +488,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Laba Keuangan Tahun 2: <a style="color:red">(*)</a></label> <br>
                                             <select name="laba_keuangan_tahun_2" id="laba_keuangan_tahun_2" class="form-control" disabled>
@@ -618,7 +500,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Laba Keuangan Tahun 3: <a style="color:red">(*)</a></label> <br>
                                             <select name="laba_keuangan_tahun_3" id="laba_keuangan_tahun_3" class="form-control" disabled>
@@ -630,7 +512,7 @@
                                                 <option value=">_idr_50_m">> IDR 50 Miliar</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Sumber Dana: <a style="color:red">(*)</a></label> <br>
                                             <select name="sumber_dana" id="sumber_dana" class="form-control" disabled>
@@ -642,7 +524,7 @@
                                                 <option value="lainnya">> Lainnya</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Tujuan Investasi: <a style="color:red">(*)</a></label> <br>
                                             <select name="tujuan_investasi" id="tujuan_investasi" class="form-control" disabled>
@@ -654,81 +536,6 @@
                                                 <option value="lainnya">> Lainnya</option>
                                             </select>
                                         </div>
-                                        <div id="pekerjaan-pasangan">
-                                            <div class="form-group col-md-4">
-                                                <label for="">Nama Perusahaan</label>
-                                                <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" class="form-control" id="nm_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Nama Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Alamat Perusahaan</label>
-                                                <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" class="form-control" id="alamat_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Alamat Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Kota Perusahaan</label>
-                                                <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" class="form-control" id="kota_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Kota Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Provinsi Perusahaan</label>
-                                                <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" class="form-control" id="provinsi_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Provinsi Perusahaan" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Kode Pos: <a style="color:red;">hanya angka</a> </label>
-                                                <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tua" class="form-control" id="kode_pos_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Kode Pos " disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="">Telephone: <a style="color:red;">hanya angka</a></label>
-                                                <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" class="form-control" id="telp_perusahaan_pasangan_atau_orang_tua" placeholder="Telephone" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Email</label>
-                                                <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" class="form-control" id="email_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Email" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Fax</label>
-                                                <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" class="form-control" id="fax_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Fax" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Jabatan</label>
-                                                <select name="jabatan_pasangan_atau_orang_tua" id="jabatan_pasangan_atau_orang_tua" class="form-control" disabled>
-                                                    <option value="">-- pilih jabatan --</option>
-                                                    <option value="komisaris">Komisaris</option>
-                                                    <option value="direksi">Direksi</option>
-                                                    <option value="manajer">Manajer</option>
-                                                    <option value="staf">Staf</option>
-                                                    <option value="pemilik">Pemilik</option>
-                                                    <option value="pengawas">Pengawas</option>
-                                                    <option value="lainnya">Lainnya</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Jenis Usaha</label>
-                                                <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" class="form-control" id="jenis_usaha_pasangan_atau_orang_tua" placeholder="Masukan Jenis Usaha" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Lama Bekerja: dalam tahun <a style="color:red;">hanya angka</a></label>
-                                                <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" class="form-control" id="lama_bekerja_pasangan_atau_orang_tua" placeholder="Masukan Lama Bekerja" disabled>
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label for="">Pengasilan Kotor Per Tahun</label>
-                                                <select name="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" id="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" class="form-control" disabled>
-                                                    <option value="<10">< Rp 10 Juta</option>
-                                                    <option value=">10-50">> Rp 10 - 50 Juta</option>
-                                                    <option value=">10-100">> 10 - 100 Juta</option>
-                                                    <option value=">100-500">> 100 - 500 Juta</option>
-                                                    <option value=">500-1m">> 500 - 1 Miliar</option>
-                                                    <option value=">1m">> 1 Miliar</option>
-                                                </select>
-                                            </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -739,12 +546,12 @@
                                             <label for="">Nama Pemilik Bank: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_pemilik_bank" id="nm_pemilik_bank" class="form-control" disabled placeholder="Masukan nama pemilik bank">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Bank: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_bank" class="form-control" id="nm_bank" disabled placeholder="Masukan nama bank">
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">No Rekening Bank: <a style="color:red">(*)</a></label>
                                             <input type="text" name="no_rek" class="form-control" id="no_rek" disabled placeholder="Masukan Nomor Rekening">
@@ -763,7 +570,7 @@
                                                 <option value="tidak">Tidak Ada</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Profil Resiko: <a style="color:red">(*)</a></label>
                                             <select name="profil_resiko" id="profil_resiko" class="form-control" disabled>
@@ -772,7 +579,7 @@
                                                 <option value="tidak">Tidak Ada</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Bukti Setoran: <a style="color:red">(*)</a></label>
                                             <select name="bukti_setoran" id="bukti_setoran" class="form-control" disabled>
@@ -781,7 +588,7 @@
                                                 <option value="tidak">Tidak Ada</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Ttd Penerima Kuasa: <a style="color:red">(*)</a></label>
                                             <select name="ttd_penerima_kuasa" id="ttd_penerima_kuasa" class="form-control" disabled>
@@ -790,7 +597,7 @@
                                                 <option value="tidak">Tidak Ada</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Formulir Fatca: <a style="color:red">(*)</a></label>
                                             <select name="fatca" id="fatca" class="form-control" disabled>
@@ -799,7 +606,7 @@
                                                 <option value="tidak">Tidak Ada</option>
                                             </select>
                                         </div>
-
+    
                                         <div class="form-group col-md-4">
                                             <label for="">Persetujuan: <a style="color:red">(*)</a></label>
                                             <select name="persetujuan" id="persetujuan" class="form-control" disabled>
@@ -824,16 +631,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Tanda Tangan Agen Pemasaran: <a style="color:red">(*)</a></label> <br>
-                                            <select name="tanda_tangan_agen_pemasaran" class="form-control" id="tanda_tangan_agen_pemasaran" disabled>
-                                                <option value="1">Ada</option>
-                                                <option value="0">Tidak Ada</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Nomor SK3S Lama</label>
-                                            <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama" disabled>
+                                            <input type="text" name="no_sk3s_lama" class="form-control" id="no_sk3s_lama" placeholder="Masukan Nomor SK3S Lama" disabled> 
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Pilih Investor Pembeli</label>
@@ -868,7 +667,7 @@
                                             <input type="text" name="terbilang_saham" class="form-control" id="terbilang_saham" required placeholder="Masukan Terbilang Saham" disabled>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1 F">Jenis Mata Uang</label>
+                                            <label for="exampleInputEmail1">Jenis Mata Uang</label>
                                             <select name="jenis_mata_uang" class="form-control" id="jenis_mata_uang" disabled>
                                                 <option value="" selected disabled>-- pilih mata uang --</option>
                                                 <option value="idr">IDR</option>
@@ -904,7 +703,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -930,120 +728,6 @@
                 dataType: "JSON",
                 success: function(data) {
                     console.log(data);
-                    //Informasi Diri
-                    $('#nm_investor').val(data.investor.nm_investor);
-                    $('#no_register').val(data.investor.no_register);
-                    $('#jenis_kelamin').val(data.investor.jenis_kelamin);
-                    $('#jenis_rekening').val(data.investor.jenis_rekening);
-                    $('#profil_resiko_nasabah').val(data.investor.profil_resiko_nasabah);
-                    $('#no_ktp').val(data.investor.no_ktp);
-                    $('#tgl_kadaluarsa_ktp').val(data.investor.tgl_kadaluarsa_ktp);
-                    $('#no_npwp').val(data.investor.no_npwp);
-                    $('#tgl_registrasi_npwp').val(data.investor.tgl_registrasi_npwp);
-                    $('#tempat_lahir').val(data.investor.tempat_lahir);
-                    $('#tanggal_lahir').val(data.investor.tanggal_lahir);
-                    $('#status_perkawinan').val(data.investor.status_perkawinan);
-                    $('#kewarganegaraan').val(data.investor.kewarganegaraan);
-                    $('#alamat_ktp').val(data.investor.alamat_ktp);
-                    $('#rt_ktp').val(data.investor.rt_ktp);
-                    $('#rw_ktp').val(data.investor.rw_ktp);
-                    $('#kelurahan_ktp').val(data.investor.kelurahan_ktp);
-                    $('#kecamatan_ktp').val(data.investor.kecamatan_ktp);
-                    $('#kota_ktp').val(data.investor.kota_ktp);
-                    $('#provinsi_ktp').val(data.investor.provinsi_ktp);
-                    $('#kode_pos_ktp').val(data.investor.kode_pos_ktp);
-
-                    $('#alamat_tempat_tinggal').val(data.investor.alamat_tempat_tinggal);
-                    $('#rt_tempat_tinggal').val(data.investor.rt_tempat_tinggal);
-                    $('#rw_tempat_tinggal').val(data.investor.rw_tempat_tinggal);
-                    $('#kelurahan_tempat_tinggal').val(data.investor.kelurahan_tempat_tinggal);
-                    $('#kecamatan_tempat_tinggal').val(data.investor.kecamatan_tempat_tinggal);
-                    $('#kota_tempat_tinggal').val(data.investor.kota_tempat_tinggal);
-                    $('#provinsi_tempat_tinggal').val(data.investor.provinsi_tempat_tinggal);
-                    $('#kode_pos_tempat_tinggal').val(data.investor.kode_pos_tempat_tinggal);
-                    $('#telp_rumah').val(data.investor.telp_rumah);
-                    $('#ponsel').val(data.investor.ponsel);
-                    $('#lama_menempati').val(data.investor.lama_menempati);
-                    $('#status_rumah_tinggal').val(data.investor.status_rumah_tinggal);
-                    $('#agama').val(data.investor.agama);
-                    $('#pendidikan_terakhir').val(data.investor.pendidikan_terakhir);
-                    $('#nm_gadis_ibu_kandung').val(data.investor.nm_gadis_ibu_kandung);
-                    $('#emergency_kontak').val(data.investor.emergency_kontak);
-
-                    //Korespondensi
-                    $('#alamat_surat_menyurat_ktp').val(data.investor.alamat_surat_menyurat_ktp);
-                    $('#alamat_surat_menyurat_tempat_tinggal').val(data.investor.alamat_surat_menyurat_tempat_tinggal);
-                    $('#alamat_surat_menyurat_lainnya').val(data.investor.alamat_surat_menyurat_lainnya);
-                    $('#pengiriman_konfirmasi_melalui_email').val(data.investor.pengiriman_konfirmasi_melalui_email);
-                    $('#pengiriman_konfirmasi_melalui_fax').val(data.investor.pengiriman_konfirmasi_melalui_fax);
-                    $('#pengiriman_konfirmasi_melalui_alamat_surat_menyurat').val(data.investor.pengiriman_konfirmasi_melalui_alamat_surat_menyurat);
-                    $('#tujuan_investasi').val(data.investor.tujuan_investasi);
-                    //Pekerjaan
-                    $('#pekerjaan').val(data.pekerjaan.pekerjaan);
-                    $('#nm_perusahaan').val(data.pekerjaan.nm_perusahaan);
-                    $('#alamat_perusahaan').val(data.pekerjaan.alamat_perusahaan);
-                    $('#kota_perusahaan').val(data.pekerjaan.kota_perusahaan);
-                    $('#provinsi_perusahaan').val(data.pekerjaan.provinsi_perusahaan);
-                    $('#kode_pos_perusahaan').val(data.pekerjaan.kode_pos_perusahaan);
-                    $('#telp_perusahaan').val(data.pekerjaan.telp_perusahaan);
-                    $('#email_perusahaan').val(data.pekerjaan.email_perusahaan);
-                    $('#fax_perusahaan').val(data.pekerjaan.fax_perusahaan);
-                    $('#jabatan').val(data.pekerjaan.jabatan);
-                    $('#jenis_usaha').val(data.pekerjaan.jenis_usaha);
-                    $('#lama_bekerja').val(data.pekerjaan.lama_bekerja);
-                    $('#penghasilan_lain').val(data.pekerjaan.penghasilan_lain);
-                    $('#sumber_penghasilan_lainnya').val(data.pekerjaan.sumber_penghasilan_lainnya);
-                    $('#sumber_penghasilan_utama').val(data.pekerjaan.sumber_penghasilan_utama);
-                    $('#sumber_dana_investasi').val(data.pekerjaan.sumber_dana_investasi);
-                    //Pasangan atau Orang Tua
-                    $('#nm_pasangan_atau_orang_tua').val(data.pasangan.nm_pasangan_atau_orang_tua);
-                    $('#hubungan').val(data.pasangan.hubungan);
-                    $('#alamat_tempat_tinggal_pasangan_atau_orang_tua').val(data.pasangan.alamat_tempat_tinggal_pasangan_atau_orang_tua);
-                    $('#telp_rumah_pasangan_atau_orang_tua').val(data.pasangan.telp_rumah_pasangan_atau_orang_tua);
-                    $('#ponsel_pasangan_atau_orang_tua').val(data.pasangan.ponsel_pasangan_atau_orang_tua);
-                    $('#pekerjaan_pasangan_atau_orang_tua').val(data.pasangan.pekerjaan_pasangan_atau_orang_tua);
-                    $('#nm_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.nm_perusahaan_pasangan_atau_orang_tua);
-                    $('#alamat_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.alamat_perusahaan_pasangan_atau_orang_tua);
-                    $('#kota_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.kota_perusahaan_pasangan_atau_orang_tua);
-                    $('#provinsi_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.provinsi_perusahaan_pasangan_atau_orang_tua);
-                    $('#kode_pos_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.kode_pos_perusahaan_pasangan_atau_orang_tua);
-                    $('#telp_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.telp_perusahaan_pasangan_atau_orang_tua);
-                    $('#email_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.email_perusahaan_pasangan_atau_orang_tua);
-                    $('#fax_perusahaan_pasangan_atau_orang_tua').val(data.pasangan.fax_perusahaan_pasangan_atau_orang_tua);
-                    $('#jabatan_pasangan_atau_orang_tua').val(data.pasangan.jabatan_pasangan_atau_orang_tua);
-                    $('#jenis_usaha_pasangan_atau_orang_tua').val(data.pasangan.jenis_usaha_pasangan_atau_orang_tua);
-                    $('#lama_bekerja_pasangan_atau_orang_tua').val(data.pasangan.lama_bekerja_pasangan_atau_orang_tua);
-                    $('#sumber_penghasilan_utama_pasangan_atau_orang_tua').val(data.pasangan.sumber_penghasilan_utama_pasangan_atau_orang_tua);
-                    //Dokumen Pendukung
-                    $('#ktp').val(data.dokumen.ktp);
-                    $('#npwp').val(data.dokumen.npwp);
-                    $('#form_profil_resiko_pemodal').val(data.dokumen.form_profil_resiko_pemodal);
-                    $('#bukti_setoran_investasi_awal').val(data.dokumen.bukti_setoran_investasi_awal);
-                    $('#contoh_tanda_tangan').val(data.dokumen.contoh_tanda_tangan);
-                    $('#fatca').val(data.dokumen.fatca);
-                    //persetujuan
-                    $('#agen_pemasaran_id').val(data.persetujuan.agen_pemasaran_id);
-                    $('#tanda_tangan_agen_pemasaran').val(data.persetujuan.tanda_tangan_agen_pemasaran);
-                    $('#tanggal_agen_pemasaran').val(data.persetujuan.tanggal_agen_pemasaran);
-                    $('#pejabat_berwenang_id').val(data.persetujuan.pejabat_berwenang_id);
-                    $('#status_persetujuan').val(data.persetujuan.status_persetujuan);
-                    $('#tanggal_pejabat_berwenang').val(data.persetujuan.tanggal_pejabat_berwenang);
-                    $('#tanda_tangan_pejabat_berwenang').val(data.persetujuan.tanda_tangan_pejabat_berwenang);
-
-                    //Pembelian Saham
-                    $('#investor_pengalihan_id').val(data.sahams.investor_id);
-                    $('#no_sk3s_lama').val(data.sahams.no_sk3s);
-                    $('#investor_id').val(data.sahams.investor_id);
-                    $('#no_sk3s').val(data.sahams.no_sk3s);
-                    $('#seri_spmpkop').val(data.sahams.seri_spmpkop);
-                    $('#seri_formulir').val(data.sahams.seri_formulir);
-                    $('#jumlah_saham').val(data.sahams.jumlah_saham);
-                    $('#terbilang_saham').val(data.sahams.terbilang_saham);
-                    $('#jenis_mata_uang').val(data.sahams.jenis_mata_uang);
-                    $('#pembayaran_no_rek').val(data.sahams.pembayaran_no_rek);
-                    $('#pembayaran_nm_rek').val(data.sahams.pembayaran_nm_rek);
-                    $('#pembayaran_nm_bank').val(data.sahams.pembayaran_nm_bank);
-                    $('#id_spmpkop').val(data.sahams.id);
                     $('#nm_investor').val(data.rekening.nm_investor);
                     $('#no_register').val(data.rekening.no_register);
                     $('#agen_pemasaran_id').val(data.rekening.agen_pemasaran_id);
