@@ -108,6 +108,7 @@
                                     <th>Hasil Verifikasi</th>
                                     <th>Detail</th>
                                     <th>Cetak Data</th>
+                                    <th>Cetak SK3S</th>
                                 </tr>
                             </thead>
                             <tbody>
