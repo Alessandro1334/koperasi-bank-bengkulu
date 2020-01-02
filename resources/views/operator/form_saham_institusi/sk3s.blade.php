@@ -24,7 +24,7 @@
         </tr>
     </table>
     <p align="center" style="margin:50 0 60 0;">KOPERASI KARYAWAN JASA MITRA UTAMA BANK BENGKULU</p>
-    <h3 align="center" style="margin:0 0 80 0;"><b>SURAT KETERANGAN KEPESERTAAN KEPEMILIKAN SAHAM (S3K3S)</b></h3>
+    <h3 align="center" style="margin:0 0 80 0;"><b>SURAT KETERANGAN KEPESERTAAN KEPEMILIKAN SAHAM (SK3S)</b></h3>
     <h3 align="center">{{ strtoupper($sk3s[0]->terbilang_saham)  }}</h3>
     <h3 align="center" style="margin:0 0 40 0;"> @currency($sk3s[0]->jumlah_saham) </h3>
 
