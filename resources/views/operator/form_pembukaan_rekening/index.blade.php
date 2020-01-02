@@ -46,7 +46,6 @@
                                 <th>No</th>
                                 <th>Nama Investor</th>
                                 <th>Jenis Rekening</th>
-                                <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
                                 <th>Detail</th>
@@ -63,7 +62,6 @@
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->jenis_rekening }} </td>
-                                    <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
                                             <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>
@@ -129,7 +127,6 @@
                                 <th>No</th>
                                 <th>Nama Investor</th>
                                 <th>Jenis Rekening</th>
-                                <th>No. CIF</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No. KTP</th>
                                 <th>Detail</th>
@@ -146,7 +143,6 @@
                                     <td> {{ $no++ }} </td>
                                     <td> {{ $investor->nm_investor }} </td>
                                     <td> {{ $investor->jenis_rekening }} </td>
-                                    <td> {{ $investor->no_cif }} </td>
                                     <td>
                                         @if($investor->jenis_kelamin == "L")
                                             <span class="label label-primary"><i class="fa fa-male"></i>&nbsp; Laki-Laki</span>

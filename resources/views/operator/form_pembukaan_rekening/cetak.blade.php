@@ -201,12 +201,10 @@
         <td>Jumlah Tanggungan</td>
         <td> : </td>
         <td>
-            @if ($investor->jumlah_tanggungan == NULL || $investor->jumlah_tanggungan ==""){
+            @if ($investor->jumlah_tanggungan == NULL || $investor->jumlah_tanggungan =="")
                 <a style="color:red"><i>data belum ada</i></a>
                 @else
                     {{ $investor->jumlah_tanggungan }}
-            }
-
             @endif
         </td>
     </tr>
