@@ -12,7 +12,7 @@
     }
 
     .top td, th{
-        border: 1px solid black;
+        border: 0.5px solid black;
     }
 
     td, th {

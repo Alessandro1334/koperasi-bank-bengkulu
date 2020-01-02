@@ -111,11 +111,14 @@ Route::group(['prefix' => 'manajer/verifikasi_data_institusi'], function(){
     Route::get('/', 'Manajer\VerifikasiDataInstitusiController@index')->name('manajer.verifikasi_data_institusi');
     Route::get('/{id}/edit', 'Manajer\VerifikasiDataInstitusiController@edit')->name('manajer.verifikasi_data_institusi_edit');
     Route::patch('/', 'Manajer\VerifikasiDataInstitusiController@verifikasi')->name('manajer.verifikasi_data_institusi_update');
+    Route::get('/{id}/detail','Manajer\VerifikasiDataInstitusiController@detail')->name('operator.verifikasi_data_institusi_detail');
+
 });
 Route::group(['prefix' => 'manajer/verifikasi_rekening_institusi'], function(){
     Route::get('/', 'Manajer\VerifikasiRekeningInstitusiController@index')->name('manajer.verifikasi_rekening_institusi');
     Route::get('/{id}/edit', 'Manajer\VerifikasiRekeningInstitusiController@edit')->name('manajer.verifikasi_rekening_institusi_edit');
     Route::patch('/', 'Manajer\VerifikasiRekeningInstitusiController@verifikasi')->name('manajer.verifikasi_rekening_institusi_update');
+    Route::get('/detail','Manajer\VerifikasiRekeningInstitusiController@detail')->name('manajer.detail_pembelian_saham');
 });
 
 Route::group(['prefix' => 'manajer/manajemen_agen_pemasaran'], function(){
