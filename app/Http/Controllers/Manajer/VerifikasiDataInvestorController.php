@@ -24,7 +24,7 @@ class VerifikasiDataInvestorController extends Controller
         }
 
         $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
-                            ->where('status_verifikasi','!=','0')     
+                            ->where('status_verifikasi','!=','0')
                             ->get();
         $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp','status_verifikasi')
                             ->where('status_verifikasi','0')
@@ -44,19 +44,35 @@ class VerifikasiDataInvestorController extends Controller
     public function verifikasi(Request $request){
         $last = Investor::max('no_cif');
         // return $last;
-        if($last == NULL || $last == ""){
-            $investor = Investor::where('id',$request->investor_id)->update([
-                'status_verifikasi' => $request->status_verifikasi,
-                'no_cif'    =>  '00000',
-           ]);
+        if($request->status_verifikasi == "1"){
+            if($last == NULL || $last == ""){
+                $investor = Investor::where('id',$request->investor_id)->update([
+                    'status_verifikasi' => $request->status_verifikasi,
+                    'no_cif'    =>  '00000',
+               ]);
+            }
+            else{
+                $no_urut = substr($last,0,5);
+                $no_urut++;
+                $investor = Investor::where('id',$request->investor_id)->update([
+                    'status_verifikasi' => $request->status_verifikasi,
+                    'no_cif'    => sprintf('%05s',$no_urut),
+               ]);
+            }
         }
         else{
-            $no_urut = substr($last,0,5);
-            $no_urut++;
-            $investor = Investor::where('id',$request->investor_id)->update([
-                'status_verifikasi' => $request->status_verifikasi,
-                'no_cif'    => sprintf('%05s',$no_urut),
-           ]);
+            if($last == NULL || $last == ""){
+                $investor = Investor::where('id',$request->investor_id)->update([
+                    'status_verifikasi' => $request->status_verifikasi,
+               ]);
+            }
+            else{
+                $no_urut = substr($last,0,5);
+                $no_urut++;
+                $investor = Investor::where('id',$request->investor_id)->update([
+                    'status_verifikasi' => $request->status_verifikasi,
+               ]);
+            }
         }
         return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }

@@ -35,7 +35,13 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="a">
-                        <table class="table table-bordered table-hover investor">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
+                            </div>
+                        @endif
+                        <table class="table table-bordered table-hover investor" id="investor">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -97,14 +103,7 @@
                     </div>
 
                     <div class="tab-pane" id="b">
-
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                                <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
-                            </div>
-                        @endif
-                        <table class="table table-bordered table-hover investor">
+                        <table class="table table-bordered table-hover investor" id="investor">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -980,6 +979,9 @@
 
 @push('scripts')
     <script>
+        $(document).ready( function () {
+            $('#investor').DataTable();
+        } );
         $('.investor').on('click','.detail',function() {
             var id_saham = $(this).data("id_saham");
             var id_investor = $(this).data("id_investor");

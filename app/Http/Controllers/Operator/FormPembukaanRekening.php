@@ -25,7 +25,7 @@ class FormPembukaanRekening extends Controller
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
         $investors_acc = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','1')->get();
-        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->get();
+        $investors = Investor::select('id','nm_investor','jenis_rekening','no_cif','jenis_kelamin','no_ktp')->where('status_verifikasi','0')->get();
         return view('operator/form_pembukaan_rekening.index',compact(['investors_acc','investors','agens','pejabats']));
     }
 
