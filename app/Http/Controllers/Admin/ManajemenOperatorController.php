@@ -9,8 +9,13 @@ use App\User;
 
 class ManajemenOperatorController extends Controller
 {
-    public function index() 
-    {   
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+    public function index()
+    {
         $users = User::select('*')->where('level_user','operator')->get();
         return view('admin/manajemen_operator.index', compact('users'));
     }

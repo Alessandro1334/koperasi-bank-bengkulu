@@ -9,6 +9,11 @@ use Gate;
 
 class ManajemenAgenPemasaranController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         if(!Gate::allows('isManajer')){
             abort(404, "Sorry, you can't do this actions");

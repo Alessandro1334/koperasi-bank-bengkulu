@@ -34,7 +34,11 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-            <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+            <td>Seri : @if (count($sk3s)>0)
+                {{ $sk3s[0]->seri_spmpkop }}
+                @else
+
+            @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -69,7 +73,13 @@
         </tr>
         <tr>
             <td>Ketua</td>
-            <td>: {{ $ketua->nm_ketua_koperasi}}</td>
+            <td>:
+                @if ($ketua != "")
+                        {{ $ketua->nm_ketua_koperasi }}
+                        @else
+                            <a style="color:red"><i>tidak ada ketua koperasi aktif</i></a>
+                @endif
+            </td>
         </tr>
         <tr>
             <td>Sekretaris</td>
@@ -83,7 +93,9 @@
 
     <table style="width:100%; margin-top:110px; margin-bottom:20px;" class="top">
         <tr>
-            <td align="center"><b>Pengalihan Ke : {{ $sk3s[0]->perubahan_ke }}</b></td>
+            <td align="center"><b>Pengalihan Ke : @if (count($sk3s)>0)
+                {{ $sk3s[0]->perubahan_ke }}
+            @endif</b></td>
         </tr>
         <tr>
             <td align="center">Seri Formulir Pengalihan :</td>
@@ -99,14 +111,14 @@
             <td>
                 Nama	            :
                 <br>
-                Nomor KTP	        :	
-                <br>	
-                Register Investor	:		
+                Nomor KTP	        :
+                <br>
+                Register Investor	:
             <td>
                 Nama	            :
                 <br>
-                Nomor KTP	        :	
-                <br>	
+                Nomor KTP	        :
+                <br>
                 Register Investor	:
             </td>
             <tr>
@@ -122,7 +134,9 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+           <td>Seri : @if (count($sk3s)>0)
+            {{ $sk3s[0]->seri_spmpkop }}
+           @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -135,11 +149,21 @@
         <p style="width:100%; text-align:justify;">Pada hari ini …………………….. tanggal ………………………… bulan ………………….. tahun ……………………….. kami yang bertanda tangan dibawah ini :</p>
         <table style="width:100%">
             <tr>
-                <td style="width:200px;">1. {{ $ketua->nm_ketua_koperasi}}</td>
+                <td style="width:200px;">1. @if ($ketua != "")
+                        {{ $ketua->nm_ketua_koperasi }}
+                        @else
+                            <a style="color:red"><i>tidak ada ketua koperasi aktif</i></a>
+                    @endif
+                </td>
                 <td>Ketua Koperasi Jasa Mitra Utama Bank Bengkulu yang berkedudukan di Jalan Fatmawati Ruko Gading Regency No.10 Kota Bengkulu, dalam hal ini Bertindak untuk dan atas nama Koperasi Jasa Mitra Utama Bank Bengkulu, yang selanjutnya disebut PIHAK PERTAMA</p></td>
             </tr>
             <tr>
-                <td style="width:200px;">2. {{ $ketua->nm_ketua_koperasi}}</td>
+                <td style="width:200px;">2. @if ($ketua != "")
+                    {{ $ketua->nm_ketua_koperasi }}
+                            @else
+                                <a style="color:red"><i>tidak ada ketua koperasi aktif</i></a>
+                    @endif
+                </td>
                 <td><p>berkedudukan dijalan ………………………………………… dalam hal ini Bertindak untuk dan atas nama diri sendiri yang selanjutnya Sebut PIHAK KEDUA.</p></td>
             </tr>
         </table>
@@ -174,7 +198,9 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+           <td>Seri : @if (count($sk3s)>0)
+               {{ $sk3s[0]->seri_spmpkop }}
+           @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -211,7 +237,7 @@
         </tr>
     </table>
 
-    
+
     <table style="width:100%; text-align:justify; margin:0 0 30 0;">
         <tr>
             <td align="center" colspan="2"><b>Pasal 5 <br> Hak dan Kewajiban</b></td>
@@ -234,16 +260,18 @@
         <tr>
             <td align="center" colspan="2"><b>Pasal 5 <br> Hak dan Kewajiban</b></td>
         </tr>
-        
+
     </table>
-    
+
     <div class="page-break"></div>
 
     <table style="width:100%" class="top">
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+           <td>Seri : @if (count($sk3s)>0)
+            {{ $sk3s[0]->seri_spmpkop }}
+           @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -268,7 +296,7 @@
             <td>b. Wajib melakukan Enhanced Due Diligence (EDD) yang mengacu kepada ketentuan Buku Pedoman Perusahaan tentang Penerapan Program APU dan PPT Bank Bengkulu, termasuk kelengkapan Profil Investor / pemodal.
         </tr>
         <tr>
-            <td>c. Wajib memberikan konfirmasi final kepada PIHAK KEDUA tentang alokasi atau penjatahan atas penyertaan modal, dalam hal ini terkait penerbitan kepesertaan saham Bank.</td>  
+            <td>c. Wajib memberikan konfirmasi final kepada PIHAK KEDUA tentang alokasi atau penjatahan atas penyertaan modal, dalam hal ini terkait penerbitan kepesertaan saham Bank.</td>
         </tr>
         <tr>
             <td>d. Wajib mengelola dana penyertaan modal koperasi dimaksud sesuai dengan kegiatan usaha Pembelian Saham Seri B Bank Bengkulu yang disetujui PIHAK KEDUA ;</td>
@@ -307,14 +335,16 @@
             <td>e. Atas segala biaya yang timbul terkait biaya admin, meterai, biaya transfer, Management fee dan biaya lainnya yang timbul dari adanya pengalihan SPMPKOP menjadi bebas PIHAK KEDUA.</td>
         </tr>
     </table>
-    
+
     <div class="page-break"></div>
 
     <table style="width:100%;" class="top">
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+           <td>Seri : @if (count($sk3s)>0)
+            {{ $sk3s[0]->seri_spmpkop }}
+           @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -364,7 +394,7 @@
                 <b>PIHAK PERTAMA</b><br>
                 Alamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<br>
                 Nomor Telp &nbsp;&nbsp;&nbsp;:<br>
-                Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:	
+                Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
             </td>
         </tr>
         <tr>
@@ -396,7 +426,9 @@
         <tr>
            <td rowspan="3"></td>
            <td rowspan="3" style="width:260px;" align="center"><b>SURAT PERJANJIAN MODAL PENYERTAAN KOPERASI (SPMPKOP)</b></td>
-           <td>Seri : {{ $sk3s[0]->seri_spmpkop }}</td>
+           <td>Seri : @if (count($sk3s)>0)
+               {{ $sk3s[0]->seri_spmpkop }}
+           @endif</td>
         </tr>
         <tr>
             <td>Tanggal : {{ $time_indo }}</td>
@@ -416,8 +448,16 @@
             <td style="height:120px;"></td>
         </tr>
         <tr>
-            <td align="center"><b><u>( {{ $ketua->nm_ketua_koperasi}} )</u></b></td>
-            <td align="center"><b><u>({{ $sk3s[0]->nm_investor }})</u></b></td>
+            <td align="center"><b><u>(
+                @if ($ketua != "")
+                        {{ $ketua->nm_ketua_koperasi }}
+                        @else
+                            <a style="color:red"><i>tidak ada ketua koperasi aktif</i></a>
+                @endif
+            )</u></b></td>
+            <td align="center"><b><u>(@if (count($sk3s)>0)
+                {{ $sk3s[0]->nm_investor }}
+            @endif)</u></b></td>
         </tr>
         <tr>
             <td align="center"><b>Ketua</b></td>
@@ -425,7 +465,7 @@
         </tr>
     </table>
 
-    
-    
+
+
 </body>
 </html>

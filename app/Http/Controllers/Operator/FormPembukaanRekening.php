@@ -18,6 +18,11 @@ use PDF;
 
 class FormPembukaanRekening extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         if(!Gate::allows('isOperator')){
             abort(404, "Sorry, you can't do this actions");

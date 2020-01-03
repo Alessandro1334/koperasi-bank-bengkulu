@@ -54,7 +54,7 @@
                                                         <select name="investor_pengalihan_id" id="investor_pengalihan_id" class="form-control">
                                                             <option value="" disabled selected>-- pilih investor --</option>
                                                             @foreach ($investor_pengalihans as $investor)
-                                                                <option value="{{ $investor->investor_id }}">{{ $investor->nm_investor }}</option>
+                                                                <option value="{{ $investor->id }}">{{ $investor->nm_investor }} ({{ $investor->no_cif }})</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -67,7 +67,7 @@
                                                 <div id="baru" style="display:none;">
                                                     <div class="form-group col-md-4">
                                                         <label for="exampleInputEmail1">Pilih Investor Pembeli</label>
-                                                        <select name="investor_id" id="" class="form-control" required>
+                                                        <select name="investor_id" id="investor_id" class="form-control" required>
                                                             <option value="" disabled selected>-- pilih investor --</option>
                                                             @foreach ($investors as $investor)
                                                                 <option value="{{ $investor->id }}">{{ $investor->nm_investor }}</option>
@@ -149,10 +149,19 @@
             if(jenis   == "baru"){
                 $('#baru').show(300);
                 $('#pengalihan').hide(300);
+                $("#baru :input").prop("disabled", false);
+                $("#pengalihan :input").prop("disabled", false);
+                $("#submit").prop("disabled", false);
+                $('#gagal').hide(300);
+                $('#investor_id').val("");
+
+
             }
             else{
                 $('#baru').show(300);
                 $('#pengalihan').show(300);
+                $('#investor_pengalihan_id').val("");
+                $('#investor_id').val("");
             }
           })
         });
@@ -169,8 +178,8 @@
               success:function(data){
                 if(data.status == "0"){
                     $('#gagal').show(300);
-                    $("#gagal2 :input").prop("disabled", true);
-                    $("#gagal3 :input").prop("disabled", true);
+                    $("#baru :input").prop("disabled", true);
+                    $("#pengalihan :input").prop("disabled", true);
                     $("#submit").prop("disabled", true);
                 }
                 else{

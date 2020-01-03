@@ -23,6 +23,11 @@ use Excel;
 
 class BackupDataController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         return view('manajer/backup_data.index');
     }
@@ -49,12 +54,11 @@ class BackupDataController extends Controller
         'tanggal_pejabat_berwenang')
         ->get();
         // return $data_investor;
-        return Excel::create('data_investor', function($excel) use ($data_investor){
+        $a = Excel::create('data_investor', function($excel) use ($data_investor){
             $excel->sheet('data_investr', function($sheet) use ($data_investor){
                 $sheet->fromArray($data_investor);
             });
-        })->download('xls');
-        return redirect('manajer.backup_data')->with(['success'    =>  'Data Berhasil Di Upload !!']);
+        })->download('xls')->with(['success'    =>  'Data Berhasil Di Upload !!']);
     }
 
     public function eksportSahamPerorangan(){

@@ -18,6 +18,11 @@ use Gate;
 
 class VerifikasiRekeningInvestorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         if(!Gate::allows('isManajer')){
@@ -40,14 +45,25 @@ class VerifikasiRekeningInvestorController extends Controller
     }
 
     public function edit($id){
-        $sahan = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->where('saham_investors.id',$id)->select('saham_investors.id','nm_investor')->first();
+        $sahan = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->where('saham_investors.id',$id)->select('saham_investors.id','nm_investor','no_sk3s_lama')->first();
         return $sahan;
     }
 
     public function verifikasi(Request $request){
-        $saham = SahamInvestor::where('id',$request->saham_id)->update([
-            'status_verifikasi' => $request->status_verifikasi
-        ]);
+        if($request->status_verifikasi == "1"){
+            $saham = SahamInvestor::where('id',$request->saham_id)->update([
+                'status_verifikasi' => $request->status_verifikasi
+            ]);
+
+            $saham = SahamInvestor::where('no_sk3s',$request->sk3s_lama)->update([
+                'status_verifikasi' => '3',
+            ]);
+        }
+        else{
+            $saham = SahamInvestor::where('id',$request->saham_id)->update([
+                'status_verifikasi' => $request->status_verifikasi
+            ]);
+        }
         return redirect()->route('manajer.verifikasi_rekening_investor')->with(['success'   =>  'Data Saham Investor Berhasil Diverifikasi !!']);
     }
 

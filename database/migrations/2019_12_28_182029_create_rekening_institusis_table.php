@@ -45,7 +45,7 @@ class CreateRekeningInstitusisTable extends Migration
             $table->string('no_tdp')->nullable();
             $table->date('tanggal_kadaluarsa_tdp')->nullable();
             $table->string('no_izin_pma')->nullable();
-            $table->enum('status_verifikasi',['1','0'])->default('0');
+            $table->enum('status_verifikasi',['0','1','2'])->default('0');
             $table->timestamps();
         });
     }

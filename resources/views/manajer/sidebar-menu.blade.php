@@ -27,7 +27,7 @@
         </a>
         <ul class="treeview-menu ">
             <li class="{{ set_active(['manajer.verifikasi_data_investor']) }}"><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Verifikasi Data Investor</a></li>
-            <li class="{{ set_active(['manajer.verifikasi_rekening_investor']) }}"><a href="{{ route('manajer.verifikasi_rekening_investor') }}"><i class="fa fa-circle-o"></i>Verifikasi Rekening Investor</a></li>
+            <li class="{{ set_active(['manajer.verifikasi_rekening_investor']) }}"><a href="{{ route('manajer.verifikasi_rekening_investor') }}"><i class="fa fa-circle-o"></i>Verifikasi Saham Investor</a></li>
         </ul>
     </li>
 
@@ -40,36 +40,7 @@
         </a>
         <ul class="treeview-menu ">
             <li class="{{ set_active(['manajer.verifikasi_data_institusi']) }}"><a href="{{ route('manajer.verifikasi_data_institusi') }}"><i class="fa fa-circle-o"></i>Verifikasi Data Institusi</a></li>
-            <li class="{{ set_active(['manajer.verifikasi_rekening_institusi']) }}"><a href="{{ route('manajer.verifikasi_rekening_institusi') }}"><i class="fa fa-circle-o"></i>Verifikasi Rekening Institusi</a></li>
-        </ul>
-    </li>
-
-    <li class="header" style="font-weight:bold;">LAPORAN</li>
-    <li class="treeview {{ set_active(['manajer.laporan_nasabah','manajer.laporan_nasabah_filter','manajer.data_saham_nasabah','manajer.laporan_saham_filter']) }}">
-        <a href="#">
-            <i class="fa fa-bar-chart"></i> <span>Laporan Perorangan</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu ">
-            <li class="{{ set_active(['manajer.laporan_nasabah','manajer.laporan_nasabah_filter']) }}"><a href="{{ route('manajer.laporan_nasabah') }}"><i class="fa fa-circle-o"></i>Data Investor/Nasabah</a></li>
-            <li class="{{ set_active(['manajer.data_saham_nasabah','manajer.laporan_saham_filter']) }}"><a href="{{ route('manajer.data_saham_nasabah') }}"><i class="fa fa-circle-o"></i>Rekening/Saham Nasabah</a></li>
-            {{-- <li class=""><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Data Agen Penjualan Aktif</a></li> --}}
-        </ul>
-    </li>
-
-    <li class="treeview {{ set_active(['manajer.laporan_institusi','manajer.laporan_institusi_filter','manajer.data_saham_nasabah','manajer.laporan_saham_filter']) }}">
-        <a href="#">
-            <i class="fa fa-pie-chart"></i> <span>Laporan Non Perorangan</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu ">
-            <li class="{{ set_active(['manajer.laporan_institusi','manajer.laporan_institusi_filter']) }}"><a href="{{ route('manajer.laporan_institusi') }}"><i class="fa fa-circle-o"></i>Data Investor/Nasabah</a></li>
-            <li class="{{ set_active(['manajer.data_saham_institusi','manajer.laporan_saham__institusi_filter']) }}"><a href="{{ route('manajer.data_saham_institusi') }}"><i class="fa fa-circle-o"></i>Rekening/Saham Nasabah</a></li>
-            {{-- <li class=""><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Data Agen Penjualan Aktif</a></li> --}}
+            <li class="{{ set_active(['manajer.verifikasi_rekening_institusi']) }}"><a href="{{ route('manajer.verifikasi_rekening_institusi') }}"><i class="fa fa-circle-o"></i>Verifikasi Saham Institusi</a></li>
         </ul>
     </li>
 
@@ -90,6 +61,21 @@
         <a href="{{ route('manajer.manajemen_ketua_koperasi') }}">
             <i class="fa fa-users"></i> <span>Data Ketua Koperasi</span>
         </a>
+    </li>
+
+    <li class="header" style="font-weight:bold;">LAPORAN</li>
+    <li class="treeview {{ set_active(['manajer.laporan_perorangan','manajer.laporan_nonperorangan']) }}">
+        <a href="#">
+            <i class="fa fa-bar-chart"></i> <span>Laporan Saham Nasabah</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu ">
+            <li class="{{ set_active(['manajer.laporan_perorangan']) }}"><a href="{{ route('manajer.laporan_perorangan') }}"><i class="fa fa-circle-o"></i>Data Investor/Nasabah</a></li>
+            <li class="{{ set_active(['manajer.laporan_nonperorangan']) }}"><a href="{{ route('manajer.laporan_nonperorangan') }}"><i class="fa fa-circle-o"></i>Rekening/Saham Nasabah</a></li>
+            {{-- <li class=""><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Data Agen Penjualan Aktif</a></li> --}}
+        </ul>
     </li>
 
     <li class="header" style="font-weight:bold;">BACKUP DATA</li>

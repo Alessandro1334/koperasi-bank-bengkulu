@@ -9,6 +9,11 @@ use App\User;
 
 class ManajemenManajerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         $users = User::select('*')->where('level_user','manajer')->get();

@@ -9,6 +9,11 @@ use File;
 
 class ManajemenBarcodeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         $barcodes = Barcodes::all();

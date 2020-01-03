@@ -71,8 +71,10 @@
                                     <td>
                                         @if ($investor->status_verifikasi == '1')
                                             <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Aktif</span>
-                                            @else
+                                            @elseif($investor->status_verifikasi == "2")
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
+                                                @else
+                                                <span class="label label-warning"><i class="fa fa-close"></i>&nbsp;Menunggu Verifikasi</span>
                                         @endif
                                     </td>
                                     <td>

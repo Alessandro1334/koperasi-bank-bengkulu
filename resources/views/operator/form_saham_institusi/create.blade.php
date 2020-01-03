@@ -54,7 +54,7 @@
                                                             <select name="institusi_pengalihan_id" id="institusi_pengalihan_id" class="form-control">
                                                                 <option value="" disabled selected>-- pilih investor --</option>
                                                                 @foreach ($investor_pengalihans as $investor)
-                                                                    <option value="{{ $investor->institusi_id }}">{{ $investor->nm_investor }}</option>
+                                                                    <option value="{{ $investor->id }}">{{ $investor->nm_investor }} ({{ $investor->no_cif }})</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -163,6 +163,7 @@
           $(document).on('change','#institusi_pengalihan_id',function(){
             // alert('berhasil');
             var institusi_pengalihan_id = $(this).val();
+            // alert(institusi_pengalihan_id);
             $.ajax({
               type :'get',
               url: "{{ url('operator/pembelian_saham_institusi/investor_pengalih') }}",

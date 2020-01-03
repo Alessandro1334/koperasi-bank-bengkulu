@@ -23,7 +23,7 @@
                     <li class="b"><a href="#b" data-toggle="tab">Data Terverifikasi</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="active tab-pane" id="a">
+                    <div class="active tab-pane table-responsive" id="a">
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -72,8 +72,10 @@
                                             <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                                @else
+                                                @elseif($saham->status_verifikasi == "2")
                                                     <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                    @else
+                                                    <span class="label label-default"><i class="fa fa-exchange"></i>&nbsp;saham dialihkan</span>
                                         @endif
                                     </td>
                                     <td>
@@ -100,6 +102,7 @@
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <input type="hidden" name="saham_id" id="saham_id">
+                                                    <input type="hidden" name="sk3s_lama" id="sk3s_lama">
                                                     <label for="recipient-name" class="col-form-label">Verifikasi:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
                                                         <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
@@ -119,7 +122,7 @@
                             @endforeach
                         </table>
                     </div>
-                    <div class="tab-pane" id="b">
+                    <div class="tab-pane table-responsive" id="b">
                         <table class="table table-bordered table-hover saham" >
                             <thead>
                                 <tr>
@@ -162,8 +165,10 @@
                                             <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                                @else
+                                                @elseif($saham->status_verifikasi == "2")
                                                     <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                    @else
+                                                    <span class="label label-default"><i class="fa fa-exchange"></i>&nbsp;saham dialihkan</span>
                                         @endif
                                     </td>
                                     <td>
@@ -219,7 +224,7 @@
                                                 <option value="nonperorangan">Non Perorangan</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Profil Resiko Nasabah: <a style="color:red">(*)</a></label>
                                             <select name="profil_resiko_nasabah" class="form-control" id="profil_resiko_nasabah" disabled>
@@ -230,37 +235,37 @@
                                                 <option value="agresif">Agresif</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Nomor KTP/Paspor: <a style="color:red">(*)</a></label>
                                             <input type="number" name="no_ktp" class="form-control" id="no_ktp" placeholder="Masukan Nomor ktp" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Kadaluarsa KTP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_kadaluarsa_ktp" class="form-control" id="tgl_kadaluarsa_ktp" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Nomor NPWP: <a style="color:red">(*)</a></label>
                                             <input type="number" name="no_npwp" class="form-control" id="no_npwp" placeholder="Masukan Nomor npwp" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Registrasi NPWP: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tgl_registrasi_npwp" class="form-control" id="tgl_registrasi_npwp" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tempat Lahir: <a style="color:red">(*)</a></label>
                                             <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir" placeholder="Masukan Nomor npwp" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Lahir: <a style="color:red">(*)</a></label>
                                             <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Status Perkawinan: <a style="color:red">(*)</a></label>
                                             <select name="status_perkawinan" id="status_perkawinan" class="form-control" disabled>
@@ -270,7 +275,7 @@
                                                 <option value="janda/duda">Janda / Duda</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kewarganegaraan: <a style="color:red">(*)</a></label>
                                             <select name="kewarganegaraan" id="kewarganegaraan" class="form-control" disabled>
@@ -289,37 +294,37 @@
                                             <label for="">Alamat Sesuai KTP/KITAS: <a style="color:red">(*)</a></label>
                                             <input type="text" name="alamat_ktp" id="alamat_ktp" class="form-control" disabled placeholder="Masukan nama lengkap">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">RT Sesuai KTP: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="rt_ktp" class="form-control" id="rt_ktp" disabled placeholder="Masukan Nomor npwp">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">RW Sesuai KTP: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="rw_ktp" class="form-control" id="rw_ktp" disabled placeholder="Masukan Nomor npwp">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kelurahan Sesuai KTP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kelurahan_ktp" class="form-control" id="kelurahan_ktp" disabled placeholder="masukan keluarahan">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kecamatan Sesuai KTP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kecamatan_ktp" class="form-control" id="kecamatan_ktp" disabled placeholder="masukan kecamatan">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kota Sesuai KTP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kota_ktp" class="form-control" id="kota_ktp" disabled placeholder="Masukan Nomor npwp">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Provinsi Sesuai KTP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="provinsi_ktp" class="form-control" id="provinsi_ktp" disabled placeholder="masukan provinsi">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kode Pos Sesuai KTP: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="text" name="kode_pos_ktp" class="form-control" id="kode_pos_ktp" disabled placeholder="masukan kode pos">
@@ -334,57 +339,57 @@
                                             <label for="">Alamat Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="alamat_tempat_tinggal" id="alamat_tempat_tinggal" class="form-control" disabled placeholder="Masukan nama lengkap">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">RT Tempat Tinggal: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="text" name="rt_tempat_tinggal" class="form-control" id="rt_tempat_tinggal" disabled placeholder="Masukan Nomor npwp">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">RW Tempat Tinggal: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="text" name="rw_tempat_tinggal" id="rw_tempat_tinggal" class="form-control" disabled placeholder="Masukan alamat tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kelurahan Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kelurahan_tempat_tinggal" class="form-control" id="kelurahan_tempat_tinggal" disabled placeholder="masukan kelurahan tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kecamatan Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kecamatan_tempat_tinggal" class="form-control" id="kecamatan_tempat_tinggal" disabled placeholder="masukan kecamatan tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kota Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kota_tempat_tinggal" class="form-control" id="kota_tempat_tinggal" disabled placeholder="Masukan kota tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Provinsi Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="provinsi_tempat_tinggal" class="form-control" id="provinsi_tempat_tinggal" disabled placeholder="masukan provinsi tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Kode Pos Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="kode_pos_tempat_tinggal" class="form-control" id="kode_pos_tempat_tinggal" disabled placeholder="masukan kode pos tempat tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Telp. Rumah: <a style="color:red">(*)</a></label>
                                             <input type="number" name="telp_rumah" class="form-control" id="telp_rumah" disabled placeholder="telephone rumah">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Ponsel: <a style="color:red">(*)</a></label>
                                             <input type="number" name="ponsel" class="form-control" id="ponsel" disabled placeholder="ponsel">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Lama Menempati: <a style="color:red"> dalam tahun (* hanya angka)</a></label>
                                             <input type="number" name="lama_menempati" class="form-control" id="lama_menempati" disabled placeholder="lama menemoati">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Status Rumah Tinggal: <a style="color:red">(*)</a></label>
                                             <select name="status_rumah_tinggal" id="status_rumah_tinggal" class="form-control" disabled>
@@ -425,12 +430,12 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Gadis Ibu Kandung: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_gadis_ibu_kandung" class="form-control" id="nm_gadis_ibu_kandung" disabled placeholder="Masukan nama gadis ibu kandung">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Emergency Kontak: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="number" name="emergency_kontak" class="form-control" id="emergency_kontak" disabled placeholder="Masukan emergency kontak">
@@ -445,32 +450,32 @@
                                             <label for="">Alamat Surat Menyurat Sesuai KTP: <a style="color:red">(*)</a></label>
                                             <input type="text" name="alamat_surat_menyurat_ktp" id="alamat_surat_menyurat_ktp"  class="form-control" disabled placeholder="Masukan alamat surat menyurat sesuai ktp">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Alamat Surat Menyurat Tempat Tinggal:</label>
                                             <input type="text" name="alamat_surat_menyurat_tempat_tinggal" id="alamat_surat_menyurat_tempat_tinggal"  class="form-control" placeholder="Masukan alamat surat menyurat tempat tinggal" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Alamat Surat Menyurat Lainnya:</label>
                                             <input type="text" name="alamat_surat_menyurat_lainnya" id="alamat_surat_menyurat_lainnya"  class="form-control" placeholder="Masukan alamat surat menyurat lainnya" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Pengiriman Konfirmasi Melalui Email:</label>
                                             <input type="text" name="pengiriman_konfirmasi_melalui_email" id="pengiriman_konfirmasi_melalui_email"  class="form-control" placeholder="Masukan kofirmasi melalui email" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Pengiriman Konfirmasi Melalui Fax:</label>
                                             <input type="text" name="pengiriman_konfirmasi_melalui_fax" id="pengiriman_konfirmasi_melalui_fax"  class="form-control" placeholder="Masukan kofirmasi melalui fax" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Konfirmasi Melalui Alamat Surat Menyurat</label>
                                             <input type="text" name="pengiriman_konfirmasi_melalui_alamat_surat_menyurat" id="pengiriman_konfirmasi_melalui_alamat_surat_menyurat"  class="form-control" placeholder="Masukan kofirmasi melalui fax" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tujuan Investarsi: <a style="color:red">(*)</a></label>
                                             <select name="tujuan_investasi" id="tujuan_investasi" class="form-control" disabled>
@@ -506,48 +511,48 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-    
+
                                         <div id="info-pekerjaan">
                                             <div class="form-group col-md-4">
                                                 <label for="">Nama Perusahaan:</label>
                                                 <input type="text" name="nm_perusahaan" class="form-control" id="nm_perusahaan" placeholder="Masukan nama perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Alamat Perusahaan:</label>
                                                 <input type="text" name="alamat_perusahaan" class="form-control" id="alamat_perusahaan" placeholder="Masukan Alamat Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Kota Perusahaan</label>
                                                 <input type="text" name="kota_perusahaan" class="form-control" id="kota_perusahaan" placeholder="Masukan kota perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Provinsi Perusahaan</label>
                                                 <input type="text" name="provinsi_perusahaan" class="form-control" id="provinsi_perusahaan" placeholder="Masukan provinsi perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Kode Pos Perusahaan</label>
                                                 <input type="text" name="kode_pos_perusahaan" class="form-control" id="kode_pos_perusahaan" placeholder="Masukan Kode Pos Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Telephone</label>
                                                 <input type="text" name="telp_perusahaan" class="form-control" id="telp_perusahaan" placeholder="Masukan Telephone" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Email Perusahaan</label>
                                                 <input type="text" name="email_perusahaan" class="form-control" id="email_perusahaan" placeholder="Masukan Email Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Fax Perusahaan</label>
                                                 <input type="text" name="fax_perusahaan" class="form-control" id="fax_perusahaan" placeholder="Masukan Fax Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Jabatan</label>
                                                 <select name="jabatan" id="jabatan" class="form-control" disabled>
@@ -560,7 +565,7 @@
                                                     <option value="lainnya">Lainnya</option>
                                                 </select>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Jenis Usaha</label>
                                                 <input type="text" name="jenis_usaha" class="form-control" id="jenis_usaha" placeholder="Masukan Jenis Usaha" disabled>
@@ -573,7 +578,7 @@
                                                 <label for="">Nominal Penghasilan Lain: <a style="color:red;">hanya angka</a></label>
                                                 <input type="text" name="penghasilan_lain" class="form-control" id="penghasilan_lain" placeholder="Masukan Nominal Penghasilan Lain" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Sumber Penghasilan Lainnya:</label>
                                                 <select name="sumber_penghasilan_lain" class="form-control" id="sumber_penghasilan_lainnya" disabled>
@@ -603,7 +608,7 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Sumber Dana Investasi: <a style="color:red">(*)</a></label>
                                             <select name="sumber_dana_investasi" id="sumber_dana_investasi" class="form-control" disabled>
@@ -628,7 +633,7 @@
                                             <label for="">Nama Pasangan Atau Orang Tua: <a style="color:red">(*)</a></label>
                                             <input type="text" name="nm_pasangan_atau_orang_tua" id="nm_pasangan_atau_orang_tua" class="form-control" placeholder="Masukan Nama Pasangan Atau Orang Tua" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Hubungan: <a style="color:red">(*)</a></label>
                                             <select name="hubungan" id="hubungan" class="form-control" disabled>
@@ -639,22 +644,22 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Alamat Tempat Tinggal: <a style="color:red">(*)</a></label>
                                             <input type="text" name="alamat_tempat_tinggal_pasangan_atau_orang_tua" id="alamat_tempat_tinggal_pasangan_atau_orang_tua" class="form-control" disabled placeholder="Masukan Alamat Tempat Tinggal">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Telephone Rumah: <a style="color:red;">hanya angka</a></label>
                                             <input type="text" name="telp_rumah_pasangan_atau_orang_tua" class="form-control" id="telp_rumah_pasangan_atau_orang_tua" placeholder="Masukan Telephone Rumah Pasangan / Orang Tua" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Ponsel: <a style="color:red">(* hanya angka)</a></label>
                                             <input type="text" name="ponsel_pasangan_atau_orang_tua" class="form-control" id="ponsel_pasangan_atau_orang_tua" placeholder="Masukan Ponsel" disabled>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Pekerjaan: <a style="color:red">(*)</a></label>
                                             <select name="pekerjaan_pasangan_atau_orang_tua" id="pekerjaan_pasangan_atau_orang_tua" class="form-control" disabled>
@@ -673,28 +678,28 @@
                                                 <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
-    
+
                                         <div id="pekerjaan-pasangan">
                                             <div class="form-group col-md-4">
                                                 <label for="">Nama Perusahaan</label>
                                                 <input type="text" name="nm_perusahaan_pasangan_atau_orang_tua" class="form-control" id="nm_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Nama Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Alamat Perusahaan</label>
                                                 <input type="text" name="alamat_perusahaan_pasangan_atau_orang_tua" class="form-control" id="alamat_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Alamat Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Kota Perusahaan</label>
                                                 <input type="text" name="kota_perusahaan_pasangan_atau_orang_tua" class="form-control" id="kota_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Kota Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Provinsi Perusahaan</label>
                                                 <input type="text" name="provinsi_perusahaan_pasangan_atau_orang_tua" class="form-control" id="provinsi_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Provinsi Perusahaan" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Kode Pos: <a style="color:red;">hanya angka</a> </label>
                                                 <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tua" class="form-control" id="kode_pos_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Kode Pos " disabled>
@@ -703,17 +708,17 @@
                                                 <label for="">Telephone: <a style="color:red;">hanya angka</a></label>
                                                 <input type="text" name="telp_perusahaan_pasangan_atau_orang_tua" class="form-control" id="telp_perusahaan_pasangan_atau_orang_tua" placeholder="Telephone" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Email</label>
                                                 <input type="text" name="email_perusahaan_pasangan_atau_orang_tua" class="form-control" id="email_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Email" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Fax</label>
                                                 <input type="text" name="fax_perusahaan_pasangan_atau_orang_tua" class="form-control" id="fax_perusahaan_pasangan_atau_orang_tua" placeholder="Masukan Fax" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Jabatan</label>
                                                 <select name="jabatan_pasangan_atau_orang_tua" id="jabatan_pasangan_atau_orang_tua" class="form-control" disabled>
@@ -727,17 +732,17 @@
                                                     <option value="lainnya">Lainnya</option>
                                                 </select>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Jenis Usaha</label>
                                                 <input type="text" name="jenis_usaha_pasangan_atau_orang_tua" class="form-control" id="jenis_usaha_pasangan_atau_orang_tua" placeholder="Masukan Jenis Usaha" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Lama Bekerja: dalam tahun <a style="color:red;">hanya angka</a></label>
                                                 <input type="text" name="lama_bekerja_pasangan_atau_orang_tua" class="form-control" id="lama_bekerja_pasangan_atau_orang_tua" placeholder="Masukan Lama Bekerja" disabled>
                                             </div>
-    
+
                                             <div class="form-group col-md-4">
                                                 <label for="">Pengasilan Kotor Per Tahun</label>
                                                 <select name="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" id="penghasilan_kotor_per_tahun_pasangan_atau_orang_tua" class="form-control" disabled>
@@ -750,7 +755,7 @@
                                                 </select>
                                             </div>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Sumber Penghasilan utama: <a style="color:red">(*)</a></label>
                                             <select name="sumber_penghasilan_utama_pasangan_atau_orang_tua" disabled id="sumber_penghasilan_utama_pasangan_atau_orang_tua" class="form-control" disabled>
@@ -779,7 +784,7 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Fotokopi NPWP: <a style="color:red">(*)</a></label>
                                             <select name="npwp" class="form-control" id="npwp" disabled>
@@ -788,7 +793,7 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Fotokopi Form Profil Resiko Pemodal: <a style="color:red">(*)</a></label>
                                             <select name="form_profil_resiko_pemodal" class="form-control" id="form_profil_resiko_pemodal" disabled>
@@ -797,7 +802,7 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Fotokopi Bukti Setoran Investasi Awal: <a style="color:red">(*)</a></label>
                                             <select name="bukti_setoran_investasi_awal" class="form-control" id="bukti_setoran_investasi_awal" disabled>
@@ -806,7 +811,7 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Contoh Tanda Tangan: <a style="color:red">(*)</a></label>
                                             <select name="contoh_tanda_tangan" class="form-control" id="contoh_tanda_tangan" disabled>
@@ -815,7 +820,7 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Formulir FATCA - Perorangan (non mandatory): <a style="color:red">(*)</a></label>
                                             <select name="fatca" class="form-control" id="fatca" disabled>
@@ -839,7 +844,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanda Tangan Agen Pemasaran: <a style="color:red">(*)</a></label> <br>
                                             <select name="tanda_tangan_agen_pemasaran" class="form-control" id="tanda_tangan_agen_pemasaran" disabled>
@@ -847,12 +852,12 @@
                                                 <option value="0">Tidak Ada</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Agen Pemasaran: <a style="color:red">(*)</a></label> <br>
                                             <input type="date" name="tanggal_agen_pemasaran" class="form-control" id="tanggal_agen_pemasaran" disabled placeholder="Tanggal Agen Pemasaran">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Nama Pejabat Berwenang: <a style="color:red">(*)</a></label> <br>
                                             <select name="pejabat_berwenang_id" id="pejabat_berwenang_id" class="form-control" disabled>
@@ -862,7 +867,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Status Persetujuan: <a style="color:red">(*)</a></label> <br>
                                             <select name="status_persetujuan" class="form-control" id="status_persetujuan" disabled>
@@ -870,12 +875,12 @@
                                                 <option value="tidak_disetujui">Tidak Disetujui</option>
                                             </select>
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanggal Pejabat Berwenang: <a style="color:red">(*)</a></label> <br>
                                             <input type="date" name="tanggal_pejabat_berwenang" class="form-control" id="tanggal_pejabat_berwenang" disabled placeholder="Tanggal Pejabat Berwenang">
                                         </div>
-    
+
                                         <div class="form-group col-md-4">
                                             <label for="">Tanda Tangan Pejabat Berwenang: <a style="color:red">(*)</a></label> <br>
                                             <select name="tanda_tangan_pejabat_berwenang" class="form-control" id="tanda_tangan_pejabat_berwenang" disabled>
@@ -970,8 +975,8 @@
                                         </div>
 
                                     </div>
-                                        
-                                   
+
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
@@ -999,9 +1004,11 @@
             type: "GET",
             dataType: "JSON",
             success: function(data){
+                console.table(data);
                 $('#exampleModal').modal('show');
                 $('#saham_id').val(data.id);
                 $('#nm_investor').text(data.nm_investor);
+                $('#sk3s_lama').val(data.no_sk3s_lama);
             },
             error:function(){
                 alert("Nothing Data");
@@ -1009,7 +1016,7 @@
             });
         }
 
-        $('.saham').on('click','.detail',function() { 
+        $('.saham').on('click','.detail',function() {
             var id_saham = $(this).data("id_saham");
             var id_investor = $(this).data("id_investor");
             $.ajax({
@@ -1045,7 +1052,7 @@
                     $('#kota_ktp').val(data.investor.kota_ktp);
                     $('#provinsi_ktp').val(data.investor.provinsi_ktp);
                     $('#kode_pos_ktp').val(data.investor.kode_pos_ktp);
-                    
+
                     $('#alamat_tempat_tinggal').val(data.investor.alamat_tempat_tinggal);
                     $('#rt_tempat_tinggal').val(data.investor.rt_tempat_tinggal);
                     $('#rw_tempat_tinggal').val(data.investor.rw_tempat_tinggal);
@@ -1063,7 +1070,7 @@
                     $('#pendidikan_terakhir').val(data.investor.pendidikan_terakhir);
                     $('#nm_gadis_ibu_kandung').val(data.investor.nm_gadis_ibu_kandung);
                     $('#emergency_kontak').val(data.investor.emergency_kontak);
-                    
+
                     //Korespondensi
                     $('#alamat_surat_menyurat_ktp').val(data.investor.alamat_surat_menyurat_ktp);
                     $('#alamat_surat_menyurat_tempat_tinggal').val(data.investor.alamat_surat_menyurat_tempat_tinggal);
@@ -1091,7 +1098,7 @@
                     $('#sumber_penghasilan_utama').val(data.pekerjaan.sumber_penghasilan_utama);
                     $('#sumber_dana_investasi').val(data.pekerjaan.sumber_dana_investasi);
 
-                    //Pasangan atau Orang Tua 
+                    //Pasangan atau Orang Tua
                     $('#nm_pasangan_atau_orang_tua').val(data.pasangan.nm_pasangan_atau_orang_tua);
                     $('#hubungan').val(data.pasangan.hubungan);
                     $('#alamat_tempat_tinggal_pasangan_atau_orang_tua').val(data.pasangan.alamat_tempat_tinggal_pasangan_atau_orang_tua);
@@ -1127,7 +1134,7 @@
                     $('#status_persetujuan').val(data.persetujuan.status_persetujuan);
                     $('#tanggal_pejabat_berwenang').val(data.persetujuan.tanggal_pejabat_berwenang);
                     $('#tanda_tangan_pejabat_berwenang').val(data.persetujuan.tanda_tangan_pejabat_berwenang);
-                    
+
                     //Pembelian Saham
                     $('#investor_pengalihan_id').val(data.sahams.investor_id);
                     $('#no_sk3s_lama').val(data.sahams.no_sk3s);

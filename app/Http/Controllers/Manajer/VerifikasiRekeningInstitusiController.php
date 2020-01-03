@@ -21,6 +21,11 @@ use Gate;
 
 class VerifikasiRekeningInstitusiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         if(!Gate::allows('isManajer')){
@@ -29,11 +34,11 @@ class VerifikasiRekeningInstitusiController extends Controller
 
         $sahams_acc = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')
                                 ->select('saham_institusis.id','institusi_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_institusis.status_verifikasi')
-                                ->where('saham_institusis.status_verifikasi','1')
+                                ->where('saham_institusis.status_verifikasi','!=','0')
                                 ->get();
         $sahams = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')
                                 ->select('saham_institusis.id','institusi_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_institusis.status_verifikasi')
-                                ->where('saham_institusis.status_verifikasi','!=','1')
+                                ->where('saham_institusis.status_verifikasi','0')
                                 ->get();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
@@ -43,14 +48,25 @@ class VerifikasiRekeningInstitusiController extends Controller
     }
 
     public function edit($id){
-        $sahan = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.id',$id)->select('saham_institusis.id','nm_investor')->first();
+        $sahan = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.id',$id)->select('saham_institusis.id','nm_investor','no_sk3s_lama')->first();
         return $sahan;
     }
 
     public function verifikasi(Request $request){
-        $saham = SahamInstitusi::where('id',$request->saham_institusi_id)->update([
-            'status_verifikasi' => $request->status_verifikasi
-        ]);
+        if($request->status_verifikasi == "1"){
+            $saham = SahamInstitusi::where('id',$request->saham_institusi_id)->update([
+                'status_verifikasi' => $request->status_verifikasi
+            ]);
+
+            $saham = SahamInstitusi::where('no_sk3s',$request->sk3s_lama)->update([
+                'status_verifikasi' => '3',
+            ]);
+        }
+        else{
+            $saham = SahamInstitusi::where('id',$request->saham_institusi_id)->update([
+                'status_verifikasi' => $request->status_verifikasi
+            ]);
+        }
         return redirect()->route('manajer.verifikasi_rekening_institusi')->with(['success'   =>  'Data Saham Institusi Berhasil Diverifikasi !!']);
     }
 

@@ -25,6 +25,11 @@ use PDF;
 
 class PembelianSahamInstitusiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         if(!Gate::allows('isOperator')){
             abort(404, "Sorry, you can't do this actions");
@@ -47,22 +52,25 @@ class PembelianSahamInstitusiController extends Controller
     public function tambahSaham()
     {
         $investors = RekeningInstitusi::select('id','nm_investor')->where('status_verifikasi','1')->get();
-        $investor_pengalihans = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->select('institusi_id','nm_investor')->where('saham_institusis.status_verifikasi','1')->get();
+        $investor_pengalihans = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->select('saham_institusis.id','nm_investor','no_cif')
+                                ->where('saham_institusis.status_verifikasi','1')->get();
         return view('operator/form_saham_institusi.create',compact('investors','investor_pengalihans'));
     }
 
     public function investorPengalih(Request $request){
-        $institusi_id = $request->institusi_pengalihan_id;
-        $datas = SahamInstitusi::where('institusi_id',$institusi_id)
+        $id = $request->institusi_pengalihan_id;
+        // return $id;
+        $datas = SahamInstitusi::where('id',$id)
                                 ->select('id','no_sk3s','seri_spmpkop','seri_formulir','jumlah_saham','terbilang_saham',
                                         'jenis_mata_uang','pembayaran_no_rek','pembayaran_nm_rek','pembayaran_nm_bank',
                                         'institusi_id_lama','no_sk3s_lama','created_at')
                                 ->get();
+                                // return $datas;
         $from = $datas[0]->created_at;
         $time = Carbon::now();
         $to = $time->toDateString();
-        $total_days = $from->diffInDays($time);
-        return $no_cif;
+        $total_days = $from->diffInDays($to);
+        // return $total_days;
         if($total_days >= 360){
             $message = [
                 'status'    =>  "1",
@@ -104,7 +112,7 @@ class PembelianSahamInstitusiController extends Controller
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
-                            ->where('saham_institusis.institusi_id',$id)
+                            ->where('saham_institusis.id',$id)
                             ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.sk3s',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
@@ -125,14 +133,14 @@ class PembelianSahamInstitusiController extends Controller
         $pejabats = PejabatBerwenang::where('status','1')->get();
         return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats','saham_institusi');
     }
-    
+
     public function spmpkop(Request $request){
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
-                ->where('saham_institusis.institusi_id',$request->id_institusi)
+                ->where('saham_institusis.id',$request->saham_id)
                 ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');

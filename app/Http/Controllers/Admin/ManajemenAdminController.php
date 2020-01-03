@@ -9,6 +9,11 @@ use App\Admin;
 
 class ManajemenAdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         $admins = Admin::select('id','nm_admin','username','email')->get();

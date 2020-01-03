@@ -20,6 +20,11 @@ use Carbon\Carbon;
 
 class SahamInvestorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         if(!Gate::allows('isOperator')){
@@ -28,13 +33,12 @@ class SahamInvestorController extends Controller
 
         $sahams_acc = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('saham_investors.id','investor_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
-                                ->where('saham_investors.status_verifikasi','1')
+                                ->where('saham_investors.status_verifikasi','!=','0')
                                 ->get();
 
         $sahams = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('saham_investors.id','investor_id','nm_investor','jumlah_saham','terbilang_saham','no_sk3s_lama','saham_investors.status_verifikasi')
                                 ->where('saham_investors.status_verifikasi','0')
-                                ->orWhere('saham_investors.status_verifikasi','1')
                                 ->get();
 
         $investors = Investor::select('id','nm_investor')->get();
@@ -47,14 +51,14 @@ class SahamInvestorController extends Controller
     public function tambahSaham()
     {
         $investors = Investor::select('id','nm_investor')->where('status_verifikasi','1')->get();
-        $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('investor_id','nm_investor')
+        $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('saham_investors.id','nm_investor','no_cif')
                                 ->where('saham_investors.status_verifikasi','1')->get();
         return view('operator/form_saham.create',compact('investors','investor_pengalihans'));
     }
 
     public function investorPengalih(Request $request){
-        $investor_id = $request->investor_pengalihan_id;
-        $datas = SahamInvestor::where('id',$investor_id)
+        $id = $request->investor_pengalihan_id;
+        $datas = SahamInvestor::where('id',$id)
                                 ->select('investor_id','no_sk3s','seri_spmpkop','seri_formulir','jumlah_saham','terbilang_saham',
                                         'jenis_mata_uang','pembayaran_no_rek','pembayaran_nm_rek','pembayaran_nm_bank',
                                         'investor_id_lama','no_sk3s_lama','created_at')
@@ -63,6 +67,7 @@ class SahamInvestorController extends Controller
         $time = Carbon::now();
         $to = $time->toDateString();
         $total_days = $from->diffInDays($time);
+        // return $total_days;
         if($total_days >= 360){
             $message = [
                 'status'    =>  "1",
@@ -108,6 +113,7 @@ class SahamInvestorController extends Controller
                                 ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham','perubahan_ke')
                                 ->where('saham_investors.id',$id)
                                 ->get();
+                                // return $ketua;
         $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
 
@@ -115,6 +121,7 @@ class SahamInvestorController extends Controller
     }
 
     public function spmpkop(Request $request){
+        // return $_GET['id_spmpkop'];
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
@@ -123,6 +130,7 @@ class SahamInvestorController extends Controller
                                 ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
                                 ->where('saham_investors.id',$request->id_spmpkop)
                                 ->get();
+                                // return $sk3s;
         $pdf = PDF::loadView('operator/form_saham.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
 

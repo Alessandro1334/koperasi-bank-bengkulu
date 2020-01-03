@@ -152,17 +152,11 @@ Route::group(['prefix' => 'manajer/manajemen_ketua_koperasi'], function(){
 });
 
 Route::group(['prefix' => 'manajer/laporan'], function(){
-    Route::get('/laporan_data_nasabah', 'LaporanController@laporanNasabah')->name('manajer.laporan_nasabah');
-    Route::get('/laporan_data_nasabah/filter', 'LaporanController@laporanNasabahFilter')->name('manajer.laporan_nasabah_filter');
-    Route::get('/laporan_saham_nasabah', 'LaporanController@laporanSahamNasabah')->name('manajer.data_saham_nasabah');
-    Route::get('/laporan_saham_nasabah/filter', 'LaporanController@laporanSahamNasabahFilter')->name('manajer.laporan_saham_filter');
-});
+    Route::get('/perorangan', 'Manajer\LaporanController@laporanPerorangan')->name('manajer.laporan_perorangan');
+    Route::post('/perorangan_import', 'Manajer\LaporanController@laporanPeroranganImport')->name('manajer.laporan_perorangan_import');
+    Route::get('/non_perorangan', 'Manajer\LaporanController@laporanNonPerorangan')->name('manajer.laporan_nonperorangan');
+    Route::post('/non_perorangan_import', 'Manajer\LaporanController@laporanNonPeroranganImport')->name('manajer.laporan_nonperorangan_import');
 
-Route::group(['prefix' => 'manajer/laporan'], function(){
-    Route::get('/laporan_data_institusi', 'LaporanInstitusiController@laporanInstitusi')->name('manajer.laporan_institusi');
-    Route::get('/laporan_data_institusi/filter', 'LaporanInstitusiController@laporanInstitusiFilter')->name('manajer.laporan_institusi_filter');
-    Route::get('/laporan_saham_institusi', 'LaporanInstitusiController@laporanSahamInstitusi')->name('manajer.data_saham_institusi');
-    Route::get('/laporan_saham_institusi/filter', 'LaporanInstitusiController@laporanSahamInstitusiFilter')->name('manajer.laporan_saham_institusi_filter');
 });
 
 Route::group(['prefix' => 'manajer/backup_data'], function(){

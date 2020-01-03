@@ -61,8 +61,14 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+                <i class="fa fa-user"></i>
+                <span class="hidden-xs">
+                    @if (Auth::guard('admin')->check())
+                        {{ Auth::guard('admin')->user()->nm_admin }}
+                        @elseif(Auth::check())
+                        {{ Auth::user()->nm_user }}
+                    @endif
+                </span>
             </a>
 
           </li>
@@ -90,11 +96,17 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+        <div class="pull-left image" style="margin-top:6px;">
+          <img src="{{ asset('assets/images/logo2.jpg') }}" style="height:35px;" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>
+              @if (Auth::guard('admin')->check())
+                  {{ Auth::guard('admin')->user()->nm_admin }}
+                  @elseif(Auth::check())
+                  {{ Auth::user()->nm_user }}
+              @endif
+          </p>
           <a href="#"><i class="fa fa-circle text-success"></i>  @yield('user-login')</a>
         </div>
       </div>

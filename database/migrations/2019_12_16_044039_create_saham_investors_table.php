@@ -28,7 +28,7 @@ class CreateSahamInvestorsTable extends Migration
             $table->string('investor_id_lama')->nullable();
             $table->string('no_sk3s_lama')->nullable();
             $table->string('perubahan_ke')->default('0');
-            $table->enum('status_verifikasi',['0','1','2'])->default('0');
+            $table->enum('status_verifikasi',['0','1','2','3'])->default('0');
             $table->timestamps();
         });
     }

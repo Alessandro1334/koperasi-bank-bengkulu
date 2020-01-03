@@ -49,10 +49,9 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
                                     <th>Hasil Verifikasi</th>
                                     <th>Detail</th>
-                                    <th>Cetak Data</th>
+                                    <th>Data Saham</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,18 +73,13 @@
                                         </td>
                                         <td>
                                             @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
-                                            @else
-                                                <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($saham->status_verifikasi == '0')
                                                 <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
-                                            @elseif($saham->status_verifikasi == '1')
-                                                <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                            @elseif($saham->status_verifikasi == '2')
-                                                <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                @elseif($saham->status_verifikasi == '1')
+                                                    <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
+                                                    @elseif($saham->status_verifikasi == "2")
+                                                        <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                        @else
+                                                        <span class="label label-default"><i class="fa fa-exchange"></i>&nbsp;saham dialihkan</span>
                                             @endif
                                         </td>
                                         <td>
@@ -102,8 +96,8 @@
                         </table>
                     </div>
 
-                    <div class="tab-pane" id="b">
-                        <table class="table table-bordered table-hover investor" id="investor">
+                    <div class="tab-pane table-responsive" id="b">
+                        <table class="table table-bordered table-hover investor" id="investor1">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -111,11 +105,11 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
                                     <th>Hasil Verifikasi</th>
                                     <th>Detail</th>
-                                    <th>Cetak Data</th>
+                                    <th>Data Saham</th>
                                     <th>SK3S</th>
+                                    <th>SPMPKOP</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,18 +131,13 @@
                                         </td>
                                         <td>
                                             @if($saham->status_verifikasi == '0')
-                                                <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
-                                                    @else
-                                                        <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($saham->status_verifikasi == '0')
                                                 <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
-                                            @elseif($saham->status_verifikasi == '1')
-                                                <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
-                                            @elseif($saham->status_verifikasi == '2')
-                                                <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                @elseif($saham->status_verifikasi == '1')
+                                                    <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
+                                                    @elseif($saham->status_verifikasi == "2")
+                                                        <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;tidak disetujui</span>
+                                                        @else
+                                                        <span class="label label-default"><i class="fa fa-exchange"></i>&nbsp;saham dialihkan</span>
                                             @endif
                                         </td>
                                         <td>
@@ -160,7 +149,23 @@
                                             <a href="{{ route('operator.cetak_saham',[$saham->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('operator.sk3s',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
+                                            @if ($saham->status_verifikasi == '1')
+                                                <a href="{{ route('operator.sk3s',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
+                                                @else
+                                                <a style="color:red;"><i>tidak dapat mencetak sk3s</i></a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($saham->status_verifikasi == '1')
+                                                <form action="{{ route('operator.spmpkop') }}" method="get">
+                                                    <input type="hidden" name="id_spmpkop" value="{{ $saham->id }}" id="id_spmpkop">
+                                                    <button type="submit" class="btn btn-info btn-sm spmpkop">
+                                                        <i class="fa fa-print">&nbsp;Cetak SPMPKOP</i>
+                                                    </button>
+                                                </form>
+                                                @else
+                                                <a style="color:red;"><i>tidak dapat mencetak spmpkop</i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -960,12 +965,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Kembali</button>
-                                    <form action="{{ route('operator.spmpkop') }}" method="get">
-                                        <input type="hidden" name="id_spmpkop" id="id_spmpkop">
-                                        <button type="submit" class="btn btn-info btn-sm spmpkop">
-                                            <i class="fa fa-print">&nbsp;SPMPKOP</i>
-                                        </button>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -981,6 +981,7 @@
     <script>
         $(document).ready( function () {
             $('#investor').DataTable();
+            $('#investor1').DataTable();
         } );
         $('.investor').on('click','.detail',function() {
             var id_saham = $(this).data("id_saham");

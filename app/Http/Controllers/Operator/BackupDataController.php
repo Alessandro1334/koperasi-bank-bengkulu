@@ -23,6 +23,11 @@ use Excel;
 
 class BackupDataController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         return view('operator/backup_data.index');
     }
