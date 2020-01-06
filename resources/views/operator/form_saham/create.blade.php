@@ -54,7 +54,7 @@
                                                         <select name="investor_pengalihan_id" id="investor_pengalihan_id" class="form-control">
                                                             <option value="" disabled selected>-- pilih investor --</option>
                                                             @foreach ($investor_pengalihans as $investor)
-                                                                <option value="{{ $investor->id }}">{{ $investor->nm_investor }} ({{ $investor->no_cif }})</option>
+                                                                <option value="{{ $investor->id }}">{{ $investor->nm_investor }} ({{ $investor->no_sk3s }})</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

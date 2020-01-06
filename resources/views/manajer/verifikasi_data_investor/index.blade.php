@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Investor
+    <i class="fa fa-dashboard"></i>&nbsp;Approve Data Investor
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut Adalah Status Verifikasi Data Investor, Silahkan Verifikasi Data Investor Jika Belum di Verifikasi Pada Daftar Dibawah Ini !!
+            Berikut Adalah Status Approve Data Investor, Silahkan Approve Data Investor Jika Belum di Approve Pada Daftar Dibawah Ini !!
             <br>
         </p>
     </div>
@@ -19,8 +19,8 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum Terverifikasi</a></li>
-                    <li class="b"><a href="#b" data-toggle="tab">Data Terverifikasi</a></li>
+                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum TerApprove</a></li>
+                    <li class="b"><a href="#b" data-toggle="tab">Data TerApprove</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="a">
@@ -39,8 +39,8 @@
                                     <th>No Cif</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No KTP</th>
-                                    <th>Hasil Verifikasi</th>
-                                    <th>Status Verifikasi</th>
+                                    <th>Approval</th>
+                                    <th>Status Approval</th>
                                     <th>Detail</th>
                                     <th>Ubah Status</th>
                                 </tr>
@@ -80,9 +80,9 @@
 
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diapprove</span>
                                             @else
-                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
+                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diapprove</span>
                                         @endif
                                     </td>
                                     <td>
@@ -92,9 +92,9 @@
                                     </td>
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                             @else
-                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -109,18 +109,18 @@
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <input type="hidden" name="investor_id" id="investor_id">
-                                                    <label for="recipient-name" class="col-form-label">Verifikasi:</label>
+                                                    <label for="recipient-name" class="col-form-label">Approval:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
-                                                        <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
+                                                        <option value="" selected disabled>-- silahkan lakukan approval data --</option>
                                                         <option value="1">Setujui</option>
                                                         <option value="2">Tidak Setuju</option>
                                                     </select>
-                                                    <small id="emailHelp" class="form-text text-danger"><i>Data yang terverifikasi tidak dapat diubah kembali !!</i></small>
+                                                    <small id="emailHelp" class="form-text text-danger"><i>Data yang di approve tidak dapat diubah kembali !!</i></small>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Verifikasi</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Approval</button>
                                             </div>
                                         </div>
                                     </form>
@@ -138,8 +138,8 @@
                                     <th>No Cif</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No KTP</th>
-                                    <th>Hasil Verifikasi</th>
-                                    <th>Status Verifikasi</th>
+                                    <th>Approval</th>
+                                    <th>Status Approval</th>
                                     <th>Detail</th>
                                     <th>Ubah Status</th>
                                 </tr>
@@ -179,9 +179,9 @@
 
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diverifikasi</span>
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp; Belum Diapprove</span>
                                             @else
-                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diverifikasi</span>
+                                                <span class="label label-success"><i class="fa fa-check-circle"></i>&nbsp; Sudah Diapprove</span>
                                         @endif
                                     </td>
                                     <td>
@@ -191,9 +191,9 @@
                                     </td>
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                            <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                             @else
-                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                         @endif
                                     </td>
                                 </tr>

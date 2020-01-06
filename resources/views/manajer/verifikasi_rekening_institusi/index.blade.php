@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Saham Investor
+    <i class="fa fa-dashboard"></i>&nbsp;Approval Data Saham Investor
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut menu Verifikasi Data Saham Investor
+            Berikut menu Approve Data Saham Investor
             <br>
         </p>
     </div>
@@ -19,8 +19,8 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum Terverifikasi</a></li>
-                    <li class="b"><a href="#b" data-toggle="tab">Data Terverifikasi</a></li>
+                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum Diapprove</a></li>
+                    <li class="b"><a href="#b" data-toggle="tab">Data Diapprove</a></li>
                 </ul>
                 <div class="tab-content">
                     @if ($message = Session::get('success'))
@@ -38,10 +38,10 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
-                                    <th>Hasil Verifikasi</th>
+                                    <th>Status Approval</th>
+                                    <th>Hasil Approval</th>
                                     <th>Detail</th>
-                                    <th>Verifikasi</th>
+                                    <th>Approval</th>
                                 </tr>
                             </thead>
                             @php
@@ -62,14 +62,14 @@
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diapprove</span>
                                                 @else
-                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
+                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diapprove</span>
                                         @endif
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == '0')
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diapprove</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
                                                 @elseif($saham->status_verifikasi == "2")
@@ -85,9 +85,9 @@
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                             @else
-                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -97,24 +97,24 @@
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Verifikasi Data Investor <b id="nm_investor"></b></h5>
+                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Approval Data Investor <b id="nm_investor"></b></h5>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <input type="hidden" name="saham_institusi_id" id="saham_institusi_id">
                                                     <input type="hidden" name="sk3s_lama" id="sk3s_lama">
-                                                    <label for="recipient-name" class="col-form-label">Verifikasi:</label>
+                                                    <label for="recipient-name" class="col-form-label">Approval:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
-                                                        <option value="" selected disabled>-- silahkan lakukan verifikasi data --</option>
+                                                        <option value="" selected disabled>-- silahkan lakukan approve data --</option>
                                                         <option value="1">Setujui</option>
                                                         <option value="2">Tidak Setuju</option>
                                                     </select>
-                                                    <small id="emailHelp" class="form-text text-danger"><i>Data yang terverifikasi tidak dapat diubah kembali !!</i></small>
+                                                    <small id="emailHelp" class="form-text text-danger"><i>Data yang terapprove tidak dapat diubah kembali !!</i></small>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Batalkan</button>
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Verifikasi</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp;Approval</button>
                                             </div>
                                         </div>
                                     </form>
@@ -132,9 +132,9 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
-                                    <th>Hasil Verifikasi</th>
-                                    <th>Verifikasi</th>
+                                    <th>Status Approval</th>
+                                    <th>Hasil Approval</th>
+                                    <th>Approval</th>
                                 </tr>
                             </thead>
                             @php
@@ -155,14 +155,14 @@
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == '0')
-                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                            <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diapprove</span>
                                                 @else
-                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
+                                                    <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diapprove</span>
                                         @endif
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == '0')
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diapprove</span>
                                             @elseif($saham->status_verifikasi == '1')
                                                 <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
                                                 @elseif($saham->status_verifikasi == "2")
@@ -173,9 +173,9 @@
                                     </td>
                                     <td>
                                         @if($saham->status_verifikasi == "0")
-                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                            <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                             @else
-                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $saham->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                         @endif
                                     </td>
                                 </tr>

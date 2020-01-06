@@ -51,7 +51,7 @@ class SahamInvestorController extends Controller
     public function tambahSaham()
     {
         $investors = Investor::select('id','nm_investor')->where('status_verifikasi','1')->get();
-        $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('saham_investors.id','nm_investor','no_cif')
+        $investor_pengalihans = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')->select('saham_investors.id','nm_investor','no_sk3s')
                                 ->where('saham_investors.status_verifikasi','1')->get();
         return view('operator/form_saham.create',compact('investors','investor_pengalihans'));
     }
