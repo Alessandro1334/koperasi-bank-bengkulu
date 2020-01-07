@@ -27,8 +27,8 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum Terverifikasi</a></li>
-                    <li class="b"><a href="#b" data-toggle="tab">Data Terverifikasi</a></li>
+                    <li class="active a"><a href="#a" data-toggle="tab">Data Belum DiApprove</a></li>
+                    <li class="b"><a href="#b" data-toggle="tab">Data DiApprove</a></li>
                     <div class="btn-tambah">
                         <a href="{{ route('operator.tambah_saham_institusi') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                    </div>
@@ -43,7 +43,7 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
+                                    <th>Status Approval</th>
                                     <th>Detail</th>
                                     <th>Cetak Data</th>
                                 </tr>
@@ -106,8 +106,8 @@
                                     <th>Jumlah Saham</th>
                                     <th>Terbilang Saham</th>
                                     <th>Status Saham</th>
-                                    <th>Status Verifikasi</th>
-                                    <th>Hasil Verifikasi</th>
+                                    <th>Status Approval</th>
+                                    <th>Hasil Approval</th>
                                     <th>Detail</th>
                                     <th>Data Saham</th>
                                     <th>Cetak SK3S</th>
@@ -133,14 +133,14 @@
                                         </td>
                                         <td>
                                             @if($saham->status_verifikasi == '0')
-                                                <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diverifikasi</span>
+                                                <span class="label label-danger"><i class="fa fa-clock-o"></i>&nbsp;belum diapprove</span>
                                                     @else
-                                                        <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diverifikasi</span>
+                                                        <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp;sudah diapprove</span>
                                             @endif
                                         </td>
                                         <td>
                                             @if($saham->status_verifikasi == '0')
-                                                <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diverifikasi</span>
+                                                <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp;menunggu diapprove</span>
                                                 @elseif($saham->status_verifikasi == '1')
                                                     <span class="label label-success"><i class="fa fa-check"></i>&nbsp;disetujui</span>
                                                     @elseif($saham->status_verifikasi == "2")

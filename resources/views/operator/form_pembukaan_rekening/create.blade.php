@@ -54,7 +54,6 @@
                                                     <label for="">Jenis Rekening: <a style="color:red">(*)</a></label>
                                                     <select name="jenis_rekening" class="form-control" id="jenis_rekening" required>
                                                         <option value="perorangan" selected>Perorangan</option>
-                                                        <option value="nonperorangan">Non Perorangan</option>
                                                     </select>
                                                 </div>
 

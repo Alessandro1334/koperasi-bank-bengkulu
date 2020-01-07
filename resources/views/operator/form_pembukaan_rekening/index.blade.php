@@ -32,8 +32,8 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="a active"><a href="#a" data-toggle="tab">Data Rekening Belum Terverifikasi</a></li>
-                <li class="b"><a href="#b" data-toggle="tab">Data Rekening Terverifikasi</a></li>
+                <li class="a active"><a href="#a" data-toggle="tab">Data Rekening Belum DiApprove</a></li>
+                <li class="b"><a href="#b" data-toggle="tab">Data Rekening DiApprove</a></li>
                 <div class="btn-tambah">
                     <a href="{{ route('operator.tambah_investor') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                </div>

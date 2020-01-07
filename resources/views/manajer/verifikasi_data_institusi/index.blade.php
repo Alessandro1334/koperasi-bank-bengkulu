@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('location','Dashboard')
 @section('location2')
-    <i class="fa fa-dashboard"></i>&nbsp;Verifikasi Data Institusi
+    <i class="fa fa-dashboard"></i>&nbsp;Approve Data Institusi
 @endsection
 @section('user-login','Manajer')
 @section('sidebar-menu')
@@ -11,7 +11,7 @@
     <div class="callout callout-info ">
         <h4>Perhatian!</h4>
         <p>
-            Berikut Adalah Status Verifikasi Data Institusi, Silahkan Verifikasi Data Institusi Jika Belum di Verifikasi Pada Daftar Dibawah Ini !!
+            Berikut Adalah Status Approval Data Institusi, Silahkan Approve Data Institusi Jika Belum di Approve Pada Daftar Dibawah Ini !!
             <br>
         </p>
     </div>
@@ -73,7 +73,7 @@
                                         @if($investor->status_verifikasi == "0")
                                             <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                             @else
-                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Verifikasi</a>
+                                                <a onclick="verifikasi({{ $investor->id }})" class="btn btn-primary disabled" style="cursor:not-allowed;"><i class="fa fa-check-circle"></i>&nbsp; Approval</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -88,7 +88,7 @@
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <input type="hidden" name="institusi_id" id="institusi_id">
-                                                    <label for="recipient-name" class="col-form-label">Verifikasi:</label>
+                                                    <label for="recipient-name" class="col-form-label">Approval:</label>
                                                     <select name="status_verifikasi" id="status_verifikasi" class="form-control">
                                                         <option value="" selected disabled>-- silahkan lakukan approve data --</option>
                                                         <option value="1">Setujui</option>
@@ -119,9 +119,9 @@
                                     <th>Tipe Perusahaan</th>
                                     <th>Karakteristik</th>
                                     <th>Bidang Usaha</th>
-                                    <th>Hasil Verifikasi</th>
+                                    <th>Hasil Approval</th>
                                     <th>Detail</th>
-                                    <th>Status Verifikasi</th>
+                                    <th>Status Approval</th>
                                 </tr>
                             </thead>
                             @php

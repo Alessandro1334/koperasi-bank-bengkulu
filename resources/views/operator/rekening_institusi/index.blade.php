@@ -27,8 +27,8 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active a"><a href="#a" data-toggle="tab">Rekening Institusi Belum Terverifikasi</a></li>
-                <li class="b"><a href="#b" data-toggle="tab">Rekening Institusi Terverifikasi</a></li>
+                <li class="active a"><a href="#a" data-toggle="tab">Rekening Institusi Belum DiApprove</a></li>
+                <li class="b"><a href="#b" data-toggle="tab">Rekening Institusi DiApprove</a></li>
                 <div class="btn-tambah">
                     <a href="{{ route('operator.tambah_institusi') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Tambah Data</a>
                </div>
@@ -50,7 +50,7 @@
                                 <th>Karakteristik</th>
                                 <th>Bidang Usaha</th>
                                 <th>Tipe Perusahaan</th>
-                                <th>Status Verifikasi</th>
+                                <th>Status Approval</th>
                                 <th>Detail</th>
                                 <th>Cetak Data</th>
                                 <th>Aksi</th>
@@ -74,7 +74,7 @@
                                             @elseif($investor->status_verifikasi == "2")
                                                 <span class="label label-danger"><i class="fa fa-close"></i>&nbsp;Tidak Aktif</span>
                                                 @else
-                                                <span class="label label-warning"><i class="fa fa-close"></i>&nbsp;Menunggu Verifikasi</span>
+                                                <span class="label label-warning"><i class="fa fa-close"></i>&nbsp;Menunggu diapprove</span>
                                         @endif
                                     </td>
                                     <td>
@@ -128,7 +128,7 @@
                                 <th>Karakteristik</th>
                                 <th>Bidang Usaha</th>
                                 <th>Tipe Perusahaan</th>
-                                <th>Status Verifikasi</th>
+                                <th>Status Approval</th>
                                 <th>Detail</th>
                                 <th>Cetak Data</th>
                             </tr>

@@ -70,7 +70,7 @@
                                     <td> {{ $investor->no_ktp }} </td>
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Verifikasi</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Approval</span>
                                         @elseif($investor->status_verifikasi == "1")
                                             <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Disetujui</span>
                                         @else
@@ -104,7 +104,7 @@
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Verifikasi Data Investor <b id="nm_investor"></b></h5>
+                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"></i>&nbsp;Form Approval Data Investor <b id="nm_investor"></b></h5>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -169,7 +169,7 @@
                                     <td> {{ $investor->no_ktp }} </td>
                                     <td>
                                         @if($investor->status_verifikasi == "0")
-                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Verifikasi</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"></i>&nbsp; Menunggu Di Approve</span>
                                             @elseif($investor->status_verifikasi == "1")
                                                 <span class="label label-primary"><i class="fa fa-check-circle"></i>&nbsp; Disetujui</span>
                                                 @else

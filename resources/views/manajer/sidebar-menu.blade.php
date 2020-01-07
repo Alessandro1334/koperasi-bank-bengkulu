@@ -17,7 +17,7 @@
         </a>
     </li> --}}
 
-    <li class="header" style="font-weight:bold;">Verifikasi</li>
+    <li class="header" style="font-weight:bold;">Approval</li>
     <li class="treeview {{ set_active(['manajer.verifikasi_data_investor','manajer.verifikasi_rekening_investor']) }}">
         <a href="#">
             <i class="fa fa-bar-chart"></i> <span>Investor Perorangan</span>
@@ -26,8 +26,8 @@
             </span>
         </a>
         <ul class="treeview-menu ">
-            <li class="{{ set_active(['manajer.verifikasi_data_investor']) }}"><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Verifikasi Data Investor</a></li>
-            <li class="{{ set_active(['manajer.verifikasi_rekening_investor']) }}"><a href="{{ route('manajer.verifikasi_rekening_investor') }}"><i class="fa fa-circle-o"></i>Verifikasi Saham Investor</a></li>
+            <li class="{{ set_active(['manajer.verifikasi_data_investor']) }}"><a href="{{ route('manajer.verifikasi_data_investor') }}"><i class="fa fa-circle-o"></i>Approve Data Investor</a></li>
+            <li class="{{ set_active(['manajer.verifikasi_rekening_investor']) }}"><a href="{{ route('manajer.verifikasi_rekening_investor') }}"><i class="fa fa-circle-o"></i>Approve Saham Investor</a></li>
         </ul>
     </li>
 
@@ -39,8 +39,8 @@
             </span>
         </a>
         <ul class="treeview-menu ">
-            <li class="{{ set_active(['manajer.verifikasi_data_institusi']) }}"><a href="{{ route('manajer.verifikasi_data_institusi') }}"><i class="fa fa-circle-o"></i>Verifikasi Data Institusi</a></li>
-            <li class="{{ set_active(['manajer.verifikasi_rekening_institusi']) }}"><a href="{{ route('manajer.verifikasi_rekening_institusi') }}"><i class="fa fa-circle-o"></i>Verifikasi Saham Institusi</a></li>
+            <li class="{{ set_active(['manajer.verifikasi_data_institusi']) }}"><a href="{{ route('manajer.verifikasi_data_institusi') }}"><i class="fa fa-circle-o"></i>Approve Data Institusi</a></li>
+            <li class="{{ set_active(['manajer.verifikasi_rekening_institusi']) }}"><a href="{{ route('manajer.verifikasi_rekening_institusi') }}"><i class="fa fa-circle-o"></i>Approve Saham Institusi</a></li>
         </ul>
     </li>
 
