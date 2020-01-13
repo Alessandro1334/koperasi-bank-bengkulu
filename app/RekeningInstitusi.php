@@ -11,7 +11,7 @@ class RekeningInstitusi extends Model
         'nm_institusi','kota_institusi','provinsi_institusi','negara_institusi',
         'kode_pos_institusi','email_kantor','telephone_kantor','domisili','tipe_perusahaan',
         'karakteristik','bidang_usaha','no_akta_pendirian','tanggal_akta_pendirian','no_akta_perubahan_terakhir','tanggal_akta_perubahan_terakhir',
-        'no_npwp','tgl_registrasi_npwp','no_siup','tgl_kadaluarsa_siup','no_skdp','tgl_kadaluarsa_skdp','no_tdp','tgl_kadaluarsa_tdp',
+        'no_npwp','tgl_registrasi_npwp','no_siup','tgl_kadaluarsa_siup','no_skdp','tgl_kadaluarsa_skdp','no_tdp','tanggal_kadaluarsa_tdp',
         'no_izin_pma','status_verifikasi'
     ];
 }

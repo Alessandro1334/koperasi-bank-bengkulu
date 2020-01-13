@@ -14,6 +14,8 @@ use App\AgenPemasaran;
 use App\PejabatBerwenang;
 use App\SahamInvestor;
 use Gate;
+use App\Log;
+use Auth;
 
 class VerifikasiDataInvestorController extends Controller
 {
@@ -48,6 +50,7 @@ class VerifikasiDataInvestorController extends Controller
 
     public function verifikasi(Request $request){
         $last = Investor::max('no_cif');
+
         // return $last;
         if($request->status_verifikasi == "1"){
             if($last == NULL || $last == ""){
@@ -64,6 +67,16 @@ class VerifikasiDataInvestorController extends Controller
                     'no_cif'    => sprintf('%05s',$no_urut),
                ]);
             }
+
+            $level = "manajer";
+            $aksi = "menyetujui data investor";
+            $halaman = "verifikasi data investor";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         else{
             if($last == NULL || $last == ""){
@@ -78,6 +91,16 @@ class VerifikasiDataInvestorController extends Controller
                     'status_verifikasi' => $request->status_verifikasi,
                ]);
             }
+
+            $level = "manajer";
+            $aksi = "tidak menyetujui data investor";
+            $halaman = "verifikasi data investor";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         return redirect()->route('manajer.verifikasi_data_investor')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }

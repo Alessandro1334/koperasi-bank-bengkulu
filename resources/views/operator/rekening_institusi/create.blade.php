@@ -188,7 +188,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa SIUP: <a style="color:red">(*)</a></label>
-                                                    <input type="date" name="tgl_Kadaluarsa_siup" class="form-control" id="tgl_Kadaluarsa_siup" required >
+                                                    <input type="date" name="tgl_kadaluarsa_siup" class="form-control" id="tgl_kadaluarsa_siup" required >
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -198,7 +198,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa SKDP: <a style="color:red">(*)</a></label>
-                                                    <input type="date" name="tgl_Kadaluarsa_skdp" class="form-control" id="tgl_Kadaluarsa_skdp" required >
+                                                    <input type="date" name="tgl_kadaluarsa_skdp" class="form-control" id="tgl_kadaluarsa_skdp" required >
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -208,7 +208,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa TDP: <a style="color:red">(*)</a></label>
-                                                    <input type="date" name="tgl_Kadaluarsa_tdp" class="form-control" id="tgl_Kadaluarsa_tdp" required >
+                                                    <input type="date" name="tanggal_kadaluarsa_tdp" class="form-control" id="tanggal_kadaluarsa_tdp" required >
                                                 </div>
 
                                                 <div class="form-group col-md-4">

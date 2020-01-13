@@ -14,9 +14,12 @@ use App\DataPasanganOrangTuaInvestor;
 use App\Persetujuan;
 use App\PekerjaanInvestor;
 use App\AgenPemasaran;
+use App\Log;
+use Auth;
 use PDF;
 use Gate;
 use Carbon\Carbon;
+use Crypt;
 
 class SahamInvestorController extends Controller
 {
@@ -101,17 +104,28 @@ class SahamInvestorController extends Controller
         $saham->investor_id_lama = $request->investor_id_lama;
         $saham->save();
 
+        $level = "operator";
+        $aksi = "menambahkan saham investor";
+        $halaman = "pembelian saham";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('operator.manajemen_saham')->with(['success'   =>  'Pembelian / Penglihan Saham Berhasil Dilakukan !!']);
     }
 
     public function sk3s($id){
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%A, %d %B %Y");
+        $data = Crypt::decrypt($id);
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham','perubahan_ke')
-                                ->where('saham_investors.id',$id)
+                                ->where('saham_investors.id',$data)
                                 ->get();
                                 // return $ketua;
         $pdf = PDF::loadView('operator/form_saham.sk3s',compact('barcode','ketua','sk3s','time_indo'));
@@ -124,11 +138,12 @@ class SahamInvestorController extends Controller
         // return $_GET['id_spmpkop'];
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
+        $data = Crypt::decrypt($request->id_spmpkop);
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
                                 ->select('nm_investor','no_register','seri_spmpkop','seri_formulir','no_sk3s','jumlah_saham','terbilang_saham')
-                                ->where('saham_investors.id',$request->id_spmpkop)
+                                ->where('saham_investors.id',$data)
                                 ->get();
                                 // return $sk3s;
         $pdf = PDF::loadView('operator/form_saham.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
@@ -149,8 +164,9 @@ class SahamInvestorController extends Controller
     }
 
     public function cetak($id){
+        $data = Crypt::decrypt($id);
         $investor = SahamInvestor::join('investors','investors.id','saham_investors.investor_id')
-                            ->where('saham_investors.id',$id)
+                            ->where('saham_investors.id',$data)
                             ->first();
         $pdf = PDF::loadView('operator/form_saham.cetak',compact('investor'));
         $pdf->setPaper('a4', 'portrait');

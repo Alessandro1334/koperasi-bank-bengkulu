@@ -12,9 +12,12 @@ use App\Persetujuan;
 use App\AhliWarisInvestor;
 use App\AgenPemasaran;
 use App\PejabatBerwenang;
+use App\Log;
+use Auth;
 use DB;
 use Gate;
 use PDF;
+use Crypt;
 
 class FormPembukaanRekening extends Controller
 {
@@ -92,6 +95,17 @@ class FormPembukaanRekening extends Controller
 
         $last = Investor::latest('id')->select('id')->first();
 
+        $level = "operator";
+        $aksi = "tambah investor individual";
+        $halaman = "manajemen investor";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
+
         $pekerjaan = new PekerjaanInvestor;
         $pekerjaan->investor_id =   $last->id;
         $pekerjaan->pekerjaan = $request->pekerjaan;
@@ -103,7 +117,7 @@ class FormPembukaanRekening extends Controller
         $pekerjaan->provinsi_perusahaan = $request->provinsi_perusahaan;
         $pekerjaan->kode_pos_perusahaan = $request->kode_pos_perusahaan;
         $pekerjaan->telp_perusahaan = $request->telp_perusahaan;
-        $pekerjaan->email_perusahaan = $request->email_perusahanm;
+        $pekerjaan->email_perusahaan = $request->email_perusahaan;
         $pekerjaan->fax_perusahaan = $request->fax_perusahaan;
         $pekerjaan->jabatan = $request->jabatan;
         $pekerjaan->jenis_usaha = $request->jenis_usaha;
@@ -122,6 +136,7 @@ class FormPembukaanRekening extends Controller
         $pasangan->telp_rumah_pasangan_atau_orang_tua = $request->telp_rumah_pasangan_atau_orang_tua;
         $pasangan->ponsel_pasangan_atau_orang_tua = $request->ponsel_pasangan_atau_orang_tua;
         $pasangan->pekerjaan_pasangan_atau_orang_tua = $request->pekerjaan_pasangan_atau_orang_tua;
+        $pasangan->nm_perusahaan_pasangan_atau_orang_tua = $request->nm_perusahaan_pasangan_atau_orang_tua;
         $pasangan->alamat_perusahaan_pasangan_atau_orang_tua = $request->alamat_perusahaan_pasangan_atau_orang_tua;
         $pasangan->kota_perusahaan_pasangan_atau_orang_tua = $request->kota_perusahaan_pasangan_atau_orang_tua;
         $pasangan->provinsi_perusahaan_pasangan_atau_orang_tua = $request->provinsi_perusahaan_pasangan_atau_orang_tua;
@@ -162,13 +177,15 @@ class FormPembukaanRekening extends Controller
     }
 
     public function edit($id){
-        $investor = Investor::find($id);
-        $dokumen = DokumenPendukungInvestor::where('investor_id',$id)->first();
-        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$id)->first();
-        $persetujuan = Persetujuan::where('investor_id',$id)->first();
-        $pekerjaan = PekerjaanInvestor::where('investor_id',$id)->first();
+        $data = Crypt::decrypt($id);
+        $investor = Investor::find($data);
+        $dokumen = DokumenPendukungInvestor::where('investor_id',$data)->first();
+        $pasangan = DataPasanganOrangTuaInvestor::where('investor_id',$data)->first();
+        $persetujuan = Persetujuan::where('investor_id',$data)->first();
+        $pekerjaan = PekerjaanInvestor::where('investor_id',$data)->first();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
+        // return $investor->pekerjaan;
         return view('operator/form_pembukaan_rekening.edit',compact('investor','dokumen','pasangan','persetujuan','pekerjaan','agens','pejabats'));
     }
 
@@ -233,7 +250,7 @@ class FormPembukaanRekening extends Controller
             'provinsi_perusahaan'   =>  $request->provinsi_perusahaan,
             'kode_pos_perusahaan'   =>  $request->kode_pos_perusahaan,
             'telp_perusahaan'   =>  $request->telp_perusahaan,
-            'email_perusahaan'  =>  $request->email_perusahann,
+            'email_perusahaan'  =>  $request->email_perusahaan,
             'fax_perusahaan'    =>  $request->fax_perusahaan,
             'jabatan'   =>  $request->jabatan,
             'jenis_usaha'   =>  $request->jenis_usaha,
@@ -252,6 +269,7 @@ class FormPembukaanRekening extends Controller
             'ponsel_pasangan_atau_orang_tua' => $request->ponsel_pasangan_atau_orang_tua,
             'pekerjaan_pasangan_atau_orang_tua' => $request->pekerjaan_pasangan_atau_orang_tua,
             'alamat_perusahaan_pasangan_atau_orang_tua' => $request->alamat_perusahaan_pasangan_atau_orang_tua,
+            'nm_perusahaan_pasangan_atau_orang_tua' => $request->nm_perusahaan_pasangan_atau_orang_tua,
             'kota_perusahaan_pasangan_atau_orang_tua' => $request->kota_perusahaan_pasangan_atau_orang_tua,
             'provinsi_perusahaan_pasangan_atau_orang_tua' => $request->provinsi_perusahaan_pasangan_atau_orang_tua,
             'kode_pos_perusahaan_pasangan_atau_orang_tua' => $request->kode_pos_perusahaan_pasangan_atau_orang_tua,
@@ -274,6 +292,16 @@ class FormPembukaanRekening extends Controller
             'fatca' => $request->fatca,
         ]);
 
+        $level = "operator";
+        $aksi = "ubah data investor individual id = ".$id;
+        $halaman = "manajemen investor individual";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         $persetujuan = Persetujuan::where('investor_id',$id)->update([
             'agen_pemasaran_id' => $request->agen_pemasaran_id,
             'tanda_tangan_agen_pemasaran'   => $request->tanda_tangan_agen_pemasaran,
@@ -286,7 +314,6 @@ class FormPembukaanRekening extends Controller
         ]);
 
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Update !!']);
-
     }
 
     public function delete($id){
@@ -296,6 +323,15 @@ class FormPembukaanRekening extends Controller
         DataPasanganOrangTuaInvestor::where('investor_id',$id)->delete();
         Persetujuan::where('investor_id',$id)->delete();
 
+        $level = "operator";
+        $aksi = "hapus investor id = ".$id;
+        $halaman = "manajemen investor";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
 
         return redirect()->route('operator.form_pembukaan_rekening')->with(['success'   =>  'Data Berhasil Di Hapus !!']);
     }
@@ -338,13 +374,14 @@ class FormPembukaanRekening extends Controller
     }
 
     public function cetak($id){
+        $data = Crypt::decrypt($id);
         $investor = Investor::join('dokumen_pendukung_investors','dokumen_pendukung_investors.investor_id','investors.id')
                             ->join('data_pasangan_orang_tua_investors','data_pasangan_orang_tua_investors.investor_id','investors.id')
                             ->join('persetujuans','persetujuans.investor_id','investors.id')
                             ->join('pekerjaan_investors','pekerjaan_investors.investor_id','investors.id')
                             ->join('agen_pemasarans','agen_pemasarans.id','agen_pemasaran_id')
                             ->join('pejabat_berwenangs','pejabat_berwenangs.id','pejabat_berwenang_id')
-                            ->where('investors.id',$id)
+                            ->where('investors.id',$data)
                             ->first();
         $pdf = PDF::loadView('operator/form_pembukaan_rekening.cetak',compact('investor'));
         $pdf->setPaper('a4', 'portrait');

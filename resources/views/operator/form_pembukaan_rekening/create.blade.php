@@ -649,7 +649,7 @@
 
                                                     <div class="form-group col-md-4">
                                                         <label for="">Kode Pos: <a style="color:red;">hanya angka</a> </label>
-                                                        <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tuaenis_usaha" class="form-control" id="" placeholder="Masukan Kode Pos ">
+                                                        <input type="text" name="kode_pos_perusahaan_pasangan_atau_orang_tua" class="form-control" id="" placeholder="Masukan Kode Pos ">
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="">Telephone: <a style="color:red;">hanya angka</a></label>

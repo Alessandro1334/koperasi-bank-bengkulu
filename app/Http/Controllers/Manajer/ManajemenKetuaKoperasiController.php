@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\KetuaKoperasi;
+use App\Log;
+use Auth;
 use Gate;
 
 class ManajemenKetuaKoperasiController extends Controller
@@ -30,6 +32,16 @@ class ManajemenKetuaKoperasiController extends Controller
         $ketua->telephone = $request->telephone;
         $ketua->save();
 
+        $level = "manajer";
+        $aksi = "menambahkan ketua koperasi";
+        $halaman = "manajemen ketua koperasi";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_ketua_koperasi')->with(['success'   =>  'Data Ketua Koperasi Berhasil Ditambahkan !!']);
     }
 
@@ -46,11 +58,33 @@ class ManajemenKetuaKoperasiController extends Controller
             'telephone'   => $request->telephone,
             'email'  => $request->email,
         ]);
+
+        $level = "manajer";
+        $aksi = "mengubah data ketua koperasi id = ".$request->id;
+        $halaman = "manajemen ketua koperasi";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_ketua_koperasi')->with(['success'   =>  'Data Ketua Koperasi Berhasil Diubah !!']);
     }
 
     public function delete(Request $request) {
         $ketua = KetuaKoperasi::destroy($request->id);
+
+        $level = "manajer";
+        $aksi = "menghapus data ketua koperasi id = ".$request->id;
+        $halaman = "manajemen ketua koperasi";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_ketua_koperasi')->with(['success'   =>  'Data Ketua Koperasi Berhasil Dihapus !!']);
     }
 
@@ -61,6 +95,16 @@ class ManajemenKetuaKoperasiController extends Controller
         $ketua = KetuaKoperasi::where('id',$id)->update([
             'status'    =>  '1',
         ]);
+
+        $level = "manajer";
+        $aksi = "mengaktifkan ketua koperasi id = ".$id;
+        $halaman = "manajemen ketua koperasi";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
 
         return $ketua;
     }

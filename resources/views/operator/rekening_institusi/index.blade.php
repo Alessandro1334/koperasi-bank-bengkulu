@@ -82,11 +82,14 @@
                                             <i class="fa fa-search"></i>
                                         </a>
                                     </td>
+                                    @php
+                                        $data = Crypt::encrypt($investor->id);
+                                    @endphp
                                     <td>
-                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$data]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
-                                        <a style="float:left;" href="{{ route('operator.tambah_institusi_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a style="float:left;" href="{{ route('operator.tambah_institusi_post.edit',[$data]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -158,8 +161,11 @@
                                             <i class="fa fa-search"></i>
                                         </a>
                                     </td>
+                                    @php
+                                        $param = Crypt::encrypt($investor->id);
+                                    @endphp
                                     <td>
-                                        <a href="{{ route('operator.cetak_data_institusi',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                        <a href="{{ route('operator.cetak_data_institusi',[$data]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
 
                                 </tr>

@@ -87,8 +87,11 @@
                                                 <i class="fa fa-search"></i>
                                             </a>
                                         </td>
+                                        @php
+                                            $data = Crypt::encrypt($saham->id);
+                                        @endphp
                                         <td>
-                                            <a href="{{ route('operator.cetak_saham',[$saham->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                            <a href="{{ route('operator.cetak_saham',[$data]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -145,12 +148,16 @@
                                                 <i class="fa fa-search"></i>
                                             </a>
                                         </td>
+                                        @php
+                                                $data = Crypt::encrypt($saham->id);
+                                            @endphp
                                         <td>
-                                            <a href="{{ route('operator.cetak_saham',[$saham->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                            <a href="{{ route('operator.cetak_saham',[$data]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                         </td>
                                         <td>
+
                                             @if ($saham->status_verifikasi == '1')
-                                                <a href="{{ route('operator.sk3s',[$saham->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
+                                                <a href="{{ route('operator.sk3s',[$data]) }}" class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak SK3S</a>
                                                 @else
                                                 <a style="color:red;"><i>tidak dapat mencetak sk3s</i></a>
                                             @endif
@@ -158,7 +165,7 @@
                                         <td>
                                             @if ($saham->status_verifikasi == '1')
                                                 <form action="{{ route('operator.spmpkop') }}" method="get">
-                                                    <input type="hidden" name="id_spmpkop" value="{{ $saham->id }}" id="id_spmpkop">
+                                                    <input type="hidden" name="id_spmpkop" value="{{ $data }}" id="id_spmpkop">
                                                     <button type="submit" class="btn btn-info btn-sm spmpkop">
                                                         <i class="fa fa-print">&nbsp;Cetak SPMPKOP</i>
                                                     </button>

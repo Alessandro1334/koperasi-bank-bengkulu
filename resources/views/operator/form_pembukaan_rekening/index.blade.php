@@ -40,6 +40,12 @@
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="a">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
+                        </div>
+                    @endif
                     <table class="table table-bordered table-hover investor">
                         <thead>
                             <tr>
@@ -75,11 +81,14 @@
                                             <i class="fa fa-search"></i>
                                         </a>
                                     </td>
+                                    @php
+                                        $param = Crypt::encrypt($investor->id);
+                                    @endphp
                                     <td>
-                                        <a href="{{ route('operator.cetak_investor_perorangan',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                        <a href="{{ route('operator.cetak_investor_perorangan',[$param]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
-                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$param]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -114,13 +123,6 @@
                 </div>
 
                 <div class="tab-pane" id="b">
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                            <i class="fa fa-success-circle"></i><strong>Berhasil :</strong> {{ $message }}
-                        </div>
-                    @endif
                     <table class="table table-bordered table-hover investor">
                         <thead>
                             <tr>
@@ -156,11 +158,14 @@
                                             <i class="fa fa-search"></i>
                                         </a>
                                     </td>
+                                    @php
+                                        $param = Crypt::encrypt($investor->id);
+                                    @endphp
                                     <td>
-                                        <a href="{{ route('operator.cetak_investor_perorangan',[$investor->id]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
+                                        <a href="{{ route('operator.cetak_investor_perorangan',[$param]) }}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp; Cetak</a>
                                     </td>
                                     <td>
-                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$investor->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a style="float:left;" href="{{ route('operator.tambah_investor_post.edit',[$param]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-trash"></i>
                                         </button>

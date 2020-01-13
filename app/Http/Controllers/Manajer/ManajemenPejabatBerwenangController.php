@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PejabatBerwenang;
+use App\Log;
+use Auth;
 use Gate;
 
 class ManajemenPejabatBerwenangController extends Controller
@@ -30,6 +32,16 @@ class ManajemenPejabatBerwenangController extends Controller
         $pejabat->telephone = $request->telephone;
         $pejabat->save();
 
+        $level = "manajer";
+        $aksi = "menambahkan agen pemasaran";
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_pejabat_berwenang')->with(['success'   =>  'Data Pejabat Berwenang Berhasil Ditambahkan !!']);
     }
 
@@ -46,11 +58,33 @@ class ManajemenPejabatBerwenangController extends Controller
             'telephone'   => $request->telephone,
             'email'  => $request->email,
         ]);
+
+        $level = "manajer";
+        $aksi = "mengubah data pejabat berwenang id = ".$request->id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_pejabat_berwenang')->with(['success'   =>  'Data Pejabat Berwenang Berhasil Diubah !!']);
     }
 
     public function delete(Request $request) {
         $pejabat = PejabatBerwenang::destroy($request->id);
+
+        $level = "manajer";
+        $aksi = "menghapus data pejabat berwenang id = ".$request->id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_pejabat_berwenang')->with(['success'   =>  'Data Pejabat Berwenang Berhasil Dihapus !!']);
     }
 
@@ -58,7 +92,15 @@ class ManajemenPejabatBerwenangController extends Controller
         $pejabat = PejabatBerwenang::where('id',$id)->update([
             'status'    =>  '1',
         ]);
-
+        $level = "manajer";
+        $aksi = "mengaktifkan pejabat berwenang id = ".$id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
         return $pejabat;
     }
 
@@ -66,7 +108,15 @@ class ManajemenPejabatBerwenangController extends Controller
         $pejabat = PejabatBerwenang::where('id',$id)->update([
             'status'    =>  '0',
         ]);
-
+        $level = "manajer";
+        $aksi = "menonaktifkan pejabat berwenang id = ".$id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
         return $pejabat;
     }
 }

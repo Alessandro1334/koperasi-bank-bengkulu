@@ -20,8 +20,11 @@ use App\AgenPemasaran;
 use App\PejabatBerwenang;
 use App\investor_pengalihans;
 use Carbon\Carbon;
+use App\Log;
+use Auth;
 use Gate;
 use PDF;
+use Illuminate\Support\Facades\Crypt;
 
 class PembelianSahamInstitusiController extends Controller
 {
@@ -103,16 +106,27 @@ class PembelianSahamInstitusiController extends Controller
         $saham->institusi_id_lama = $request->institusi_id_lama;
         $saham->save();
 
+        $level = "operator";
+        $aksi = "menambahkan saham investor nonperorangan";
+        $halaman = "pembelian saham nonperorangan";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('operator.pembelian_saham_institusi')->with(['success'   =>  'Pembelian / Penglihan Saham Berhasil Dilakukan !!']);
     }
 
     public function sk3s($id){
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%A, %d %B %Y");
+        $data = Crypt::decrypt($id);
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
-                            ->where('saham_institusis.id',$id)
+                            ->where('saham_institusis.id',$data)
                             ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.sk3s',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
@@ -120,15 +134,16 @@ class PembelianSahamInstitusiController extends Controller
     }
 
     public function detail(Request $request){
-        $rekening = RekeningInstitusi::find($request->institusi_id);
-        $dokumen = DokumenPendukungInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $keuangan = DataKeuanganiInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $instruksi = InstruksiPembayaraniInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $saham = PemegangSahamInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $direksi = SusunanDireksiInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$request->institusi_id)->first();
-        $saham_institusi = SahamInstitusi::where('institusi_id',$request->institusi_id)->first();
+        $data = Crypt::decrypt($request->institusi_id);
+        $rekening = RekeningInstitusi::find($data);
+        $dokumen = DokumenPendukungInstitusi::where('institusi_id',$data)->first();
+        $keuangan = DataKeuanganiInstitusi::where('institusi_id',$data)->first();
+        $instruksi = InstruksiPembayaraniInstitusi::where('institusi_id',$data)->first();
+        $saham = PemegangSahamInstitusi::where('institusi_id',$data)->first();
+        $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$data)->first();
+        $direksi = SusunanDireksiInstitusi::where('institusi_id',$data)->first();
+        $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$data)->first();
+        $saham_institusi = SahamInstitusi::where('institusi_id',$data)->first();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
         return compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats','saham_institusi');
@@ -137,10 +152,11 @@ class PembelianSahamInstitusiController extends Controller
     public function spmpkop(Request $request){
         setlocale (LC_TIME, 'id_ID');
         $time_indo = Carbon::now()->formatLocalized("%d %B %Y");
+        $data = Crypt::decrypt($request->saham_id);
         $barcode = Barcodes::where('status','aktif')->select('nm_file')->first();
         $ketua = KetuaKoperasi::where('status','1')->select('nm_ketua_koperasi')->first();
         $sk3s = SahamInstitusi::join('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')->where('saham_institusis.status_verifikasi','1')
-                ->where('saham_institusis.id',$request->saham_id)
+                ->where('saham_institusis.id',$data)
                 ->get();
         $pdf = PDF::loadView('operator/form_saham_institusi.spmpkop',compact('barcode','ketua','sk3s','time_indo'));
         $pdf->setPaper('a4', 'portrait');
@@ -148,8 +164,9 @@ class PembelianSahamInstitusiController extends Controller
     }
 
     public function cetak($id){
+        $data = Crypt::decrypt($id);
         $investor = SahamInstitusi::leftJoin('rekening_institusis','rekening_institusis.id','saham_institusis.institusi_id')
-                            ->where('saham_institusis.id',$id)
+                            ->where('saham_institusis.id',$data)
                             ->first();
                             // return $investor;
         $pdf = PDF::loadView('operator/form_saham_institusi.cetak',compact('investor'));

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Admin;
+use App\Log;
+use Auth;
 
 class ManajemenAdminController extends Controller
 {
@@ -33,9 +35,17 @@ class ManajemenAdminController extends Controller
             'email'     =>  $request->email,
             'password'  =>  Hash::make($request->password)
         ]);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Ditambahkan !!']);
-        }
+
+        $level = "administrator";
+        $aksi = "menambahkan administrator baru";
+        $halaman = "manajemen administrator";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Ditambahkan !!']);
     }
 
     public function edit($id)
@@ -51,24 +61,46 @@ class ManajemenAdminController extends Controller
             'username'   => $request->username,
             'email'  => $request->email,
         ]);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Diubah !!']);
-        }
+        $level = "administrator";
+        $aksi = "mengubah data administrator";
+        $halaman = "manajemen administrator";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Diubah !!']);
     }
 
     public function delete(Request $request) {
         $admin = Admin::destroy($request->id);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Dihapus !!']);
-        }
+
+        $level = "administrator";
+        $aksi = "menghapus data administrator";
+        $halaman = "manajemen administrator";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Data Admin Berhasil Dihapus !!']);
     }
 
     public function passUpdate(Request $request){
         $admin = Admin::where('id',$request->id)->update([
             'password'  => Hash::make($request->password1),
         ]);
-        if($admin){
-            return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Password Berhasil Diubah !!']);
-        }
+        $level = "administrator";
+        $aksi = "mengubah password administrator";
+        $halaman = "manajemen administrator";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_admin')->with(['success'   =>  'Password Berhasil Diubah !!']);
     }
 }

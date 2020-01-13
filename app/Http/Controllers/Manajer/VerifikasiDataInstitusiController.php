@@ -20,6 +20,8 @@ use App\SusunanKomisarisInstitusi;
 use App\PemegangSahamInstitusi;
 use App\PenerimaKuasaTransaksiInstitusi;
 use App\SusunanDireksiInstitusi;
+use App\Log;
+use Auth;
 use Gate;
 
 class VerifikasiDataInstitusiController extends Controller
@@ -64,6 +66,7 @@ class VerifikasiDataInstitusiController extends Controller
                     'no_cif'    =>  '00000',
                ]);
             }
+
             else{
                 $no_urut = substr($last,0,5);
                 $no_urut++;
@@ -72,6 +75,16 @@ class VerifikasiDataInstitusiController extends Controller
                     'no_cif'    => sprintf('%05s',$no_urut),
                ]);
             }
+
+            $level = "manajer";
+            $aksi = "menyetujui data investor nonperorangan";
+            $halaman = "verifikasi data investor nonperorangan";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         else{
             $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
@@ -80,6 +93,16 @@ class VerifikasiDataInstitusiController extends Controller
             $investor = RekeningInstitusi::where('id',$request->institusi_id)->update([
                 'status_verifikasi' => $request->status_verifikasi,
             ]);
+
+            $level = "manajer";
+            $aksi = "tidak menyetujui data investor nonperorangan";
+            $halaman = "verifikasi data investor nonperorangan";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         return redirect()->route('manajer.verifikasi_data_institusi')->with(['success'   =>  'Data Investor Berhasil Diverifikasi !!']);
     }

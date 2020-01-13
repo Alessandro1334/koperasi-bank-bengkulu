@@ -18,7 +18,7 @@ class CreateKetuaKoperasisTable extends Migration
             $table->string('nm_ketua_koperasi');
             $table->string('email');
             $table->string('telephone');
-            $table->enum('status',['1','0'])->default('1');
+            $table->enum('status',['1','0'])->default('0');
             $table->timestamps();
         });
     }

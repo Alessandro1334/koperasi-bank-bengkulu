@@ -14,6 +14,8 @@ use App\DataPasanganOrangTuaInvestor;
 use App\Persetujuan;
 use App\PekerjaanInvestor;
 use App\AgenPemasaran;
+use App\Log;
+use Auth;
 use Gate;
 
 class VerifikasiRekeningInvestorController extends Controller
@@ -58,11 +60,31 @@ class VerifikasiRekeningInvestorController extends Controller
             $saham = SahamInvestor::where('no_sk3s',$request->sk3s_lama)->update([
                 'status_verifikasi' => '3',
             ]);
+
+            $level = "manajer";
+            $aksi = "menyetujui saham perorangan";
+            $halaman = "verifikasi saham perorangan";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         else{
             $saham = SahamInvestor::where('id',$request->saham_id)->update([
                 'status_verifikasi' => $request->status_verifikasi
             ]);
+
+            $level = "manajer";
+            $aksi = "tidak menyetujui saham perorangan";
+            $halaman = "verifikasi saham perorangan";
+            $log = new Log;
+            $log->user_id = Auth::user()->id;
+            $log->level_user = $level;
+            $log->aksi = $aksi;
+            $log->halaman = $halaman;
+            $log->save();
         }
         return redirect()->route('manajer.verifikasi_rekening_investor')->with(['success'   =>  'Data Saham Investor Berhasil Diverifikasi !!']);
     }

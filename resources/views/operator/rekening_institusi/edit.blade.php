@@ -268,7 +268,7 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="">Tanggal Kadaluarsa TDP: <a style="color:red">(*)</a></label>
-                                                    <input type="date" name="tgl_kadaluarsa_tdp" value="{{ $rekening->tanggal_kadaluarsa_tdp }}" class="form-control" id="tgl_kadaluarsa_tdp" required >
+                                                    <input type="date" name="tanggal_kadaluarsa_tdp" value="{{ $rekening->tanggal_kadaluarsa_tdp }}" class="form-control" id="tgl_kadaluarsa_tdp" required >
                                                 </div>
 
                                                 <div class="form-group col-md-4">

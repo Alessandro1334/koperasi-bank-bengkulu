@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manajer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AgenPemasaran;
+use App\Log;
+use Auth;
 use Gate;
 
 class ManajemenAgenPemasaranController extends Controller
@@ -30,6 +32,16 @@ class ManajemenAgenPemasaranController extends Controller
         $agen->telephone = $request->telephone;
         $agen->save();
 
+        $level = "manajer";
+        $aksi = "menambahkan agen pemasaran";
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_agen_pemasaran')->with(['success'   =>  'Data Agen Pemasaran Berhasil Ditambahkan !!']);
     }
 
@@ -46,11 +58,33 @@ class ManajemenAgenPemasaranController extends Controller
             'telephone'   => $request->telephone,
             'email'  => $request->email,
         ]);
+
+        $level = "manajer";
+        $aksi = "mengubah data agen pemasaran id = ".$request->id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_agen_pemasaran')->with(['success'   =>  'Data Agen Pemasaran Berhasil Diubah !!']);
     }
 
     public function delete(Request $request) {
         $agen = AgenPemasaran::destroy($request->id);
+
+        $level = "manajer";
+        $aksi = "menghapus data agen pemasaran id = ".$request->id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('manajer.manajemen_agen_pemasaran')->with(['success'   =>  'Data Agen Pemasaran Berhasil Dihapus !!']);
     }
 
@@ -59,6 +93,16 @@ class ManajemenAgenPemasaranController extends Controller
             'status'    =>  '1',
         ]);
 
+        $level = "manajer";
+        $aksi = "mengaktifkan agen pemasaran id = ".$id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return $agen;
     }
 
@@ -66,6 +110,16 @@ class ManajemenAgenPemasaranController extends Controller
         $agen = AgenPemasaran::where('id',$id)->update([
             'status'    =>  '0',
         ]);
+
+        $level = "manajer";
+        $aksi = "menonaktifkan agen pemasaran id = ".$id;
+        $halaman = "manajemen agen pemasaran";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
 
         return $agen;
     }

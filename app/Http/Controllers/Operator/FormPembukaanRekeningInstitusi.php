@@ -15,8 +15,11 @@ use App\PenerimaKuasaTransaksiInstitusi;
 use App\DokumenPendukungInstitusi;
 use App\DokumenPendukungInvestor;
 use App\InstruksiPembayaraniInstitusi;
+use App\Log;
+use Auth;
 use Gate;
 use PDF;
+use Crypt;
 
 class FormPembukaanRekeningInstitusi extends Controller
 {
@@ -73,7 +76,7 @@ class FormPembukaanRekeningInstitusi extends Controller
         $rekening->no_skdp = $request->no_skdp;
         $rekening->tgl_kadaluarsa_skdp = $request->tgl_kadaluarsa_skdp;
         $rekening->no_tdp = $request->no_tdp;
-        $rekening->tanggal_kadaluarsa_tdp = $request->tgl_kadaluarsa_tdp;
+        $rekening->tanggal_kadaluarsa_tdp = $request->tanggal_kadaluarsa_tdp;
         $rekening->no_izin_pma = $request->no_izin_pma;
         $rekening->save();
 
@@ -92,6 +95,16 @@ class FormPembukaanRekeningInstitusi extends Controller
         $komisaris->nm_komisaris = $request->nm_komisaris;
         $komisaris->no_identitas = $request->no_identitas;
         $komisaris->save();
+
+        $level = "operator";
+        $aksi = "tambah investor nonindividual";
+        $halaman = "manajemen investor nonindividual";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
 
         $komisaris = new SusunanDireksiInstitusi;
         $komisaris->institusi_id = $last->id;
@@ -173,6 +186,16 @@ class FormPembukaanRekeningInstitusi extends Controller
             'no_izin_pma'   =>  $request->no_izin_pma,
         ]);
 
+        $level = "operator";
+        $aksi = "ubah data investor nonindividual id = ".$id;
+        $halaman = "manajemen investor nonindividual";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         $saham = PemegangSahamInstitusi::where('institusi_id',$id)->update([
             'nm_pemegang_saham'  => $request->nm_pemegang_saham,
             'komposisi_pemegang_saham'  => $request->komposisi_pemegang_saham,
@@ -229,16 +252,18 @@ class FormPembukaanRekeningInstitusi extends Controller
     }
 
     public function edit($id){
-        $rekening = RekeningInstitusi::find($id);
-        $dokumen = DokumenPendukungInstitusi::where('institusi_id',$id)->first();
-        $keuangan = DataKeuanganiInstitusi::where('institusi_id',$id)->first();
-        $instruksi = InstruksiPembayaraniInstitusi::where('institusi_id',$id)->first();
-        $saham = PemegangSahamInstitusi::where('institusi_id',$id)->first();
-        $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$id)->first();
-        $direksi = SusunanDireksiInstitusi::where('institusi_id',$id)->first();
-        $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$id)->first();
+        $data = Crypt::decrypt($id);
+        $rekening = RekeningInstitusi::find($data);
+        $dokumen = DokumenPendukungInstitusi::where('institusi_id',$data)->first();
+        $keuangan = DataKeuanganiInstitusi::where('institusi_id',$data)->first();
+        $instruksi = InstruksiPembayaraniInstitusi::where('institusi_id',$data)->first();
+        $saham = PemegangSahamInstitusi::where('institusi_id',$data)->first();
+        $kuasa = PenerimaKuasaTransaksiInstitusi::where('institusi_id',$data)->first();
+        $direksi = SusunanDireksiInstitusi::where('institusi_id',$data)->first();
+        $komisaris = SusunanKomisarisInstitusi::where('institusi_id',$data)->first();
         $agens = AgenPemasaran::where('status','1')->get();
         $pejabats = PejabatBerwenang::where('status','1')->get();
+
         return view('operator/rekening_institusi.edit',compact('rekening','dokumen','keuangan','instruksi','saham','kuasa','direksi','komisaris','agens','pejabats'));
     }
 
@@ -251,6 +276,17 @@ class FormPembukaanRekeningInstitusi extends Controller
         PenerimaKuasaTransaksiInstitusi::where('institusi_id',$id)->delete();
         SusunanDireksiInstitusi::where('institusi_id',$id)->delete();
         SusunanKomisarisInstitusi::where('institusi_id',$id)->delete();
+
+        $level = "operator";
+        $aksi = "hapus investor nonindividual id = ".$id;
+        $halaman = "manajemen investor nonindividual";
+        $log = new Log;
+        $log->user_id = Auth::user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('operator.pembukaan_rekening_institusi')->with(['success'   =>  'Data Berhasil Di Hapus !!']);
     }
 
@@ -261,6 +297,7 @@ class FormPembukaanRekeningInstitusi extends Controller
     }
 
     public function cetak($id){
+        $data = Crypt::decrypt($id);
         $investor = RekeningInstitusi::join('agen_pemasarans','agen_pemasarans.id','rekening_institusis.agen_pemasaran_id')
                             ->join('pejabat_berwenangs as a1','a1.id','rekening_institusis.pejabat_berwenang_1')
                             ->join('pejabat_berwenangs as a2','a2.id','rekening_institusis.pejabat_berwenang_2')
@@ -270,7 +307,7 @@ class FormPembukaanRekeningInstitusi extends Controller
                             ->join('data_keuangani_institusis as keuangan','keuangan.institusi_id','rekening_institusis.id')
                             ->join('instruksi_pembayarani_institusis as instruksi','instruksi.institusi_id','rekening_institusis.id')
                             ->join('pemegang_saham_institusis as saham','saham.institusi_id','rekening_institusis.id')
-                            ->where('rekening_institusis.id',$id)
+                            ->where('rekening_institusis.id',$data)
                             ->first();
         $pdf = PDF::loadView('operator/rekening_institusi.cetak',compact('investor'));
         $pdf->setPaper('a4', 'portrait');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Barcodes;
+use App\Log;
+use Auth;
 use File;
 
 class ManajemenBarcodeController extends Controller
@@ -30,9 +32,16 @@ class ManajemenBarcodeController extends Controller
             'keterangan'    =>  $request->keterangan,
             'status'        =>  $request->status,
         ]);
-        if($barcode){
-            return redirect()->route('administrator.manajemen_barcode')->with(['success'   =>  'Data Barcode Berhasil Ditambahkan !!']);
-        }
+        $level = "administrator";
+        $aksi = "menambahkan barcode baru";
+        $halaman = "manajemen barcode";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_barcode')->with(['success'   =>  'Data Barcode Berhasil Ditambahkan !!']);
     }
 
     public function edit($id)
@@ -68,6 +77,17 @@ class ManajemenBarcodeController extends Controller
                 'status'    => 'aktif'
             ]);
         }
+
+        $level = "administrator";
+        $aksi = "mengubah data barcode";
+        $halaman = "manajemen barcode";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+
         return redirect()->route('administrator.manajemen_barcode')->with(['success'   =>  'Data Barcode Berhasil Diubah !!']);
     }
 
@@ -76,8 +96,15 @@ class ManajemenBarcodeController extends Controller
         $id = Barcodes::find($request->id);
         File::delete('img/'.$id['nm_file']);
         $barcode = Barcodes::destroy($request->id);
-        if($barcode){
-            return redirect()->route('administrator.manajemen_barcode')->with(['success'   =>  'Data Barcode Berhasil Dihapus !!']);
-        }
+        $level = "administrator";
+        $aksi = "menghapus data barcode";
+        $halaman = "manajemen barcode";
+        $log = new Log;
+        $log->user_id = Auth::guard('admin')->user()->id;
+        $log->level_user = $level;
+        $log->aksi = $aksi;
+        $log->halaman = $halaman;
+        $log->save();
+        return redirect()->route('administrator.manajemen_barcode')->with(['success'   =>  'Data Barcode Berhasil Dihapus !!']);
     }
 }
