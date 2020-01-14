@@ -166,6 +166,7 @@ Route::group(['prefix' => 'manajer/backup_data'], function(){
     Route::get('/eksport_saham_nonperorangan','Manajer\BackupDataController@eksportSahamNonperorangan')->name('manajer.eksport_saham_nonperorangan');
     Route::get('/eksport_institusi','Manajer\BackupDataController@EksportInstitusi')->name('manajer.eksport_institusi');
     Route::post('/import','Manajer\BackupDataController@import')->name('manajer.import');
+    Route::get('/exportsql', 'Manajer\BackupDataController@export_sql')->name('manajer.exportsql');
 });
 
 

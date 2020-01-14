@@ -21,15 +21,18 @@
                         <strong><i class="fa fa-success-circle"></i>Perhatian: </strong> Silahkan Lakukan Eksport Data Dibawah Ini Jika Diperlukan !!
                     </div>
                     <div class="row">
-                            <div class="col-md-12" style="margin-bottom:10px;">
-                                <a href="{{ route('manajer.eksport') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Perorangan</a>
-                                <a href="{{ route('manajer.eksport_saham_perorangan') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Saham Perorangan</a>
-                            </div>
+                        <div class="col-md-12" style="margin-bottom:10px;">
+                            <a href="{{ route('manajer.eksport') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Perorangan</a>
+                            <a href="{{ route('manajer.eksport_saham_perorangan') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Saham Perorangan</a>
+                        </div>
 
-                            <div class="col-md-12">
-                                <a href="{{ route('manajer.eksport_saham_nonperorangan') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Saham NonPerorangan</a>
-                                <a href="{{ route('manajer.eksport_institusi') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Non Perorangan</a>
-                            </div>
+                        <div class="col-md-12" style="margin-bottom:10px;">
+                            <a href="{{ route('manajer.eksport_saham_nonperorangan') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Saham NonPerorangan</a>
+                            <a href="{{ route('manajer.eksport_institusi') }}" type="submit" id="button-eksport" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp; Eksport Data Non Perorangan</a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="{{ route('manajer.exportsql') }}" target="_blank" class="btn btn-primary"><i class="fa fa-database"></i>&nbsp; Export Sql</a>
+                        </div>
                     </div>
                 </div>
 
